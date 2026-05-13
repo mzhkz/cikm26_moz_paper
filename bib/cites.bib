@@ -1,0 +1,1840 @@
+@misc{c2pa-org,
+  title = {{Coalition for Content Provenance and Authenticity (C2PA)}},
+  author = {{C2PA}},
+  year = {2024},
+  howpublished = {\url{https://c2pa.org/}},
+  note = {Accessed: 2025-10-03}
+}
+
+@inproceedings{geo-apmr+24,
+author = {Aggarwal, Pranjal and Murahari, Vishvak and Rajpurohit, Tanmay and Kalyan, Ashwin and Narasimhan, Karthik and Deshpande, Ameet},
+title = {GEO: Generative Engine Optimization},
+year = {2024},
+isbn = {9798400704901},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/3637528.3671900},
+doi = {10.1145/3637528.3671900},
+booktitle = {Proceedings of the 30th ACM SIGKDD Conference on Knowledge Discovery and Data Mining},
+pages = {5--16},
+keywords = {datasets and benchmarks, generative models, search engines},
+}
+
+@inproceedings{rag-nips20,
+author = {Lewis, Patrick and Perez, Ethan and Piktus, Aleksandra and Petroni, Fabio and Karpukhin, Vladimir and Goyal, Naman and K\"{u}ttler, Heinrich and Lewis, Mike and Yih, Wen-tau and Rockt\"{a}schel, Tim and Riedel, Sebastian and Kiela, Douwe},
+title = {Retrieval-augmented generation for knowledge-intensive {NLP} tasks},
+year = {2020},
+isbn = {9781713829546},
+publisher = {Curran Associates Inc.},
+address = {Red Hook, NY, USA},
+abstract = {Large pre-trained language models have been shown to store factual knowledge in their parameters, and achieve state-of-the-art results when fine-tuned on downstream NLP tasks. However, their ability to access and precisely manipulate knowledge is still limited, and hence on knowledge-intensive tasks, their performance lags behind task-specific architectures. Additionally, providing provenance for their decisions and updating their world knowledge remain open research problems. Pre-trained models with a differentiable access mechanism to explicit non-parametric memory can overcome this issue, but have so far been only investigated for extractive downstream tasks. We explore a general-purpose fine-tuning recipe for retrieval-augmented generation (RAG) — models which combine pre-trained parametric and non-parametric memory for language generation. We introduce RAG models where the parametric memory is a pre-trained seq2seq model and the non-parametric memory is a dense vector index of Wikipedia, accessed with a pre-trained neural retriever. We compare two RAG formulations, one which conditions on the same retrieved passages across the whole generated sequence, and another which can use different passages per token. We fine-tune and evaluate our models on a wide range of knowledge-intensive NLP tasks and set the state of the art on three open domain QA tasks, outperforming parametric seq2seq models and task-specific retrieve-and-extract architectures. For language generation tasks, we find that RAG models generate more specific, diverse and factual language than a state-of-the-art parametric-only seq2seq baseline.},
+booktitle = {Proceedings of the 34th International Conference on Neural Information Processing Systems},
+articleno = {793},
+numpages = {16},
+pages = {9459--9474},
+location = {Vancouver, BC, Canada},
+series = {NIPS '20}
+}
+
+@article{webgpt-arxiv21,
+author = {Nakano, Reiichiro and Hilton, Jacob and Balaji, Suchir and Wu, Jeff and Ouyang, Long and Kim, Christina and Hesse, Christopher and Jain, Shantanu and Kosaraju, Vineet and Saunders, William and Jiang, Xu and Cobbe, Karl and Eloundou, Tyna and Krueger, Gretchen and Button, Kevin and Knight, Matthew and Chess, Benjamin and Schulman, John},
+title = {WebGPT: Browser-assisted question-answering with human feedback},
+journal = {arXiv preprint arXiv:2112.09332},
+year = {2021},
+url = {https://arxiv.org/abs/2112.09332}
+}
+
+@inproceedings{ragas-eacl24,
+    title = "{RAGA}s: Automated Evaluation of Retrieval Augmented Generation",
+    author = "Es, Shahul  and
+      James, Jithin  and
+      Espinosa Anke, Luis  and
+      Schockaert, Steven",
+    editor = "Aletras, Nikolaos  and
+      De Clercq, Orphee",
+    booktitle = "Proceedings of the 18th Conference of the European Chapter of the Association for Computational Linguistics: System Demonstrations",
+    month = mar,
+    year = "2024",
+    address = "St. Julians, Malta",
+    publisher = "Association for Computational Linguistics",
+    url = "https://aclanthology.org/2024.eacl-demo.16/",
+    doi = "10.18653/v1/2024.eacl-demo.16",
+    pages = "150--158",
+    abstract = "We introduce RAGAs (Retrieval Augmented Generation Assessment), a framework for reference-free evaluation of Retrieval Augmented Generation (RAG) pipelines. RAGAs is available at [https://github.com/explodinggradients/ragas]. RAG systems are composed of a retrieval and an LLM based generation module. They provide LLMs with knowledge from a reference textual database, enabling them to act as a natural language layer between a user and textual databases, thus reducing the risk of hallucinations. Evaluating RAG architectures is challenging due to several dimensions to consider: the ability of the retrieval system to identify relevant and focused context passages, the ability of the LLM to exploit such passages faithfully, and the quality of the generation itself. With RAGAs, we introduce a suite of metrics that can evaluate these different dimensions without relying on ground truth human annotations. We posit that such a framework can contribute crucially to faster evaluation cycles of RAG architectures, which is especially important given the fast adoption of LLMs."
+}
+
+
+@inproceedings{ares-naacl24,
+    title = "{ARES}: An Automated Evaluation Framework for Retrieval-Augmented Generation Systems",
+    author = "Saad-Falcon, Jon  and
+      Khattab, Omar  and
+      Potts, Christopher  and
+      Zaharia, Matei",
+    editor = "Duh, Kevin  and
+      Gomez, Helena  and
+      Bethard, Steven",
+    booktitle = "Proceedings of the 2024 Conference of the North American Chapter of the Association for Computational Linguistics: Human Language Technologies (Volume 1: Long Papers)",
+    month = jun,
+    year = "2024",
+    address = "Mexico City, Mexico",
+    publisher = "Association for Computational Linguistics",
+    url = "https://aclanthology.org/2024.naacl-long.20/",
+    doi = "10.18653/v1/2024.naacl-long.20",
+    pages = "338--354",
+    abstract = "Evaluating retrieval-augmented generation (RAG) systems traditionally relies on hand annotations for input queries, passages to retrieve, and responses to generate. We introduce ARES, an Automated RAG Evaluation System, for evaluating RAG systems along the dimensions of context relevance, answer faithfulness, and answer relevance. By creating its own synthetic training data, ARES finetunes lightweight LM judges to assess the quality of individual RAG components. To mitigate potential prediction errors, ARES utilizes a small set of human-annotated datapoints for prediction-powered inference (PPI). Across eight different knowledge-intensive tasks in KILT, SuperGLUE, and AIS, ARES accurately evaluates RAG systems while using only a few hundred human annotations during evaluation. Furthermore, ARES judges remain effective across domain shifts, proving accurate even after changing the type of queries and/or documents used in the evaluated RAG systems. We make our code and datasets publicly available on Github."
+}
+
+
+@misc{misinformation-arxiv23,
+    title={Can LLM-Generated Misinformation Be Detected?}, 
+    author={Canyu Chen and Kai Shu},
+    year={2024},
+    eprint={2309.13788},
+    archivePrefix={arXiv},
+    primaryClass={cs.CL},
+    url={https://arxiv.org/abs/2309.13788}, 
+}
+
+@inproceedings{selfcheckgpt-emnlp23,
+    title = "{S}elf{C}heck{GPT}: Zero-Resource Black-Box Hallucination Detection for Generative Large Language Models",
+    author = "Manakul, Potsawee  and
+      Liusie, Adian  and
+      Gales, Mark",
+    editor = "Bouamor, Houda  and
+      Pino, Juan  and
+      Bali, Kalika",
+    booktitle = "Proceedings of the 2023 Conference on Empirical Methods in Natural Language Processing",
+    month = dec,
+    year = "2023",
+    address = "Singapore",
+    publisher = "Association for Computational Linguistics",
+    url = "https://aclanthology.org/2023.emnlp-main.557/",
+    doi = "10.18653/v1/2023.emnlp-main.557",
+    pages = "9004--9017",
+    abstract = "Generative Large Language Models (LLMs) such as GPT-3 are capable of generating highly fluent responses to a wide variety of user prompts. However, LLMs are known to hallucinate facts and make non-factual statements which can undermine trust in their output. Existing fact-checking approaches either require access to the output probability distribution (which may not be available for systems such as ChatGPT) or external databases that are interfaced via separate, often complex, modules. In this work, we propose ``SelfCheckGPT'', a simple sampling-based approach that can be used to fact-check the responses of black-box models in a zero-resource fashion, i.e. without an external database. SelfCheckGPT leverages the simple idea that if an LLM has knowledge of a given concept, sampled responses are likely to be similar and contain consistent facts. However, for hallucinated facts, stochastically sampled responses are likely to diverge and contradict one another. We investigate this approach by using GPT-3 to generate passages about individuals from the WikiBio dataset, and manually annotate the factuality of the generated passages. We demonstrate that SelfCheckGPT can: i) detect non-factual and factual sentences; and ii) rank passages in terms of factuality. We compare our approach to several baselines and show that our approach has considerably higher AUC-PR scores in sentence-level hallucination detection and higher correlation scores in passage-level factuality assessment compared to grey-box methods."
+}
+
+@inproceedings{calibrated-stoc24,
+author = {Kalai, Adam Tauman and Vempala, Santosh S.},
+title = {Calibrated Language Models Must Hallucinate},
+year = {2024},
+isbn = {9798400703836},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/3618260.3649777},
+doi = {10.1145/3618260.3649777},
+abstract = {Recent language models generate false but plausible-sounding text with surprising frequency. Such “hallucinations” are an obstacle to the usability of language-based AI systems and can harm people                 who rely upon their outputs. This work shows that there is an inherent statistical lower-bound on the rate that pretrained language models hallucinate certain types of facts, having nothing to do with the transformer LM architecture or data quality. For “arbitrary” facts whose veracity cannot be determined from the training data, we show that hallucinations must occur at a certain rate for language models that satisfy a statistical calibration condition appropriate for generative language models. Specifically, if the maximum probability of any fact is bounded, we show that the probability of generating a hallucination is close to the fraction of facts that occur exactly once in the training data (a “Good-Turing” estimate), even assuming ideal training data without errors.                                 One conclusion is that models pretrained to be sufficiently good predictors (i.e., calibrated) may require post-training to mitigate hallucinations on the type of arbitrary facts that tend to appear once in the training set. However, our analysis also suggests that there is no statistical reason that pretraining will lead to hallucination on facts that tend to appear more than once in the training data (like references to publications such as articles and books, whose hallucinations have been particularly notable and problematic) or on systematic facts (like arithmetic calculations). Therefore, different architectures and learning algorithms may mitigate these latter                 types of hallucinations.},
+booktitle = {Proceedings of the 56th Annual ACM Symposium on Theory of Computing},
+pages = {160--171},
+numpages = {12},
+keywords = {Calibration, Good-Turing Estimator, Hallucination, Language Models},
+location = {Vancouver, BC, Canada},
+series = {STOC 2024}
+}
+
+@inproceedings{rag-kdd24,
+author = {Fan, Wenqi and Ding, Yujuan and Ning, Liangbo and Wang, Shijie and Li, Hengyun and Yin, Dawei and Chua, Tat-Seng and Li, Qing},
+title = {A Survey on RAG Meeting LLMs: Towards Retrieval-Augmented Large Language Models},
+year = {2024},
+isbn = {9798400704901},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/3637528.3671470},
+doi = {10.1145/3637528.3671470},
+abstract = {As one of the most advanced techniques in AI, Retrieval-Augmented Generation (RAG) can offer reliable and up-to-date external knowledge, providing huge convenience for numerous tasks. Particularly in the era of AI-Generated Content (AIGC), the powerful capacity of retrieval in providing additional knowledge enables RAG to assist existing generative AI in producing high-quality outputs. Recently, Large Language Models (LLMs) have demonstrated revolutionary abilities in language understanding and generation, while still facing inherent limitations such as hallucinations and out-of-date internal knowledge. Given the powerful abilities of RAG in providing the latest and helpful auxiliary information, Retrieval-Augmented Large Language Models (RA-LLMs) have emerged to harness external and authoritative knowledge bases, rather than solely relying on the model's internal knowledge, to augment the quality of the generated content of LLMs. In this survey, we comprehensively review existing research studies in RA-LLMs, covering three primary technical perspectives: Furthermore, to deliver deeper insights, we discuss current limitations and several promising directions for future research. Updated information about this survey can be found at: https://advanced-recommender-systems.github.io/RAG-Meets-LLMs/},
+booktitle = {Proceedings of the 30th ACM SIGKDD Conference on Knowledge Discovery and Data Mining},
+pages = {6491--6501},
+numpages = {11},
+keywords = {fine-tuning, in-context learning, large language model (llm), pre-training, prompting, retrieval augmented generation (rag)},
+location = {Barcelona, Spain},
+series = {KDD '24}
+}
+
+@book{kovach2007elements,
+  title={The Elements of Journalism: What Newspeople Should Know and the Public Should Expect},
+  author={Kovach, B. and Rosenstiel, T.},
+  isbn={9780307346704},
+  lccn={2006023159},
+  url={https://books.google.co.jp/books?id=oLzYD18Z-OcC},
+  year={2007},
+  publisher={Three Rivers Press}
+}
+
+@misc{perplexity-langchain24,
+  title = {Perplexity Pro Search: An AI Answer Engine for Complex Queries},
+  author = {William Zhang},
+  year = {2024},
+  note = {Breakout Agentic Apps Series, LangChain},
+  url = {https://www.langchain.com/breakoutagents/perplexity}
+}
+
+@misc{google-gemini-search24,
+  title = {Grounding with Google Search},
+  organization = {Google AI for Developers},
+  url = {https://ai.google.dev/gemini-api/docs/google-search},
+  year = {2024},
+  note = {Documentation for Gemini API's Google Search grounding feature, Accessed: 2025-10-03}
+}
+
+@misc{anthropic-multiagent25,
+  title = {How we built our multi-agent research system},
+  author = {Jeremy Hadfield and Barry Zhang and Kenneth Lien and Florian Scholz and Jeremy Fox and Daniel Ford},
+  journal = {Anthropic Engineering Blog},
+  year = {2025},
+  month = {June},
+  day = {13},
+  url = {https://www.anthropic.com/engineering/multi-agent-research-system}
+}
+
+@misc{openai-chatgpt-search24,
+  title = {Introducing ChatGPT search},
+  author = {OpenAI},
+  year = {2024},
+  month = {October},
+  day = {31},
+  url = {https://openai.com/index/introducing-chatgpt-search/},
+  note = {ChatGPT can now search the web for fast, timely answers with links to relevant sources, Accessed: 2025-10-03}
+}
+
+@misc{microsoft-bing-chat23,
+  title = {Reinventing search with a new AI-powered Microsoft Bing and Edge, your copilot for the web},
+  author = {Yusuf Mehdi},
+  organization = {Microsoft},
+  year = {2023},
+  month = {February},
+  day = {7},
+  url = {https://blogs.microsoft.com/blog/2023/02/07/reinventing-search-with-a-new-ai-powered-microsoft-bing-and-edge-your-copilot-for-the-web/},
+  note = {Official Microsoft announcement of AI-powered Bing with ChatGPT integration, Accessed: 2025-10-03}
+}
+
+@misc{google-sge23,
+  title = {Supercharging Search with generative AI},
+  author = {Google},
+  organization = {Google},
+  year = {2023},
+  month = {May},
+  day = {10},
+  url = {https://blog.google/products/search/generative-ai-search/},
+  note = {Google I/O 2023 announcement of Search Generative Experience (SGE), Accessed: 2025-10-03}
+}
+
+@misc{perplexity-ai22,
+  title = {Perplexity AI: Where knowledge begins},
+  author = {Aravind Srinivas and Denis Yarats and Johnny Ho and Andy Konwinski},
+  organization = {Perplexity AI, Inc.},
+  year = {2022},
+  month = {December},
+  day = {7},
+  url = {https://www.perplexity.ai/},
+  note = {Launch of Perplexity's conversational answer engine, Accessed: 2025-10-03}
+}
+
+@misc{perplexity-comet25,
+  title = {Introducing Comet: Browse at the speed of thought},
+  author = {Perplexity},
+  organization = {Perplexity AI, Inc.},
+  year = {2025},
+  month = {July},
+  day = {9},
+  url = {https://www.perplexity.ai/hub/blog/introducing-comet},
+  note = {Perplexity launches Comet, an AI-powered web browser with integrated AI search and assistant features, Accessed: 2025-10-03}
+}
+
+@misc{dia-browser25,
+  title = {Dia: AI-First Web Browser},
+  author = {The Browser Company},
+  organization = {The Browser Company},
+  year = {2025},
+  month = {June},
+  day = {11},
+  url = {https://www.diabrowser.com/},
+  note = {The Browser Company launches Dia browser in beta, featuring AI-powered writing assistance and autonomous web actions, Accessed: 2025-10-03}
+}
+
+@misc{llm-survey-arxiv23,
+      title={A Survey of Large Language Models}, 
+      author={Wayne Xin Zhao and Kun Zhou and Junyi Li and Tianyi Tang and Xiaolei Wang and Yupeng Hou and Yingqian Min and Beichen Zhang and Junjie Zhang and Zican Dong and Yifan Du and Chen Yang and Yushuo Chen and Zhipeng Chen and Jinhao Jiang and Ruiyang Ren and Yifan Li and Xinyu Tang and Zikang Liu and Peiyu Liu and Jian-Yun Nie and Ji-Rong Wen},
+      year={2025},
+      eprint={2303.18223},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL},
+      url={https://arxiv.org/abs/2303.18223}, 
+}
+
+@misc{gpt4-technicalreport,
+      title={GPT-4 Technical Report}, 
+      author={OpenAI and Josh Achiam and Steven Adler and Sandhini Agarwal and Lama Ahmad and Ilge Akkaya and Florencia Leoni Aleman and Diogo Almeida and Janko Altenschmidt and Sam Altman and Shyamal Anadkat and Red Avila and Igor Babuschkin and Suchir Balaji and Valerie Balcom and Paul Baltescu and Haiming Bao and Mohammad Bavarian and Jeff Belgum and Irwan Bello and Jake Berdine and Gabriel Bernadett-Shapiro and Christopher Berner and Lenny Bogdonoff and Oleg Boiko and Madelaine Boyd and Anna-Luisa Brakman and Greg Brockman and Tim Brooks and Miles Brundage and Kevin Button and Trevor Cai and Rosie Campbell and Andrew Cann and Brittany Carey and Chelsea Carlson and Rory Carmichael and Brooke Chan and Che Chang and Fotis Chantzis and Derek Chen and Sully Chen and Ruby Chen and Jason Chen and Mark Chen and Ben Chess and Chester Cho and Casey Chu and Hyung Won Chung and Dave Cummings and Jeremiah Currier and Yunxing Dai and Cory Decareaux and Thomas Degry and Noah Deutsch and Damien Deville and Arka Dhar and David Dohan and Steve Dowling and Sheila Dunning and Adrien Ecoffet and Atty Eleti and Tyna Eloundou and David Farhi and Liam Fedus and Niko Felix and Simón Posada Fishman and Juston Forte and Isabella Fulford and Leo Gao and Elie Georges and Christian Gibson and Vik Goel and Tarun Gogineni and Gabriel Goh and Rapha Gontijo-Lopes and Jonathan Gordon and Morgan Grafstein and Scott Gray and Ryan Greene and Joshua Gross and Shixiang Shane Gu and Yufei Guo and Chris Hallacy and Jesse Han and Jeff Harris and Yuchen He and Mike Heaton and Johannes Heidecke and Chris Hesse and Alan Hickey and Wade Hickey and Peter Hoeschele and Brandon Houghton and Kenny Hsu and Shengli Hu and Xin Hu and Joost Huizinga and Shantanu Jain and Shawn Jain and Joanne Jang and Angela Jiang and Roger Jiang and Haozhun Jin and Denny Jin and Shino Jomoto and Billie Jonn and Heewoo Jun and Tomer Kaftan and Łukasz Kaiser and Ali Kamali and Ingmar Kanitscheider and Nitish Shirish Keskar and Tabarak Khan and Logan Kilpatrick and Jong Wook Kim and Christina Kim and Yongjik Kim and Jan Hendrik Kirchner and Jamie Kiros and Matt Knight and Daniel Kokotajlo and Łukasz Kondraciuk and Andrew Kondrich and Aris Konstantinidis and Kyle Kosic and Gretchen Krueger and Vishal Kuo and Michael Lampe and Ikai Lan and Teddy Lee and Jan Leike and Jade Leung and Daniel Levy and Chak Ming Li and Rachel Lim and Molly Lin and Stephanie Lin and Mateusz Litwin and Theresa Lopez and Ryan Lowe and Patricia Lue and Anna Makanju and Kim Malfacini and Sam Manning and Todor Markov and Yaniv Markovski and Bianca Martin and Katie Mayer and Andrew Mayne and Bob McGrew and Scott Mayer McKinney and Christine McLeavey and Paul McMillan and Jake McNeil and David Medina and Aalok Mehta and Jacob Menick and Luke Metz and Andrey Mishchenko and Pamela Mishkin and Vinnie Monaco and Evan Morikawa and Daniel Mossing and Tong Mu and Mira Murati and Oleg Murk and David Mély and Ashvin Nair and Reiichiro Nakano and Rajeev Nayak and Arvind Neelakantan and Richard Ngo and Hyeonwoo Noh and Long Ouyang and Cullen O'Keefe and Jakub Pachocki and Alex Paino and Joe Palermo and Ashley Pantuliano and Giambattista Parascandolo and Joel Parish and Emy Parparita and Alex Passos and Mikhail Pavlov and Andrew Peng and Adam Perelman and Filipe de Avila Belbute Peres and Michael Petrov and Henrique Ponde de Oliveira Pinto and Michael and Pokorny and Michelle Pokrass and Vitchyr H. Pong and Tolly Powell and Alethea Power and Boris Power and Elizabeth Proehl and Raul Puri and Alec Radford and Jack Rae and Aditya Ramesh and Cameron Raymond and Francis Real and Kendra Rimbach and Carl Ross and Bob Rotsted and Henri Roussez and Nick Ryder and Mario Saltarelli and Ted Sanders and Shibani Santurkar and Girish Sastry and Heather Schmidt and David Schnurr and John Schulman and Daniel Selsam and Kyla Sheppard and Toki Sherbakov and Jessica Shieh and Sarah Shoker and Pranav Shyam and Szymon Sidor and Eric Sigler and Maddie Simens and Jordan Sitkin and Katarina Slama and Ian Sohl and Benjamin Sokolowsky and Yang Song and Natalie Staudacher and Felipe Petroski Such and Natalie Summers and Ilya Sutskever and Jie Tang and Nikolas Tezak and Madeleine B. Thompson and Phil Tillet and Amin Tootoonchian and Elizabeth Tseng and Preston Tuggle and Nick Turley and Jerry Tworek and Juan Felipe Cerón Uribe and Andrea Vallone and Arun Vijayvergiya and Chelsea Voss and Carroll Wainwright and Justin Jay Wang and Alvin Wang and Ben Wang and Jonathan Ward and Jason Wei and CJ Weinmann and Akila Welihinda and Peter Welinder and Jiayi Weng and Lilian Weng and Matt Wiethoff and Dave Willner and Clemens Winter and Samuel Wolrich and Hannah Wong and Lauren Workman and Sherwin Wu and Jeff Wu and Michael Wu and Kai Xiao and Tao Xu and Sarah Yoo and Kevin Yu and Qiming Yuan and Wojciech Zaremba and Rowan Zellers and Chong Zhang and Marvin Zhang and Shengjia Zhao and Tianhao Zheng and Juntang Zhuang and William Zhuk and Barret Zoph},
+      year={2024},
+      eprint={2303.08774},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL},
+      url={https://arxiv.org/abs/2303.08774}, 
+}
+
+@inproceedings{retro-iclr22,
+  title = 	 {Improving Language Models by Retrieving from Trillions of Tokens},
+  author =       {Borgeaud, Sebastian and Mensch, Arthur and Hoffmann, Jordan and Cai, Trevor and Rutherford, Eliza and Millican, Katie and Van Den Driessche, George Bm and Lespiau, Jean-Baptiste and Damoc, Bogdan and Clark, Aidan and De Las Casas, Diego and Guy, Aurelia and Menick, Jacob and Ring, Roman and Hennigan, Tom and Huang, Saffron and Maggiore, Loren and Jones, Chris and Cassirer, Albin and Brock, Andy and Paganini, Michela and Irving, Geoffrey and Vinyals, Oriol and Osindero, Simon and Simonyan, Karen and Rae, Jack and Elsen, Erich and Sifre, Laurent},
+  booktitle = 	 {Proceedings of the 39th International Conference on Machine Learning},
+  pages = 	 {2206--2240},
+  year = 	 {2022},
+  editor = 	 {Chaudhuri, Kamalika and Jegelka, Stefanie and Song, Le and Szepesvari, Csaba and Niu, Gang and Sabato, Sivan},
+  volume = 	 {162},
+  series = 	 {Proceedings of Machine Learning Research},
+  month = 	 {17--23 Jul},
+  publisher =    {PMLR},
+  pdf = 	 {https://proceedings.mlr.press/v162/borgeaud22a/borgeaud22a.pdf},
+  url = 	 {https://proceedings.mlr.press/v162/borgeaud22a.html},
+  abstract = 	 {We enhance auto-regressive language models by conditioning on document chunks retrieved from a large corpus, based on local similarity with preceding tokens. With a 2 trillion token database, our Retrieval-Enhanced Transformer (RETRO) obtains comparable performance to GPT-3 and Jurassic-1 on the Pile, despite using 25{\texttimes} fewer parameters. After fine-tuning, RETRO performance translates to downstream knowledge-intensive tasks such as question answering. RETRO combines a frozen Bert retriever, a differentiable encoder and a chunked cross-attention mechanism to predict tokens based on an order of magnitude more data than what is typically consumed during training. We typically train RETRO from scratch, yet can also rapidly RETROfit pre-trained transformers with retrieval and still achieve good performance. Our work opens up new avenues for improving language models through explicit memory at unprecedented scale.}
+}
+
+@inproceedings{few-shot-neurips20,
+ author = {Brown, Tom and Mann, Benjamin and Ryder, Nick and Subbiah, Melanie and Kaplan, Jared D and Dhariwal, Prafulla and Neelakantan, Arvind and Shyam, Pranav and Sastry, Girish and Askell, Amanda and Agarwal, Sandhini and Herbert-Voss, Ariel and Krueger, Gretchen and Henighan, Tom and Child, Rewon and Ramesh, Aditya and Ziegler, Daniel and Wu, Jeffrey and Winter, Clemens and Hesse, Chris and Chen, Mark and Sigler, Eric and Litwin, Mateusz and Gray, Scott and Chess, Benjamin and Clark, Jack and Berner, Christopher and McCandlish, Sam and Radford, Alec and Sutskever, Ilya and Amodei, Dario},
+ booktitle = {Advances in Neural Information Processing Systems},
+ editor = {H. Larochelle and M. Ranzato and R. Hadsell and M.F. Balcan and H. Lin},
+ pages = {1877--1901},
+ publisher = {Curran Associates, Inc.},
+ title = {Language Models are Few-Shot Learners},
+ url = {https://proceedings.neurips.cc/paper_files/paper/2020/file/1457c0d6bfcb4967418bfb8ac142f64a-Paper.pdf},
+ volume = {33},
+ year = {2020}
+}
+
+@article{in-context-ralm-tacl23,
+    author = {Ram, Ori and Levine, Yoav and Dalmedigos, Itay and Muhlgay, Dor and Shashua, Amnon and Leyton-Brown, Kevin and Shoham, Yoav},
+    title = {In-Context Retrieval-Augmented Language Models},
+    journal = {Transactions of the Association for Computational Linguistics},
+    volume = {11},
+    pages = {1316--1331},
+    year = {2023},
+    month = {11},
+    abstract = {Retrieval-Augmented Language Modeling (RALM) methods, which condition a language model (LM) on relevant documents from a grounding corpus during generation, were shown to significantly improve language modeling performance. In addition, they can mitigate the problem of factually inaccurate text generation and provide natural source attribution mechanism. Existing RALM approaches focus on modifying the LM architecture in order to facilitate the incorporation of external information, significantly complicating deployment. This paper considers a simple alternative, which we dub In-Context RALM: leaving the LM architecture unchanged and prepending grounding documents to the input, without any further training of the LM. We show that In-Context RALM that builds on off-the-shelf general purpose retrievers provides surprisingly large LM gains across model sizes and diverse corpora. We also demonstrate that the document retrieval and ranking mechanism can be specialized to the RALM setting to further boost performance. We conclude that In-Context RALM has considerable potential to increase the prevalence of LM grounding, particularly in settings where a pretrained LM must be used without modification or even via API access.1},
+    issn = {2307-387X},
+    doi = {10.1162/tacl_a_00605},
+    url = {https://doi.org/10.1162/tacl\_a\_00605},
+    eprint = {https://direct.mit.edu/tacl/article-pdf/doi/10.1162/tacl\_a\_00605/2178834/tacl\_a\_00605.pdf},
+}
+
+
+@inproceedings{realm-icml20,
+  title = 	 {Retrieval Augmented Language Model Pre-Training},
+  author =       {Guu, Kelvin and Lee, Kenton and Tung, Zora and Pasupat, Panupong and Chang, Mingwei},
+  booktitle = 	 {Proceedings of the 37th International Conference on Machine Learning},
+  pages = 	 {3929--3938},
+  year = 	 {2020},
+  editor = 	 {III, Hal Daumé and Singh, Aarti},
+  volume = 	 {119},
+  series = 	 {Proceedings of Machine Learning Research},
+  month = 	 {13--18 Jul},
+  publisher =    {PMLR},
+  pdf = 	 {http://proceedings.mlr.press/v119/guu20a/guu20a.pdf},
+  url = 	 {https://proceedings.mlr.press/v119/guu20a.html},
+  abstract = 	 {Language model pre-training has been shown to capture a surprising amount of world knowledge, crucial for NLP tasks such as question answering. However, this knowledge is stored implicitly in the parameters of a neural network, requiring ever-larger networks to cover more facts. To capture knowledge in a more modular and interpretable way, we augment language model pre-training with a latent knowledge retriever, which allows the model to retrieve and attend over documents from a large corpus such as Wikipedia, used during pre-training, fine-tuning and inference. For the first time, we show how to pre-train such a knowledge retriever in an unsupervised manner, using masked language modeling as the learning signal and backpropagating through a retrieval step that considers millions of documents. We demonstrate the effectiveness of Retrieval-Augmented Language Model pre-training (REALM) by fine-tuning on the challenging task of Open-domain Question Answering (Open-QA). We compare against state-of-the-art models for both explicit and implicit knowledge storage on three popular Open-QA benchmarks, and find that we outperform all previous methods by a significant margin (4-16% absolute accuracy), while also providing qualitative benefits such as interpretability and modularity.}
+}
+
+@inproceedings{sail-emnlp23,
+    title = "Search Augmented Instruction Learning",
+    author = "Luo, Hongyin  and
+      Zhang, Tianhua  and
+      Chuang, Yung-Sung  and
+      Gong, Yuan  and
+      Kim, Yoon  and
+      Wu, Xixin  and
+      Meng, Helen  and
+      Glass, James",
+    editor = "Bouamor, Houda  and
+      Pino, Juan  and
+      Bali, Kalika",
+    booktitle = "Findings of the Association for Computational Linguistics: EMNLP 2023",
+    month = dec,
+    year = "2023",
+    address = "Singapore",
+    publisher = "Association for Computational Linguistics",
+    url = "https://aclanthology.org/2023.findings-emnlp.242/",
+    doi = "10.18653/v1/2023.findings-emnlp.242",
+    pages = "3717--3729",
+    abstract = "Large language models (LLMs) have been significantly improved by instruction fine-tuning, but still lack transparency and the ability to utilize up-to-date knowledge and information. In this work, we propose search-augmented instruction learning (SAIL), which grounds the language generation and instruction following abilities on complex search results generated by in-house and external search engines. With an instruction tuning corpus, we collect search results for each training case from different search APIs and domains, and construct a new search-grounded training set containing (instruction, grounding information, response) triplets. We then fine-tune the LLaMA-7B model on the constructed training set. Since the collected results contain unrelated and disputing languages, the model needs to learn to ground on trustworthy search results, filter out distracting passages, and generate the target response. The search result-denoising process entails explicit trustworthy information selection and multi-hop reasoning, since the retrieved passages might be informative but not contain the instruction-following answer. Experiments show that the fine-tuned SAIL-7B model has a strong instruction-following ability, and it performs significantly better on transparency-sensitive tasks, including open-ended question answering and fact checking."
+}
+
+@inproceedings{internet-augmented-dialogue-generation-arxiv21,
+    title = "Internet-Augmented Dialogue Generation",
+    author = "Komeili, Mojtaba and Shuster, Kurt and Weston, Jason",
+    editor = "Muresan, Smaranda and Nakov, Preslav and Villavicencio, Aline",
+    booktitle = "Proceedings of the 60th Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers)",
+    month = may,
+    year = "2022",
+    address = "Dublin, Ireland",
+    publisher = "Association for Computational Linguistics",
+    url = "https://aclanthology.org/2022.acl-long.579/",
+    doi = "10.18653/v1/2022.acl-long.579",
+    pages = "8460--8478"
+}
+
+@article{internet-augmented-language-models-fewshot-arxiv22,
+    title = {Internet-augmented language models through few-shot prompting for open-domain question answering},
+    author = {Lazaridou, Angeliki and Gribovskaya, Elena and Stokowiec, Wojciech and Grigorev, Nikolai},
+    journal = {Transactions on Machine Learning Research},
+    year = {2022},
+    url = {https://openreview.net/forum?id=hFCUPkSSRE},
+    note = {arXiv:2203.05115}
+}
+
+@misc{teaching-lms-to-support-answers-with-verified-quotes-arxiv22,
+    title = {Teaching language models to support answers with verified quotes},
+    author = {Menick, Jacob and Trebacz, Maja and Mikulik, Vladimir and Aslanides, John and Song, Francis and Chadwick, Martin and Glaese, Mia and Young, Susannah and Campbell-Gillingham, Lucy and Irving, Geoffrey and McAleese, Nat},
+    year = {2022},
+    eprint = {2203.11147},
+    archivePrefix = {arXiv},
+    primaryClass = {cs.CL},
+    url = {https://arxiv.org/abs/2203.11147},
+    note = {DeepMind GopherCite}
+}
+
+@misc{retrieval-helps-or-hurts-deeper-arxiv24,
+      title={Retrieval Helps or Hurts? A Deeper Dive into the Efficacy of Retrieval Augmentation to Language Models}, 
+      author={Seiji Maekawa and Hayate Iso and Sairam Gurajada and Nikita Bhutani},
+      year={2024},
+      eprint={2402.13492},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL},
+      url={https://arxiv.org/abs/2402.13492}, 
+}
+
+@article{how-can-we-know-when-language-models-know-tacl21,
+    author = {Jiang, Zhengbao and Araki, Jun and Ding, Haibo and Neubig, Graham},
+    title = {How Can We Know When Language Models Know? On the Calibration of Language Models for Question Answering},
+    journal = {Transactions of the Association for Computational Linguistics},
+    volume = {9},
+    pages = {962--977},
+    year = {2021},
+    month = {09},
+    abstract = {Recent works have shown that language models (LM) capture different types of knowledge regarding facts or common sense. However, because no model is perfect, they still fail to provide appropriate answers in many cases. In this paper, we ask the question, “How can we know when language models know, with confidence, the answer to a particular query?” We examine this question from the point of view of calibration, the property of a probabilistic model’s predicted probabilities actually being well correlated with the probabilities of correctness. We examine three strong generative models—T5, BART, and GPT-2—and study whether their probabilities on QA tasks are well calibrated, finding the answer is a relatively emphatic no. We then examine methods to calibrate such models to make their confidence scores correlate better with the likelihood of correctness through fine-tuning, post-hoc probability modification, or adjustment of the predicted outputs or inputs. Experiments on a diverse range of datasets demonstrate the effectiveness of our methods. We also perform analysis to study the strengths and limitations of these methods, shedding light on further improvements that may be made in methods for calibrating LMs. We have released the code at https://github.com/jzbjyb/lm-calibration.},
+    issn = {2307-387X},
+    doi = {10.1162/tacl_a_00407},
+    url = {https://doi.org/10.1162/tacl\_a\_00407},
+    eprint = {https://direct.mit.edu/tacl/article-pdf/doi/10.1162/tacl\_a\_00407/1962628/tacl\_a\_00407.pdf},
+}
+
+@misc{language-models-mostly-know-what-they-know-arxiv22,
+      title={Language Models (Mostly) Know What They Know}, 
+      author={Saurav Kadavath and Tom Conerly and Amanda Askell and Tom Henighan and Dawn Drain and Ethan Perez and Nicholas Schiefer and Zac Hatfield-Dodds and Nova DasSarma and Eli Tran-Johnson and Scott Johnston and Sheer El-Showk and Andy Jones and Nelson Elhage and Tristan Hume and Anna Chen and Yuntao Bai and Sam Bowman and Stanislav Fort and Deep Ganguli and Danny Hernandez and Josh Jacobson and Jackson Kernion and Shauna Kravec and Liane Lovitt and Kamal Ndousse and Catherine Olsson and Sam Ringer and Dario Amodei and Tom Brown and Jack Clark and Nicholas Joseph and Ben Mann and Sam McCandlish and Chris Olah and Jared Kaplan},
+      year={2022},
+      eprint={2207.05221},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL},
+      url={https://arxiv.org/abs/2207.05221}, 
+}
+
+@inproceedings{active-retrieval-augmented-generation-emnlp23,
+    title = "Active Retrieval Augmented Generation",
+    author = "Jiang, Zhengbao  and
+      Xu, Frank  and
+      Gao, Luyu  and
+      Sun, Zhiqing  and
+      Liu, Qian  and
+      Dwivedi-Yu, Jane  and
+      Yang, Yiming  and
+      Callan, Jamie  and
+      Neubig, Graham",
+    editor = "Bouamor, Houda  and
+      Pino, Juan  and
+      Bali, Kalika",
+    booktitle = "Proceedings of the 2023 Conference on Empirical Methods in Natural Language Processing",
+    month = dec,
+    year = "2023",
+    address = "Singapore",
+    publisher = "Association for Computational Linguistics",
+    url = "https://aclanthology.org/2023.emnlp-main.495/",
+    doi = "10.18653/v1/2023.emnlp-main.495",
+    pages = "7969--7992",
+    abstract = "Despite the remarkable ability of large language models (LMs) to comprehend and generate language, they have a tendency to hallucinate and create factually inaccurate output. Augmenting LMs by retrieving information from external knowledge resources is one promising solution. Most existing retrieval augmented LMs employ a retrieve-and-generate setup that only retrieves information once based on the input. This is limiting, however, in more general scenarios involving generation of long texts, where continually gathering information throughout generation is essential. In this work, we provide a generalized view of active retrieval augmented generation, methods that actively decide when and what to retrieve across the course of the generation. We propose Forward-Looking Active REtrieval augmented generation (FLARE), a generic method which iteratively uses a prediction of the upcoming sentence to anticipate future content, which is then utilized as a query to retrieve relevant documents to regenerate the sentence if it contains low-confidence tokens. We test FLARE along with baselines comprehensively over 4 long-form knowledge-intensive generation tasks/datasets. FLARE achieves superior or competitive performance on all tasks, demonstrating the effectiveness of our method."
+}
+
+@inproceedings{self-rag-arxiv23,
+    title = {Self-{RAG}: Learning to Retrieve, Generate, and Critique through Self-Reflection},
+    author = {Asai, Akari and Wu, Zeqiu and Wang, Yizhong and Sil, Avirup and Hajishirzi, Hannaneh},
+    booktitle = {The Twelfth International Conference on Learning Representations},
+    year = {2024},
+    url = {https://openreview.net/forum?id=hSyW5go0v8}
+}
+
+@inproceedings{leveraging-passage-retrieval-with-generative-models-for-open-domain-question-answering-eacl21,
+    title = "Leveraging Passage Retrieval with Generative Models for Open Domain Question Answering",
+    author = "Izacard, Gautier  and
+      Grave, Edouard",
+    editor = "Merlo, Paola  and
+      Tiedemann, Jorg  and
+      Tsarfaty, Reut",
+    booktitle = "Proceedings of the 16th Conference of the European Chapter of the Association for Computational Linguistics: Main Volume",
+    month = apr,
+    year = "2021",
+    address = "Online",
+    publisher = "Association for Computational Linguistics",
+    url = "https://aclanthology.org/2021.eacl-main.74/",
+    doi = "10.18653/v1/2021.eacl-main.74",
+    pages = "874--880",
+    abstract = "Generative models for open domain question answering have proven to be competitive, without resorting to external knowledge. While promising, this approach requires to use models with billions of parameters, which are expensive to train and query. In this paper, we investigate how much these models can benefit from retrieving text passages, potentially containing evidence. We obtain state-of-the-art results on the Natural Questions and TriviaQA open benchmarks. Interestingly, we observe that the performance of this method significantly improves when increasing the number of retrieved passages. This is evidence that sequence-to-sequence models offers a flexible framework to efficiently aggregate and combine evidence from multiple passages."
+}
+
+
+@inproceedings{poisonedrag-arxiv24,
+author = {Zou, Wei and Geng, Runpeng and Wang, Binghui and Jia, Jinyuan},
+title = {PoisonedRAG: knowledge corruption attacks to retrieval-augmented generation of large language models},
+year = {2025},
+isbn = {978-1-939133-52-6},
+publisher = {USENIX Association},
+address = {USA},
+abstract = {Large language models (LLMs) have achieved remarkable success due to their exceptional generative capabilities. Despite their success, they also have inherent limitations such as a lack of up-to-date knowledge and hallucination. Retrieval-Augmented Generation (RAG) is a state-of-the-art technique to mitigate these limitations. The key idea of RAG is to ground the answer generation of an LLM on external knowledge retrieved from a knowledge database. Existing studies mainly focus on improving the accuracy or efficiency of RAG, leaving its security largely unexplored. We aim to bridge the gap in this work. We find that the knowledge database in a RAG system introduces a new and practical attack surface. Based on this attack surface, we propose PoisonedRAG, the first knowledge corruption attack to RAG, where an attacker could inject a few malicious texts into the knowledge database of a RAG system to induce an LLM to generate an attacker-chosen target answer for an attacker-chosen target question. We formulate knowledge corruption attacks as an optimization problem, whose solution is a set of malicious texts. Depending on the background knowledge (e.g., blackbox and white-box settings) of an attacker on a RAG system, we propose two solutions to solve the optimization problem, respectively. Our results show PoisonedRAG could achieve a 90\% attack success rate when injecting five malicious texts for each target question into a knowledge database with millions of texts. We also evaluate several defenses and our results show they are insufficient to defend against PoisonedRAG, highlighting the need for new defenses.},
+booktitle = {Proceedings of the 34th USENIX Conference on Security Symposium},
+articleno = {197},
+numpages = {18},
+location = {Seattle, WA, USA},
+series = {SEC '25}
+}
+
+@misc{a-comprehensive-survey-on-trustworthy-recommender-systems-arxiv22,
+      title={A Comprehensive Survey on Trustworthy Recommender Systems}, 
+      author={Wenqi Fan and Xiangyu Zhao and Xiao Chen and Jingran Su and Jingtong Gao and Lin Wang and Qidong Liu and Yiqi Wang and Han Xu and Lei Chen and Qing Li},
+      year={2022},
+      eprint={2209.10117},
+      archivePrefix={arXiv},
+      primaryClass={cs.IR},
+      url={https://arxiv.org/abs/2209.10117}, 
+}
+
+@inproceedings{evaluating-verifiability-in-generative-search-engines-emnlp23,
+    title = "Evaluating Verifiability in Generative Search Engines",
+    author = "Liu, Nelson F. and Zhang, Tianyi and Liang, Percy",
+    editor = "Bouamor, Houda and Pino, Juan and Bali, Kalika",
+    booktitle = "Findings of the Association for Computational Linguistics: EMNLP 2023",
+    month = dec,
+    year = "2023",
+    address = "Singapore",
+    publisher = "Association for Computational Linguistics",
+    url = "https://aclanthology.org/2023.findings-emnlp.467/",
+    doi = "10.18653/v1/2023.findings-emnlp.467",
+    pages = "7001--7025"
+}
+
+@inproceedings{enabling-llms-to-generate-text-with-citations-emnlp23,
+    title = "Enabling Large Language Models to Generate Text with Citations",
+    author = "Gao, Tianyu  and
+      Yen, Howard  and
+      Yu, Jiatong  and
+      Chen, Danqi",
+    editor = "Bouamor, Houda  and
+      Pino, Juan  and
+      Bali, Kalika",
+    booktitle = "Proceedings of the 2023 Conference on Empirical Methods in Natural Language Processing",
+    month = dec,
+    year = "2023",
+    address = "Singapore",
+    publisher = "Association for Computational Linguistics",
+    url = "https://aclanthology.org/2023.emnlp-main.398/",
+    doi = "10.18653/v1/2023.emnlp-main.398",
+    pages = "6465--6488",
+    abstract = "Large language models (LLMs) have emerged as a widely-used tool for information seeking, but their generated outputs are prone to hallucination. In this work, our aim is to allow LLMs to generate text with citations, improving their factual correctness and verifiability. Existing work mainly relies on commercial search engines and human evaluation, making it challenging to reproduce and compare different modeling approaches. We propose ALCE, the first benchmark for Automatic LLMs' Citation Evaluation. ALCE collects a diverse set of questions and retrieval corpora and requires building end-to-end systems to retrieve supporting evidence and generate answers with citations. We develop automatic metrics along three dimensions{---}fluency, correctness, and citation quality{---}and demonstrate their strong correlation with human judgements. Our experiments with state-of-the-art LLMs and novel prompting strategies show that current systems have considerable room for improvement{---}For example, on the ELI5 dataset, even the best models lack complete citation support 50{\%} of the time. Our analyses further highlight promising future directions, including developing better retrievers, advancing long-context LLMs, and improving the ability to synthesize information from multiple sources."
+}
+
+
+@inproceedings{citeeval-acl25,
+    title = "{C}ite{E}val: Principle-Driven Citation Evaluation for Source Attribution",
+    author = "Xu, Yumo  and
+      Qi, Peng  and
+      Chen, Jifan  and
+      Liu, Kunlun  and
+      Han, Rujun  and
+      Liu, Lan  and
+      Min, Bonan  and
+      Castelli, Vittorio  and
+      Gupta, Arshit  and
+      Wang, Zhiguo",
+    editor = "Che, Wanxiang  and
+      Nabende, Joyce  and
+      Shutova, Ekaterina  and
+      Pilehvar, Mohammad Taher",
+    booktitle = "Proceedings of the 63rd Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers)",
+    month = jul,
+    year = "2025",
+    address = "Vienna, Austria",
+    publisher = "Association for Computational Linguistics",
+    url = "https://aclanthology.org/2025.acl-long.1574/",
+    doi = "10.18653/v1/2025.acl-long.1574",
+    pages = "32759--32778",
+    ISBN = "979-8-89176-251-0",
+    abstract = "Citation quality is crucial in information-seeking systems, directly influencing trust and the effectiveness of information access. Current evaluation frameworks, both human and automatic, mainly rely on Natural Language Inference (NLI) to assess binary or ternary supportiveness from cited sources, which we argue is a suboptimal proxy for citation evaluation. In this work we introduce CiteEval, a citation evaluation framework driven by principles focusing on fine-grained citation assessment within a broad context, encompassing not only the cited sources but the full retrieval context, user query, and generated text. Guided by the proposed framework, we construct CiteBench, a multi-domain benchmark with high-quality human annotations on citation quality. To enable efficient evaluation, we further develop CiteEval-Auto, a suite of model-based metrics that exhibit strong correlation with human judgments. Experiments across diverse systems demonstrate CiteEval-Auto{'}s superior ability to capture the multifaceted nature of citations compared to existing metrics, offering a principled and scalable approach to evaluate and improve model-generated citations."
+}
+
+
+@article{survey-of-hallucination-in-natural-language-generation-acmcsurv23,
+author = {Ji, Ziwei and Lee, Nayeon and Frieske, Rita and Yu, Tiezheng and Su, Dan and Xu, Yan and Ishii, Etsuko and Bang, Ye Jin and Madotto, Andrea and Fung, Pascale},
+title = {Survey of Hallucination in Natural Language Generation},
+year = {2023},
+issue_date = {December 2023},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+volume = {55},
+number = {12},
+issn = {0360-0300},
+url = {https://doi.org/10.1145/3571730},
+doi = {10.1145/3571730},
+abstract = {Natural Language Generation (NLG) has improved exponentially in recent years thanks to the development of sequence-to-sequence deep learning technologies such as Transformer-based language models. This advancement has led to more fluent and coherent NLG, leading to improved development in downstream tasks such as abstractive summarization, dialogue generation, and data-to-text generation. However, it is also apparent that deep learning based generation is prone to hallucinate unintended text, which degrades the system performance and fails to meet user expectations in many real-world scenarios. To address this issue, many studies have been presented in measuring and mitigating hallucinated texts, but these have never been reviewed in a comprehensive manner before.In this survey, we thus provide a broad overview of the research progress and challenges in the hallucination problem in NLG. The survey is organized into two parts: (1) a general overview of metrics, mitigation methods, and future directions, and (2) an overview of task-specific research progress on hallucinations in the following downstream tasks, namely abstractive summarization, dialogue generation, generative question answering, data-to-text generation, and machine translation. This survey serves to facilitate collaborative efforts among researchers in tackling the challenge of hallucinated texts in NLG.},
+journal = {ACM Comput. Surv.},
+month = mar,
+articleno = {248},
+numpages = {38},
+keywords = {consistency in NLG, factuality in NLG, faithfulness in NLG, extrinsic hallucination, intrinsic hallucination, Hallucination}
+}
+
+@article{sirens-song-in-the-ai-ocean-coli25,
+    author = {Zhang, Yue and Li, Yafu and Cui, Leyang and Cai, Deng and Liu, Lemao and Fu, Tingchen and Huang, Xinting and Zhao, Enbo and Zhang, Yu and Chen, Yulong and Wang, Longyue and Luu, Anh Tuan and Bi, Wei and Shi, Freda and Shi, Shuming},
+    title = {Siren’s Song in the AI Ocean: A
+                    Survey on Hallucination in Large Language Models},
+    journal = {Computational Linguistics},
+    pages = {1--46},
+    year = {2025},
+    month = {08},
+    abstract = {While large language models (LLMs) have demonstrated remarkable capabilities
+                    across a range of downstream tasks, a significant concern revolves around their
+                    propensity to exhibit hallucinations: LLMs occasionally
+                    generate content that diverges from the user input, contradicts previously
+                    generated context, or misaligns with established world knowledge. This
+                    phenomenon poses a substantial challenge to the reliability of LLMs in
+                    real-world scenarios. In this article, we survey recent efforts on the
+                    detection, explanation, and mitigation of hallucination, with an emphasis on the
+                    unique challenges posed by LLMs. We present taxonomies of the LLM hallucination
+                    phenomena and evaluation benchmarks, analyze existing approaches aiming at
+                    mitigating LLM hallucination, and discuss potential directions for future
+                    research.},
+    issn = {0891-2017},
+    doi = {10.1162/COLI.a.16},
+    url = {https://doi.org/10.1162/COLI.a.16},
+    eprint = {https://direct.mit.edu/coli/article-pdf/doi/10.1162/COLI.a.16/2535477/coli.a.16.pdf},
+}
+
+@inproceedings{evaluating-the-factual-consistency-of-abstractive-text-summarization-emnlp20,
+    title = "Evaluating the Factual Consistency of Abstractive Text Summarization",
+    author = "Kryscinski, Wojciech  and
+      McCann, Bryan  and
+      Xiong, Caiming  and
+      Socher, Richard",
+    editor = "Webber, Bonnie  and
+      Cohn, Trevor  and
+      He, Yulan  and
+      Liu, Yang",
+    booktitle = "Proceedings of the 2020 Conference on Empirical Methods in Natural Language Processing (EMNLP)",
+    month = nov,
+    year = "2020",
+    address = "Online",
+    publisher = "Association for Computational Linguistics",
+    url = "https://aclanthology.org/2020.emnlp-main.750/",
+    doi = "10.18653/v1/2020.emnlp-main.750",
+    pages = "9332--9346",
+    abstract = "The most common metrics for assessing summarization algorithms do not account for whether summaries are factually consistent with source documents. We propose a weakly-supervised, model-based approach for verifying factual consistency and identifying conflicts between source documents and generated summaries. Training data is generated by applying a series of rule-based transformations to the sentences of source documents. The factual consistency model is then trained jointly for three tasks: 1) predict whether each summary sentence is factually consistent or not, 2) in either case, extract a span in the source document to support this consistency prediction, 3) for each summary sentence that is deemed inconsistent, extract the inconsistent span from it. Transferring this model to summaries generated by several neural models reveals that this highly scalable approach outperforms previous models, including those trained with strong supervision using datasets from related domains, such as natural language inference and fact checking. Additionally, human evaluation shows that the auxiliary span extraction tasks provide useful assistance in the process of verifying factual consistency. We also release a manually annotated dataset for factual consistency verification, code for training data generation, and trained model weights at \url{https://github.com/salesforce/factCC}."
+}
+
+
+@inproceedings{alignscore-acl23,
+    title = "{A}lign{S}core: Evaluating Factual Consistency with A Unified Alignment Function",
+    author = "Zha, Yuheng  and
+      Yang, Yichi  and
+      Li, Ruichen  and
+      Hu, Zhiting",
+    editor = "Rogers, Anna  and
+      Boyd-Graber, Jordan  and
+      Okazaki, Naoaki",
+    booktitle = "Proceedings of the 61st Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers)",
+    month = jul,
+    year = "2023",
+    address = "Toronto, Canada",
+    publisher = "Association for Computational Linguistics",
+    url = "https://aclanthology.org/2023.acl-long.634/",
+    doi = "10.18653/v1/2023.acl-long.634",
+    pages = "11328--11348",
+    abstract = "Many text generation applications require the generated text to be factually consistent with input information. Automatic evaluation of factual consistency is challenging. Previous work has developed various metrics that often depend on specific functions, such as natural language inference (NLI) or question answering (QA), trained on limited data. Those metrics thus can hardly assess diverse factual inconsistencies (e.g., contradictions, hallucinations) that occur in varying inputs/outputs (e.g., sentences, documents) from different tasks. In this paper, we propose AlignScore, a new holistic metric that applies to a variety of factual inconsistency scenarios as above. AlignScore is based on a general function of information alignment between two arbitrary text pieces. Crucially, we develop a unified training framework of the alignment function by integrating a large diversity of data sources, resulting in 4.7M training examples from 7 well-established tasks (NLI, QA, paraphrasing, fact verification, information retrieval, semantic similarity, and summarization). We conduct extensive experiments on large-scale benchmarks including 22 evaluation datasets, where 19 of the datasets were never seen in the alignment training. AlignScore achieves substantial improvement over a wide range of previous metrics. Moreover, AlignScore (355M parameters) matches or even outperforms metrics based on ChatGPT and GPT-4 that are orders of magnitude larger."
+}
+
+@inproceedings{ranking-generated-summaries-by-correctness-acl2019,
+    title = "Ranking Generated Summaries by Correctness: An Interesting but Challenging Application for Natural Language Inference",
+    author = "Falke, Tobias  and
+      Ribeiro, Leonardo F. R.  and
+      Utama, Prasetya Ajie  and
+      Dagan, Ido  and
+      Gurevych, Iryna",
+    editor = "Korhonen, Anna  and
+      Traum, David  and
+      M{\`a}rquez, Llu{\'i}s",
+    booktitle = "Proceedings of the 57th Annual Meeting of the Association for Computational Linguistics",
+    month = jul,
+    year = "2019",
+    address = "Florence, Italy",
+    publisher = "Association for Computational Linguistics",
+    url = "https://aclanthology.org/P19-1213/",
+    doi = "10.18653/v1/P19-1213",
+    pages = "2214--2220",
+    abstract = "While recent progress on abstractive summarization has led to remarkably fluent summaries, factual errors in generated summaries still severely limit their use in practice. In this paper, we evaluate summaries produced by state-of-the-art models via crowdsourcing and show that such errors occur frequently, in particular with more abstractive models. We study whether textual entailment predictions can be used to detect such errors and if they can be reduced by reranking alternative predicted summaries. That leads to an interesting downstream application for entailment models. In our experiments, we find that out-of-the-box entailment models trained on NLI datasets do not yet offer the desired performance for the downstream task and we therefore release our annotations as additional test data for future extrinsic evaluations of NLI."
+}
+
+@misc{true-reevaluating-factual-consistency-arxiv22,
+      title={TRUE: Re-evaluating Factual Consistency Evaluation}, 
+      author={Or Honovich and Roee Aharoni and Jonathan Herzig and Hagai Taitelbaum and Doron Kukliansy and Vered Cohen and Thomas Scialom and Idan Szpektor and Avinatan Hassidim and Yossi Matias},
+      year={2022},
+      eprint={2204.04991},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL},
+      url={https://arxiv.org/abs/2204.04991}, 
+}
+
+@inproceedings{bartscore-neurips21,
+ author = {Yuan, Weizhe and Neubig, Graham and Liu, Pengfei},
+ booktitle = {Advances in Neural Information Processing Systems},
+ editor = {M. Ranzato and A. Beygelzimer and Y. Dauphin and P.S. Liang and J. Wortman Vaughan},
+ pages = {27263--27277},
+ publisher = {Curran Associates, Inc.},
+ title = {BARTScore: Evaluating Generated Text as Text Generation},
+ url = {https://proceedings.neurips.cc/paper_files/paper/2021/file/e4d2b6e6fdeca3e60e0f1a62fee3d9dd-Paper.pdf},
+ volume = {34},
+ year = {2021}
+}
+
+@inproceedings{bertscore-arxiv20,
+    title = {{BERT}Score: Evaluating Text Generation with {BERT}},
+    author = {Tianyi Zhang and Varsha Kishore and Felix Wu and Kilian Q. Weinberger and Yoav Artzi},
+    booktitle = {International Conference on Learning Representations},
+    year = {2020},
+    url = {https://openreview.net/forum?id=SkeHuCVFDr}
+}
+
+
+
+@inproceedings{feqa-acl20,
+    title = "{FEQA}: A Question Answering Evaluation Framework for Faithfulness Assessment in Abstractive Summarization",
+    author = "Durmus, Esin  and
+      He, He  and
+      Diab, Mona",
+    editor = "Jurafsky, Dan  and
+      Chai, Joyce  and
+      Schluter, Natalie  and
+      Tetreault, Joel",
+    booktitle = "Proceedings of the 58th Annual Meeting of the Association for Computational Linguistics",
+    month = jul,
+    year = "2020",
+    address = "Online",
+    publisher = "Association for Computational Linguistics",
+    url = "https://aclanthology.org/2020.acl-main.454/",
+    doi = "10.18653/v1/2020.acl-main.454",
+    pages = "5055--5070",
+    abstract = "Neural abstractive summarization models are prone to generate content inconsistent with the source document, i.e. unfaithful. Existing automatic metrics do not capture such mistakes effectively. We tackle the problem of evaluating faithfulness of a generated summary given its source document. We first collected human annotations of faithfulness for outputs from numerous models on two datasets. We find that current models exhibit a trade-off between abstractiveness and faithfulness: outputs with less word overlap with the source document are more likely to be unfaithful. Next, we propose an automatic question answering (QA) based metric for faithfulness, FEQA, which leverages recent advances in reading comprehension. Given question-answer pairs generated from the summary, a QA model extracts answers from the document; non-matched answers indicate unfaithful information in the summary. Among metrics based on word overlap, embedding similarity, and learned language understanding models, our QA-based metric has significantly higher correlation with human faithfulness scores, especially on highly abstractive summaries."
+}
+
+@misc{finegrainedcitationevaluationgenerated-arxiv24,
+      title={Towards Fine-Grained Citation Evaluation in Generated Text: A Comparative Analysis of Faithfulness Metrics}, 
+      author={Weijia Zhang and Mohammad Aliannejadi and Yifei Yuan and Jiahuan Pei and Jia-Hong Huang and Evangelos Kanoulas},
+      year={2024},
+      eprint={2406.15264},
+      archivePrefix={arXiv},
+      primaryClass={cs.IR},
+      url={https://arxiv.org/abs/2406.15264}, 
+}
+
+@book{search-engines-information-retrieval-in-practice-2009,
+author = {Croft, Bruce and Metzler, Donald and Strohman, Trevor},
+title = {Search Engines: Information Retrieval in Practice},
+year = {2009},
+isbn = {0136072240},
+publisher = {Addison-Wesley Publishing Company},
+address = {USA},
+edition = {1st},
+abstract = {KEY BENEFIT: Written by a leader in the field of information retrieval, this text provides the background and tools needed to evaluate, compare and modify search engines. KEY TOPICS: Coverage of the underlying IR and mathematical models reinforce key concepts. Numerous programming exercises make extensive use of Galago, a Java-based open source search engine. MARKET: A valuable tool for search engine and information retrieval professionals.}
+}
+
+@article{information-retrieval-on-the-web-acmcsurv2000,
+author = {Kobayashi, Mei and Takeda, Koichi},
+title = {Information retrieval on the web},
+year = {2000},
+issue_date = {June 2000},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+volume = {32},
+number = {2},
+issn = {0360-0300},
+url = {https://doi.org/10.1145/358923.358934},
+doi = {10.1145/358923.358934},
+abstract = {In this paper we review studies of the growth of the Internet and  technologies that are useful for information search and retrieval on the Web. We present data on the Internet from several different sources, e.g., current as well as projected number of users, hosts, and Web sites. Although numerical figures vary, overall trends cited by the sources are consistent and point to exponential growth in the past and in the coming decade. Hence it is not surprising that about 85\% of Internet users surveyed claim using search engines and search services to find specific information. The same surveys show, however, that users are not satisfied with the performance of the current generation of search engines; the slow retrieval speed, communication delays, and poor quality of retrieved  results (e.g., noise and broken links) are commonly cited problems. We discuss the development of new techniques targeted to resolve some of the problems associated with Web-based information retrieval and speculate on future trends.},
+journal = {ACM Comput. Surv.},
+month = jun,
+pages = {144--173},
+numpages = {30},
+keywords = {Internet, World Wide Web, clustering, indexing, information retrieval, knowledge management, search engine}
+}
+
+@article{modern-information-retrieval-a-brief-overview-3320,
+title	= {Modern Information Retrieval: A Brief Overview},
+author	= {Amit Singhal},
+year	= {2001},
+journal	= {IEEE Data Eng. Bull.},
+pages	= {35--43},
+volume	= {24}}
+
+@article{the-probabilistic-relevance-framework-bm25-and-beyond-ftir2009,
+author = {Robertson, Stephen and Zaragoza, Hugo},
+title = {The Probabilistic Relevance Framework: BM25 and Beyond},
+year = {2009},
+issue_date = {April 2009},
+publisher = {Now Publishers Inc.},
+address = {Hanover, MA, USA},
+volume = {3},
+number = {4},
+issn = {1554-0669},
+url = {https://doi.org/10.1561/1500000019},
+doi = {10.1561/1500000019},
+abstract = {The Probabilistic Relevance Framework (PRF) is a formal framework for document retrieval, grounded in work done in the 1970—1980s, which led to the development of one of the most successful text-retrieval algorithms, BM25. In recent years, research in the PRF has yielded new retrieval models capable of taking into account document meta-data (especially structure and link-graph information). Again, this has led to one of the most successful Web-search and corporate-search algorithms, BM25F. This work presents the PRF from a conceptual point of view, describing the probabilistic modelling assumptions behind the framework and the different ranking algorithms that result from its application: the binary independence model, relevance feedback models, BM25 and BM25F. It also discusses the relation between the PRF and other statistical models for IR, and covers some related topics, such as the use of non-textual features, and parameter optimisation for models with free parameters.},
+journal = {Found. Trends Inf. Retr.},
+month = apr,
+pages = {333--389},
+numpages = {57}
+}
+
+@misc{w3c-vc-data-model-2025,
+  author      = {Sporny, Manu and Thibodeau Jr, Ted and Herman, Ivan and Cohen, Gabe and Jones, Michael B.},
+  title       = {Verifiable Credentials Data Model v2.0},
+  institution = {World Wide Web Consortium (W3C)},
+  year        = {2025},
+  month       = {May},
+  day         = {15},
+  type        = {W3C Recommendation},
+  url         = {https://www.w3.org/TR/vc-data-model-2.0/},
+  note        = {W3C Recommendation for expressing verifiable credentials on the Web in a way that is cryptographically secure, privacy respecting, and machine verifiable}
+}
+
+@misc{originator-profile-2025,
+  title = {Originator Profile: Combating Dis-/Mis-information for a Healthier Future of the Internet},
+  organization = {Originator Profile Collaborative Innovation Partnership},
+  url = {https://originator-profile.org/en-US/},
+  year = {2025},
+  note = {A collaborative initiative by major Japanese media organizations including Asahi Shimbun, Kyodo News, and NTT to develop technologies addressing internet information integrity challenges, Accessed: 2025-10-03}
+}
+
+@misc{trusted-web-2024,
+  title = {Trusted Web: A New Framework for Trust in Digital Transactions},
+  author = {{Digital Agency, Japan}},
+  organization = {Digital Agency, Government of Japan},
+  url = {https://trustedweb.go.jp/en/},
+  year = {2024},
+  note = {Japan's initiative to establish a decentralized trust framework for verifying and exchanging digital data while ensuring user control over personal information, Accessed: 2025-10-03}
+}
+
+
+@inproceedings{beyond-news-contents-the-role-of-social-context-for-fake-news-detection-wsdm2019,
+author = {Shu, Kai and Wang, Suhang and Liu, Huan},
+title = {Beyond News Contents: The Role of Social Context for Fake News Detection},
+year = {2019},
+isbn = {9781450359405},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/3289600.3290994},
+doi = {10.1145/3289600.3290994},
+abstract = {Social media is becoming popular for news consumption due to its fast dissemination, easy access, and low cost. However, it also enables the wide propagation of fake news, i.e., news with intentionally false information. Detecting fake news is an important task, which not only ensures users receive authentic information but also helps maintain a trustworthy news ecosystem. The majority of existing detection algorithms focus on finding clues from news contents, which are generally not effective because fake news is often intentionally written to mislead users by mimicking true news. Therefore, we need to explore auxiliary information to improve detection. The social context during news dissemination process on social media forms the inherent tri-relationship, the relationship among publishers, news pieces, and users, which has the potential to improve fake news detection. For example, partisan-biased publishers are more likely to publish fake news, and low-credible users are more likely to share fake news. In this paper, we study the novel problem of exploiting social context for fake news detection. We propose a tri-relationship embedding framework TriFN, which models publisher-news relations and user-news interactions simultaneously for fake news classification. We conduct experiments on two real-world datasets, which demonstrate that the proposed approach significantly outperforms other baseline methods for fake news detection.},
+booktitle = {Proceedings of the Twelfth ACM International Conference on Web Search and Data Mining},
+pages = {312--320},
+numpages = {9},
+keywords = {fake news detection, joint learning, social media mining},
+location = {Melbourne VIC, Australia},
+series = {WSDM '19}
+}
+
+
+
+
+@article{the-spread-of-true-and-false-news-online-science2018,
+author = {Soroush Vosoughi  and Deb Roy  and Sinan Aral },
+title = {The spread of true and false news online},
+journal = {Science},
+volume = {359},
+number = {6380},
+pages = {1146--1151},
+year = {2018},
+doi = {10.1126/science.aap9559},
+URL = {https://www.science.org/doi/abs/10.1126/science.aap9559},
+eprint = {https://www.science.org/doi/pdf/10.1126/science.aap9559},
+abstract = {There is worldwide concern over false news and the possibility that it can influence political, economic, and social well-being. To understand how false news spreads, Vosoughi et al. used a data set of rumor cascades on Twitter from 2006 to 2017. About 126,000 rumors were spread by ∼3 million people. False news reached more people than the truth; the top 1\% of false news cascades diffused to between 1000 and 100,000 people, whereas the truth rarely diffused to more than 1000 people. Falsehood also diffused faster than the truth. The degree of novelty and the emotional reactions of recipients may be responsible for the differences observed. Science, this issue p. 1146 A large-scale analysis of tweets reveals that false rumors spread further and faster than the truth. We investigated the differential diffusion of all of the verified true and false news stories distributed on Twitter from 2006 to 2017. The data comprise ~126,000 stories tweeted by ~3 million people more than 4.5 million times. We classified news as true or false using information from six independent fact-checking organizations that exhibited 95 to 98\% agreement on the classifications. Falsehood diffused significantly farther, faster, deeper, and more broadly than the truth in all categories of information, and the effects were more pronounced for false political news than for false news about terrorism, natural disasters, science, urban legends, or financial information. We found that false news was more novel than true news, which suggests that people were more likely to share novel information. Whereas false stories inspired fear, disgust, and surprise in replies, true stories inspired anticipation, sadness, joy, and trust. Contrary to conventional wisdom, robots accelerated the spread of true and false news at the same rate, implying that false news spreads more than the truth because humans, not robots, are more likely to spread it.}}
+
+
+@inproceedings{on-the-dangers-of-stochastic-parrots-facc21,
+author = {Bender, Emily M. and Gebru, Timnit and McMillan-Major, Angelina and Shmitchell, Shmargaret},
+title = {On the Dangers of Stochastic Parrots: Can Language Models Be Too Big? },
+year = {2021},
+isbn = {9781450383097},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/3442188.3445922},
+doi = {10.1145/3442188.3445922},
+abstract = {The past 3 years of work in NLP have been characterized by the development and deployment of ever larger language models, especially for English. BERT, its variants, GPT-2/3, and others, most recently Switch-C, have pushed the boundaries of the possible both through architectural innovations and through sheer size. Using these pretrained models and the methodology of fine-tuning them for specific tasks, researchers have extended the state of the art on a wide array of tasks as measured by leaderboards on specific benchmarks for English. In this paper, we take a step back and ask: How big is too big? What are the possible risks associated with this technology and what paths are available for mitigating those risks? We provide recommendations including weighing the environmental and financial costs first, investing resources into curating and carefully documenting datasets rather than ingesting everything on the web, carrying out pre-development exercises evaluating how the planned approach fits into research and development goals and supports stakeholder values, and encouraging research directions beyond ever larger language models.},
+booktitle = {Proceedings of the 2021 ACM Conference on Fairness, Accountability, and Transparency},
+pages = {610--623},
+numpages = {14},
+location = {Virtual Event, Canada},
+series = {FAccT '21}
+}
+
+@misc{holisticevaluationlanguagemodels-arxiv22,
+      title={Holistic Evaluation of Language Models}, 
+      author={Percy Liang and Rishi Bommasani and Tony Lee and Dimitris Tsipras and Dilara Soylu and Michihiro Yasunaga and Yian Zhang and Deepak Narayanan and Yuhuai Wu and Ananya Kumar and Benjamin Newman and Binhang Yuan and Bobby Yan and Ce Zhang and Christian Cosgrove and Christopher D. Manning and Christopher Ré and Diana Acosta-Navas and Drew A. Hudson and Eric Zelikman and Esin Durmus and Faisal Ladhak and Frieda Rong and Hongyu Ren and Huaxiu Yao and Jue Wang and Keshav Santhanam and Laurel Orr and Lucia Zheng and Mert Yuksekgonul and Mirac Suzgun and Nathan Kim and Neel Guha and Niladri Chatterji and Omar Khattab and Peter Henderson and Qian Huang and Ryan Chi and Sang Michael Xie and Shibani Santurkar and Surya Ganguli and Tatsunori Hashimoto and Thomas Icard and Tianyi Zhang and Vishrav Chaudhary and William Wang and Xuechen Li and Yifan Mai and Yuhui Zhang and Yuta Koreeda},
+      year={2023},
+      eprint={2211.09110},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL},
+      url={https://arxiv.org/abs/2211.09110}, 
+}
+
+@misc{bbc-ai-search-engines-2024,
+  title = {How AI Search Engines Are Reshaping the Internet},
+  author = {{BBC News}},
+  organization = {British Broadcasting Corporation},
+  url = {https://www.bbc.com/news/articles/c5yv5976z9po},
+  year = {2024},
+  note = {Analysis of how AI-powered search engines are transforming traditional web browsing and their impact on online publishers and information access, Accessed: 2025-10-03}
+}
+
+@inproceedings{medical-knowledge-coverage-for-llms-www25,
+author = {Zhang, Ziheng and Lin, Zhenxi and Zheng, Yefeng and Wu, Xian},
+title = {How much Medical Knowledge do LLMs have? An Evaluation of Medical Knowledge Coverage for LLMs},
+year = {2025},
+isbn = {9798400712746},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/3696410.3714535},
+doi = {10.1145/3696410.3714535},
+abstract = {Previous evaluation frameworks for large language models (LLMs) have mostly relied on existing question-answering benchmarks, which are primarily task-oriented rather than knowledge-oriented. In the medical domain, however, the effective deployment of LLMs necessitates a thorough evaluation of their medical knowledge coverage. To this end, we propose a systematic evaluation framework, MedKGEval, to assess the coverage of medical knowledge in LLMs through the lens of medical knowledge graphs (KGs). MedKGEval transforms various levels of knowledge (entity-level, relation-level, and subgraph-level) from the medical KG into distinct groups of question-answer pairs, which serve as comprehensive evaluation benchmarks. In addition to traditional task-oriented evaluations, MedKGEval introduces a novel knowledge-oriented evaluation approach that encompasses the assessment of knowledge coverage across entities, relations, and triples. This multi-aspect evaluation approach allows for a more nuanced understanding of LLMs' knowledge coverage in the medical context. Using these benchmarks, we conduct a systematic evaluation of 11 LLMs from multiple perspectives, revealing insights into their strengths and weaknesses in medical knowledge memorization and reasoning.},
+booktitle = {Proceedings of the ACM on Web Conference 2025},
+pages = {5330--5341},
+numpages = {12},
+keywords = {large language models, medical knowledge graphs},
+location = {Sydney NSW, Australia},
+series = {WWW '25}
+}
+
+@misc{baselinedefensesadversarialattacks-arxiv23,
+      title={Baseline Defenses for Adversarial Attacks Against Aligned Language Models}, 
+      author={Neel Jain and Avi Schwarzschild and Yuxin Wen and Gowthami Somepalli and John Kirchenbauer and Ping-yeh Chiang and Micah Goldblum and Aniruddha Saha and Jonas Geiping and Tom Goldstein},
+      year={2023},
+      eprint={2309.00614},
+      archivePrefix={arXiv},
+      primaryClass={cs.LG},
+      url={https://arxiv.org/abs/2309.00614}, 
+}
+
+
+@misc{ignorepreviouspromptattack-arxiv22,
+      title={Ignore Previous Prompt: Attack Techniques For Language Models}, 
+      author={Fábio Perez and Ian Ribeiro},
+      year={2022},
+      eprint={2211.09527},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL},
+      url={https://arxiv.org/abs/2211.09527}, 
+}
+
+@misc{promptinjectionattackllmintegrated-arxiv24,
+      title={Prompt Injection attack against LLM-integrated Applications}, 
+      author={Yi Liu and Gelei Deng and Yuekang Li and Kailong Wang and Zihao Wang and Xiaofeng Wang and Tianwei Zhang and Yepang Liu and Haoyu Wang and Yan Zheng and Yang Liu},
+      year={2024},
+      eprint={2306.05499},
+      archivePrefix={arXiv},
+      primaryClass={cs.CR},
+      url={https://arxiv.org/abs/2306.05499}, 
+}
+
+@inproceedings{not-what-youve-signed-up-for-aisec23,
+author = {Greshake, Kai and Abdelnabi, Sahar and Mishra, Shailesh and Endres, Christoph and Holz, Thorsten and Fritz, Mario},
+title = {Not What You've Signed Up For: Compromising Real-World LLM-Integrated Applications with Indirect Prompt Injection},
+year = {2023},
+isbn = {9798400702600},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/3605764.3623985},
+doi = {10.1145/3605764.3623985},
+abstract = {Large Language Models (LLMs) are increasingly being integrated into applications, with versatile functionalities that can be easily modulated via natural language prompts. So far, it was assumed that the user is directly prompting the LLM. But, what if it is not the user prompting? We show that LLM-Integrated Applications blur the line between data and instructions and reveal several new attack vectors, using Indirect Prompt Injection, that enable adversaries to remotely (i.e., without a direct interface) exploit LLM-integrated applications by strategically injecting prompts into data likely to be retrieved at inference time. We derive a comprehensive taxonomy from a computer security perspective to broadly investigate impacts and vulnerabilities, including data theft, worming, information ecosystem contamination, and other novel security risks. We then demonstrate the practical viability of our attacks against both real-world systems, such as Bing Chat and code-completion engines, and GPT-4 synthetic applications. We show how processing retrieved prompts can act as arbitrary code execution, manipulate the application's functionality, and control how and if other APIs are called. Despite the increasing reliance on LLMs, effective mitigations of these emerging threats are lacking. By raising awareness of these vulnerabilities, we aim to promote the safe and responsible deployment of these powerful models and the development of robust defenses that protect users from potential attacks.},
+booktitle = {Proceedings of the 16th ACM Workshop on Artificial Intelligence and Security},
+pages = {79--90},
+numpages = {12},
+keywords = {indirect prompt injection, large language models},
+location = {Copenhagen, Denmark},
+series = {AISec '23}
+}
+
+@INPROCEEDINGS{poisoning-web-scale-training-datasets-is-practical-sp24,
+  author={Carlini, Nicholas and Jagielski, Matthew and Choquette-Choo, Christopher A. and Paleka, Daniel and Pearce, Will and Anderson, Hyrum and Terzis, Andreas and Thomas, Kurt and Tramèr, Florian},
+  booktitle={2024 IEEE Symposium on Security and Privacy (SP)}, 
+  title={Poisoning Web-Scale Training Datasets is Practical}, 
+  year={2024},
+  volume={},
+  number={},
+  pages={407--425},
+  keywords={Training;Threat modeling;Privacy;Electronic publishing;Toxicology;Encyclopedias;Information filters},
+  doi={10.1109/SP54263.2024.00179}}
+
+
+@misc{risk-of-misinformation-pollution-with-large-language-models-arxiv23,
+      title={On the Risk of Misinformation Pollution with Large Language Models}, 
+      author={Yikang Pan and Liangming Pan and Wenhu Chen and Preslav Nakov and Min-Yen Kan and William Yang Wang},
+      year={2023},
+      eprint={2305.13661},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL},
+      url={https://arxiv.org/abs/2305.13661}, 
+}
+
+@article{synthetic-disinformation-attacks-on-automated-fact-verification-systems-aaai22,
+title={Synthetic Disinformation Attacks on Automated Fact Verification Systems},
+volume={36},
+url={https://ojs.aaai.org/index.php/AAAI/article/view/21302},
+DOI={10.1609/aaai.v36i10.21302},
+abstractNote={Automated fact-checking is a needed technology to curtail the spread of online misinformation. One current framework for such solutions proposes to verify claims by retrieving supporting or refuting evidence from related textual sources. However, the realistic use cases for fact-checkers will require verifying claims against evidence sources that could be affected by the same misinformation. Furthermore, the development of modern NLP tools that can produce coherent, fabricated content would allow malicious actors to systematically generate adversarial disinformation for fact-checkers. In this work, we explore the sensitivity of automated fact-checkers to synthetic adversarial evidence in two simulated settings: ADVERSARIAL ADDITION, where we fabricate documents and add them to the evidence repository available to the fact-checking system, and ADVERSARIAL MODIFICATION, where existing evidence source documents in the repository are automatically altered. Our study across multiple models on three benchmarks demonstrates that these systems suffer significant performance drops against these attacks. Finally, we discuss the growing threat of modern NLG systems as generators of disinformation in the context of the challenges they pose to automated fact-checkers.},
+number={10},
+journal={Proceedings of the AAAI Conference on Artificial Intelligence},
+author={Du, Yibing and Bosselut, Antoine and Manning, Christopher D.},
+year={2022},
+month={Jun.},
+pages={10581--10589} }
+
+@misc{making-retrieval-augmented-language-models-robust-to-irrelevant-context-arxiv23,
+      title={Making Retrieval-Augmented Language Models Robust to Irrelevant Context}, 
+      author={Ori Yoran and Tomer Wolfson and Ori Ram and Jonathan Berant},
+      year={2024},
+      eprint={2310.01558},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL},
+      url={https://arxiv.org/abs/2310.01558}, 
+}
+
+@misc{raft-adapting-language-model-to-domain-specific-rag-arxiv24,
+      title={RAFT: Adapting Language Model to Domain Specific RAG}, 
+      author={Tianjun Zhang and Shishir G. Patil and Naman Jain and Sheng Shen and Matei Zaharia and Ion Stoica and Joseph E. Gonzalez},
+      year={2024},
+      eprint={2403.10131},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL},
+      url={https://arxiv.org/abs/2403.10131}, 
+}
+
+@misc{corrective-retrieval-augmented-generation-arxiv24,
+      title={Corrective Retrieval Augmented Generation}, 
+      author={Shi-Qi Yan and Jia-Chen Gu and Yun Zhu and Zhen-Hua Ling},
+      year={2024},
+      eprint={2401.15884},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL},
+      url={https://arxiv.org/abs/2401.15884}, 
+}
+
+@misc{chatgpt,
+  title = {{ChatGPT}},
+  author = {{OpenAI}},
+  year = {2024},
+  howpublished = {\url{https://chatgpt.com/}},
+  note = {Accessed: 2025-10-03}
+}
+
+@misc{claude,
+  title = {{Claude}},
+  author = {{Anthropic}},
+  year = {2024},
+  howpublished = {\url{https://claude.ai/}},
+  note = {Accessed: 2025-10-03}
+}
+
+@misc{gemini,
+  title = {{Gemini}},
+  author = {{Google}},
+  year = {2024},
+  howpublished = {\url{https://gemini.google.com/}},
+  note = {Accessed: 2025-10-03}
+}
+
+@misc{survey-llm-as-a-judge-arxiv24,
+    title = {A Survey on {LLM}-as-a-Judge},
+    author = {Gu, Jiawei and Jiang, Xuhui and Shi, Zhichao and Tan, Hexiang and Zhai, Xuehao and Xu, Chengjin and Li, Wei and Shen, Yinghan and Ma, Shengjie and Liu, Honghao and Wang, Saizhuo and Zhang, Kun and Wang, Yuanzhuo and Gao, Wen and Ni, Lionel and Guo, Jian},
+    year = {2025},
+    eprint = {2411.15594},
+    archivePrefix = {arXiv},
+    primaryClass = {cs.CL},
+    url = {https://arxiv.org/abs/2411.15594},
+    note = {arXiv preprint}
+}
+
+@inproceedings{sentence-bert-arxiv19,
+    title = "Sentence-{BERT}: Sentence Embeddings using Siamese {BERT}-Networks",
+    author = "Reimers, Nils and Gurevych, Iryna",
+    editor = "Inui, Kentaro and Jiang, Jing and Ng, Vincent and Wan, Xiaojun",
+    booktitle = "Proceedings of the 2019 Conference on Empirical Methods in Natural Language Processing and the 9th International Joint Conference on Natural Language Processing (EMNLP-IJCNLP)",
+    month = nov,
+    year = "2019",
+    address = "Hong Kong, China",
+    publisher = "Association for Computational Linguistics",
+    url = "https://aclanthology.org/D19-1410/",
+    doi = "10.18653/v1/D19-1410",
+    pages = "3982--3992"
+}
+
+@inproceedings{judging-llm-as-a-judge-with-mt-bench-and-chatbot-arena-arxiv23,
+    title = {Judging {LLM}-as-a-Judge with {MT}-Bench and Chatbot Arena},
+    author = {Zheng, Lianmin and Chiang, Wei-Lin and Sheng, Ying and Zhuang, Siyuan and Wu, Zhanghao and Zhuang, Yonghao and Lin, Zi and Li, Zhuohan and Li, Dacheng and Xing, Eric P. and Zhang, Hao and Gonzalez, Joseph E. and Stoica, Ion},
+    booktitle = {Advances in Neural Information Processing Systems},
+    editor = {Oh, A. and Naumann, T. and Globerson, A. and Saenko, K. and Hardt, M. and Levine, S.},
+    pages = {46595--46623},
+    publisher = {Curran Associates, Inc.},
+    url = {https://proceedings.neurips.cc/paper_files/paper/2023/hash/91f18a1287b398d378ef22505bf41832-Abstract-Datasets_and_Benchmarks.html},
+    volume = {36},
+    year = {2023}
+}
+
+@article{bias-and-fairness-in-large-language-models-cl24,
+    title = "Bias and Fairness in Large Language Models: A Survey",
+    author = "Gallegos, Isabel O.  and
+      Rossi, Ryan A.  and
+      Barrow, Joe  and
+      Tanjim, Md Mehrab  and
+      Kim, Sungchul  and
+      Dernoncourt, Franck  and
+      Yu, Tong  and
+      Zhang, Ruiyi  and
+      Ahmed, Nesreen K.",
+    journal = "Computational Linguistics",
+    volume = "50",
+    number = "3",
+    month = sep,
+    year = "2024",
+    address = "Cambridge, MA",
+    publisher = "MIT Press",
+    url = "https://aclanthology.org/2024.cl-3.8/",
+    doi = "10.1162/coli_a_00524",
+    pages = "1097--1179",
+    abstract = "Rapid advancements of large language models (LLMs) have enabled the processing, understanding, and generation of human-like text, with increasing integration into systems that touch our social sphere. Despite this success, these models can learn, perpetuate, and amplify harmful social biases. In this article, we present a comprehensive survey of bias evaluation and mitigation techniques for LLMs. We first consolidate, formalize, and expand notions of social bias and fairness in natural language processing, defining distinct facets of harm and introducing several desiderata to operationalize fairness for LLMs. We then unify the literature by proposing three intuitive taxonomies, two for bias evaluation, namely, metrics and datasets, and one for mitigation. Our first taxonomy of metrics for bias evaluation disambiguates the relationship between metrics and evaluation datasets, and organizes metrics by the different levels at which they operate in a model: embeddings, probabilities, and generated text. Our second taxonomy of datasets for bias evaluation categorizes datasets by their structure as counterfactual inputs or prompts, and identifies the targeted harms and social groups; we also release a consolidation of publicly available datasets for improved access. Our third taxonomy of techniques for bias mitigation classifies methods by their intervention during pre-processing, in-training, intra-processing, and post-processing, with granular subcategories that elucidate research trends. Finally, we identify open problems and challenges for future work. Synthesizing a wide range of recent research, we aim to provide a clear guide of the existing literature that empowers researchers and practitioners to better understand and prevent the propagation of bias in LLMs."
+}
+
+
+
+@inproceedings{how-do-users-evaluate-the-credibility-of-web-sites-a-study-with-over-2500-participants-dux03,
+author = {Fogg, B. J. and Soohoo, Cathy and Danielson, David R. and Marable, Leslie and Stanford, Julianne and Tauber, Ellen R.},
+title = {How do users evaluate the credibility of Web sites? a study with over 2,500 participants},
+year = {2003},
+isbn = {1581137281},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/997078.997097},
+doi = {10.1145/997078.997097},
+abstract = {In this study 2,684 people evaluated the credibility of two live Web sites on a similar topic (such as health sites). We gathered the comments people wrote about each site\'{\i}s credibility and analyzed the comments to find out what features of a Web site get noticed when people evaluate credibility. We found that the \`{\i}design look\^{\i} of the site was mentioned most frequently, being present in 46.1\% of the comments. Next most common were comments about information structure and information focus. In this paper we share sample participant comments in the top 18 areas that people noticed when evaluating Web site credibility. We discuss reasons for the prominence of design look, point out how future studies can build on what we have learned in this new line of research, and outline six design implications for human-computer interaction professionals.},
+booktitle = {Proceedings of the 2003 Conference on Designing for User Experiences},
+pages = {1--15},
+numpages = {15},
+keywords = {trustworthiness, prominence-interpretation theory, persuasion, online trust, online research, online advertising, information design, credibility, content analysis, captology, World Wide Web, Web site design},
+location = {San Francisco, California},
+series = {DUX '03}
+}
+
+@misc{what-evidence-do-language-models-find-convincing-arxiv24,
+      title={What Evidence Do Language Models Find Convincing?}, 
+      author={Alexander Wan and Eric Wallace and Dan Klein},
+      year={2024},
+      eprint={2402.11782},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL},
+      url={https://arxiv.org/abs/2402.11782}, 
+}
+
+@article{social-and-heuristic-approaches-to-credibility-evaluation-online-jcomm2010,
+author = {Metzger, Miriam J. and Flanagin, Andrew J. and Medders, Ryan B.},
+title = {Social and Heuristic Approaches to Credibility Evaluation Online},
+journal = {Journal of Communication},
+volume = {60},
+number = {3},
+pages = {413--439},
+doi = {https://doi.org/10.1111/j.1460-2466.2010.01488.x},
+url = {https://onlinelibrary.wiley.com/doi/abs/10.1111/j.1460-2466.2010.01488.x},
+eprint = {https://onlinelibrary.wiley.com/doi/pdf/10.1111/j.1460-2466.2010.01488.x},
+abstract = {The tremendous amount of information available online has resulted in considerable research on information and source credibility. The vast majority of scholars, however, assume that individuals work in isolation to form credibility opinions and that people must assess information credibility in an effortful and time-consuming manner. Focus group data from 109 participants were used to examine these assumptions. Results show that most users rely on others to make credibility assessments, often through the use of group-based tools. Results also indicate that rather than systematically processing information, participants routinely invoked cognitive heuristics to evaluate the credibility of information and sources online. These findings are leveraged to suggest a number of avenues for further credibility theorizing, research, and practice.},
+year = {2010}
+}
+
+@article{the-trust-gap-young-peoples-tactics-for-assessing-the-reliability-of-political-news-ijpp22,
+author = {Joëlle Swart and Marcel Broersma},
+title ={The Trust Gap: Young People's Tactics for Assessing the Reliability of Political News},
+
+journal = {The International Journal of Press/Politics},
+volume = {27},
+number = {2},
+pages = {396-416},
+year = {2022},
+doi = {10.1177/19401612211006696},
+
+URL = { 
+    
+        https://doi.org/10.1177/19401612211006696
+},
+eprint = { 
+    
+        https://doi.org/10.1177/19401612211006696
+
+}
+,
+    abstract = { In theories about journalism's democratic remit, trust is generally regarded as a prerequisite for public connection: only when citizens believe the news, they will engage with it and act upon it to perform their citizenship. Trust seems even more important in today's digital society, where the destabilization of journalism institutions and proliferation of sources make the media ecology increasingly complex to navigate. This paper challenges such conceptualizations of media trust rooted in rationality and deliberateness. Based on two series of semistructured interviews with fifty-five young people from ten nationalities living in the Netherlands, conducted in 2016 and 2017, we develop a taxonomy of people's tactics when assessing the reliability of news. We explore what this means for how they value news and how such judgments, drawing on explicit and tacit knowledge, impact their news use. Rather than critically evaluating news through comparing and checking sources, users often employ more pragmatic shortcuts to approximate the trustworthiness of news, including affective and intuitive tactics rooted in tacit knowledge. Consequently, we argue that to fully understand how users deal with the complexity of trust in digital environments, we should not start from ideals of informed citizenship, but from people's actual practices and experiences instead. }
+}
+
+@article{credibility-and-trust-of-information-in-online-environments-the-use-of-cognitive-heuristics-pragma13,
+title = {Credibility and trust of information in online environments: The use of cognitive heuristics},
+journal = {Journal of Pragmatics},
+volume = {59},
+pages = {210-220},
+year = {2013},
+note = {Biases and constraints in communication: Argumentation, persuasion and manipulation},
+issn = {0378-2166},
+doi = {https://doi.org/10.1016/j.pragma.2013.07.012},
+url = {https://www.sciencedirect.com/science/article/pii/S0378216613001768},
+author = {Miriam J. Metzger and Andrew J. Flanagin},
+keywords = {Credibility, Trust, Cognitive heuristics},
+abstract = {Networked digital media present new challenges for people to locate information that they can trust. At the same time, societal reliance on information that is available solely or primarily via the Internet is increasing. This article discusses how and why digitally networked communication environments alter traditional notions of trust, and presents research that examines how information consumers make judgments about the credibility and accuracy of information they encounter online. Based on this research, the article focuses on the use of cognitive heuristics in credibility evaluation. Findings from recent studies are used to illustrate the types of cognitive heuristics that information consumers employ when determining what sources and information to trust online. The article concludes with an agenda for future research that is needed to better understand the role and influence of cognitive heuristics in credibility evaluation in computer-mediated communication contexts.}
+}
+
+@misc{originator-profile-2025-draft,
+  title = {{Originator Profile Framework — Architectural Overview v0.1 (Public Draft)}},
+  author = {{Shigeya Suzuki, Michiko Kuriyama}},
+  year = {2025},
+  month = {1},
+  url = {https://docs.originator-profile.org/aov/},
+  institution = {Originator Profile Collaborative Initiative Partnership},
+  type = {Technical Report},
+  note = {Draft Status}
+}
+
+@article{radford2019language,
+    title = {Language models are unsupervised multitask learners},
+    author = {Radford, Alec and Wu, Jeffrey and Child, Rewon and Luan, David and Amodei, Dario and Sutskever, Ilya},
+    journal = {OpenAI Blog},
+    year = {2019},
+    volume = {1},
+    number = {8},
+    pages = {9},
+    url = {https://cdn.openai.com/better-language-models/language_models_are_unsupervised_multitask_learners.pdf}
+}
+
+@misc{brown2020languagemodelsfewshotlearners,
+      title={Language Models are Few-Shot Learners}, 
+      author={Tom B. Brown and Benjamin Mann and Nick Ryder and Melanie Subbiah and Jared Kaplan and Prafulla Dhariwal and Arvind Neelakantan and Pranav Shyam and Girish Sastry and Amanda Askell and Sandhini Agarwal and Ariel Herbert-Voss and Gretchen Krueger and Tom Henighan and Rewon Child and Aditya Ramesh and Daniel M. Ziegler and Jeffrey Wu and Clemens Winter and Christopher Hesse and Mark Chen and Eric Sigler and Mateusz Litwin and Scott Gray and Benjamin Chess and Jack Clark and Christopher Berner and Sam McCandlish and Alec Radford and Ilya Sutskever and Dario Amodei},
+      year={2020},
+      eprint={2005.14165},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL},
+      url={https://arxiv.org/abs/2005.14165}, 
+}
+
+@misc{kostina2025largelanguagemodelstext,
+    title = {Large Language Models For Text Classification: Case Study And Comprehensive Review},
+    author = {Kostina, Arina and Dikaiakos, Marios D. and Stefanidis, Dimosthenis and Pallis, George},
+    year = {2025},
+    eprint = {2501.08457},
+    archivePrefix = {arXiv},
+    primaryClass = {cs.CL},
+    url = {https://arxiv.org/abs/2501.08457},
+    note = {arXiv preprint}
+}
+
+@inproceedings{accuracy-and-political-bias-of-news-source-credibility-ratings-by-large-language-models-websci25,
+author = {Yang, Kai-Cheng and Menczer, Filippo},
+title = {Accuracy and Political Bias of News Source Credibility Ratings by Large Language Models},
+year = {2025},
+isbn = {9798400714832},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/3717867.3717903},
+doi = {10.1145/3717867.3717903},
+abstract = {Search engines increasingly leverage large language models (LLMs) to generate direct answers, and AI chatbots now access the Internet for fresh data. As information curators for billions of users, LLMs must assess the accuracy and reliability of different sources. This paper audits nine widely used LLMs from three leading providers—OpenAI, Google, and Meta—to evaluate their ability to discern credible and high-quality information sources from low-credibility ones. We find that while LLMs can rate most tested news outlets, larger models more frequently refuse to provide ratings due to insufficient information, whereas smaller models are more prone to making errors in their ratings. For sources where ratings are provided, LLMs exhibit a high level of agreement among themselves (average Spearman’s ρ = 0.79), but their ratings align only moderately with human expert evaluations (average ρ = 0.50). Analyzing news sources with different political leanings in the US, we observe a liberal bias in credibility ratings yielded by all LLMs in default configurations. Additionally, assigning partisan roles to LLMs consistently induces strong politically congruent bias in their ratings. These findings have important implications for the use of LLMs in curating news and political information.},
+booktitle = {Proceedings of the 17th ACM Web Science Conference 2025},
+pages = {127--137},
+numpages = {11},
+keywords = {Large language models, AI search engines, news credibility, political bias},
+location = {
+},
+series = {Websci '25}
+}
+
+
+@article{the-impact-of-media-bias-how-editorial-slant-affects-voters-jpol2005,
+    author = {Druckman, James N. and Parkin, Michael},
+    title = {The Impact of Media Bias: How Editorial Slant Affects Voters},
+    journal = {The Journal of Politics},
+    volume = {67},
+    number = {4},
+    pages = {1030-1049},
+    year = {2005},
+    doi = {10.1111/j.1468-2508.2005.00349.x},
+    url = {https://doi.org/10.1111/j.1468-2508.2005.00349.x},
+    abstract = {We investigate how editorial slant—defined as the quantity and tone of a newspaper's candidate coverage as influenced by its editorial position—shapes candidate evaluations and vote choice. We avoid various methodological pitfalls by focusing on a single Senate campaign in a single market with two competing, editorially distinct newspapers. Combining comprehensive content analyses of the papers with an Election Day exit poll, we assess the slant of campaign coverage and its effects on voters. We find compelling evidence that editorial slant influences voters' decisions. Our results raise serious questions about the media's place in democratic processes.}
+}
+
+
+@article{the-impact-of-political-stance-on-uk-newspaper-coverage-of-child-and-family-social-work-bjsw2024,
+    author = {Worthington, Jessica and Scourfield, Jonathan},
+    title = {The Impact of Political Stance on UK Newspaper Coverage of Child and Family Social Work},
+    journal = {The British Journal of Social Work},
+    volume = {55},
+    number = {1},
+    pages = {493-511},
+    year = {2024},
+    month = {09},
+    abstract = {Previous research has shown that news coverage of the social work profession plays an important role in influencing public opinion, and can damage staff morale if negative, affecting recruitment and retention of staff. Relatively little research has been done to ascertain how factors such as political stance of news outlet influence the way social workers are portrayed. The focus of this research is how child and family social workers are portrayed in eight UK national newspapers between 2018 and 2021 and whether the political stance of the newspapers influenced this. All mentions of social workers in 257 articles from eight major UK national newspapers were coded as either positive, negative, or neutral portrayals. Each article was also categorised for the social work topic it was reporting on. Quantitative analysis of the data found that the political stance of the newspaper was associated with the type of social work it reported on and there was a significant difference in the rate of both positive and negative mentions according to political stance, with right-leaning newspapers having a higher rate of negative mentions than left-leaning and left-leaning papers having a higher rate of positive mentions.},
+    issn = {0045-3102},
+    doi = {10.1093/bjsw/bcae154},
+    url = {https://doi.org/10.1093/bjsw/bcae154},
+    eprint = {https://academic.oup.com/bjsw/article-pdf/55/1/493/59341791/bcae154.pdf},
+}
+
+
+@article{partisan-bias-message-selection-polcom2017,
+    author = {Haselmayer, Martin and Wagner, Markus and Meyer, Thomas M.},
+    title = {Partisan Bias in Message Selection: Media Gatekeeping of Party Press Releases},
+    journal = {Political Communication},
+    volume = {34},
+    number = {3},
+    pages = {367--384},
+    year = {2017},
+    publisher = {Routledge},
+    doi = {10.1080/10584609.2016.1265619},
+    url = {https://doi.org/10.1080/10584609.2016.1265619},
+    note = {PMID: 29170614}
+}
+
+@techreport{how-people-use-chatgpt-nber25,
+ title = "How People Use ChatGPT",
+ author = "Chatterji, Aaron and Cunningham, Thomas and Deming, David J and Hitzig, Zoe and Ong, Christopher and Shan, Carl Yan and Wadman, Kevin",
+ institution = "National Bureau of Economic Research",
+ type = "Working Paper",
+ series = "Working Paper Series",
+ number = "34255",
+ year = "2025",
+ month = "September",
+ doi = {10.3386/w34255},
+ URL = "http://www.nber.org/papers/w34255",
+ abstract = {Despite the rapid adoption of LLM chatbots, little is known about how they are used. We document the growth of ChatGPT’s consumer product from its launch in November 2022 through July 2025, when it had been adopted by around 10% of the world’s adult population. Early adopters were disproportionately male but the gender gap has narrowed dramatically, and we find higher growth rates in lower-income countries. Using a privacy-preserving automated pipeline, we classify usage patterns within a representative sample of ChatGPT conversations. We find steady growth in work-related messages but even faster growth in non-work-related messages, which have grown from 53% to more than 70% of all usage. Work usage is more common for educated users in highly-paid professional occupations. We classify messages by conversation topic and find that “Practical Guidance,” “Seeking Information,” and “Writing” are the three most common topics and collectively account for nearly 80% of all conversations. Writing dominates work-related tasks, highlighting chatbots’ unique ability to generate digital outputs compared to traditional search engines. Computer programming and self-expression both represent relatively small shares of use. Overall, we find that ChatGPT provides economic value through decision support, which is especially important in knowledge-intensive jobs.},
+}
+
+@article{a-survey-on-automated-fact-checking-tacl22,
+    title = "A Survey on Automated Fact-Checking",
+    author = "Guo, Zhijiang  and
+      Schlichtkrull, Michael  and
+      Vlachos, Andreas",
+    editor = "Roark, Brian  and
+      Nenkova, Ani",
+    journal = "Transactions of the Association for Computational Linguistics",
+    volume = "10",
+    year = "2022",
+    address = "Cambridge, MA",
+    publisher = "MIT Press",
+    url = "https://aclanthology.org/2022.tacl-1.11/",
+    doi = "10.1162/tacl_a_00454",
+    pages = "178--206",
+    abstract = "Fact-checking has become increasingly important due to the speed with which both information and misinformation can spread in the modern media ecosystem. Therefore, researchers have been exploring how fact-checking can be automated, using techniques based on natural language processing, machine learning, knowledge representation, and databases to automatically predict the veracity of claims. In this paper, we survey automated fact-checking stemming from natural language processing, and discuss its connections to related tasks and disciplines. In this process, we present an overview of existing datasets and models, aiming to unify the various definitions given and identify common concepts. Finally, we highlight challenges for future research."
+}
+
+@inproceedings{bert-arxiv19,
+    title = "{BERT}: Pre-training of Deep Bidirectional Transformers for Language Understanding",
+    author = "Devlin, Jacob  and
+      Chang, Ming-Wei  and
+      Lee, Kenton  and
+      Toutanova, Kristina",
+    editor = "Burstein, Jill  and
+      Doran, Christy  and
+      Solorio, Thamar",
+    booktitle = "Proceedings of the 2019 Conference of the North {A}merican Chapter of the Association for Computational Linguistics: Human Language Technologies, Volume 1 (Long and Short Papers)",
+    month = jun,
+    year = "2019",
+    address = "Minneapolis, Minnesota",
+    publisher = "Association for Computational Linguistics",
+    url = "https://aclanthology.org/N19-1423/",
+    doi = "10.18653/v1/N19-1423",
+    pages = "4171--4186",
+    abstract = "We introduce a new language representation model called BERT, which stands for Bidirectional Encoder Representations from Transformers. Unlike recent language representation models (Peters et al., 2018a; Radford et al., 2018), BERT is designed to pre-train deep bidirectional representations from unlabeled text by jointly conditioning on both left and right context in all layers. As a result, the pre-trained BERT model can be fine-tuned with just one additional output layer to create state-of-the-art models for a wide range of tasks, such as question answering and language inference, without substantial task-specific architecture modifications. BERT is conceptually simple and empirically powerful. It obtains new state-of-the-art results on eleven natural language processing tasks, including pushing the GLUE score to 80.5 (7.7 point absolute improvement), MultiNLI accuracy to 86.7{\%} (4.6{\%} absolute improvement), SQuAD v1.1 question answering Test F1 to 93.2 (1.5 point absolute improvement) and SQuAD v2.0 Test F1 to 83.1 (5.1 point absolute improvement)."
+}
+@article{kluver2016setting,
+  title={Setting the agenda or responding to voters? Political parties, voters and issue attention},
+  author={Kl{\"u}ver, Heike and Sagarzazu, I{\~n}aki},
+  journal={West European Politics},
+  volume={39},
+  number={2},
+  pages={380--398},
+  year={2016},
+  publisher={Taylor \& Francis}
+}
+@article{leung2015impression,
+  title={Impression management through minimal narrative disclosure in annual reports},
+  author={Leung, Sidney and Parker, Lee and Courtis, John},
+  journal={The British accounting review},
+  volume={47},
+  number={3},
+  pages={275--289},
+  year={2015},
+  publisher={Elsevier}
+}
+@article{chen2024impression,
+  title={Impression management, forward-looking strategy-related disclosure, and excess executive compensation: evidence from China},
+  author={Chen, Jean Jinghan and Liu, Jianmei and Xie, Li and Cheng, Xinsheng},
+  journal={The British Accounting Review},
+  volume={56},
+  number={5},
+  pages={101430},
+  year={2024},
+  publisher={Elsevier}
+}
+@article{flanagin2013trusting,
+  title={Trusting expert-versus user-generated ratings online: The role of information volume, valence, and consumer characteristics},
+  author={Flanagin, Andrew J and Metzger, Miriam J},
+  journal={Computers in Human Behavior},
+  volume={29},
+  number={4},
+  pages={1626--1634},
+  year={2013},
+  publisher={Elsevier}
+}
+@misc{ki2025linguistic,
+    title={Linguistic Nepotism: Trading-off Quality for Language Preference in Multilingual {RAG}},
+    author={Dayeon Ki and Marine Carpuat and Paul McNamee and Daniel Khashabi and Eugene Yang and Dawn Lawrie and Kevin Duh},
+    year={2025},
+    eprint={2509.13930},
+    archivePrefix={arXiv},
+    primaryClass={cs.CL},
+    url={https://arxiv.org/abs/2509.13930}
+}
+@misc{cao2025out,
+    title={Out of Style: {RAG}'s Fragility to Linguistic Variation},
+    author={Tianyu Cao and Neel Bhandari and Akhila Yerukola and Akari Asai and Maarten Sap},
+    year={2025},
+    eprint={2504.08231},
+    archivePrefix={arXiv},
+    primaryClass={cs.CL},
+    url={https://arxiv.org/abs/2504.08231}
+}
+@inproceedings{tan2025htmlrag,
+    title = {{HtmlRAG}: {HTML} is Better Than Plain Text for Modeling Retrieved Knowledge in {RAG} Systems},
+    author = {Tan, Jiejun and Dou, Zhicheng and Wang, Wen and Wang, Mang and Chen, Weipeng and Wen, Ji-Rong},
+    booktitle = {Proceedings of the ACM Web Conference 2025},
+    year = {2025},
+    isbn = {9798400712746},
+    publisher = {Association for Computing Machinery},
+    address = {New York, NY, USA},
+    url = {https://doi.org/10.1145/3696410.3714546},
+    doi = {10.1145/3696410.3714546},
+    pages = {1733--1746},
+    numpages = {14},
+    location = {Sydney, NSW, Australia},
+    series = {WWW '25}
+}
+@inproceedings{stabler2025impact,
+    title = {The Impact of Chunking Strategies on Domain-Specific Information Retrieval in {RAG} Systems},
+    author = {St{\"a}bler, Maximilian and Turnbull, Steffen and M{\"u}ller, Tobias and Langdon, Christoph Schlueter and Marx-Gom{\'e}z, Jorge and K{\"o}ster, Frank},
+    booktitle = {2025 IEEE International Conference on Omni-layer Intelligent Systems (COINS)},
+    year = {2025},
+    pages = {1--6},
+    publisher = {IEEE},
+    doi = {10.1109/COINS61597.2025.11125724}
+}
+
+@misc{openai-api-reference,
+  title = {{OpenAI API Reference - Responses}},
+  author = {{OpenAI}},
+  year = {2024},
+  url = {https://platform.openai.com/docs/api-reference/responses},
+  note = {Accessed: 2025-10-03}
+}
+
+@misc{yu2025safetydevolutionaiagents,
+    title = {Safety Devolution in {AI} Agents},
+    author = {Yu, Cheng and Stroebl, Benedikt and Yang, Diyi and Papakyriakopoulos, Orestis},
+    year = {2025},
+    eprint = {2505.14215},
+    archivePrefix = {arXiv},
+    primaryClass = {cs.CY},
+    url = {https://arxiv.org/abs/2505.14215},
+    note = {arXiv preprint}
+}
+
+@misc{zhou2025trustragenhancingrobustnesstrustworthiness,
+      title={TrustRAG: Enhancing Robustness and Trustworthiness in Retrieval-Augmented Generation}, 
+      author={Huichi Zhou and Kin-Hei Lee and Zhonghao Zhan and Yue Chen and Zhenhao Li and Zhaoyang Wang and Hamed Haddadi and Emine Yilmaz},
+      year={2025},
+      eprint={2501.00879},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL},
+      url={https://arxiv.org/abs/2501.00879}, 
+}
+
+@inproceedings{adversarial-examples-for-k-nearest-neighbor-classifiers-based-on-higher-order-voronoi-diagrams-nips21,
+author = {Sitawarin, Chawin and Kornaropoulos, Evgenios M. and Song, Dawn and Wagner, David},
+title = {Adversarial examples for k-nearest neighbor classifiers based on higher-order voronoi diagrams},
+year = {2021},
+isbn = {9781713845393},
+publisher = {Curran Associates Inc.},
+address = {Red Hook, NY, USA},
+abstract = {Adversarial examples are a widely studied phenomenon in machine learning models. While most of the attention has been focused on neural networks, other practical models also suffer from this issue. In this work, we propose an algorithm for evaluating the adversarial robustness of k-nearest neighbor classification, i.e., finding a minimum-norm adversarial example. Diverging from previous proposals, we propose the first geometric approach by performing a search that expands outwards from a given input point. On a high level, the search radius expands to the nearby higher-order Voronoi cells until we find a cell that classifies differently from the input point. To scale the algorithm to a large k, we introduce approximation steps that find perturbation with smaller norm, compared to the baselines, in a variety of datasets. Furthermore, we analyze the structural properties of a dataset where our approach outperforms the competition.},
+booktitle = {Proceedings of the 35th International Conference on Neural Information Processing Systems},
+articleno = {1186},
+numpages = {12},
+series = {NIPS '21}
+}
+
+@inproceedings{good-word-attacks-on-statistical-spam-filters-ceas2005,
+  added-at = {2019-07-01T00:00:00.000+0200},
+  author = {Lowd, Daniel and Meek, Christopher},
+  biburl = {https://www.bibsonomy.org/bibtex/21377d2b27ac0a644bffa7e4a780765fe/dblp},
+  booktitle = {CEAS},
+  ee = {http://www.ceas.cc/papers-2005/125.pdf},
+  interhash = {c86d81bb31ea199c1d7aaf8b5e3e280d},
+  intrahash = {1377d2b27ac0a644bffa7e4a780765fe},
+  keywords = {dblp},
+  timestamp = {2019-07-02T11:43:38.000+0200},
+  title = {Good Word Attacks on Statistical Spam Filters.},
+  url = {http://dblp.uni-trier.de/db/conf/ceas/ceas2005.html#LowdM05},
+  year = 2005
+}
+
+@inproceedings{raina2024llmasajudgerobustinvestigatinguniversal,
+    title = "Is {LLM}-as-a-Judge Robust? Investigating Universal Adversarial Attacks on Zero-shot {LLM} Assessment",
+    author = "Raina, Vyas and Liusie, Adian and Gales, Mark",
+    editor = "Al-Onaizan, Yaser and Bansal, Mohit and Chen, Yun-Nung",
+    booktitle = "Proceedings of the 2024 Conference on Empirical Methods in Natural Language Processing",
+    month = nov,
+    year = "2024",
+    address = "Miami, Florida, USA",
+    publisher = "Association for Computational Linguistics",
+    url = "https://aclanthology.org/2024.emnlp-main.427/",
+    doi = "10.18653/v1/2024.emnlp-main.427",
+    pages = "7499--7517"
+}
+
+
+@inproceedings{xiang2024certifiablyrobustragretrieval,
+    title = {Certifiably Robust {RAG} against Retrieval Corruption},
+    author = {Xiang, Chong and Wu, Tong and Zhong, Zexuan and Wagner, David and Chen, Danqi and Mittal, Prateek},
+    booktitle = {Proceedings of the 41st International Conference on Machine Learning},
+    pages = {53906--53929},
+    year = {2024},
+    editor = {Salakhutdinov, Ruslan and Kolter, Zico and Heller, Katherine and Weller, Adrian and Oliver, Nuria and Scarlett, Jonathan and Berkenkamp, Felix},
+    volume = {235},
+    series = {Proceedings of Machine Learning Research},
+    month = {21--27 Jul},
+    publisher = {PMLR},
+    url = {https://proceedings.mlr.press/v235/xiang24a.html},
+    note = {arXiv:2405.15556}
+}
+
+@inproceedings{wei2025instructraginstructingretrievalaugmentedgeneration,
+    title = {{InstructRAG}: Instructing Retrieval-Augmented Generation via Self-Synthesized Rationales},
+    author = {Wei, Zhepei and Chen, Wei-Lin and Meng, Yu},
+    booktitle = {The Thirteenth International Conference on Learning Representations},
+    year = {2025},
+    url = {https://openreview.net/forum?id=P1qhkp8gQT},
+    note = {arXiv:2406.13629}
+}
+
+@inproceedings{abolghasemi-etal-2025-evaluation,
+    title = "Evaluation of Attribution Bias in Generator-Aware Retrieval-Augmented Large Language Models",
+    author = "Abolghasemi, Amin  and
+      Azzopardi, Leif  and
+      Hashemi, Seyyed Hadi  and
+      de Rijke, Maarten  and
+      Verberne, Suzan",
+    editor = "Che, Wanxiang  and
+      Nabende, Joyce  and
+      Shutova, Ekaterina  and
+      Pilehvar, Mohammad Taher",
+    booktitle = "Findings of the Association for Computational Linguistics: ACL 2025",
+    month = jul,
+    year = "2025",
+    address = "Vienna, Austria",
+    publisher = "Association for Computational Linguistics",
+    url = "https://aclanthology.org/2025.findings-acl.1087/",
+    doi = "10.18653/v1/2025.findings-acl.1087",
+    pages = "21105--21124",
+    ISBN = "979-8-89176-256-5",
+    abstract = "Attributing answers to source documents is an approach used to enhance the verifiability of a model{'}s output in retrieval-augmented generation (RAG). Prior work has mainly focused on improving and evaluating the attribution quality of large language models (LLMs) in RAG, but this may come at the expense of inducing biases in the attribution of answers. We define and examine two aspects in the evaluation of LLMs in RAG pipelines, namely attribution sensitivity and bias with respect to authorship information. We explicitly inform an LLM about the authors of source documents, instruct it to attribute its answers, and analyze (i) how sensitive the LLM{'}s output is to the author of source documents, and (ii) whether the LLM exhibits a bias towards human-written or AI-generated source documents. We design an experimental setup in which we use counterfactual evaluation to study three LLMs in terms of their attribution sensitivity and bias in RAG pipelines. Our results show that adding authorship information to source documents can significantly change the attribution quality of LLMs by 3 to 18{\%}. We show that LLMs can have an attribution bias towards explicit human authorship, which can serve as a competing hypothesis for findings of prior work that shows that LLM-generated content may be preferred over human-written contents. Our findings indicate that metadata of source documents can influence LLMs' trust, and how they attribute their answers. Furthermore, our research highlights attribution bias and sensitivity as a novel aspect of the vulnerability of LLMs."
+}
+
+@misc{openai-web-search-api-reference,
+    title = {Web seach - OpenAI API},
+    author = {OpenAI},
+    year = {2025},
+    url = {https://platform.openai.com/docs/guides/tools-web-search?api-mode=responses}
+}
+
+@inproceedings{cer-etal-2017-semeval,
+    title = "{S}em{E}val-2017 Task 1: Semantic Textual Similarity Multilingual and Crosslingual Focused Evaluation",
+    author = "Cer, Daniel  and
+      Diab, Mona  and
+      Agirre, Eneko  and
+      Lopez-Gazpio, I{\~n}igo  and
+      Specia, Lucia",
+    editor = "Bethard, Steven  and
+      Carpuat, Marine  and
+      Apidianaki, Marianna  and
+      Mohammad, Saif M.  and
+      Cer, Daniel  and
+      Jurgens, David",
+    booktitle = "Proceedings of the 11th International Workshop on Semantic Evaluation ({S}em{E}val-2017)",
+    month = aug,
+    year = "2017",
+    address = "Vancouver, Canada",
+    publisher = "Association for Computational Linguistics",
+    url = "https://aclanthology.org/S17-2001/",
+    doi = "10.18653/v1/S17-2001",
+    pages = "1--14",
+    abstract = "Semantic Textual Similarity (STS) measures the meaning similarity of sentences. Applications include machine translation (MT), summarization, generation, question answering (QA), short answer grading, semantic search, dialog and conversational systems. The STS shared task is a venue for assessing the current state-of-the-art. The 2017 task focuses on multilingual and cross-lingual pairs with one sub-track exploring MT quality estimation (MTQE) data. The task obtained strong participation from 31 teams, with 17 participating in \textit{all language tracks}. We summarize performance and review a selection of well performing methods. Analysis highlights common errors, providing insight into the limitations of existing models. To support ongoing work on semantic representations, the \textit{STS Benchmark} is introduced as a new shared training and evaluation set carefully selected from the corpus of English STS shared task data (2012-2017)."
+}
+@inproceedings{kabir2024banglaembed,
+  title={BanglaEmbed: Efficient Sentence Embedding Models for a Low-Resource Language Using Cross-Lingual Distillation Techniques},
+  author={Kabir, Muhammad Rafsan and Nabil, Md Mohibur Rahman and Khan, Mohammad Ashrafuzzaman},
+  booktitle={2024 7th International Conference on Algorithms, Computing and Artificial Intelligence (ACAI)},
+  pages={1--6},
+  year={2024},
+  organization={IEEE}
+}
+@inproceedings{tumre2025improved,
+  title={Improved near-duplicate detection for aggregated and paywalled news-feeds},
+  author={Tumre, Siddharth and Patil, Sangameshwar and Kumar, Alok},
+  booktitle={Proceedings of the 2025 Conference of the Nations of the Americas Chapter of the Association for Computational Linguistics: Human Language Technologies (Volume 3: Industry Track)},
+  pages={979--987},
+  year={2025}
+}
+
+@inproceedings{zhai2024llm-and-future-of-information-retrieval,
+author = {Zhai, ChengXiang},
+title = {Large Language Models and Future of Information Retrieval: Opportunities and Challenges},
+year = {2024},
+isbn = {9798400704314},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/3626772.3657848},
+doi = {10.1145/3626772.3657848},
+abstract = {Recent years have seen great success of large language models (LLMs) in performing many natural language processing tasks with impressive performance, including tasks that directly serve users such as question answering and text summarization. They open up unprecedented opportunities for transforming information retrieval (IR) research and applications. However, concerns such as halluciation undermine their trustworthiness, limiting their actual utility when deployed in real-world applications, especially high-stake applications where trust is vital. How can we both exploit the strengths of LLMs and mitigate any risk caused by their weaknesses when applying LLMs to IR? What are the best opportunities for us to apply LLMs to IR? What are the major challenges that we will need to address in the future to fully exploit such opportunities? Given the anticipated growth of LLMs, what will future information retrieval systems look like? Will LLMs eventually replace an IR system? In this perspective paper, we examine these questions and provide provisional answers to them. We argue that LLMs will not be able to replace search engines, and future LLMs would need to learn how to use a search engine so that they can interact with a search engine on behalf of users. We conclude with a set of promising future research directions in applying LLMs to IR.},
+booktitle = {Proceedings of the 47th International ACM SIGIR Conference on Research and Development in Information Retrieval},
+pages = {481--490},
+numpages = {10},
+keywords = {conversational information access, information retrieval models, intelligent agent, large language models, search engines},
+location = {Washington DC, USA},
+series = {SIGIR '24}
+}
+
+
+@misc{stein2025expandingaioverviewsaimode,
+  author       = {Robby Stein},
+  title        = {Expanding {AI} Overviews and introducing {AI} Mode},
+  year         = {2025},
+  month        = mar,
+  day          = {5},
+  howpublished = {The Keyword (Google blog)},
+  url          = {https://blog.google/products-and-products/search/ai-mode-search/},
+  note         = {Accessed: 2026-01-19}
+}
+
+@misc{reid2025aisearchbeyondinformation,
+  author       = {Elizabeth Reid},
+  title        = {{AI} in Search: Going beyond information to intelligence},
+  year         = {2025},
+  month        = may,
+  day          = {20},
+  howpublished = {The Keyword (Google blog)},
+  url          = {https://blog.google/products/search/google-search-ai-mode-update/},
+  note         = {Accessed: 2026-01-19}
+}
+
+@misc{menlo-ventures2025stategenaienterprise,
+  author       = {Tim Tully and Joff Redfern and Deedy Das and Derek Xiao},
+  title        = {2025: The State of Generative {AI} in the Enterprise},
+  year         = {2025},
+  month        = dec,
+  day          = {9},
+  howpublished = {Menlo Ventures},
+  url          = {https://menlovc.com/perspective/2025-the-state-of-generative-ai-in-the-enterprise/},
+  note         = {Survey of approximately 500 U.S. enterprise decision-makers. Accessed: 2026-01-20}
+}
+
+@misc{a16z2025stateconsumerai,
+  author       = {Olivia Moore and Justine Moore},
+  title        = {State of Consumer {AI} 2025: Product Hits, Misses, and What's Next},
+  year         = {2025},
+  month        = dec,
+  day          = {18},
+  howpublished = {Andreessen Horowitz (a16z)},
+  url          = {https://a16z.com/state-of-consumer-ai-2025-product-hits-misses-and-whats-next/},
+  note         = {Accessed: 2026-01-20}
+}
+
+
+@inproceedings{guan2024language,
+    title = "Language Models Hallucinate, but May Excel at Fact Verification",
+    author = "Guan, Jian  and
+      Dodge, Jesse  and
+      Wadden, David  and
+      Huang, Minlie  and
+      Peng, Hao",
+    editor = "Duh, Kevin  and
+      Gomez, Helena  and
+      Bethard, Steven",
+    booktitle = "Proceedings of the 2024 Conference of the North American Chapter of the Association for Computational Linguistics: Human Language Technologies (Volume 1: Long Papers)",
+    month = jun,
+    year = "2024",
+    address = "Mexico City, Mexico",
+    publisher = "Association for Computational Linguistics",
+    url = "https://aclanthology.org/2024.naacl-long.62/",
+    doi = "10.18653/v1/2024.naacl-long.62",
+    pages = "1090--1111",
+    abstract = "Recent progress in natural language processing (NLP) owes much to remarkable advances in large language models (LLMs). Nevertheless, LLMs frequently ``hallucinate,'' resulting in non-factual outputs. Our carefully-designed human evaluation substantiates the serious hallucination issue, revealing that even GPT-3.5 produces factual outputs less than 25{\%} of the time. This underscores the importance of fact verifiers in order to measure and incentivize progress. Our systematic investigation affirms that LLMs can be repurposed as effective fact verifiers with strong correlations with human judgments. Surprisingly, FLAN-T5-11B , the least factual generator in our study, performs the best as a fact verifier, even outperforming more capable LLMs like GPT3.5 and ChatGPT. Delving deeper, we analyze the reliance of these LLMs on high-quality evidence, as well as their deficiencies in robustness and generalization ability. Our study presents insights for developing trustworthy generation models."
+}
+
+@inproceedings{wang2024factcheck,
+    title = "Factcheck-Bench: Fine-Grained Evaluation Benchmark for Automatic Fact-checkers",
+    author = "Wang, Yuxia  and
+      Gangi Reddy, Revanth  and
+      Mujahid, Zain Muhammad  and
+      Arora, Arnav  and
+      Rubashevskii, Aleksandr  and
+      Geng, Jiahui  and
+      Mohammed Afzal, Osama  and
+      Pan, Liangming  and
+      Borenstein, Nadav  and
+      Pillai, Aditya  and
+      Augenstein, Isabelle  and
+      Gurevych, Iryna  and
+      Nakov, Preslav",
+    editor = "Al-Onaizan, Yaser  and
+      Bansal, Mohit  and
+      Chen, Yun-Nung",
+    booktitle = "Findings of the Association for Computational Linguistics: EMNLP 2024",
+    month = nov,
+    year = "2024",
+    address = "Miami, Florida, USA",
+    publisher = "Association for Computational Linguistics",
+    url = "https://aclanthology.org/2024.findings-emnlp.830/",
+    doi = "10.18653/v1/2024.findings-emnlp.830",
+    pages = "14199--14230",
+    abstract = "The increased use of large language models (LLMs) across a variety of real-world applications calls for mechanisms to verify the factual accuracy of their outputs. In this work, we present Factcheck-Bench, a holistic end-to-end framework for annotating and evaluating the factuality of LLM-generated responses, which encompasses a multi-stage annotation scheme designed to yield detailed labels for fact-checking and correcting not just the final prediction, but also the intermediate steps that a fact-checking system might need to take. Based on this framework, we construct an open-domain factuality benchmark in three-levels of granularity: claim, sentence, and document. We further propose a system, Factcheck-GPT, which follows our framework, and we show that it outperforms several popular LLM fact-checkers. We make our annotation tool, annotated data, benchmark, and code available at https://github.com/yuxiaw/Factcheck-GPT."
+}
+
+@inproceedings{chen2022rich,
+    title = "Rich Knowledge Sources Bring Complex Knowledge Conflicts: Recalibrating Models to Reflect Conflicting Evidence",
+    author = "Chen, Hung-Ting  and
+      Zhang, Michael  and
+      Choi, Eunsol",
+    editor = "Goldberg, Yoav  and
+      Kozareva, Zornitsa  and
+      Zhang, Yue",
+    booktitle = "Proceedings of the 2022 Conference on Empirical Methods in Natural Language Processing",
+    month = dec,
+    year = "2022",
+    address = "Abu Dhabi, United Arab Emirates",
+    publisher = "Association for Computational Linguistics",
+    url = "https://aclanthology.org/2022.emnlp-main.146/",
+    doi = "10.18653/v1/2022.emnlp-main.146",
+    pages = "2292--2307",
+    abstract = "Question answering models can use rich knowledge sources {---} up to one hundred retrieved passages and parametric knowledge in the large-scale language model (LM). Prior work assumes information in such knowledge sources is consistent with each other, paying little attention to how models blend information stored in their LM parameters with that from retrieved evidence documents. In this paper, we simulate knowledge conflicts (i.e., where parametric knowledge suggests one answer and different passages suggest different answers) and examine model behaviors. We find retrieval performance heavily impacts which sources models rely on, and current models mostly rely on non-parametric knowledgein their best-performing settings. We discover a troubling trend that contradictions among knowledge sources affect model confidence only marginally. To address this issue, we present a new calibration study, where models are discouraged from presenting any single answer when presented with multiple conflicting answer candidates in retrieved evidences."
+}
+
+@misc{wang2025ragconflictevidence,
+      title={Retrieval-Augmented Generation with Conflicting Evidence}, 
+      author={Han Wang and Archiki Prasad and Elias Stengel-Eskin and Mohit Bansal},
+      year={2025},
+      eprint={2504.13079},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL},
+      url={https://arxiv.org/abs/2504.13079}, 
+}
+
+@inproceedings{liu2025conflicts,
+    title = "Conflicts in Texts: Data, Implications and Challenges",
+    author = "Liu, Siyi  and
+      Roth, Dan",
+    editor = "Christodoulopoulos, Christos  and
+      Chakraborty, Tanmoy  and
+      Rose, Carolyn  and
+      Peng, Violet",
+    booktitle = "Findings of the Association for Computational Linguistics: EMNLP 2025",
+    month = nov,
+    year = "2025",
+    address = "Suzhou, China",
+    publisher = "Association for Computational Linguistics",
+    url = "https://aclanthology.org/2025.findings-emnlp.534/",
+    doi = "10.18653/v1/2025.findings-emnlp.534",
+    pages = "10073--10091",
+    ISBN = "979-8-89176-335-7",
+    abstract = "As NLP models become increasingly integrated into real-world applications, it becomes clear that there is a need to address the fact that models often rely on and generate conflicting information. Conflicts could reflect the complexity of situations, changes that need to be explained and dealt with, difficulties in data annotation, and mistakes in generated outputs. In all cases, disregarding the conflicts in data could result in undesired behaviors of models and undermine NLP models' reliability and trustworthiness. This survey categorizes these conflicts into three key areas: (1) natural texts on the web, where factual inconsistencies, subjective biases, and multiple perspectives introduce contradictions; (2) human-annotated data, where annotator disagreements, mistakes, and societal biases impact model training; and (3) model interactions, where hallucinations and knowledge conflicts emerge during deployment. While prior work has addressed some of these conflicts in isolation, we unify them under the broader concept of conflicting information, analyze their implications, and discuss mitigation strategies. We highlight key challenges and future directions for developing conflict-aware NLP systems that can reason over and reconcile conflicting information more effectively."
+}
+
+@misc{chen2025geo,
+      title={Generative Engine Optimization: How to Dominate AI Search}, 
+      author={Mahe Chen and Xiaoxuan Wang and Kaiwen Chen and Nick Koudas},
+      year={2025},
+      eprint={2509.08919},
+      archivePrefix={arXiv},
+      primaryClass={cs.IR},
+      url={https://arxiv.org/abs/2509.08919}, 
+}
+
+
+@misc{QL_SIGIR_RERO,
+  title={Artifact: Exposing Citation Vulnerabilities in Generative Engines},
+  author={Anonymous},
+  year={2025},
+  url={https://anonymous.4open.science/r/Exposing_Citation_Vulnerabilities_in_Generative_Engines/},
+  howpublished = {\url{https://anonymous.4open.science/r/Exposing_Citation_Vulnerabilities_in_Generative_Engines/}},
+  note={Anonymous repository for double-blind review}
+}
+
+@inproceedings{mirage-acl24,
+    title = "Benchmarking Retrieval-Augmented Generation for Medicine",
+    author = "Xiong, Guangzhi  and
+      Jin, Qiao  and
+      Lu, Zhiyong  and
+      Zhang, Aidong",
+    editor = "Ku, Lun-Wei  and
+      Martins, Andre  and
+      Srikumar, Vivek",
+    booktitle = "Findings of the Association for Computational Linguistics: ACL 2024",
+    month = aug,
+    year = "2024",
+    address = "Bangkok, Thailand",
+    publisher = "Association for Computational Linguistics",
+    url = "https://aclanthology.org/2024.findings-acl.372/",
+    doi = "10.18653/v1/2024.findings-acl.372",
+    pages = "6233--6251",
+    abstract = "While large language models (LLMs) have achieved state-of-the-art performance on a wide range of medical question answering (QA) tasks, they still face challenges with hallucinations and outdated knowledge. Retrieval-augmented generation (RAG) is a promising solution and has been widely adopted. However, a RAG system can involve multiple flexible components, and there is a lack of best practices regarding the optimal RAG setting for various medical purposes. To systematically evaluate such systems, we propose the Medical Information Retrieval-Augmented Generation Evaluation (MIRAGE), a first-of-its-kind benchmark including 7,663 questions from five medical QA datasets. Using MIRAGE, we conducted large-scale experiments with over 1.8 trillion prompt tokens on 41 combinations of different corpora, retrievers, and backbone LLMs through the MedRAG toolkit introduced in this work. Overall, MedRAG improves the accuracy of six different LLMs by up to 18{\%} over chain-of-thought prompting, elevating the performance of GPT-3.5 and Mixtral to GPT-4-level. Our results show that the combination of various medical corpora and retrievers achieves the best performance. In addition, we discovered a log-linear scaling property and the ``lost-in-the-middle'' effects in medical RAG. We believe our comprehensive evaluations can serve as practical guidelines for implementing RAG systems for medicine."
+}
+
+@misc{lála2023paperqa,
+      title={PaperQA: Retrieval-Augmented Generative Agent for Scientific Research}, 
+      author={Jakub Lála and Odhran O'Donoghue and Aleksandar Shtedritski and Sam Cox and Samuel G. Rodriques and Andrew D. White},
+      year={2023},
+      eprint={2312.07559},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL},
+      url={https://arxiv.org/abs/2312.07559}, 
+}
+
+@article{almanac-nejmai-2024,
+  title = {Almanac — Retrieval-Augmented Language Models for Clinical Medicine},
+  volume = {1},
+  ISSN = {2836-9386},
+  url = {http://dx.doi.org/10.1056/AIoa2300068},
+  DOI = {10.1056/aioa2300068},
+  number = {2},
+  journal = {NEJM AI},
+  publisher = {Massachusetts Medical Society},
+  author = {Zakka,  Cyril and Shad,  Rohan and Chaurasia,  Akash and Dalal,  Alex R. and Kim,  Jennifer L. and Moor,  Michael and Fong,  Robyn and Phillips,  Curran and Alexander,  Kevin and Ashley,  Euan and Boyd,  Jack and Boyd,  Kathleen and Hirsch,  Karen and Langlotz,  Curt and Lee,  Rita and Melia,  Joanna and Nelson,  Joanna and Sallam,  Karim and Tullis,  Stacey and Vogelsong,  Melissa Ann and Cunningham,  John Patrick and Hiesinger,  William},
+  year = {2024},
+  month = jan 
+}
+
+@report{gmo-research2025japanai,
+  title={Japan's Generative AI Market Penetration and Business Adoption Trends 2025},
+  author={{GMO Research \& AI}},
+  year={2025},
+  month={June},
+  institution={GMO Research \& AI, Inc.},
+  url={https://gmo-research.ai/en/resources/studies/2025-study-gen-AI-jp}
+}

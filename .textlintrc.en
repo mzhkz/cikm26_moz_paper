@@ -1,0 +1,57 @@
+{
+  "filters": {
+    "comments": true,
+    "allowlist": {
+      "allow": [
+        "/\\\\cite{[^}]+}/g",
+        "/\\\\ref{[^}]+}/g",
+        "/\\\\label{[^}]+}/g",
+        "/\\\\begin{[^}]+}/g",
+        "/\\\\end{[^}]+}/g",
+        "/%.*/g",
+        "/\\$[^$]+\\$/g"
+      ]
+    }
+  },
+  "rules": {
+    "write-good": {
+      "passive": true,
+      "illusion": true,
+      "so": true,
+      "thereIs": true,
+      "weasel": true,
+      "adverb": false,
+      "tooWordy": true,
+      "cliches": true,
+      "eprime": false
+    },
+    "alex": {
+      "allow": ["host-hostess", "father-mother"]
+    },
+    "rousseau": {
+      "showLevels": ["suggestion", "warning", "error"],
+      "ignoreTypes": ["passive", "lexical-illusion", "so-beginning"],
+      "readability": false
+    },
+    "no-dead-link": {
+      "checkRelative": true,
+      "baseURI": null,
+      "ignore": ["http://localhost*"],
+      "preferGET": [],
+      "retry": 3,
+      "userAgent": "textlint-rule-no-dead-link/1.0",
+      "maxRetryTime": 10000
+    },
+    "terminology": {
+      "defaultTerms": true,
+      "terms": [
+        ["front[- ]end", "frontend"],
+        ["back[- ]end", "backend"],
+        ["web[- ]?site", "website"],
+        ["hot[- ]key", "hotkey"],
+        ["data[- ]base", "database"],
+        ["e[- ]mail", "email"]
+      ]
+    }
+  }
+}

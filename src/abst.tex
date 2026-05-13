@@ -1,0 +1,11 @@
+\begin{abstract}
+We analyze generative engines (GEs) under poisoning attacks from the perspectives of publishers of citations in answers and characterize the attack surface of GEs to poisoning attacks.
+GEs integrate two functions: web search and answer generation that cites web pages using large language models.
+Because anyone can publish information on the web, GEs are vulnerable to poisoning attacks.
+Existing studies of citation evaluation focus on how faithfully answers reflect cited content, leaving unexamined which web sources should be selected as citations to defend against poisoning attacks.
+To fill this gap, we introduce evaluation criteria that characterize the attack surface of GEs to poisoning attacks using the publisher attributes of citation contents in answers.
+Our criteria classify the publisher attributes of citations to estimate the \emph{content-injection barrier}, which is the difficulty of publishing content with specific publisher authority.
+We show a bias in GEs regarding which \emph{content-injection barriers} of contents they preferentially cite and how faithfully they reflect the content in generated answers in political domains in Japan and the United States (U.S.) using our criteria, then reveal the attack surface of GEs and the threat of poisoning attacks.
+Our results show that citations from official party websites (primary sources) account for approximately $25\%$--$45\%$ in the U.S. and $60\%$--$65\%$ in Japan, indicating that U.S. political answers have a wide attack surface to poisoning attacks.
+We also find that sources with low content-injection barriers are frequently cited yet tend to be poorly reflected in answers.
+\end{abstract}

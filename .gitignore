@@ -1,0 +1,65 @@
+.DS_Store
+
+# Build directories
+tmp/
+out/
+latex-output/
+latex.out/
+_minted*/
+svg-inkscape/
+
+# LaTeX auxiliary files
+*.aux
+*.bbl
+*.bcf
+*.blg
+*.cb
+*.cb2
+*.fdb_latexmk
+*.fls
+*.fmt
+*.fot
+*.lof
+*.log
+*.lot
+*.nav
+*.out
+*.pdfsync
+*.run.xml
+*.snm
+*.synctex
+*.synctex.gz
+*.toc
+*.vrb
+*.xdv
+*.dvi
+.*.lb
+
+# Bibliography / index / glossary helpers
+*.acn
+*.acr
+*.alg
+*.glg
+*.glo
+*.gls
+*.idx
+*.ilg
+*.ind
+*.ist
+*.loa
+*.maf
+*.mtc*
+*.nlg
+*.nlo
+*.nls
+
+# Package-specific generated files
+*.pyg
+*.thm
+*.upa
+*.xref
+*.spl
+
+# Local tooling
+node_modules/
+.textlintcache
