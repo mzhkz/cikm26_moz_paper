@@ -1,9 +1,9 @@
 TMPDIR=tmp
 OUTDIR=out
 
-MAINFILE=QL_Research_SIGIR_Paper.tex
+MAINFILE=QL_Research_CIKM_Paper.tex
 
-FILENAME=QL_Research_SIGIR_Paper
+FILENAME=QL_Research_CIKM_Paper
 PDFNAME=${FILENAME}.pdf
 
 

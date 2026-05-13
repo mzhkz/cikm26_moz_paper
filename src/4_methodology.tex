@@ -61,7 +61,7 @@ When classification results from the two GE models agree, we adopt that result d
 In our experiments, the authors make the final determination based on company information from the website and domain registration data.
 We employ zero-shot classification~\cite{radford2019language} following Kostina et al.~\cite{kostina2025largelanguagemodelstext}, who demonstrate high performance without training examples.
 For each citation \( c \in C \), the prompt receives two inputs: \( \text{url}(c) \) extracts the complete URL indicating the publisher's domain and path, and \( \text{whois}(c) \) retrieves domain registration data including ownership and organizational information.
-We provide the complete classification prompt template and the domain-to-category mapping table used in our experiments in our repository~\cite{QL_SIGIR_RERO}.
+We provide the complete classification prompt template and the domain-to-category mapping table used in our experiments in our repository~\cite{QL_CIKM_RERO}.
 % Finally, we obtain the set of citations classified into each category \( \lambda_i \) as \( C^{\lambda_{i}} = \{c \in C \mid \lambda(c) = \lambda_i\}; i \in \{1, 2, \cdots, p\} \).
 
 Finally, we derive content-injection barriers from these categories.
@@ -109,4 +109,3 @@ We employ these thresholds because \(0.8\) has been used as a threshold for dete
 % \textbf{Citation reflection power classification.}
 % After obtaining maximum similarity scores \( \text{sim}_{\text{max}}(S, c_i) \) for each citation \( c_i \in C \), we categorize each citation using the above content-injection barrier classifier \( \Lambda(\cdot) \).
 % This categorization allows us to examine how different content-injection barriers are reflected faithfully in answers at varying similarity levels.
-

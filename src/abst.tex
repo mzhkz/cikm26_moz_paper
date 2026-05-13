@@ -1,11 +1,10 @@
 \begin{abstract}
-We analyze generative engines (GEs) under poisoning attacks from the perspectives of publishers of citations in answers and characterize the attack surface of GEs to poisoning attacks.
-GEs integrate two functions: web search and answer generation that cites web pages using large language models.
-Because anyone can publish information on the web, GEs are vulnerable to poisoning attacks.
-Existing studies of citation evaluation focus on how faithfully answers reflect cited content, leaving unexamined which web sources should be selected as citations to defend against poisoning attacks.
-To fill this gap, we introduce evaluation criteria that characterize the attack surface of GEs to poisoning attacks using the publisher attributes of citation contents in answers.
-Our criteria classify the publisher attributes of citations to estimate the \emph{content-injection barrier}, which is the difficulty of publishing content with specific publisher authority.
-We show a bias in GEs regarding which \emph{content-injection barriers} of contents they preferentially cite and how faithfully they reflect the content in generated answers in political domains in Japan and the United States (U.S.) using our criteria, then reveal the attack surface of GEs and the threat of poisoning attacks.
-Our results show that citations from official party websites (primary sources) account for approximately $25\%$--$45\%$ in the U.S. and $60\%$--$65\%$ in Japan, indicating that U.S. political answers have a wide attack surface to poisoning attacks.
-We also find that sources with low content-injection barriers are frequently cited yet tend to be poorly reflected in answers.
+We characterize the attack surface of generative search engines (GSEs) to poisoning attacks in the political domain, from the perspectives of citation source selection and user personalization.
+GSEs integrate web search and answer generation using large language models, playing a crucial role in how users access information, particularly in citizens' decision-making in politics.
+Because anyone can publish content on the web, GSEs are vulnerable to poisoning attacks that manipulate citations to undermine reliable information delivery---a threat with direct implications for democracy.
+Existing studies on citation evaluation focus on how faithfully answers reflect cited content, leaving two critical aspects unexamined: which web sources are selected as citations and how resilient those selections are to adversarial manipulation, and how user personalization affects citation behavior.
+To fill this gap, we introduce an evaluation framework that characterizes the attack surface of GSEs to poisoning attacks.
+Our contributions are twofold: (1) we propose a novel metric, \emph{content-injection barrier}, which quantifies the difficulty of injecting content into a source with a given level of publisher authority; and (2) we inject personas into system prompts to reveal how personalization shifts citation behavior.
+We conduct experiments in the political domains of Japan and the United States using our framework.
+Our results show that (a) for users with no prior knowledge of politics, GSEs tend to cite sources with low \emph{content-injection barriers}, making them susceptible to poisoning attacks; and (b) for users with prior knowledge, GSEs consistently cite sources with high \emph{content-injection barriers}, regardless of the model or political ideology.
 \end{abstract}
