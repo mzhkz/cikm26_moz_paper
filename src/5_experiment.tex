@@ -1,17 +1,17 @@
 \section{Experiment}
 \label{sec:experiment}
-This section presents citation patterns in representative and widely used GEs within the political domains of Japan and the United States using the methodology proposed in Section~\ref{sec:methodology}.
-The purpose of this experiment is twofold: (1) to reveal the potential attack surface of GEs from the perspective of PoisonedRAG attacks in representative and widely used GEs within the political domain, which is critical because these GEs can significantly influence citizens' decision-making in elections, and (2) to accelerate research addressing these risks by sharing the publisher attribute perspective with the research community.
+This section presents citation patterns in representative and widely used GESs within the political domains of Japan and the United States using the methodology proposed in Section~\ref{sec:methodology}.
+The purpose of this experiment is twofold: (1) to reveal the potential attack surface of GESs from the perspective of PoisonedRAG attacks in representative and widely used GESs within the political domain, which is critical because these GESs can significantly influence citizens' decision-making in elections, and (2) to accelerate research addressing these risks by sharing the publisher attribute perspective with the research community.
 % Accordingly, this study focuses on representative and major closed models, examining questions in the political domain as an exemplar of an urgent and consequential issue through detailed analysis.
-Our experimental goal is not to demonstrate effectiveness across exhaustive domains, but rather to illustrate the attack surface and threats that exist in the GEs from the perspective of publisher attributes.
+Our experimental goal is not to demonstrate effectiveness across exhaustive domains, but rather to illustrate the attack surface and threats that exist in the GESs from the perspective of publisher attributes.
 
 \input{figs/fig_tex/party_wise.tex}
 
 \subsection{Experimental Setup}
 We focus on the political domain because the flow of information from political parties to citizens constitutes a cornerstone of democratic electoral processes~\cite{the-trust-gap-young-peoples-tactics-for-assessing-the-reliability-of-political-news-ijpp22, kovach2007elements}.
-Contemporary elections depend critically on digital information dissemination, and citizens increasingly rely on GEs to gather information that shapes their voting decisions.
-GEs can significantly influence citizens' decision-making, rendering the threat of PoisonedRAG attacks particularly severe in this domain.
-We emphasize that our experiment aims to measure actual citation patterns in the political domain rather than prescribe ideal proportions; we defer discussion of desirable citation balance for GEs to Section~\ref{sec:discussion}.
+Contemporary elections depend critically on digital information dissemination, and citizens increasingly rely on GESs to gather information that shapes their voting decisions.
+GESs can significantly influence citizens' decision-making, rendering the threat of PoisonedRAG attacks particularly severe in this domain.
+We emphasize that our experiment aims to measure actual citation patterns in the political domain rather than prescribe ideal proportions; we defer discussion of desirable citation balance for GESs to Section~\ref{sec:discussion}.
 
 We design political questions about topics common to both countries and generate answers to those questions.
 We prepare ten policy questions and ten ideology questions, totaling twenty questions.
@@ -20,7 +20,7 @@ We show all questions in our repository~\cite{QL_CIKM_RERO}.
 The scale of our question set is comparable to seminal evaluation studies, which typically use \(50\)--\(100\) questions (e.g., Guan et al.~\cite{guan2024language}; Wang et al.~\cite{wang2024factcheck}).
 
 We clarify that our questions are designed to elicit policy positions without bias toward specific parties.
-Our questions are designed to be politically neutral, focusing on whether GEs cite contents that articulate positions on the target topics rather than favoring any particular party; consequently, our findings reflect citation patterns rather than biases introduced by question design.
+Our questions are designed to be politically neutral, focusing on whether GESs cite contents that articulate positions on the target topics rather than favoring any particular party; consequently, our findings reflect citation patterns rather than biases introduced by question design.
 The questions are prepared in two languages: Japanese for Japanese politics and English for U.S. politics.
 Answers to Japanese questions are generated in Japanese, and answers to U.S. questions are generated in English.
 
@@ -28,24 +28,24 @@ We target political parties that satisfy each country's requirements for nationa
 Specifically, in Japan we target nine parties: ``Liberal Democratic Party (LDP)'', ``Constitutional Democratic Party of Japan (CDP)'', ``Komeito'', ``Japan Innovation Party (JIP)'', ``Democratic Party for the People (DPP)'', ``Japanese Communist Party (JCP)'', ``Reiwa Shinsengumi (Reiwa)'', ``Sanseito'', and ``Conservative Party of Japan (CPJ)''; in the U.S. we target five parties: ``Republican Party (GOP)'', ``Democratic Party (DP)'', ``Green Party (GPUS)'', ``Libertarian Party (LP)'', and ``Constitution Party (COP)''.
 We prepare twenty questions for each party, resulting in \(180\) questions for Japan and \(100\) questions for the U.S. respectively.
 
-We employ three GE models for answer generation: OpenAI GPT-5~\cite{chatgpt}, Claude Sonnet \(4\) (claude-4-sonnet-20250514)~\cite{claude}, and Gemini Flash \(2.0\) (gemini-2.0-flash)~\cite{gemini}, the most advanced publicly available models with web search mode enabled.
-We clarify why we focus on closed GE models in this study.
+We employ three GES models for answer generation: OpenAI GPT-5~\cite{chatgpt}, Claude Sonnet \(4\) (claude-4-sonnet-20250514)~\cite{claude}, and Gemini Flash \(2.0\) (gemini-2.0-flash)~\cite{gemini}, the most advanced publicly available models with web search mode enabled.
+We clarify why we focus on closed GES models in this study.
 According to surveys~\cite{menlo-ventures2025stategenaienterprise, a16z2025stateconsumerai}, closed models dominate the LLM market in both enterprise and consumer segments, with Claude, OpenAI, and Gemini together accounting for 88\% of spending share, while open-source models account for only 11\%.
 These models are developed in the U.S., but they dominate usage in Japan as well.
 According to GMO Research \& AI~\cite{gmo-research2025japanai}, Japanese users predominantly rely on closed models such as GPT, Gemini, and Copilot, all of which are U.S.-developed products.
-While Japan has developed numerous LLM models, to our knowledge, no Japanese GE models are publicly available.
-Furthermore, widely deployed GEs such as Google AI Overview, which integrates Google Search by default, rely on the closed model Gemini~\cite{stein2025expandingaioverviewsaimode, reid2025aisearchbeyondinformation}; consequently, users routinely encounter generated answers from closed GE models when conducting web searches, underscoring the central role these models play in contemporary information retrieval.
-Note that we do not limit our evaluation criteria to closed models because our evaluation criteria do not use the internal reasoning states of GEs but only use input and output of GEs (question and answer).
+While Japan has developed numerous LLM models, to our knowledge, no Japanese GES models are publicly available.
+Furthermore, widely deployed GESs such as Google AI Overview, which integrates Google Search by default, rely on the closed model Gemini~\cite{stein2025expandingaioverviewsaimode, reid2025aisearchbeyondinformation}; consequently, users routinely encounter generated answers from closed GES models when conducting web searches, underscoring the central role these models play in contemporary information retrieval.
+Note that we do not limit our evaluation criteria to closed models because our evaluation criteria do not use the internal reasoning states of GESs but only use input and output of GESs (question and answer).
 To provide reproducibility, the question-answer datasets are available in our repository~\cite{QL_CIKM_RERO}.
 
-In our experiments, the temperature of each GE model cannot be set because APIs do not allow setting temperature for LLMs with search mode enabled; thus, the cited web sources and textual content of answers vary across generations.
+In our experiments, the temperature of each GES model cannot be set because APIs do not allow setting temperature for LLMs with search mode enabled; thus, the cited web sources and textual content of answers vary across generations.
 To capture answer variation, we ask each question five times to suppress bias from a single answer.
 The answers are obtained on September \(4\), \(2025\).
 
 
 \subsection{Distribution of Content-injection Barriers in Answers}
 \label{sec:api_response}
-This sub-experiment answers which publisher attributes from the perspective of content-injection barriers GEs preferentially cite (\emph{R-1}).
+This sub-experiment answers which publisher attributes from the perspective of content-injection barriers GESs preferentially cite (\emph{R-1}).
 % To do this, we use citation classification and distribution of content-injection barriers method in Section~\ref{subsec:citation_classification}.
 We calculate the proportion of each content-injection barrier using the citation classification method in Section~\ref{subsec:citation_classification} as \( P_{\lambda_i} = |C^{\lambda_i}|/|C| \), where \( |C^{\lambda_i}| \) is the number of citations in content-injection barrier \( \lambda_i \) and \( |C| \) is the total number of citations.
 
@@ -91,7 +91,7 @@ This could be because those parties are major parties in their countries, and th
 \input{figs/fig_tex/citation_coverage.tex}
 
 \subsection{Distribution of Citation Reflection Power by Content-injection Barriers}
-This sub-experiment answers which publisher attributes from the perspective of content-injection barriers GEs preferentially and faithfully reflect in generated answers (\emph{R-2}).
+This sub-experiment answers which publisher attributes from the perspective of content-injection barriers GESs preferentially and faithfully reflect in generated answers (\emph{R-2}).
 % To do this, we use the citation reflection method in Section~\ref{subsec:citation_reflection}.
 For each answer \( r \) under all similarity bands \( b \) and content-injection barrier \( \lambda_i \), we calculate the total count \( N^{(b)}_{\lambda_i} = |\{c_i \in C \mid \psi_{\mathcal{P}}(c_i) = \lambda_i, \tau(c_i, r) = b\}| \) and proportion \( P^{(b)}_{\lambda_i} = N^{(b)}_{\lambda_i}/\sum_{\lambda} N^{(b)}_{\lambda} \) within each band using the classification method \(\psi_{\mathcal{P}}(c_i)\) in Section~\ref{subsec:citation_classification} and the citation reflection \(\tau(c_i, r)\) in Section~\ref{subsec:citation_reflection}.
 % We show the aggregated results in Figures~\ref{fig:citation_coverage_en_openai}--\ref{fig:citation_coverage_ja_claude}.
@@ -118,5 +118,5 @@ This difference likely reflects the depth of policy explanations on official par
 
 These results show that citation coverage serves not merely as a similarity metric but, by indicating which publisher attribute categories have the power to generate the answer, can reveal a model's strategy and the characteristics of the information ecosystem by country.
 In Japan, high similarity tends to be supported by dependence on target-party primary information sources, whereas in the U.S., high-barrier opponent and secondary information sources actively contribute to the formation of high similarity.
-% Broadly speaking, GEs tend to reflect cited contents more accurately as the reliability of the sources is high.
+% Broadly speaking, GESs tend to reflect cited contents more accurately as the reliability of the sources is high.
 % This suggests that LLMs take into account the nature of the information originator when deciding the extent to which cited sources are reflected in the answers.

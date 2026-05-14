@@ -1,10 +1,10 @@
 # QL Research ACM WWW Paper
 
-検索機能を備えた生成エンジン（Generative Engine）における引用情報の信頼性評価に関する研究論文
+検索機能を備えた生成エンジン GES (Generative Search Engine) における引用情報の信頼性評価に関する研究論文
 
 ## 概要
 
-本研究では、Web 検索機能を備えた生成エンジン（GE）の回答信頼性を評価するフレームワーク「CiEval」を提案し、日米の政治分野を対象に実証分析を行います。
+本研究では、Web 検索機能を備えた生成エンジン GES (Generative Search Engine) の回答信頼性を評価するフレームワーク「CiEval」を提案し、日米の政治分野を対象に実証分析を行います。
 
 ## ディレクトリ構成
 
@@ -214,7 +214,7 @@ make diff COMMITHASH=HEAD~1
 ### 章構成 (src_ja/)
 
 1. `1_introduction.tex` - はじめに
-2. `2_generative_engine.tex` - Generative Engine の概要
+2. `2_generative_engine.tex` - Generative Search Engine の概要
 3. `3_relatedworks_and_motivation.tex` - 関連研究と動機
 4. `4_proposed_framework.tex` - 提案フレームワーク
 5. `5_experiment.tex` - 実験

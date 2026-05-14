@@ -1,9 +1,9 @@
 \section{Related Works and Motivation}
-This section introduces poisoning attacks on \emph{RAG systems} and GEs, seminal evaluation criteria for \emph{RAG systems}, and the gap between GEs and \emph{RAG systems} that motivates our evaluation criteria.
+This section introduces poisoning attacks on \emph{RAG systems} and GESs, seminal evaluation criteria for \emph{RAG systems}, and the gap between GESs and \emph{RAG systems} that motivates our evaluation criteria.
 
 \label{sec:related}
-\subsection{Vulnerabilities of GEs}
-We introduce a poisoning attack in GEs.
+\subsection{Vulnerabilities of GESs}
+We introduce a poisoning attack in GESs.
 Zou et al.~\cite{poisonedrag-arxiv24} reveal and formalize an attack method called \emph{PoisonedRAG} that exploits \emph{RAG systems} to generate attacker-intended answers by placing malicious content into external databases.
 Even if attackers can inject a small volume of malicious text into external databases, \emph{RAG systems} can produce attacker-intended answers for specific questions.
 This malicious content includes text that attackers want displayed as answers to specific questions, especially false information such as ``\textit{OpenAI's CEO is Tim Cook.}''
@@ -16,10 +16,10 @@ These studies support the effectiveness of PoisonedRAG attacks and demonstrate t
 
 To succeed in a poisoning attack, the malicious content must satisfy two conditions: \emph{Retrieval Condition} and \emph{Generation Condition}.
 Retrieval Condition means that malicious content (such as text or HTML placed by attackers) is selected as top-\( k \) relevant content through retrieval tasks for target questions.
-In GEs, Retrieval Condition means that content on the web is retrieved as web pages ranked highly in search engine results by SE.
+In GESs, Retrieval Condition means that content on the web is retrieved as web pages ranked highly in search engine results by SE.
 Generation Condition means that the content is used as reasoning knowledge in the LLM and reflected in the generated answers.
 Aggarwal et al.~\cite{geo-apmr+24} propose \emph{generative engine optimization} (GEO), a method that optimizes website text structure and content from the perspective of Generation Condition to increase the exposure of web page content as citations in answers when the website passes the Retrieval Conditions.
-GEO theoretically supports that GEs are vulnerable to poisoning attacks.
+GEO theoretically supports that GESs are vulnerable to poisoning attacks.
 
 \subsection{Citation Evaluation}
 \label{subsec:citation_evaluation}
@@ -32,7 +32,7 @@ Faithfulness evaluation metrics are typically classified into three methods: ent
 Similarity-based methods are most appropriate for calculating reflection accuracy.
 Similarity-based methods quantitatively measure semantic similarity between two texts and rely on neural encoder models.
 Zhang et al.\ show that similarity-based methods achieve higher precision than entailment-based and QA-based methods in tasks evaluating consistency between long documents and their summaries~\cite{finegrainedcitationevaluationgenerated-arxiv24}.
-This approach aligns with GE behavior of summarizing web page content retrieved from search results and generating answers with citations.
+This approach aligns with GES behavior of summarizing web page content retrieved from search results and generating answers with citations.
 Citation evaluation applies these faithfulness evaluation methods to each sentence \( l_i \) of generated answer \( r \) with citations \( C_i \), and evaluates reflection accuracy for the entire answer \( r \).
 
 \subsection{Authority and }
@@ -42,10 +42,10 @@ Citation evaluation applies these faithfulness evaluation methods to each senten
 \subsection{Issue and Research Motivation}
 Existing seminal studies that focus on citation evaluation to assess reliability and safety of \emph{RAG systems} cannot capture the attack surface to poisoning attacks.
 Conventional evaluation criteria for \emph{RAG systems} analyze citation coverage and reflection accuracy of retrieved content from external databases; however, they do not examine which publishers of the content are selected as citations and assess the authority and trustworthiness of those sources.
-Thus, a gap remains between the seminal studies on \emph{RAG systems} and their applicability to GEs.
+Thus, a gap remains between the seminal studies on \emph{RAG systems} and their applicability to GESs.
 In \emph{RAG systems}, poisoning attack studies focus on how much malicious content attackers need to inject into external databases to succeed in the poisoning attack.
-However, since GEs retrieve information from the open web where attackers can inject malicious content more easily than in \emph{RAG systems}, the primary concern should shift to whether GEs retrieve even a small volume of malicious content injected by attackers during web search, which would result in a successful poisoning attack as discussed above.
+However, since GESs retrieve information from the open web where attackers can inject malicious content more easily than in \emph{RAG systems}, the primary concern should shift to whether GESs retrieve even a small volume of malicious content injected by attackers during web search, which would result in a successful poisoning attack as discussed above.
 
-To fill this gap, we propose novel evaluation criteria using publisher attributes of citations in generated answers that can assess the reliability and safety of GEs where poisoning attacks can be a threat.
-Our goal is to provide evaluation criteria for assessing the attack surface to poisoning attacks from generated answers by GEs, not to demonstrate successful attacks themselves or to determine whether malicious content has actually been injected; rather, we aim to provide evaluation criteria for assessing the potential effectiveness of poisoning attacks based on publisher attributes of citations in observed actual answers and to reveal the attack surface of GEs and the difficulty for poisoning attacks to succeed.
+To fill this gap, we propose novel evaluation criteria using publisher attributes of citations in generated answers that can assess the reliability and safety of GESs where poisoning attacks can be a threat.
+Our goal is to provide evaluation criteria for assessing the attack surface to poisoning attacks from generated answers by GESs, not to demonstrate successful attacks themselves or to determine whether malicious content has actually been injected; rather, we aim to provide evaluation criteria for assessing the potential effectiveness of poisoning attacks based on publisher attributes of citations in observed actual answers and to reveal the attack surface of GESs and the difficulty for poisoning attacks to succeed.
 

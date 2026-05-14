@@ -4,25 +4,25 @@
 \begin{figure*}[htbp]
     \centering
     \includegraphics[width=1.0\textwidth]{figs/overview.pdf}
-    \caption{Our research goals and methodology. We aim to characterize the attack surface of GEs to poisoning attacks by analyzing the publisher attributes of citations as \emph{content-injection barriers} in generated answers.}
+    \caption{Our research goals and methodology. We aim to characterize the attack surface of GESs to poisoning attacks by analyzing the publisher attributes of citations as \emph{content-injection barriers} in generated answers.}
     \label{fig:overview}
 \end{figure*}
 
-% To reveal which publisher attributes GEs preferentially cite, we propose a method to classify the publisher attributes of web content cited by GEs.
-We introduce novel evaluation criteria that focus on the publisher attributes of citations in answers to characterize the attack surface of GEs to poisoning attacks.
+% To reveal which publisher attributes GESs preferentially cite, we propose a method to classify the publisher attributes of web content cited by GESs.
+We introduce novel evaluation criteria that focus on the publisher attributes of citations in answers to characterize the attack surface of GESs to poisoning attacks.
 
 Our study aims to reveal two types of bias and define research questions:
-\emph{R-1}: Which publisher's content GEs preferentially cite and reveal bias of citation selection from the perspective of publishers?
+\emph{R-1}: Which publisher's content GESs preferentially cite and reveal bias of citation selection from the perspective of publishers?
 \emph{R-2}: How publisher's content has the power to influence the content of generated answers faithfully?
-By providing evaluation criteria that can answer these questions, we enable users and communities to assess whether vulnerable behaviors under PoisonedRAG attacks exist in GEs according to the nature and target of information retrieval, thereby contributing to the monitoring and maintenance of the safety of GEs.
-% We discuss the relationship between the nature of information retrieval targets and the threat of PoisonedRAG attacks on GEs as a ideal citation balance in Section~\ref{sec:discussion}.
+By providing evaluation criteria that can answer these questions, we enable users and communities to assess whether vulnerable behaviors under PoisonedRAG attacks exist in GESs according to the nature and target of information retrieval, thereby contributing to the monitoring and maintenance of the safety of GESs.
+% We discuss the relationship between the nature of information retrieval targets and the threat of PoisonedRAG attacks on GESs as a ideal citation balance in Section~\ref{sec:discussion}.
 
-% 権威性を基にしたクラスタリングとGEの特性をこのカテゴリを元に行うことで、攻撃者はどのような権威性を持つWeb出版者からコンテンツを発信しなければGEsにおける回答をゆがめられないのか、、
+% 権威性を基にしたクラスタリングとGESの特性をこのカテゴリを元に行うことで、攻撃者はどのような権威性を持つWeb出版者からコンテンツを発信しなければGESsにおける回答をゆがめられないのか、、
 To reveal these biases, we propose a component to classify the publisher attributes of citations in answers.
 In this component, we define the difficulty of publishing content on the web with specific publisher attributes as the \emph{content-injection barrier} and categorize publishers of citations based on these barriers into low-, medium-, and high-barrier categories.
 % ここから下は最後時間があるときまで文言考えたい、なんか腑に落ちない。
-Using this barrier, we can reveal which level of publisher authority attackers must achieve to successfully inject malicious content and influence GE answers.
-By clustering citations based on content-injection barriers and analyzing GE behavior by the barriers, we can assess the practical difficulty and threat of poisoning attacks.
+Using this barrier, we can reveal which level of publisher authority attackers must achieve to successfully inject malicious content and influence GES answers.
+By clustering citations based on content-injection barriers and analyzing GES behavior by the barriers, we can assess the practical difficulty and threat of poisoning attacks.
 
 % To derive this barrier, we classify publisher attributes to publisher categories and then derive the content-injection barrier based the publisher categories.
 % Second, we propose two evaluation criteria: (1) distribution of content-injection barriers in answers and (2) distribution of semantic consistency by content-injection barriers.
@@ -55,9 +55,9 @@ Here, \( \pi(c) \) maps citation \( c \) to category \( \pi; i \in \{1, 2, \cdot
 In our experiments in Section~\ref{sec:experiment}, we use labels such as ``Party'', ``Media'', ``Platform'', ``Owned'', ``Academia'', and ``Non-media-industry''.
 
 To build the function \( \pi(c) \), we adopt a hybrid strategy combining automatic category classification using LLM-as-a-Judge~\cite{survey-llm-as-a-judge-arxiv24,judging-llm-as-a-judge-with-mt-bench-and-chatbot-arena-arxiv23} and manual category classification.
-We prepare two GE models (ideally two models from different providers such as GPT and Gemini with web search mode enabled) and use them to identify publishers from domains and WHOIS information.
-Combining multiple GE models can reduce potential biases of single GE models and increase classifier accuracy~\cite{judging-llm-as-a-judge-with-mt-bench-and-chatbot-arena-arxiv23}.
-When classification results from the two GE models agree, we adopt that result directly; when they disagree, we perform manual classification.
+We prepare two GES models (ideally two models from different providers such as GPT and Gemini with web search mode enabled) and use them to identify publishers from domains and WHOIS information.
+Combining multiple GES models can reduce potential biases of single GES models and increase classifier accuracy~\cite{judging-llm-as-a-judge-with-mt-bench-and-chatbot-arena-arxiv23}.
+When classification results from the two GES models agree, we adopt that result directly; when they disagree, we perform manual classification.
 In our experiments, the authors make the final determination based on company information from the website and domain registration data.
 We employ zero-shot classification~\cite{radford2019language} following Kostina et al.~\cite{kostina2025largelanguagemodelstext}, who demonstrate high performance without training examples.
 For each citation \( c \in C \), the prompt receives two inputs: \( \text{url}(c) \) extracts the complete URL indicating the publisher's domain and path, and \( \text{whois}(c) \) retrieves domain registration data including ownership and organizational information.
@@ -94,7 +94,7 @@ To calculate the similarity, we employ Sentence-BERT~\cite{sentence-bert-arxiv19
 In our experiments in Section~\ref{sec:experiment}, we utilize the pre-trained Sentence-BERT model ``stsb-xlm-r-multilingual''~\cite{sentence-bert-arxiv19}, which has been trained on multilingual semantic textual similarity tasks.
 
 \textbf{Maximum Similarity Identification.}
-GEs often use only some sentences within long citation texts to generate particular answer sentences, thus we identify the maximum similarity between the answer sentence set \( S \) and citation \( c_i \) to reveal the reflection power of a citation in answers.
+GESs often use only some sentences within long citation texts to generate particular answer sentences, thus we identify the maximum similarity between the answer sentence set \( S \) and citation \( c_i \) to reveal the reflection power of a citation in answers.
 Finding the maximum similarity identifies the most relevant part of the citation text to the answer content.
 In detail, we calculate the maximum similarity as \( \text{sim}_{\text{max}}(S, c_i) = \max_{j \in \{1,\ldots,k\}, m \in \{1,\ldots,n_i\}} \text{sim}(l_j \in S, s_{i,m} \in S_{c_i}) \).
 In calculating this maximum similarity, we compute the similarity between each answer sentence \( l_j \in S \) and all sentences \( s_{i,m} \) within citation \( c_i \) and adopt the highest similarity value across all combinations.
