@@ -39,7 +39,18 @@ Citation evaluation applies these faithfulness evaluation methods to each senten
 TrustRAG~\cite{trustrag2024}, AuthGR~\cite{lee2026relevanceauthorityauthorityawaregenerative}
 
 \subsection{Personalization of LLMs}
+Several studies investigate how personalization affects answers generated from the internal knowledge of LLMs.
+Tornberg et al.~\cite{political-bias-audit-arxiv-2026} analyze political ideology bias in representative and widely used LLMs.
+Prior work has shown that LLMs produce left-leaning responses by default~\cite{santurkar2023whose, hartmann2023chatgpt}.
+Tornberg et al.\ report that LLMs shift strongly to the right for conservative users but only slightly to the left for progressive users, showing an asymmetric response to personalization.
 
+This effect extends beyond politics.
+Kearney et al.~\cite{kearney2025languagemodelschangefacts} show that across several domains, answers change systematically depending on user attributes such as race, gender, and age.
+The influence of user attributes also extends to tasks that have objectively correct answers.
+Vijjini et al.~\cite{exploreing-safery-in-personalization-arxiv2026} show that LLM response performance varies systematically even in tasks such as mathematical reasoning, general knowledge, and programming.
+
+However, all of these prior studies focus on answers generated from the internal knowledge of LLMs, not on answers built from web search results.
+No study has examined how personalization changes which sources GESs cite or how it affects citation quality such as source authority and reflection accuracy.
 
 \subsection{Issue and Research Motivation}
 Existing seminal studies that focus on citation evaluation to assess reliability and safety of \emph{RAG systems} cannot capture the attack surface to poisoning attacks.
