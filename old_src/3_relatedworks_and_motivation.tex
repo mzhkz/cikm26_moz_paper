@@ -1,0 +1,102 @@
+\section{Related Works and Motivation}
+This section reviews poisoning attacks on \emph{RAG systems} and GSEs, summarizes key evaluation criteria, and highlights challenges unique to GSEs.
+
+\label{sec:related}
+\subsection{Vulnerabilities of GSEs}
+We introduce a poisoning attack in GSEs.
+Zou et al.~\cite{poisonedrag-arxiv24} reveal and formalize an attack method called \emph{PoisonedRAG} that exploits \emph{RAG systems} to generate attacker-intended answers by placing malicious content into external databases.
+Even if attackers can inject a small volume of malicious text into external databases, \emph{RAG systems} can produce attacker-intended answers for specific questions.
+This malicious content includes text that attackers want displayed as answers to specific questions, especially false information such as ``\textit{OpenAI's CEO is Tim Cook.}''
+PoisonedRAG attacks target closed-ended questions like ``\textit{Who is the CEO of OpenAI?}'' rather than open-ended questions like ``\textit{What are the latest trends in AI?}''~\cite{poisonedrag-arxiv24}.
+
+In fact, several studies support the effectiveness of this attack.
+Chen et al.~\cite{chen2022rich} show that in \emph{RAG systems}, when content containing two different claims (e.g., \textit{OpenAI's CEO is Tim Cook.} and \textit{OpenAI's CEO is Sam Altman.}) is placed and answers are generated for each claim, the answers may include each respective claim.
+Wang et al.~\cite{wang2025ragconflictevidence} and Liu et al.~\cite{liu2025conflicts} demonstrate that even when there is an imbalance in the volume of supporting documents for each claim, \emph{RAG systems} tend to favor the answer with more supporting evidence, yet the underrepresented claim can still appear in responses.
+These studies support the effectiveness of PoisonedRAG attacks and demonstrate that RAG may cite malicious content even when attackers place only a small volume of it.
+
+To succeed in a poisoning attack, the malicious content must satisfy two conditions: \emph{Retrieval Condition} and \emph{Generation Condition}.
+Retrieval Condition means that malicious content (such as text or HTML placed by attackers) is selected as top-\( k \) relevant content through retrieval tasks for target questions.
+In GSEs, Retrieval Condition means that content on the web is retrieved as web pages ranked highly in search engine results by SE.
+Generation Condition means that the content is used as reasoning knowledge in the LLM and reflected in the generated answers.
+Aggarwal et al.~\cite{geo-apmr+24} propose \emph{generative engine optimization} (GEO), a method that optimizes website text structure and content from the perspective of Generation Condition to increase the exposure of web page content as citations in answers when the website passes the Retrieval Conditions.
+GEO theoretically supports that GSEs are vulnerable to poisoning attacks.
+
+PoisonedRAG attacks are closely tied to actual influence operations.
+Many case studies on democratic countries show that false or misleading information intentionally placed on the web has influenced elections and political discussions.
+In U.S. presidential elections, large-scale information manipulation by Russia has been observed across multiple social media platforms. 
+Badawy et al.~\cite{badawy2018analyzing} and Zannettou et al.~\cite{zannettou2018disinformation} analyzed the 2016 election and showed that Russia-linked troll accounts orchestrated disguised activities across multiple social media platforms.
+For the 2024 election, Cinus et al.~\cite{cinus2025cross} revealed that coordinated inauthentic activities and Russia-linked media content continue to systematically spread across social media platforms.
+In Japan, during the 2024 and 2025 elections, troll and bot accounts from outside Japan posted disinformation and manipulated narratives on social media platforms, amplifying the claims of specific political parties and shaping public opinion~\cite{nikkei2025sanseito,nippon2025russian}.
+In 2025, OpenAI reported that accounts linked to Chinese authorities used LLMs to generate false claims against politicians~\cite{openai2026disrupting}.
+Therefore, the act of attackers placing malicious content on the web to influence voter perception through GSEs will be a real threat.
+
+\subsection{Citation Evaluation}
+\label{subsec:citation_evaluation}
+We first introduce seminal studies that aim to evaluate \emph{RAG systems}.
+These studies highlight that in ideal \emph{RAG systems}, all claimed sentences in an answer output from the \emph{RAG system} are supported by external sources from databases as \emph{citations} (citation coverage) and the sentences with citations accurately and faithfully reflect the claims (reflection accuracy).
+To analyze them, numerous studies evaluate citation coverage and reflection accuracy, specifically focusing on \emph{RAG systems}~\cite{citeeval-acl25, ragas-eacl24, ares-naacl24, evaluating-verifiability-in-generative-search-engines-emnlp23, enabling-llms-to-generate-text-with-citations-emnlp23, ranking-generated-summaries-by-correctness-acl2019, evaluating-the-factual-consistency-of-abstractive-text-summarization-emnlp20, alignscore-acl23, feqa-acl20}.
+
+A core component of the analysis of reflection accuracy is faithfulness evaluation metrics~\cite{finegrainedcitationevaluationgenerated-arxiv24}.
+Faithfulness evaluation metrics are typically classified into three methods: entailment-based~\cite{ranking-generated-summaries-by-correctness-acl2019, true-reevaluating-factual-consistency-arxiv22, evaluating-the-factual-consistency-of-abstractive-text-summarization-emnlp20, alignscore-acl23}, similarity-based~\cite{bertscore-arxiv20, bartscore-neurips21}, and QA-based~\cite{feqa-acl20}.
+Similarity-based methods are most appropriate for calculating reflection accuracy.
+Similarity-based methods quantitatively measure semantic similarity between two texts and rely on neural encoder models.
+Zhang et al.\ show that similarity-based methods achieve higher precision than entailment-based and QA-based methods in tasks evaluating consistency between long documents and their summaries~\cite{finegrainedcitationevaluationgenerated-arxiv24}.
+This approach aligns with GSE behavior of summarizing web page content retrieved from search results and generating answers with citations.
+Citation evaluation applies these faithfulness evaluation methods to each sentence \( l_i \) of generated answer \( r \) with citations \( C_i \), and evaluates reflection accuracy for the entire answer \( r \).
+
+However, they do not examine which publishers of the content are selected as citations and assess the authority and trustworthiness of those sources.
+Thus, a gap remains between the seminal studies on \emph{RAG systems} and their applicability to GSEs.
+In \emph{RAG systems}, poisoning attack studies focus on how much malicious content attackers need to inject into external databases to succeed in the poisoning attack.
+In contrast, since GSEs retrieve information from the open web, where attackers can inject malicious content more easily than in \emph{RAG systems}, the main concern for GSEs is whether they retrieve and incorporate even a small amount of malicious content injected by attackers during web searches, since this can enable a successful poisoning attack as previously described.
+Thus, existing evaluation methods alone are insufficient to assess how vulnerable GSEs are to poisoning attacks or to fully characterize their attack surface.
+
+\subsection{Authority and Trustworthiness}
+Several studies propose methods to improve the inclusion of authoritative sources in citations generated by \emph{RAG systems} and GSEs.
+TrustRAG~\cite{zhou2025trustragenhancingrobustnesstrustworthiness} identifies and removes malicious documents during retrieval by clustering candidate documents and matching them with the internal knowledge of the LLM.
+AuthGR~\cite{lee2026relevanceauthorityauthorityawaregenerative} computes an authority score for web pages using a vision-language model that evaluates both the textual content of the page and visual features extracted from page screenshots, such as layout quality, design, and advertisement density. The system then preferentially cites web pages with high authority scores.
+
+However, evaluating only the content of citations is insufficient for assessing citation safety under poisoning attacks.
+As described in Section~\ref{subsec:citation_evaluation}, because anyone can publish content on the web, attackers can deliberately optimize the scores of content-based evaluation metrics while still injecting malicious information into the web.
+In fact, the \emph{Doppelganger} operation reported by EU DisinfoLab~\cite{eudisinfolab2022doppelganger,foreignaffairs2024doppelganger} shows that more than 700 fake news websites were created by imitating the domain names and designs of legitimate media, and their content was distributed while disguised as legitimate media.
+This method, in which attackers place a large amount of content that ``looks like legitimate media'' on the web, makes approaches that evaluate only the content itself ineffective.
+Therefore, for GSEs, we need to evaluate not only the content of citations, but also the authority and trustworthiness of their publishers.
+
+Furthermore, they typically assume the presence of poisoning attacks on \emph{RAG systems} and primarily focus on developing defenses or system improvements. 
+However, they do not provide a systematic understanding or measurement of the actual extent of citation selection bias and vulnerability found in production GSEs.
+
+
+\subsection{Personalization of LLMs}
+Personalization is a key factor in improving the user experience of chat-based applications such as ChatGPT, Claude, and Gemini.
+In personalization, the general approach is to embed the user's attribute information together with the user's question.
+This approach enables the applications to generate responses that more accurately reflect the user's preferences, background, and needs.
+
+Several studies investigate how personalization affects answers generated from the internal knowledge of LLMs.
+Tornberg et al.~\cite{political-bias-audit-arxiv-2026} analyze political ideology bias in representative and widely used LLMs.
+The study shows that LLMs produce left-leaning responses by default and LLMs shift strongly to the right for conservative users but only slightly to the left for progressive users, showing an asymmetric response to personalization.
+
+This effect is not limited to political topics.
+Kearney et al.~\cite{kearney2025languagemodelschangefacts} show that across several domains, answers change systematically depending on user attributes such as race, gender, and age.
+The influence of user attributes also extends to tasks that have objectively correct answers.
+Vijjini et al.~\cite{exploreing-safery-in-personalization-arxiv2026} show that LLM response performance varies systematically even in tasks such as mathematical reasoning, general knowledge, and programming.
+
+However, these previous studies focus on biases that arise from the internal knowledge of LLMs and do not examine GSEs, where answers are generated using web search as a broad external context. 
+To the best of our knowledge, no prior work has examined how personalization affects the citation behavior of GSEs, including aspects such as source authority and reflection accuracy.
+
+\subsection{Research Motivation}
+To better understand the attack surface of GSEs, our goal is to provide a novel evaluation framework. 
+Our framework introduces new evaluation criteria centered on the publisher attributes of citations in generated answers, enabling a systematic assessment of how robust GSEs are to poisoning attacks.
+
+Specifically, our framework addresses the following questions: 
+(1) Which publishers' content do GSEs preferentially cite, and does this reveal any bias in citation selection from the perspective of publishers? 
+(2) Which publishers' content has the power to influence the faithfulness and accuracy of the generated answers?
+(3) How does personalization impact citation behavior in GSEs?
+
+Importantly, our primary focus is on establishing robust evaluation criteria for assessing the vulnerability of GSEs to poisoning attacks.
+We do not aim to demonstrate practical attacks or identify actual instances of malicious content injection.
+Rather, our goal is to assess the potential risk of poisoning attacks to reveal the underlying attack surfaces, and to clarify the degree of resilience that GSEs exhibit against such attacks.
+
+In this study, we apply our framework to the political domain.
+In a society where GSEs serve as a primary means of accessing information, we aim to reveal, through the citation behavior of GSEs, the risks related to the delivery of political information, which is essential to democratic processes.
+In particular, we focus on the task in which voters gather information about specific political parties, and we identify the attack surface through our framework by political party, by ideology, by country, and by differences in voter personas (such as prior political knowledge and ideology).
+Based on this attack surface, we discuss in which areas attackers could potentially distort political information and cause bias or distortion in the delivery of information.
+
