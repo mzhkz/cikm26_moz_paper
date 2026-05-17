@@ -16,8 +16,6 @@ The purpose of this experiment is twofold: (1) to reveal the potential attack su
 % Accordingly, this study focuses on representative and major closed models, examining questions in the political domain as an exemplar of an urgent and consequential issue through detailed analysis.
 Our experimental goal is not to demonstrate effectiveness across exhaustive domains, but rather to illustrate the attack surface and threats that exist in the GSEs from the perspective of publisher attributes.
 
-\input{figs/fig_tex/party_wise.tex}
-
 \subsection{Experimental Setup}
 We focus on the political domain because the flow of information from political parties to citizens constitutes a cornerstone of democratic electoral processes~\cite{the-trust-gap-young-peoples-tactics-for-assessing-the-reliability-of-political-news-ijpp22, kovach2007elements}.
 Contemporary elections depend critically on digital information dissemination, and citizens increasingly rely on GSEs to gather information that shapes their voting decisions.
@@ -60,12 +58,6 @@ This sub-experiment answers which publisher attributes from the perspective of c
 % To do this, we use citation classification and distribution of content-injection barriers method in Section~\ref{subsec:citation_classification}.
 We calculate the proportion of each content-injection barrier using the citation classification method in Section~\ref{subsec:citation_classification} as $ P_{\lambda_i} = |C^{\lambda_i}|/|C| $, where $ |C^{\lambda_i}| $ is the number of citations in content-injection barrier $ \lambda_i $ and $ |C| $ is the total number of citations.
 
-We show the aggregated results in Figures~\ref{fig:all_en}--\ref{fig:all_ja}.
-These figures present stacked proportions by party and model.
-Each group of three stacked bar graphs shows the proportions of publisher attribute categories of citation web sources in the answer on the horizontal axis.
-For each party, the stacks are ordered left to right as OpenAI, Gemini, and Claude, respectively.
-The three graphs at the left edge of each figure show the combined results of all citations across parties as a baseline for each model.
-
 We first analyze the overall trends in citation patterns.
 Overall, for Japanese questions (Japanese parties), all three models show a high proportion of target-party primary information sources, accounting for about $60\%$: OpenAI $63.0\%$, Gemini $60.9\%$, and Claude $60.9\%$.
 In contrast, for U.S. questions (U.S. parties), the proportion of primary information sources decreases (OpenAI $43.9\%$, Gemini $27.0\%$, Claude $28.1\%$), and the proportion of secondary information sources increases.
@@ -99,17 +91,10 @@ For Sanseito and the Conservative Party of Japan, the shares from platforms and 
 Looking at the results for the Liberal Democratic Party in Japan and the Republican Party and Democratic Party in the U.S., questions about the major parties in their countries tend to have low citations from primary information sources.
 This could be because those parties are major parties in their countries, and there may be influence from the vast number of secondary information sources, especially in government and media domains.
 
-\input{figs/fig_tex/citation_coverage.tex}
-
 \subsection{Distribution of Citation Grounding Score by Content-injection Barriers}
 This sub-experiment answers which publisher attributes from the perspective of content-injection barriers GSEs preferentially and faithfully ground in generated answers (\emph{R-2}).
 % To do this, we use the Citation Grounding Score in Section~\ref{subsec:citation_grounding}.
 For each answer $r$ under all grounding bands $b$ and content-injection barrier $\lambda_i$, we calculate the total count $N^{(b)}_{\lambda_i} = |\{c_i \in C \mid \textsc{CIB}_{\mathcal{P}}(c_i) = \lambda_i, \textsc{CGS}(c_i, r) = b\}|$ and proportion $P^{(b)}_{\lambda_i} = N^{(b)}_{\lambda_i}/\sum_{\lambda} N^{(b)}_{\lambda}$ within each band using the classification method $\textsc{CIB}_{\mathcal{P}}(c_i)$ in Section~\ref{subsec:citation_classification} and the Citation Grounding Score $\textsc{CGS}(c_i, r)$ in Section~\ref{subsec:citation_grounding}.
-% We show the aggregated results in Figures~\ref{fig:citation_coverage_en_openai}--\ref{fig:citation_coverage_ja_claude}.
-
-We show the proportion of content-injection barriers within the similarity bands in Figures~\ref{fig:citation_coverage_en_openai}--\ref{fig:citation_coverage_ja_claude}.
-The figure shows how content-injection barriers of citations are distributed across these similarity levels using a Marimekko chart.
-
 We examine overall trends in citation grounding coverage across similarity bands.
 Comparing the distribution of the coverage between questions about Japanese and U.S. parties, we find that, in both settings, the proportion of highly reliable sources such as primary information sources and high-barrier sources has the greatest coverage in high-similarity bands, whereas the share of opponent and secondary information with medium to low barriers shrinks.
 This tendency is common to all models, indicating that high-similarity citations are more strongly supported by primary or high-barrier information.
