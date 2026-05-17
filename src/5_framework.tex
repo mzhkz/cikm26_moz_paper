@@ -1,0 +1,40 @@
+\section{Proposed Framework}
+
+\subsection{Embedding Persona and retrieve answers}
+
+
+\subsection{Injection Barrier}
+
+
+\subsection{Citation Grounding Score}
+\label{subsec:citation_grounding}
+The second component computes the \emph{Citation Grounding Score} ($\textsc{CGS}$) for each citation, which quantifies how strongly the answer sentences are textually grounded in the cited content.
+We introduce a scoring function $\textsc{CGS}(c, r)$ that assigns each citation $c$ and answer $r$ to an appropriate \emph{grounding band} $\mathcal{B} = \{\textsc{High}, \textsc{Mid}, \textsc{Low}\}$.
+We decompose the computation into three steps:
+
+\textbf{Decomposing Answers and Citations into Sets of Sentences.}
+First, we decompose answer $r$ into a sentence set $L = \{l_1, l_2, \ldots, l_k\}$ and each citation $c_i \in C$ into a sentence set $L_{c_i} = \{l_{i,1}, l_{i,2}, \ldots, l_{i,n_i}\}$.
+Because some sentences of answer $r$ have citation labels attached and the semantics of each answer sentence is independent, we need to decompose answer $r$ into sentences to evaluate grounding accurately.
+
+\textbf{Sentence-level Similarity.}
+We measure textual and semantic similarity between each answer sentence in $L = \{l_1, l_2, \ldots, l_k\}$ and each citation sentence in $L_{c_i} = \{l_{i,1}, l_{i,2}, \ldots, l_{i,n_i}\}$ for each citation $c_i \in C$.
+To measure similarity between two sentences, we introduce the similarity function $\mathrm{sim}(x, y)$ between two sentences $x$ and $y$.
+The function $\mathrm{sim}(x, y)$ returns a similarity score between the two sentences $x$ and $y$ as a value in the range of $-1$ to $1$.
+Here, a similarity value closer to $-1$ indicates lower semantic similarity, whereas a value closer to $1$ indicates higher semantic similarity.
+To calculate the similarity, we employ Sentence-BERT~\cite{sentence-bert-arxiv19}, which converts each sentence into dense embedding vectors and computes their semantic similarity through cosine similarity.
+In our experiments in Section~\ref{sec:experiment}, we utilize the pre-trained Sentence-BERT model ``stsb-xlm-r-multilingual''~\cite{sentence-bert-arxiv19}, which has been trained on multilingual semantic textual similarity tasks.
+
+\textbf{Maximum-grounding Aggregation.}
+GSEs often use only a few sentences within long citation texts to generate a particular answer sentence; thus, we aggregate the sentence-level similarities by taking the maximum between the answer sentence set $L$ and citation $c_i$ to reveal how strongly a citation grounds the answer.
+Taking the maximum identifies the most relevant part of the citation text to the answer content.
+Concretely, we define $\textsc{MaxSim}(L, c_i) = \max_{j \in \{1,\ldots,k\},\, m \in \{1,\ldots,n_i\}} \mathrm{sim}(l_j, l_{i,m})$, where $l_j \in L$ and $l_{i,m} \in L_{c_i}$.
+In computing this maximum, we evaluate $\mathrm{sim}(\cdot, \cdot)$ for every answer-citation sentence pair $(l_j, l_{i,m})$ within citation $c_i$ and adopt the highest similarity value across all combinations.
+
+\textbf{Band Assignment.}
+Finally, we categorize the aggregated grounding score $\textsc{MaxSim}(L, c_i)$ into three \emph{grounding bands} $\mathcal{B}$ to expose the grounding strength of a citation in the answer.
+We introduce a band-assignment operator $\textsc{Band}\!: [-1, 1] \to \mathcal{B}$ that maps the maximum similarity score to a band, and define $\textsc{CGS}(c_i, r) = \textsc{Band}(\textsc{MaxSim}(L, c_i))$.
+$\textsc{Band}(x)$ returns $\textsc{High}$ when $x \in [0.9, 1.0]$, $\textsc{Mid}$ when $x \in [0.8, 0.9)$, and $\textsc{Low}$ when $x \in [-1.0, 0.8)$.
+$\textsc{High}$ grounding (scores in $[0.9, 1.0]$) indicates strong semantic alignment between answer and citation sentences, suggesting direct grounding of the answer in the citation source.
+\textsc{Mid} grounding (scores in $[0.8, 0.9)$) represents moderate semantic overlap, indicating partial citation contribution.
+\textsc{Low} grounding (scores in $[-1.0, 0.8)$) reflects weak semantic connection, suggesting minimal grounding of the answer in the citation source.
+We employ these thresholds because $0.8$ has been used as a threshold for detecting paraphrased sentences~\cite{kabir2024banglaembed} and $0.9$ for classifying similar sentences~\cite{tumre2025improved} in prior studies.

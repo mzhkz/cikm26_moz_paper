@@ -15,7 +15,7 @@ Wang et al.~\cite{wang2025ragconflictevidence} and Liu et al.~\cite{liu2025confl
 These studies support the effectiveness of PoisonedRAG attacks and demonstrate that RAG may cite malicious content even when attackers place only a small volume of it.
 
 To succeed in a poisoning attack, the malicious content must satisfy two conditions: \emph{Retrieval Condition} and \emph{Generation Condition}.
-Retrieval Condition means that malicious content (such as text or HTML placed by attackers) is selected as top-\( k \) relevant content through retrieval tasks for target questions.
+Retrieval Condition means that malicious content (such as text or HTML placed by attackers) is selected as top-$ k $ relevant content through retrieval tasks for target questions.
 In GSEs, Retrieval Condition means that content on the web is retrieved as web pages ranked highly in search engine results by SE.
 Generation Condition means that the content is used as reasoning knowledge in the LLM and reflected in the generated answers.
 Aggarwal et al.~\cite{geo-apmr+24} propose \emph{generative engine optimization} (GEO), a method that optimizes website text structure and content from the perspective of Generation Condition to increase the exposure of web page content as citations in answers when the website passes the Retrieval Conditions.
@@ -42,7 +42,7 @@ Similarity-based methods are most appropriate for calculating reflection accurac
 Similarity-based methods quantitatively measure semantic similarity between two texts and rely on neural encoder models.
 Zhang et al.\ show that similarity-based methods achieve higher precision than entailment-based and QA-based methods in tasks evaluating consistency between long documents and their summaries~\cite{finegrainedcitationevaluationgenerated-arxiv24}.
 This approach aligns with GSE behavior of summarizing web page content retrieved from search results and generating answers with citations.
-Citation evaluation applies these faithfulness evaluation methods to each sentence \( l_i \) of generated answer \( r \) with citations \( C_i \), and evaluates reflection accuracy for the entire answer \( r \).
+Citation evaluation applies these faithfulness evaluation methods to each sentence $ l_i $ of generated answer $ r $ with citations $ C_i $, and evaluates reflection accuracy for the entire answer $ r $.
 
 However, they do not examine which publishers of the content are selected as citations and assess the authority and trustworthiness of those sources.
 Thus, a gap remains between the seminal studies on \emph{RAG systems} and their applicability to GSEs.
