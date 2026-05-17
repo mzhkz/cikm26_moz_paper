@@ -66,6 +66,7 @@ However, they do not provide a systematic understanding or measurement of the ac
 
 
 \subsection{Personalization of LLMs}
+\label{sec:related_works_personalization}
 Personalization is a key factor in improving the user experience of chat-based applications such as ChatGPT, Claude, and Gemini.
 In personalization, the general approach is to embed the user's attribute information together with the user's question.
 This approach enables the applications to generate responses that more accurately reflect the user's preferences, background, and needs.
@@ -79,7 +80,7 @@ Kearney et al.~\cite{kearney2025languagemodelschangefacts} show that across seve
 The influence of user attributes also extends to tasks that have objectively correct answers.
 Vijjini et al.~\cite{exploreing-safery-in-personalization-arxiv2026} show that LLM response performance varies systematically even in tasks such as mathematical reasoning, general knowledge, and programming.
 
-However, these previous studies focus on biases that arise from the internal knowledge of LLMs and do not examine GSEs, where answers are generated using web search as a broad external context. 
+However, these prior studies focus on biases that arise from the internal knowledge of LLMs and do not examine GSEs, where answers are generated using web search as a broad external context. 
 To the best of our knowledge, no prior work has examined how personalization affects the citation behavior of GSEs, including aspects such as source authority and reflection accuracy.
 
 \subsection{Research Motivation}
@@ -91,12 +92,12 @@ Specifically, our framework addresses the following questions:
 (2) Which publishers' content has the power to influence the faithfulness and accuracy of the generated answers?
 (3) How does personalization impact citation behavior in GSEs?
 
-Importantly, our primary focus is on establishing robust evaluation criteria for assessing the vulnerability of GSEs to poisoning attacks.
+Our primary focus is on establishing robust evaluation criteria for assessing the vulnerability of GSEs to poisoning attacks.
 We do not aim to demonstrate practical attacks or identify actual instances of malicious content injection.
 Rather, our goal is to assess the potential risk of poisoning attacks to reveal the underlying attack surfaces, and to clarify the degree of resilience that GSEs exhibit against such attacks.
 
 In this study, we apply our framework to the political domain.
 In a society where GSEs serve as a primary means of accessing information, we aim to reveal, through the citation behavior of GSEs, the risks related to the delivery of political information, which is essential to democratic processes.
-In particular, we focus on the task in which voters gather information about specific political parties, and we identify the attack surface through our framework by political party, by ideology, by country, and by differences in voter personas (such as prior political knowledge and ideology).
+In particular, we focus on the task in which voters gather information about specific political parties, and we identify the attack surface through our framework by political party, by ideology, by country, and by differences in voter profiles (such as prior political knowledge and ideology).
 Based on this attack surface, we discuss in which areas attackers could potentially distort political information and cause bias or distortion in the delivery of information.
 
