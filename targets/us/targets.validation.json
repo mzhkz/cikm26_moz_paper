@@ -1,0 +1,20 @@
+{
+  "domain": "politics",
+  "country": "us",
+  "parties": [
+    {
+      "id": "DEM",
+      "name": "Democratic Party",
+      "primary_domains": ["democrats.org", "democraticleader.house.gov"],
+      "group": "opposition",
+      "ideology": "progressive"
+    },
+    {
+      "id": "GOP",
+      "name": "Republican Party",
+      "primary_domains": ["gop.com", "rnc.org", "republicans.house.gov"],
+      "group": "ruling",
+      "ideology": "conservative"
+    }
+  ]
+}

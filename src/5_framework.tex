@@ -6,7 +6,7 @@ Our framework consists of three main components: (1) user proifle embedding and 
 \subsection{Embedding User Profiles and Retrieving Answers}
 As one form of personalization, we adopt a user profile that bundles a user's attributes and inject it into the GSE.
 We pick up a user attribute set $\mathcal{A}$ that influences GSE answers and build a set of user profiles from their combinations $\mathcal{U} = \textsc{Combinations}(\mathcal{A})$.
-In our experiment (Section~\ref{sec:experiment}), motivated by the finding that political ideology influences generated answers (Section~\ref{sec:related_works_personalization}), we use two attributes: \textbf{political knowledge} with levels \textsc{Unknown} and \textsc{High}, and \textbf{political ideology} with levels \textsc{Conservative}, \textsc{Progressive}, and \textsc{Neutral}.
+In our experiment (Section~\ref{sec:experiment}), we use two attributes: \textbf{political knowledge} with levels \textsc{Unknown} and \textsc{High}, and \textbf{political ideology} with levels \textsc{Conservative}, \textsc{Progressive}, and \textsc{Neutral}.
 From these, we construct three user profiles: \textsc{Unknown-Neutral}, \textsc{Unknown-Progressive}, and \textsc{High-Progressive}.
 Our framework is extensible to other attributes such as age, gender, and education level.
 

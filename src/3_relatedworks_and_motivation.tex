@@ -58,7 +58,7 @@ AuthGR~\cite{lee2026relevanceauthorityauthorityawaregenerative} computes an auth
 However, evaluating only the content of citations is insufficient for assessing citation safety under poisoning attacks.
 As described in Section~\ref{subsec:citation_evaluation}, because anyone can publish content on the web, attackers can deliberately optimize the scores of content-based evaluation metrics while still injecting malicious information into the web.
 In fact, the \emph{Doppelganger} operation reported by EU DisinfoLab~\cite{eudisinfolab2022doppelganger,foreignaffairs2024doppelganger} shows that more than 700 fake news websites were created by imitating the domain names and designs of legitimate media, and their content was distributed while disguised as legitimate media.
-This method, in which attackers place a large amount of content that ``looks like legitimate media'' on the web, makes approaches that evaluate only the content itself ineffective.
+Such ``legitimate-looking'' malicious content undermines approaches that evaluate only the content itself, causing both false negatives and false positives.
 Therefore, for GSEs, we need to evaluate not only the content of citations, but also the authority and trustworthiness of their publishers.
 
 Furthermore, they typically assume the presence of poisoning attacks on \emph{RAG systems} and primarily focus on developing defenses or system improvements. 
@@ -85,19 +85,16 @@ To the best of our knowledge, no prior work has examined how personalization aff
 
 \subsection{Research Motivation}
 To better understand the attack surface of GSEs, our goal is to provide a novel evaluation framework. 
-Our framework introduces new evaluation criteria centered on the publisher attributes of citations in generated answers, enabling a systematic assessment of how robust GSEs are to poisoning attacks.
+Our framework introduces new evaluation criteria centered on the publisher attributes of citations in generated answers, enabling a systematic assessment of the underlying attack surfaces and the resilience of GSEs against poisoning attacks.
+Our focus is on establishing evaluation criteria for the attack surface of GSEs to poisoning attacks, not on demonstrating practical attacks or identifying actual malicious content.
 
-Specifically, our framework addresses the following questions: 
-(1) Which publishers' content do GSEs preferentially cite, and does this reveal any bias in citation selection from the perspective of publishers? 
-(2) Which publishers' content has the power to influence the faithfulness and accuracy of the generated answers?
-(3) How does personalization impact citation behavior in GSEs?
+Specifically, our framework addresses the following research questions:
+\textbf{\textit{R-1}}: Which publishers' content do GSEs preferentially cite, and does this reveal any bias in citation selection from the perspective of publishers?
+\textbf{\textit{R-2}}: Which publishers' content has the power to influence the faithfulness and accuracy of generated answers?
+\textbf{\textit{R-3}}: How does personalization affect the citation behavior of GSEs?
 
-Our primary focus is on establishing robust evaluation criteria for assessing the vulnerability of GSEs to poisoning attacks.
-We do not aim to demonstrate practical attacks or identify actual instances of malicious content injection.
-Rather, our goal is to assess the potential risk of poisoning attacks to reveal the underlying attack surfaces, and to clarify the degree of resilience that GSEs exhibit against such attacks.
-
-In this study, we apply our framework to the political domain.
-In a society where GSEs serve as a primary means of accessing information, we aim to reveal, through the citation behavior of GSEs, the risks related to the delivery of political information, which is essential to democratic processes.
-In particular, we focus on the task in which voters gather information about specific political parties, and we identify the attack surface through our framework by political party, by ideology, by country, and by differences in voter profiles (such as prior political knowledge and ideology).
-Based on this attack surface, we discuss in which areas attackers could potentially distort political information and cause bias or distortion in the delivery of information.
+We apply our framework to the political domain, where GSEs increasingly mediate access to information essential to democratic processes.
+Because the flow of information from political parties to citizens is a cornerstone of democratic electoral processes~\cite{the-trust-gap-young-peoples-tactics-for-assessing-the-reliability-of-political-news-ijpp22, kovach2007elements}, GSEs can substantially influence citizens' decision-making in elections.
+Especially, focusing on the task of voters gathering information about specific political parties, we characterize the attack surface across political parties, ideologies, countries, and voter profiles (e.g., prior political knowledge and ideology).
+Based on this analysis, we discuss where attackers could distort political information delivered through GSEs.
 

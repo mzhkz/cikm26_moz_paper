@@ -1,0 +1,62 @@
+{
+	"domain": "politics",
+	"country": "jp",
+	"parties": [
+		{
+			"id": "LDP",
+			"name": "自由民主党",
+			"primary_domains": ["jimin.jp"],
+			"group": "ruling",
+			"ideology": "conservative"
+		},
+		{
+			"id": "JIP",
+			"name": "日本維新の会",
+			"primary_domains": ["o-ishin.jp"],
+			"group": "ruling",
+			"ideology": "conservative"
+		},
+		{
+			"id": "CRA",
+			"name": "中道改革連合",
+			"primary_domains": ["craj.jp", "cdp-japan.jp", "komei.or.jp"],
+			"group": "opposition",
+			"ideology": "progressive"
+		},
+		{
+			"id": "DPP",
+			"name": "国民民主党",
+			"primary_domains": ["new-kokumin.jp"],
+			"group": "opposition",
+			"ideology": "conservative"
+		},
+		{
+			"id": "JCP",
+			"name": "日本共産党",
+			"primary_domains": ["jcp.or.jp"],
+			"group": "opposition",
+			"ideology": "progressive"
+		},
+		{
+			"id": "REIWA",
+			"name": "れいわ新選組",
+			"primary_domains": ["reiwa-shinsengumi.com"],
+			"group": "opposition",
+			"ideology": "progressive"
+		},
+		{
+			"id": "SANSEITO",
+			"name": "参政党",
+			"primary_domains": ["sanseito.jp"],
+			"group": "opposition",
+			"ideology": "conservative"
+		},
+		{
+			"id": "CPJ",
+			"name": "日本保守党",
+			"primary_domains": ["hoshuto.jp"],
+			"group": "opposition",
+			"ideology": "conservative"
+		}
+	]
+}

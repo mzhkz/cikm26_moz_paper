@@ -1,0 +1,20 @@
+{
+  "domain": "politics",
+  "country": "jp",
+  "parties": [
+    {
+      "id": "LDP",
+      "name": "自由民主党",
+      "primary_domains": ["jimin.jp"],
+      "group": "ruling",
+      "ideology": "conservative"
+    },
+    {
+      "id": "CDP",
+      "name": "立憲民主党",
+      "primary_domains": ["cdp-japan.jp"],
+      "group": "opposition",
+      "ideology": "progressive"
+    }
+  ]
+}
