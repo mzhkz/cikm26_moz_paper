@@ -49,56 +49,35 @@ Specifically, in Japan we target eight parties. The ruling parties are ``Liberal
 \subsection{Experimental Results}
 
 
-\textbf{Distribution of Content-injection Barriers in Answers}
+\textbf{Distribution of Content-injection Barriers.}
 
-we defer discussion of desirable citation balance for GSEs to Section~\ref{sec:discussion}.
+まず、ペルソナ別 + alignment別をマージしたチャートを出す。
+モデル毎に差があります。
+国別でも差があります。
+これを1枚のFigureで伝える。
+LLMの結果は全般、Web検索よりも一次情報の割合が高い傾向にある。。
 
-This sub-experiment answers which publisher attributes from the perspective of content-injection barriers GSEs preferentially cite (\emph{R-1}).
-% To do this, we use citation classification and distribution of content-injection barriers method in Section~\ref{subsec:citation_classification}.
-We calculate the proportion of each content-injection barrier using the citation classification method in Section~\ref{subsec:citation_classification} as $ P_{\lambda_i} = |C^{\lambda_i}|/|C| $, where $ |C^{\lambda_i}| $ is the number of citations in content-injection barrier $ \lambda_i $ and $ |C| $ is the total number of citations.
-
-We first analyze the overall trends in citation patterns.
-Overall, for Japanese questions (Japanese parties), all three models show a high proportion of target-party primary information sources, accounting for about $60\%$: OpenAI $63.0\%$, Gemini $60.9\%$, and Claude $60.9\%$.
-In contrast, for U.S. questions (U.S. parties), the proportion of primary information sources decreases (OpenAI $43.9\%$, Gemini $27.0\%$, Claude $28.1\%$), and the proportion of secondary information sources increases.
-We observe a large structural difference: primary source dependence in the Japanese setting and external source dependence in the U.S. setting.
-
-\textbf{Qualitative Analysis:}
-We discuss qualitative insights from the analysis in Section~\ref{sec:experiment}.
-The distribution difference in citations from high content-injection-barrier sources (academia and government) between Japan and the U.S. is notable.
-Focusing on web pages cited in U.S. questions, we find that a high percentage of citations came from the ``www.presidency.ucsb.edu'' domain ($29.0\%$ in OpenAI, $23.2\%$ in Gemini, $47.8\%$ in Claude).
-This web content is owned by the American Presidency Project, a nonpartisan academic archive at the University of California, Santa Barbara, that collects, preserves, and provides public access to official documents, speeches, and records related to the U.S. presidency.
-Because the archive stores and publishes factual information, such as public papers and speech transcripts, with minimal editing, the content could be compatible with LLMs for interpreting and reasoning.
-The high percentage of citations from external low content-injection barrier sources in the U.S. could reflect the accessibility of unedited public web content.
-
-The number of web search hits also provides insight into the tendency for ruling parties to cite fewer primary information sources.
-When entering only the party names of Japanese parties in the Google search engine, the number of search hits was $47{,}100{,}000$ for LDP, the ruling party throughout successive administrations, whereas the others averaged $8{,}566{,}250$.
-This suggests that the entire proportion of primary information sources on the web related to LDP is relatively smaller than other parties, resulting in the small proportion of primary information sources in citations.
-For U.S. parties, Republican Party and Democratic Party, which are the two parties that have alternated as the ruling party throughout history, $165{,}000{,}000$ and $399{,}000{,}000$ search hits were found, respectively.
-However, the Green Party of the U.S. had $2{,}190{,}000{,}000$ search hits, substantially exceeding the two major parties, while maintaining a high proportion of primary information sources in GSE citations.
-This suggests that the amount of information about the target topic is somewhat related to cited primary information, with a counterexample indicating that information-provider strategy can suppress this relationship.
+次に野党と与党の差を出す。
+野党の方が与党のほうが、一次情報の割合が高い傾向にある。
 
 
+\textbf{Distribution of Dominance.}
+まず、ペルソナ別 + alignment別をマージしたチャートを出す。
+次に野党と与党の差を出す。
 
-\textbf{Distribution of Citation Grounding Score by Content-injection Barriers}
-This sub-experiment answers which publisher attributes from the perspective of content-injection barriers GSEs preferentially and faithfully ground in generated answers (\emph{R-2}).
-% To do this, we use the Citation Grounding Score in Section~\ref{subsec:citation_grounding}.
-For each answer $r$ under all grounding bands $b$ and content-injection barrier $\lambda_i$, we calculate the total count $N^{(b)}_{\lambda_i} = |\{c_i \in C \mid \textsc{CIB}_{\mathcal{P}}(c_i) = \lambda_i, \textsc{CGS}(c_i, r) = b\}|$ and proportion $P^{(b)}_{\lambda_i} = N^{(b)}_{\lambda_i}/\sum_{\lambda} N^{(b)}_{\lambda}$ within each band using the classification method $\textsc{CIB}_{\mathcal{P}}(c_i)$ in Section~\ref{subsec:citation_classification} and the Citation Grounding Score $\textsc{CGS}(c_i, r)$ in Section~\ref{subsec:citation_grounding}.
-We examine overall trends in citation grounding coverage across similarity bands.
-Comparing the distribution of the coverage between questions about Japanese and U.S. parties, we find that, in both settings, the proportion of highly reliable sources such as primary information sources and high-barrier sources has the greatest coverage in high-similarity bands, whereas the share of opponent and secondary information with medium to low barriers shrinks.
-This tendency is common to all models, indicating that high-similarity citations are more strongly supported by primary or high-barrier information.
-In contrast, in the low-similarity bands, references originating from opponent and secondary information sources with medium to low barriers are prominent, forming a citation structure where the link between answer sentences and cited sentences is weak.
+ChatGPTはGemini,ClaudeよりもPrimary informationの割合が高い傾向にある。
+Claudeは全体的に、low barrierが回答に占める引用テキストの割合が高い傾向にある。
 
-We analyze model-specific characteristics in citation coverage.
-Clear differences exist in the distributions by model.
-In the U.S., the $\geq 0.90$ band expands in all models, securing high similarity not only with primary information sources but also in parallel with opponent sources and high-barrier sources.
-In Japan, however, OpenAI has a notably narrow $\geq 0.90$ band, with most citations concentrated in the low-similarity band ($[-1.0, 0.8]$).
-Gemini shows the clearest tendency to increase the proportion of primary information sources and decrease that of low-barrier sources as the similarity rank increases.
-Claude forms high-similarity bands as the main component in both countries; in Japan, primary information sources dominate the high-similarity bands, whereas in the U.S., medium- to high-barrier sources contribute substantially, making co-existence with opponent and secondary information sources conspicuous.
 
-We compare citation coverage patterns between Japan and the U.S.
-With questions about Japanese politics, all models show a tendency to increase the proportion of primary information sources and decrease those of low- to medium-barrier sources as the similarity rank increases.
-With questions about U.S. politics, by contrast, even in the high-similarity bands the shares of opponent and secondary information sources such as medium- and high-barrier sources are large, and the share of primary information sources is limited.
-This difference likely reflects the depth of policy explanations on official party domains and differences in the surrounding external knowledge infrastructure (e.g., government statistics, think tanks, major media, aggregation platforms), as discussed in Section~\ref{sec:api_response}.
+\textbf{Distribution of Citation Grounding.}
+まず、ペルソナ別 + alignment別をマージしたチャートを出す。
+次に野党と与党の差を出す。
 
-These results show that citation coverage serves not merely as a similarity metric but, by indicating which publisher attribute categories have the power to generate the answer, can reveal a model's strategy and the characteristics of the information ecosystem by country.
-In Japan, high similarity tends to be supported by dependence on target-party primary information sources, whereas in the U.S., high-barrier opponent and secondary information sources actively contribute to the formation of high similarity.
+
+全体、、階段になっている。
+
+ChatGPTはPrimary informationの割合が高い傾向にある。また、distribution of citationよりも、一次情報の割合が高い傾向にある。primary informationの反映率は他のbarrierより強い傾向にある。
+Dominanceも高いため、ChatGPTは一次情報を多く引用し、かつ引用テキストの割合も高い傾向にある。
+
+一方、Claudeは反映率も、dominationに比例して高くなっている。
+したがって攻撃面として、比較的発信コストが低いコンテンツが、回答の内容に大きな影響を与える可能性がある。

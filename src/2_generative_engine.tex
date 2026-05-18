@@ -4,7 +4,7 @@ This section introduces GSE (Generative Search Engine) and its system model.
 GSEs are information retrieval systems that integrate web search results from queries transformed from user questions and generate synthesized answers while citing web content using large language models (LLMs)~\cite{geo-apmr+24}.
 GSEs receive a question from users, perform web searches, and generate answers with LLMs using the search results.
 
-Pranjal et al.\ formalize GSEs and provide a system model~\cite{geo-apmr+24}.
+Aggarwal et al.\ formalize GSEs and provide a system model~\cite{geo-apmr+24}.
 A GSE is formalized as a function \( f_{GSE}^{model} \) that takes a user question \( q_u \) and personalization information \( P_U \) as inputs and generates a textual answer \( r \):
 $ f_{GSE}^{model} := (q_u, P_U) \rightarrow r $.
 
@@ -13,6 +13,7 @@ Content retrieval collects the information necessary to generate answers from th
 The user query \( q_u \) is converted by LLMs into multiple queries \( Q^{\prime} = \{q_1, q_2, \cdots, q_n\} \) for the web search.
 These queries are sent to a search engine \( SE \), and GSEs obtain a set of web sources \( S = \{s_1, s_2, \cdots, s_m\} \) from the search results.
 Each result set in $S$ for a web search query \( q_i \) typically consists of the top \( k \) web sources ranked by the search engine's metrics~\cite{poisonedrag-arxiv24, modern-information-retrieval-a-brief-overview-3320, geo-apmr+24}.
+
 
 Answer generation cites the web sources obtained in the content retrieval phase and generates answers to user queries.
 Web sources \( S \) are converted into a summary set \( Sum = \{Sum_1, Sum_2, \cdots, Sum_m\} \) that extracts and summarizes the content of web sources for generating answers to the user query \( q_u \).
