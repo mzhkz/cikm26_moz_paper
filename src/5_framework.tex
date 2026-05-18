@@ -59,6 +59,19 @@ We define five content-injection barriers $\Lambda$: \emph{Primary Sources}, \em
 \emph{Medium-Barrier Sources} are domains owned by organizations or companies with editorial processes where journalism bias or interests may appear (``Media'' and ``Non-media-industry'' in our experiments).
 \emph{High-Barrier Sources} are domains where authors are required to remain neutral and objective and manipulation is difficult (``Academia'' and ``Government'' in our experiments).
 
+\subsection{Domination Score}
+Our framework computes the \emph{Domination Score} ($\textsc{DS}$) for each generated answer, which quantifies the proportion of cited text relative to the total text volume of the generated answer.
+This metric has been one of the primary evaluation criteria in the context of GEO, originally defined as a word-count-based measure~\cite{aggarwal2024geo}.
+However, decomposing text into words is language-dependent and biased toward English; thus, we redesign it on a character-count basis and refer to it as the \emph{Domination Score}.
+The Domination Score is computed by the following equation:
+
+\begin{equation}
+    \textsc{DS}(r) = \frac{\sum_{c \in C} \textsc{CharCount}(c)}{\textsc{CharCount}(r)}
+\end{equation}
+
+\noindent where $\textsc{CharCount}(\cdot)$ returns the number of characters in the given text.
+By aggregating the Domination Score for each content-injection barrier, we reveal the attack surface of GSEs.
+
 \subsection{Citation Grounding Score}
 \label{subsec:citation_grounding}
 Our framework introduces the \emph{Citation Grounding Score} ($\textsc{CGS}$) for each citation, which quantifies how strongly the answer sentences are semantically grounded in the cited content.
