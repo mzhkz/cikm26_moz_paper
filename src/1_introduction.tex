@@ -40,13 +40,13 @@ Further, we identify differences in citation patterns across models, user profil
 Our results demonstrate that for users without prior political knowledge, GSEs predominantly cite low-barrier sources, that is, sources that can be published with minimal authority or only with user registration (such as Reddit, X, and personal blogs), making them particularly susceptible to poisoning attacks.
 In contrast, for users with prior knowledge, GSEs predominantly cite high-barrier sources (such as official party websites), regardless of the model or the political party targeted by the question.
 
-
-\noindent
-\textbf{Our main contributions are as follows:} 
-(1) We propose a framework to characterize the attack surface of GSEs for PoisonedRAG attacks in the political domain.
-The framework classifies citations in generated answers by \emph{content-injection barrier} using LLM-as-a-Judge and incorporates closed-ended political questions posed under user profiles that vary users' prior political knowledge and ideology to reveal the effect of personalization on citation behavior.
-(2) We conduct experiments on representative and widely used GSEs in the United States and Japan, covering $280$ questions and $4{,}200$ answers.
-(3) We find that GSEs queried by users without prior political knowledge cite low-barrier sources (e.g., social media) in approximately $30\%$ of citations, whereas knowledgeable users elicit predominantly high-barrier citations (e.g., official party sites).
+Our main contributions are as follows:
+\begin{enumerate}
+    \item We propose a framework to characterize the attack surface of GSEs for PoisonedRAG attacks in the political domain.
+    The framework classifies citations in generated answers by \emph{content-injection barrier} using LLM-as-a-Judge and incorporates closed-ended political questions posed under user profiles that vary users' prior political knowledge and ideology to reveal the effect of personalization on citation behavior.
+    \item We conduct experiments on representative and widely used GSEs in the United States and Japan, covering $280$ questions and $4{,}200$ answers.
+    \item We find that GSEs queried by users without prior political knowledge cite low-barrier sources (e.g., social media) in approximately $30\%$ of citations, whereas knowledgeable users elicit predominantly high-barrier citations (e.g., official party sites).
+\end{enumerate}
 
 
 % To address this gap, we introduce novel evaluation criteria that focus on the publisher attributes of citation in answers. 
