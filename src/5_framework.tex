@@ -71,13 +71,13 @@ The political influence operations described in Section~\ref{sec:related}, inclu
 
 \subsection{Domination Score}
 Our framework computes the \emph{Domination Score} ($\textsc{DS}$) for each generated answer, which quantifies the proportion of cited text relative to the total text volume of the generated answer.
-This metric has been one of the primary evaluation criteria in the context of GEO, originally defined as a word-count-based measure~\cite{aggarwal2024geo}.
+This metric has been one of the primary evaluation criteria in the context of GEO, originally defined as a word-count-based measure~\cite{geo-apmr+24}.
 However, decomposing text into words is language-dependent and biased toward English; thus, we redesign it on a character-count basis and refer to it as the \emph{Domination Score}.
 The Domination Score is computed by the following equation:
 
-\begin{equation}
+$$
     \textsc{DS}(r) = \frac{\sum_{c \in C} \textsc{CharCount}(c)}{\textsc{CharCount}(r)}
-\end{equation}
+$$
 
 \noindent where $\textsc{CharCount}(\cdot)$ returns the number of characters in the given text.
 By aggregating the Domination Score for each content-injection barrier, we reveal the attack surface of GSEs.

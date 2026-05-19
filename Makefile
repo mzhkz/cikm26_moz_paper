@@ -12,12 +12,12 @@ DOCKER=docker run -v $(CURDIR):/work -w /work/tmp ${TEXLIVEIMAGE}
 
 
 # for english
-# PDFLATEX=pdflatex
-# BIBTEX=bibtex
+PDFLATEX=pdflatex
+BIBTEX=bibtex
 
 # for japanese
-PDFLATEX=lualatex
-BIBTEX=bibtex
+# PDFLATEX=lualatex
+# BIBTEX=bibtex
 
 
 LATEXPAND=latexpand

@@ -78,43 +78,43 @@ Each cell contains two stacked horizontal bars: the upper bar shows the barrier 
 Across all models, both countries, and all conditions, GSE citations have a higher Primary source ratio and a lower Mid-barrier source ratio than web search results.
 That is, GSEs do not cite search results as they are, but preferentially select primary information sources.
 
-\begin{table}[t]
-\centering
-\footnotesize
-\setlength{\tabcolsep}{3pt}
-\caption{Web query word counts by model and condition.}
-\label{tab:web-query-lengths}
-\begin{tabular}{llllllr}
-\toprule
-\textbf{Country} & \textbf{Axis} & \textbf{Condition} & \textbf{GPT-5} & \textbf{Gemini} & \textbf{Claude} & \textbf{$r$} \\
-\midrule
-US & Grp. & rul. & 11.0 $\pm$ 3.4 & 6.0 $\pm$ 1.5 & 7.0 $\pm$ 1.0 & .13 \\
- &  & opp. & 8.0 $\pm$ 3.0 & 6.0 $\pm$ 1.3 & 7.0 $\pm$ 1.0 & .37 \\
-\cmidrule(lr){2-7}
- & Ideol. & unkn. & 9.0 $\pm$ 3.0 & 6.0 $\pm$ 1.4 & 7.0 $\pm$ 1.0 & .19 \\
- &  & cons. & 9.0 $\pm$ 3.4 & 6.0 $\pm$ 1.3 & 7.0 $\pm$ 1.1 & .22 \\
- &  & prog. & 9.0 $\pm$ 3.5 & 6.0 $\pm$ 1.4 & 7.0 $\pm$ 1.1 & .20 \\
-\cmidrule(lr){2-7}
- & Align. & N/A & 9.0 $\pm$ 3.0 & 6.0 $\pm$ 1.4 & 7.0 $\pm$ 1.0 & .19 \\
- &  & al. & 9.0 $\pm$ 3.3 & 6.0 $\pm$ 1.4 & 7.0 $\pm$ 1.1 & .22 \\
- &  & op. & 9.0 $\pm$ 3.6 & 6.0 $\pm$ 1.3 & 7.0 $\pm$ 1.1 & .20 \\
-\cmidrule(lr){1-7}
-JP & Grp. & rul. & 6.0 $\pm$ 2.3 & 3.0 $\pm$ 0.8 & 5.0 $\pm$ 0.9 & .09 \\
- &  & opp. & 4.0 $\pm$ 1.7 & 3.0 $\pm$ 0.9 & 4.0 $\pm$ 0.9 & .23 \\
-\cmidrule(lr){2-7}
- & Ideol. & unkn. & 4.0 $\pm$ 1.9 & 3.0 $\pm$ 0.9 & 4.0 $\pm$ 0.9 & .20 \\
- &  & cons. & 4.0 $\pm$ 1.9 & 3.0 $\pm$ 0.8 & 4.0 $\pm$ 0.9 & .22 \\
- &  & prog. & 4.0 $\pm$ 2.1 & 3.0 $\pm$ 0.8 & 4.0 $\pm$ 0.9 & .14 \\
-\cmidrule(lr){2-7}
- & Align. & N/A & 4.0 $\pm$ 1.9 & 3.0 $\pm$ 0.9 & 4.0 $\pm$ 0.9 & .20 \\
- &  & al. & 4.0 $\pm$ 2.0 & 3.0 $\pm$ 0.8 & 4.0 $\pm$ 0.8 & .22 \\
- &  & op. & 4.0 $\pm$ 2.1 & 3.0 $\pm$ 0.8 & 4.0 $\pm$ 0.9 & .15 \\
-\bottomrule
-\end{tabular}
-\begin{minipage}{\columnwidth}
-\footnotesize \textit{Notes.} Model cells report median $\pm$ sample SD of whitespace-separated word counts across WebQuery strings emitted by the matching question-answer responses. The $r$ column reports row-level Pearson correlation between response-level median WebQuery word count and Primary citation share, pooling the three models.
-\end{minipage}
-\end{table}
+% \begin{table}[t]
+% \centering
+% \footnotesize
+% \setlength{\tabcolsep}{3pt}
+% \caption{Web query word counts by model and condition.}
+% \label{tab:web-query-lengths}
+% \begin{tabular}{llllllr}
+% \toprule
+% \textbf{Country} & \textbf{Axis} & \textbf{Condition} & \textbf{GPT-5} & \textbf{Gemini} & \textbf{Claude} & \textbf{$r$} \\
+% \midrule
+% US & Grp. & rul. & 11.0 $\pm$ 3.4 & 6.0 $\pm$ 1.5 & 7.0 $\pm$ 1.0 & .13 \\
+%  &  & opp. & 8.0 $\pm$ 3.0 & 6.0 $\pm$ 1.3 & 7.0 $\pm$ 1.0 & .37 \\
+% \cmidrule(lr){2-7}
+%  & Ideol. & unkn. & 9.0 $\pm$ 3.0 & 6.0 $\pm$ 1.4 & 7.0 $\pm$ 1.0 & .19 \\
+%  &  & cons. & 9.0 $\pm$ 3.4 & 6.0 $\pm$ 1.3 & 7.0 $\pm$ 1.1 & .22 \\
+%  &  & prog. & 9.0 $\pm$ 3.5 & 6.0 $\pm$ 1.4 & 7.0 $\pm$ 1.1 & .20 \\
+% \cmidrule(lr){2-7}
+%  & Align. & N/A & 9.0 $\pm$ 3.0 & 6.0 $\pm$ 1.4 & 7.0 $\pm$ 1.0 & .19 \\
+%  &  & al. & 9.0 $\pm$ 3.3 & 6.0 $\pm$ 1.4 & 7.0 $\pm$ 1.1 & .22 \\
+%  &  & op. & 9.0 $\pm$ 3.6 & 6.0 $\pm$ 1.3 & 7.0 $\pm$ 1.1 & .20 \\
+% \cmidrule(lr){1-7}
+% JP & Grp. & rul. & 6.0 $\pm$ 2.3 & 3.0 $\pm$ 0.8 & 5.0 $\pm$ 0.9 & .09 \\
+%  &  & opp. & 4.0 $\pm$ 1.7 & 3.0 $\pm$ 0.9 & 4.0 $\pm$ 0.9 & .23 \\
+% \cmidrule(lr){2-7}
+%  & Ideol. & unkn. & 4.0 $\pm$ 1.9 & 3.0 $\pm$ 0.9 & 4.0 $\pm$ 0.9 & .20 \\
+%  &  & cons. & 4.0 $\pm$ 1.9 & 3.0 $\pm$ 0.8 & 4.0 $\pm$ 0.9 & .22 \\
+%  &  & prog. & 4.0 $\pm$ 2.1 & 3.0 $\pm$ 0.8 & 4.0 $\pm$ 0.9 & .14 \\
+% \cmidrule(lr){2-7}
+%  & Align. & N/A & 4.0 $\pm$ 1.9 & 3.0 $\pm$ 0.9 & 4.0 $\pm$ 0.9 & .20 \\
+%  &  & al. & 4.0 $\pm$ 2.0 & 3.0 $\pm$ 0.8 & 4.0 $\pm$ 0.8 & .22 \\
+%  &  & op. & 4.0 $\pm$ 2.1 & 3.0 $\pm$ 0.8 & 4.0 $\pm$ 0.9 & .15 \\
+% \bottomrule
+% \end{tabular}
+% \begin{minipage}{\columnwidth}
+% \footnotesize \textit{Notes.} Model cells report median $\pm$ sample SD of whitespace-separated word counts across WebQuery strings emitted by the matching question-answer responses. The $r$ column reports row-level Pearson correlation between response-level median WebQuery word count and Primary citation share, pooling the three models.
+% \end{minipage}
+% \end{table}
 
 
 
@@ -155,7 +155,7 @@ Gemini (US: $\chi^2(12) = 62.12,\, p < .001$) and Claude (US: $\chi^2(12) = 58.5
 
 \begin{figure*}[t]
   \centering
-  \includegraphics[width=\textwidth]{figs/phase8_outputs/figures/word_count_distribution_by_persona_vertical.pdf}
+  \includegraphics[width=0.9\textwidth]{figs/phase8_outputs/figures/word_count_distribution_by_persona_vertical.pdf}
   \caption{Domination score distribution by user profile. Each bar shows the barrier-wise domination score for each user profile condition.}
   \label{fig:wc-by-persona}
 \end{figure*}
@@ -177,20 +177,39 @@ User profile differences are negligible (US: $\chi^2(8) = 301.07,\, p < .001,\, 
 
 \begin{figure}[t]
   \centering
-  \includegraphics[width=0.85\columnwidth]{figs/phase8_outputs/figures/grounding_distribution_by_group.pdf}
+  \includegraphics[width=0.7\columnwidth]{figs/phase8_outputs/figures/grounding_distribution_by_group.pdf}
   \caption{Grounding distribution by party group. Each cell is a Marimekko chart: the width shows the count share of each grounding bin (Low/Mid/High), and the height shows the barrier distribution within each bin.}
   \label{fig:grounding-by-group}
 \end{figure}
 
 \begin{figure*}[t]
   \centering
-  \includegraphics[width=0.85\textwidth]{figs/phase8_outputs/figures/grounding_distribution_by_persona.pdf}
+  \includegraphics[width=0.7\textwidth]{figs/phase8_outputs/figures/grounding_distribution_by_persona.pdf}
   \caption{Grounding distribution by user profile. Each cell shows the grounding bin barrier distribution for each user profile condition.}
   \label{fig:grounding-by-persona}
 \end{figure*}
 
 \textbf{Distribution of Citation Grounding.}
 We next analyze the citation grounding score distribution across barriers.
+
+We discretize grounding scores with thresholds $(\tau_L, \tau_H)$ into Low ($<\tau_L$), Mid ($[\tau_L, \tau_H)$), and High ($\geq \tau_H$).
+Because the distribution of SBERT cosine similarity can differ by model and language~\cite{primer2023multilingual,shibayama2021japanesesbert}, we calibrate the thresholds separately for English (US) and Japanese (JP).
+For calibration, we use the semantic textual similarity (STS) benchmarks STS-B~\cite{cer2017stsb} for English and JSTS~\cite{kurihara2022jglue} for Japanese.
+In these datasets, each sentence pair is assigned a human similarity score from 0 (unrelated) to 5 (identical in meaning).
+SBERT maps sentences into a vector space and compares their meaning using cosine similarity, and its sentence embeddings are commonly evaluated by their correlation with human scores on STS benchmarks~\cite{reimers2019sbert}.
+Thus, the empirical relationship between human scores and cosine similarity on STS data allows us to set language-specific thresholds for semantic similarity.
+
+We define $\tau_H$ as the median cosine similarity of pairs with human score $\geq 4$, and $\tau_L$ as the median cosine similarity of pairs with human score $\geq 3$.
+% The use of medians provides thresholds that reflect typical similarities above each human-score level while being robust to outliers.
+Under this calibration, $\tau_H$ serves as a conservative threshold for near-paraphrase similarity, whereas $\tau_L$ serves as a threshold for substantial shared content.
+As a result, we obtain $(\tau_L^{\text{US}}, \tau_H^{\text{US}}) = (0.80, 0.90)$ and $(\tau_L^{\text{JP}}, \tau_H^{\text{JP}}) = (0.70, 0.85)$.
+In SBERT-based sentence similarity work, values such as 0.8 and 0.9 are commonly used to detect paraphrases and highly similar sentences~\cite{kabir2024banglaembed,tumre2025improved}, which agrees with our English thresholds.
+On the other hand, Japanese SBERT may give lower cosine similarity than English models even for synonymous or highly similar pairs~\cite{shibayama2021japanesesbert}, so we use lower thresholds for JP.
+
+High means the answer is strongly grounded in the source, Mid means the core content is partly shared, and Low means only a weak semantic link.
+For Japanese questions, $86\%$ of citation sources are in Japanese and $14\%$ in English, while for English questions $100\%$ are in English.
+Since a single language is dominant within each country in questions and , language-specific calibration is reasonable for consistent comparison.
+
 We show the barrier distribution for each grounding bin in Figure~\ref{fig:grounding-by-group}.
 Each cell is a Marimekko chart: the width along the x-axis shows the count share of each grounding bin (Low/Mid/High), and the y-axis shows the barrier distribution within each bin.
 Across all models and both countries, the Primary source ratio increases monotonically as the grounding bin goes from low to mid to high.
