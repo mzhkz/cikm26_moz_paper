@@ -71,8 +71,11 @@ Nが大きい場合、$p < .001$でも$V$が小さければ差は限定的であ
 
 \textbf{Distribution of Content-injection Barriers.}
 我々はまず、GSEの引用がどのcontent-injection barrier層に属するかの分布を分析する。
-我々はWeb検索結果（Brave）とGSE回答の引用のcontent-injection barrier分布をFigure~\ref{fig:citation-by-group}に示す。
-各セルには水平積み上げ棒グラフが2本あり、上段がBrave検索結果、下段がGSE引用のbarrier別分布を表す。
+我々は引用のcontent-injection barrier分布をFigure~\ref{fig:citation-by-group}に示す。
+分析ではGSEsのバイアス？を明らかにするため，GSEがWeb検索で用いたクエリに対するtop-10のWeb検索結果とGSEが引用したcitationのcontent-injection barrier分布を比較する。
+なおWeb検索結果の取得には，Brave Search APIを用いている。
+実験でターゲットするGSEが実際どの検索エンジンを用いているかは公開されていないため、Brave Search APIを用いてGSEの検索結果を再現することはできないが、Brave Search APIはGoogleやBingなどの主要な検索エンジンと同様の検索結果を返すため、GSEの検索結果を近似的に再現できると考えられる。
+各セルには水平積み上げ棒グラフが2本あり、上段がweb検索結果、下段がGSE引用のbarrier別分布を表す。
 全モデル・両国・全条件で、GSEの引用はBrave検索結果よりもPrimary sourceの比率が高く、Mid-barrier sourceの比率が低い。
 すなわちGSEは検索結果をそのまま引用せず、一次情報源を優先的に選択している。
 
