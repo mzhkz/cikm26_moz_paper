@@ -1,0 +1,49 @@
+\begin{table}[t]
+\centering
+\footnotesize
+\setlength{\tabcolsep}{3pt}
+\caption{Chi-square tests for word count distribution.}
+\label{tab:wc-tests}
+\begin{tabular}{llrrrrl}
+\toprule
+\textbf{Country} & \textbf{Comparison} & \textbf{N} & \textbf{df} & \textbf{$\chi^2$} & \textbf{$p$} & \textbf{Sig.} \\
+\midrule
+US & Model & 134{,}550 & 8 & 34119.65 & $<$.001 & $^{***}$ \\
+ & Model (ruling) & 30{,}570 & 8 & 12826.47 & $<$.001 & $^{***}$ \\
+ & Model (opposition) & 103{,}980 & 8 & 29786.84 & $<$.001 & $^{***}$ \\
+ & Party group & 399{,}404 & 4 & 59662.10 & $<$.001 & $^{***}$ \\
+ & Party group (GPT-5) & 64{,}418 & 4 & 33489.67 & $<$.001 & $^{***}$ \\
+ & Party group (Gemini) & 155{,}125 & 4 & 17280.52 & $<$.001 & $^{***}$ \\
+ & Party group (Claude) & 179{,}861 & 4 & 24264.42 & $<$.001 & $^{***}$ \\
+ & Persona & 399{,}404 & 8 & 301.07 & $<$.001 & $^{***}$ \\
+ & Persona (GPT-5) & 64{,}418 & 8 & 366.62 & $<$.001 & $^{***}$ \\
+ & Persona (Gemini) & 155{,}124 & 8 & 236.61 & $<$.001 & $^{***}$ \\
+ & Persona (Claude) & 179{,}861 & 8 & 148.10 & $<$.001 & $^{***}$ \\
+ & Party ideology & 399{,}404 & 4 & 8646.38 & $<$.001 & $^{***}$ \\
+ & Alignment & 264{,}854 & 12 & 5855.11 & $<$.001 & $^{***}$ \\
+ & Alignment (GPT-5) & 44{,}297 & 12 & 1037.35 & $<$.001 & $^{***}$ \\
+ & Alignment (Gemini) & 102{,}438 & 12 & 3072.69 & $<$.001 & $^{***}$ \\
+ & Alignment (Claude) & 118{,}119 & 12 & 4600.73 & $<$.001 & $^{***}$ \\
+\cmidrule(lr){1-7}
+JP & Model & 524{,}969 & 8 & 54891.93 & $<$.001 & $^{***}$ \\
+ & Model (ruling) & 145{,}030 & 8 & 14533.08 & $<$.001 & $^{***}$ \\
+ & Model (opposition) & 379{,}939 & 8 & 41579.09 & $<$.001 & $^{***}$ \\
+ & Party group & 1{,}533{,}532 & 4 & 31742.80 & $<$.001 & $^{***}$ \\
+ & Party group (GPT-5) & 386{,}876 & 4 & 18327.48 & $<$.001 & $^{***}$ \\
+ & Party group (Gemini) & 584{,}048 & 4 & 10194.97 & $<$.001 & $^{***}$ \\
+ & Party group (Claude) & 562{,}608 & 4 & 5647.25 & $<$.001 & $^{***}$ \\
+ & Persona & 1{,}533{,}532 & 8 & 376.88 & $<$.001 & $^{***}$ \\
+ & Persona (GPT-5) & 386{,}876 & 8 & 877.79 & $<$.001 & $^{***}$ \\
+ & Persona (Gemini) & 584{,}048 & 8 & 444.04 & $<$.001 & $^{***}$ \\
+ & Persona (Claude) & 562{,}608 & 8 & 239.40 & $<$.001 & $^{***}$ \\
+ & Party ideology & 1{,}533{,}532 & 4 & 25547.34 & $<$.001 & $^{***}$ \\
+ & Alignment & 1{,}008{,}563 & 12 & 15955.87 & $<$.001 & $^{***}$ \\
+ & Alignment (GPT-5) & 257{,}130 & 12 & 4391.96 & $<$.001 & $^{***}$ \\
+ & Alignment (Gemini) & 380{,}595 & 12 & 9585.25 & $<$.001 & $^{***}$ \\
+ & Alignment (Claude) & 370{,}837 & 12 & 5850.52 & $<$.001 & $^{***}$ \\
+\bottomrule
+\end{tabular}
+\begin{minipage}{\columnwidth}
+\footnotesize \textit{Notes.} Comparison column: ``Model'' compares OpenAI vs Gemini vs Claude; ``Party group'' compares ruling vs opposition; ``Persona'' compares unknown vs high-conservative vs high-progressive; ``Party ideology'' compares conservative vs progressive; ``Alignment'' compares aligned vs opposed. Parenthesized model names indicate the comparison is restricted to that model. $^\dagger$ indicates low expected cell counts ($<5$); interpret with caution. Tests are reported without multiplicity adjustment. Observations are citation-level and may not be fully independent within a response.
+\end{minipage}
+\end{table}

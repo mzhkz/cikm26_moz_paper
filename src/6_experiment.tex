@@ -48,36 +48,142 @@ Specifically, in Japan we target eight parties. The ruling parties are ``Liberal
 
 \subsection{Experimental Results}
 
+% === 結果全体の構造 ===
+% 効果量の序列: モデル差 ≫ 与野党 ≫ イデオロギー ≫ Alignment ≫ ペルソナ（最小）
+% この序列は3指標（Citation, Dominance, Grounding）すべてで一貫。
+% 攻撃面はモデル固有でありユーザー固有ではない、が全体を貫くメッセージ。
 
 \textbf{Distribution of Content-injection Barriers.}
 
-まず、ペルソナ別 + alignment別をマージしたチャートを出す。
-モデル毎に差があります。
-国別でも差があります。
-これを1枚のFigureで伝える。
-LLMの結果は全般、Web検索よりも一次情報の割合が高い傾向にある。。
+% --- 図: by_group（全ペルソナ・alignmentマージ）を1枚 + by_persona を1枚 ---
 
-次に野党と与党の差を出す。
-野党の方が与党のほうが、一次情報の割合が高い傾向にある。
+% (1) Brave → Citation の普遍的シフト
+% LLMは検索結果に比べPrimaryを増やしMid-barrierを減らす。
+% 389/428セルでPrimary増加、407/428でMid減少。ほぼ例外なしの普遍的パターン。
+% → GSEは検索結果を「そのまま」引用しない。Primary優先選択のフィルタリングバイアスが内在。
+
+% (2) モデル差が最大の決定因子（全条件 p < .001）
+% OpenAI: Primary集中型（US 67%, JP 83%）、Low-barrier ≈ 0%。
+%   → Low-barrier経由の低コストinjectionには強いが、公式サイト侵害時の単一障害点リスク。
+% Gemini: 分散型。Opponent/Low-barrierが最多。
+%   → 攻撃のentry pointが最も広い。低コストcontent injectionが回答に到達しやすい。
+% Claude: Mid-barrier中心型。Braveとの差が最小で検索忠実性が最高。
+%   → 中程度のbarrierを突破する必要があるが、公式情報への到達は弱い。
+% 含意: 同じ検索結果を入力しても、ユーザーに届く情報源の構成はモデル選択で決まる。
+%       3モデルは質的に異なる攻撃面を持つ。
+
+% (3) 日米差
+% JP Primary 55–57% vs US 22–24%。
+% 日本のメディア構造（党公式サイト・機関紙のウェブ支配力）を反映。
+
+% (4) 与党 vs 野党（2番目に大きい効果、US χ²(4) = 1044.06, p < .001）
+% 与党質問はMid-barrier中心（US ruling Mid 59–61%）、Primary/Opponentともに低い。
+% 野党質問はPrimaryが増加（US opposition Primary 28–31%）。
+% USで極めて強く、JPでは相対的に弱い。
+% 含意: 政権側の政党がGSE上でより脆弱。Mid-barrier経由の間接的content injectionが効きやすい。
+%       政権交代で脆弱な側が入れ替わる → 特定政党の性質ではなく構造的位置の問題。
+
+% (5) Conservative vs Progressive の非対称性（US χ²(4) = 148.44, JP χ²(4) = 288.67）
+% Progressiveへの質問はOpponent情報源を多く引用（US progressive 11–16% vs conservative 6–7%）。
+% Geminiで最も顕著。
+
+% (6) ペルソナは引用分布に影響しない（核心的帰無知見）
+% Citation Distributionのペルソナ比較は0/8条件で非有意（全 p > .26）。
+% by_personaの図で3条件の棒グラフがほぼ同一であることを視覚的に示す。
+% 含意: 攻撃面はユーザー属性に依存しない。
+%       攻撃者は個々のユーザーのイデオロギーや知識水準を考慮する必要がない。
+%       モデル×対象政党の組み合わせだけで攻撃面を推定できる。
+%       防御側もユーザーセグメント別ではなくモデルレベルの一律対策で十分。
+
+% (7) Alignment効果のモデル依存性
+% OpenAIはAligned/Opposedに鈍感（US p = .285, n.s.）。
+% Claude・Geminiは敏感（p < .001）。
+% Aligned progressiveではBrave–Citation差がn.s.になるケースあり。
 
 
 \textbf{Distribution of Dominance.}
-まず、ペルソナ別 + alignment別をマージしたチャートを出す。
-次に野党と与党の差を出す。
 
-ChatGPTはGemini,ClaudeよりもPrimary informationの割合が高い傾向にある。
-Claudeは全体的に、low barrierが回答に占める引用テキストの割合が高い傾向にある。
+% --- 図: by_group（全ペルソナ・alignmentマージ）を1枚 ---
+
+% (1) Citation Distributionと同じ構造が再現
+% モデル差 ≫ 与野党 ≫ イデオロギー ≫ ペルソナの序列は不変。
+% WCでもモデル差は全条件 p < .001。
+
+% (2) Primary偏重は本文量でさらに増幅される（このセクション最大の追加価値）
+% JP OpenAI: Citation 83% → WC 90.1%
+% JP Gemini/Claude: Citation 49–52% → WC 62%
+% US OpenAI: Citation 67% → WC 71.1%
+% Mid-barrierは逆に件数より本文量シェアが縮小。
+% 含意: GSEはPrimaryに「引用を多く張る」だけでなく、
+%       その引用に依存する本文区間を長く割り当てている。
+%       → poisoningリスクの二重増幅。件数ベースの分析は攻撃面を過小評価する。
+
+% (3) 国差は本文量でさらに拡大
+% JP Primary 本文量 約69% vs US 約27%。
+% 日本の党公式メディア優位は本文中身では7割に到達。
+
+% (4) Primary寄りモデルほど増幅率が大きい
+% OpenAI > Gemini ≈ Claude。件数バイアスと本文バイアスが増幅的に重なる。
+% US opposition × OpenAIでは本文の87–91%が党公式ドメイン由来。
+% → 単一情報源依存リスクの最も先鋭的なケース。
+
+% (5) Low-barrierの本文寄与はGeminiに集中
+% JP Gemini WC Low ≈ 10%、他は0–5%。
+% Geminiは件数だけでなく本文中の依拠先としてもlow-barrierを残す。
+% → poisoning経路として一段ハイリスク。
+
+% (6) ペルソナは形式的に有意化するが実効差1–2pt
+% N拡大でp < .001になるが、Primary比率の差は無視できる水準。
+% 例: JP all Primary 69.1 / 69.3 / 68.0%。
+% Citationでの帰無知見と整合し、ペルソナ非影響の主張が二つの計測尺度で頑健。
+
+% (7) 方法論的含意
+% citation比率だけでGSEの依存度を測ると本物の本文依存を過小評価する。
+% 件数＋本文量の両軸併記が必要。本研究のDominance指標はこのギャップを埋める。
 
 
 \textbf{Distribution of Citation Grounding.}
-まず、ペルソナ別 + alignment別をマージしたチャートを出す。
-次に野党と与党の差を出す。
 
+% --- 図: by_group（全ペルソナ・alignmentマージ）を1枚 ---
 
-全体、、階段になっている。
+% (1) 全体構造
+% 低grounding binは常に小さく（US 7.4%, JP 9.3%）、主な質量はmid/high bin。
+% 回答の大部分は検索結果と意味的に対応している。
 
-ChatGPTはPrimary informationの割合が高い傾向にある。また、distribution of citationよりも、一次情報の割合が高い傾向にある。primary informationの反映率は他のbarrierより強い傾向にある。
-Dominanceも高いため、ChatGPTは一次情報を多く引用し、かつ引用テキストの割合も高い傾向にある。
+% (2) 高groundingほどPrimary偏重（普遍パターン、160/180セルで確認）
+% low → mid → highでPrimary%が単調増加。
+% JP OpenAI: low 42.1% → high 89.2%
+% US all: low 16.0% → high 23.2%
+% Low-barrier%は逆に高groundingで減少。
+% 含意: 回答の意味的中核ほど一次情報源が支えている。
+%       回答の中心的な主張ほど一次情報源に依存。
 
-一方、Claudeは反映率も、dominationに比例して高くなっている。
-したがって攻撃面として、比較的発信コストが低いコンテンツが、回答の内容に大きな影響を与える可能性がある。
+% (3) 一次情報源の模倣はgrounding scoreでも有利
+% content-injection barrierが高い情報源ほど意味的マッチングでも優位。
+% → 攻撃者が一次情報源を模倣するコンテンツを作成した場合、
+%    barrierの突破だけでなくgrounding scoreでも高評価を得る可能性。
+%    barrierとgroundingは独立した防御層として機能しない。
+
+% (4) 弱いgroundingの引用はlow-barrier情報源に偏る
+% 根拠の弱い引用は操作されやすいlow-barrier情報源に支えられている。
+% 回答の主旨への影響は小さいが、「出典として並んでいる」ことで
+% 回答の信頼性を見かけ上補強する役割を果たしうる。
+
+% (5) 与党質問のgroundingが弱い
+% US ruling: mid 63.8% / high 30.8% vs opposition: mid 53.1% / high 38.8%。
+% Citation Distributionで与党がMid-barrierに依存 + groundingも弱い
+% → 二重の意味でpoisoningに構造的に脆弱。
+
+% (6) JP progressiveの高grounding
+% JP conservative high 43.4% vs progressive high 49.3%（χ²(2) = 952.02）。
+% 革新系政党への回答がより強く根拠づけられている。
+
+% (7) モデル差
+% OpenAI: mid shareが高くhigh shareが低い傾向。
+% Gemini: low bin内のLow-barrier%が極端に高い（US 27%, JP 64%）。
+% Claude: grounding分布がモデル間で最も均等。
+
+% (8) ペルソナ効果は弱く一貫しない
+% Claudeは日米とも完全にn.s.。
+% 有意な場合もlow shareの変動に集中し、主要なmid/high binはペルソナに鈍感。
+% → ペルソナ帰無の主張は3指標すべてで支持される。
