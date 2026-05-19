@@ -1,6 +1,15 @@
 \section{Proposed Framework}
+
+\begin{figure*}[t]
+  \centering
+  \includegraphics[width=\textwidth]{figs/overview.pdf}
+  \caption{提案フレームワークの概要。ユーザープロファイルと政治的質問を入力としてGSEが引用付き回答を生成し、引用元を3つの相補的指標で評価する：(1) content-injection barrier分類、(2) テキスト量依存度を測るdomination score、(3) 回答と引用の意味的対応を定量化するcitation grounding score。}
+  \label{fig:overview}
+\end{figure*}
+
 In this section, we present our proposed framework for revealing the attack surface of GSEs.
-Our framework consists of three main components: (1) user proifle embedding and answer retrieval, (2) content-injection barrier classification,(2) domination score, and  (3) citation grounding score computation.
+Figure~\ref{fig:overview} illustrates the overall pipeline: a user profile is injected into the GSE, which generates an answer with citations from web search results; the cited sources are then evaluated along three axes.
+Our framework consists of three main components: (1) user profile embedding and answer retrieval, (2) content-injection barrier classification, (3) domination score, and (4) citation grounding score computation.
 
 
 \subsection{Embedding User Profiles and Retrieving Answers}
