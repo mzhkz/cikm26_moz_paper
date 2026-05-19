@@ -16,7 +16,6 @@ This enables us to control GSE behavior in citing primary and secondary informat
 Developing these mechanisms requires establishing methods that identify primary information sources from web sources of citations in answers.
 We consider that such determination mechanisms might be constructed by leveraging digital certificate technologies~\cite{w3c-vc-data-model-2025,originator-profile-2025,c2pa-org}.
 
-
 \textbf{Approaches to Increase Primary Source Citations:}
 We discuss strategies to increase the exposure of primary information as citations where primary coverage is crucial, from two perspectives: content structure and presentation strategy.
 First, on content structure, Aggarwal et al.\ show that formatting differences alter GSE citation patterns, known as GEO~\cite{geo-apmr+24}.
@@ -26,6 +25,10 @@ Amin et al.\ show that the presence of author information increases citation exp
 Second, on presentation strategy, primary information providers need topic coverage matching the breadth of GSE-expanded queries $Q^{\prime} = \{q_1, \ldots, q_n\}$ from a user question $q_u$; e.g., inflation also triggers queries on consumption taxes, fuel subsidies, and wage policies.
 If providers optimize via SEO and GEO only for $q_u$, GSEs cite secondary sources for the uncovered subtopics.
 Hence, providers must publish content covering all related topics.
+
+For U.S. questions, a large share of citations concentrates on the \texttt{www.presidency.ucsb.edu} domain (mid injection barrier): 29.0\% for OpenAI, 23.2\% for Gemini, and 47.8\% for Claude.
+This site, maintained by UC Santa Barbara, archives official U.S. presidential documents, speeches, and records, providing structured content well-suited for LLM interpretation and reasoning.
+This suggests that publishing LLM-friendly content with broad topical coverage is key to increasing primary source citations.
 
 \textbf{Limitations and Future Work:}
 First, due to budget and compute constraints, we target closed-ended questions in the political domain in the U.S. and Japan rather than conducting a large-scale cross-domain study.

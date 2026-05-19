@@ -44,7 +44,9 @@ This prevents questions and citations from being skewed toward topics that speci
 
 \textbf{Target Political Parties.}
 We target political parties satisfying each country's requirements for national political parties as primary information sources.
-Specifically, in Japan we target eight parties. The ruling parties are ``Liberal Democratic Party (LDP)'' and ``Japan Innovation Party (JIP)'', and the opposition parties are ``Centrist Reform Coalition (CRA)'', ``Democratic Party for the People (DPP)'', ``Japanese Communist Party (JCP)'', ``Reiwa Shinsengumi (Reiwa)'', ``Sanseito'', and ``Conservative Party of Japan (CPJ)''. In the U.S., we target five parties. The ruling party is ``Republican Party (GOP)'', and the opposition parties are ``Democratic Party (DP)'', ``Green Party (GPUS)'', ``Libertarian Party (LP)'', and ``Constitution Party (COP)''.
+Specifically, in Japan we target eight parties. 
+The ruling parties are ``Liberal Democratic Party'' and ``Japan Innovation Party'', and the opposition parties are ``Centrist Reform Coalition'', ``Democratic Party for the People'', ``Japanese Communist Party'', ``Reiwa Shinsengumi'', ``Sanseito'', and ``Conservative Party of Japan''. 
+In the U.S., we target five parties. The ruling party is ``Republican Party'', and the opposition parties are ``Democratic Party'', ``Green Party'', ``Libertarian Party'', and ``Constitution Party''.
 
 
 \subsection{Experimental Results}
@@ -52,109 +54,115 @@ Specifically, in Japan we target eight parties. The ruling parties are ``Liberal
 \begin{figure}[t]
   \centering
   \includegraphics[width=\columnwidth]{figs/phase8_outputs/figures/citation_distribution_by_group_vertical.pdf}
-  \caption{与野党別のcitation distribution。各セルに水平積み上げ棒グラフを2本表示し、上段（Brave）がWeb検索結果、下段（Cite）がGSE引用のcontent-injection barrier別構成比を示す。右端の数値はcitation件数、記号は両層間の$\chi^2$検定の有意性を表す。}
+  \caption{与野党別のcitation distribution。各セルに水平積み上げ棒グラフを2本表示し、上段（Brave）がWeb検索結果、下段（Cite）がGSE引用のcontent-injection barrier別分布を示す。右端の数値はcitation件数、記号は両層間の$\chi^2$検定の有意性を表す。}
   \label{fig:citation-by-group}
 \end{figure}
 
 \begin{figure*}[t]
   \centering
   \includegraphics[width=\textwidth]{figs/phase8_outputs/figures/citation_distribution_by_persona.pdf}
-  \caption{ペルソナ別のcitation distribution。各棒はペルソナ条件ごとのGSE引用のbarrier別構成比を示す。3条件間の構成比がほぼ同一であり、ペルソナが引用構成に影響しないことの視覚的証拠である。}
+  \caption{ユーザープロファイル別のcitation distribution。各棒はユーザープロファイル条件ごとのGSE引用のbarrier別分布を示す。}
   \label{fig:citation-by-persona}
 \end{figure*}
 
-\textbf{Distribution of Content-injection Barriers.}
-我々はまず、GSEの引用がどのcontent-injection barrier層に属するかの分布を分析する。
-なお、barrier別の引用比率は、発信コストの低い情報源への依存度を通じて攻撃面の相対的な広さを示す相関指標であり、end-to-endのpoisoning成功率を直接測定するものではない。
-GSEの攻撃面はモデルの引用選択戦略に規定され、3モデルは質的に異なる脆弱性構造を持つ。
-我々はWeb検索結果（Brave）とGSE回答の引用のcontent-injection barrier構成比をFigure~\ref{fig:citation-by-group}に示す。
-各セルには水平積み上げ棒グラフが2本あり、上段がBrave検索結果、下段がGSE引用のbarrier別構成比を表す。
-全モデル・両国・全条件でGSEの引用はBrave検索結果に比べPrimary sourceの比率が高く、Mid-barrier sourceの比率が低い。
-すなわちGSEは検索結果をそのまま引用するのではなく、一次情報源を優先的に選択するフィルタリングバイアスを内在している。
-このバイアスの強さにはモデル間で有意かつ大きな差がある（US: $\chi^2(8) = 568.94,\, p < .001,\, V = 0.328$; JP: $\chi^2(8) = 574.80,\, p < .001,\, V = 0.250$）。
-GPT-5はPrimary sourceに集中し（US 67.2\%, JP 83.1\%）、Low-barrier sourceを排除する（US/JP ともに $\leq$ 0.1\%）。
-この戦略はブログやSNS経由の低コストなcontent injectionへの耐性が高い一方、公式ドメインが侵害された場合に単一障害点となるリスクがある。
-Geminiは最も分散的であり、Opponent source（US 12.4\%, JP 6.1\%）およびLow-barrier source（US 12.9\%, JP 17.2\%）を最も多く引用する。
-Low-barrier sourceの引用比率が高いことは発信コストの低い情報源への依存度が高く、攻撃面が相対的に広いことを示す。
-Claudeは Mid-barrier source中心の構成（US 59.3\%, JP 37.1\%）を示し、Brave検索結果との乖離が最小であるため検索忠実性が最も高いが、公式情報源への到達は限定的である。
+以下の分析では、$\chi^2$検定に加えてCram\'{e}r's $V$を報告する。Nが大きい場合、$p < .001$でも$V$が小さければ差は限定的であるため、$V$に基づき差の程度を判断する。
+また、barrier別の引用比率は、発信コストの低い情報源にどの程度依存しているかを示す相関指標であり、poisoning攻撃の成功率そのものではない。
 
-与野党（ruling [図中: rul.] / opposition [opp.]）の構造的位置はモデル差に次ぐ攻撃面の決定因子である（US: $\chi^2(4) = 1044.06,\, p < .001,\, V = 0.361$; JP: $\chi^2(4) = 357.92,\, p < .001,\, V = 0.161$）。
-USでは与党（rul.）質問への引用がMid-barrier sourceに集中し（Claude 78.9\%, Gemini 58.5\%）、Primary sourceは1\%前後にとどまる。
-一方、野党（opp.）質問ではPrimary sourceが増加する（GPT-5: 86.8\%, Gemini: 19.8\%, Claude: 21.3\%）。
-この非対称性は、与党質問への回答がより低いcontent-injection barrierの情報源に依存しており、政権側の政党の攻撃面が相対的に広いことを示す。
-この脆弱性は特定政党の性質ではなく構造的位置に起因するため、政権交代により脆弱な側が入れ替わる。
-また、保守政党と革新政党の間にもcitation構成の非対称性が認められる（US: $\chi^2(4) = 148.44,\, p < .001,\, V = 0.136$; JP: $\chi^2(4) = 288.67,\, p < .001,\, V = 0.145$）。ただし効果量は小さく（$V < 0.15$）、与野党差（US $V = 0.361$）やモデル差（US $V = 0.328$）に比べ限定的である。
+\textbf{Distribution of Content-injection Barriers (\textit{R-1}).}
+我々はまず、GSEの引用がどのcontent-injection barrier層に属するかの分布を分析する（\textit{R-1}）。
+我々はWeb検索結果（Brave）とGSE回答の引用のcontent-injection barrier分布をFigure~\ref{fig:citation-by-group}に示す。
+各セルには水平積み上げ棒グラフが2本あり、上段がBrave検索結果、下段がGSE引用のbarrier別分布を表す。
+全モデル・両国・全条件で、GSEの引用はBrave検索結果よりもPrimary sourceの比率が高く、Mid-barrier sourceの比率が低い。
+すなわちGSEは検索結果をそのまま引用せず、一次情報源を優先的に選択している。
 
-一方、ユーザーペルソナは引用のcontent-injection barrier構成に影響しない。
-我々は3つのペルソナ条件（unknown [図中: unkn.], high-conservative [cons.], high-progressive [prog.]）別のcitation構成をFigure~\ref{fig:citation-by-persona}に示す。各棒はペルソナ条件ごとのGSE引用のbarrier別構成比であり、
-3条件の構成比は同一に近い。$\chi^2$検定は日米とも全モデルで非有意であり、効果量も無視できる水準である（US全体: $\chi^2(8) = 6.62,\, p = .579,\, V = 0.020$; JP全体: $\chi^2(8) = 10.07,\, p = .260,\, V = 0.019$; モデル別でも8条件全てが非有意）。
-この結果はGSEの攻撃面がユーザー属性に依存せずモデル固有であることを示す。攻撃者はユーザーのイデオロギーや知識水準を考慮する必要がなく、モデルと対象政党の組み合わせのみで攻撃面を推定できる。
-防御側もユーザーセグメント別ではなくモデルレベルの対策で十分である。
+この傾向はモデル間で異なり、モデル選択が攻撃面の構造を決定する（US: $\chi^2(8) = 568.94,\, p < .001,\, V = 0.328$; JP: $\chi^2(8) = 574.80,\, p < .001,\, V = 0.250$）。
+GPT-5はPrimary sourceの比率がUS 67.2\%、JP 83.1\%であり、Low-barrier sourceは引用しない（US/JP ともに $\leq$ 0.1\%）。
+GPT-5の攻撃面はPrimary source（党公式ドメイン）に集中しており、公式ドメインが侵害されない限り低コストなcontent injectionは回答に到達しない。
+GeminiはOpponent source（US 12.4\%, JP 6.1\%）およびLow-barrier source（US 12.9\%, JP 17.2\%）の比率が3モデル中最も高い。
+Geminiの攻撃面は広く、発信コストの低い情報源を通じたcontent injectionが回答に含まれる経路が多い。
+ClaudeはMid-barrier sourceの比率がUS 59.3\%、JP 37.1\%で3モデル中最も高く、Primary sourceの比率はUS 16.5\%、JP 53.7\%である。
+
+与野党（ruling [図中: rul.] / opposition [opp.]）の違いも引用構成に影響する（US: $\chi^2(4) = 1044.06,\, p < .001,\, V = 0.361$; JP: $\chi^2(4) = 357.92,\, p < .001,\, V = 0.161$）。
+USでは与党質問への引用はMid-barrier sourceが多く（Claude 78.9\%, Gemini 58.5\%, GPT-5 21.8\%）、Primary sourceはClaude 0.9\%、Gemini 0.9\%、GPT-5 10.3\%である。
+一方、野党質問ではPrimary sourceの比率が上がり、GPT-5は86.8\%、Gemini 19.8\%、Claude 21.3\%となる。
+すなわち、与党質問への回答はcontent-injection barrierの低い情報源に依存する割合が高く、政権側の政党の攻撃面が広い。
+さらに，保守政党と革新政党の間にも引用構成の差が認められ、革新政党への質問ではOpponent sourceの比率が保守政党より高い（US: $\chi^2(4) = 148.44,\, p < .001,\, V = 0.136$; JP: $\chi^2(4) = 288.67,\, p < .001,\, V = 0.145$）。ただし$V < 0.15$であり、与野党差（US $V = 0.361$）やモデル差（US $V = 0.328$）に比べて攻撃面への影響は限定的である。
+
+この与党質問でPrimary source比率が低くなる傾向は、Web上の情報量に起因すると考えられる。
+Google検索における政党名のヒット件数は、JPの長期与党であるLDPが\(4.71 \times 10^{7}\)件と他党平均\(8.57 \times 10^{6}\)件を大きく上回り、USでも二大政党のRepublican PartyとDemocratic Partyがそれぞれ\(1.65 \times 10^{8}\)件、\(3.99 \times 10^{8}\)件と多い。
+Web上の情報量が多いほど一次情報源の相対比率が薄まり、引用におけるPrimary source比率も低下すると考えられる。
+ただしUSのGreen Partyは\(2.19 \times 10^{9}\)件と二大政党を大きく上回るにもかかわらずGSE引用におけるPrimary source比率は高く、情報発信側の戦略によりこの関係が抑制されうる反例も存在する。
+
+一方、ユーザープロファイルは引用のcontent-injection barrier分布に影響しない（\textit{R-3}）。
+我々は3つのユーザープロファイル条件（unknown [図中: unkn.], high-conservative [cons.], high-progressive [prog.]）別のcitation分布をFigure~\ref{fig:citation-by-persona}に示す。
+各棒はユーザープロファイル条件ごとのGSE引用のbarrier別分布であり、3条件の分布は同一に近い。$\chi^2$検定は日米とも全モデルで非有意であり（US全体: $\chi^2(8) = 6.62,\, p = .579,\, V = 0.020$; JP全体: $\chi^2(8) = 10.07,\, p = .260,\, V = 0.019$; モデル別でも8条件全てが非有意）、$V < 0.02$である。
+また，我々はユーザープロファイルのイデオロギーと質問対象政党のイデオロギーの一致・不一致（alignment; 図中: aligned [al-cons., al-prog.] / opposed [op-cons., op-prog.]）による差も分析した。
+GPT-5ではaligned条件とopposed条件の間で引用構成に有意な差はなく（US: $\chi^2(12) = 14.25,\, p = .285$）、ユーザーのイデオロギーと政党の一致/不一致に関わらず同じ引用選択を行う。
+この結果は、GSEの攻撃面がユーザー属性に依存せずモデル固有であることを示す。
+一方、Gemini（US: $\chi^2(12) = 62.12,\, p < .001$）とClaude（US: $\chi^2(12) = 58.50,\, p < .001$）ではopposed条件ではPrimary sourceの比率が高くなる傾向がある。
 
 
 \begin{figure}[t]
   \centering
   \includegraphics[width=0.85\columnwidth]{figs/phase8_outputs/figures/word_count_distribution_by_group_vertical.pdf}
-  \caption{与野党別のword count distribution。各棒は引用に帰属する回答本文の語数（JPは文字数）のbarrier別配分を示す。件数ベースのFigure~\ref{fig:citation-by-group}と異なり、ユーザーが読むテキスト量ベースの依存度を表す。}
+  \caption{与野党別のdominance score分布。各棒は引用に帰属する回答のbarrier別dominance score配分を示す。}
   \label{fig:wc-by-group}
 \end{figure}
 
 \begin{figure*}[t]
   \centering
   \includegraphics[width=\textwidth]{figs/phase8_outputs/figures/word_count_distribution_by_persona_vertical.pdf}
-  \caption{ペルソナ別のword count distribution。Citation distributionと同様に、3ペルソナ条件間のbarrier構成比はほぼ同一である。}
+  \caption{ユーザープロファイル別のdominance score分布。各棒はユーザープロファイル条件ごとのbarrier別dominance scoreを示す。}
   \label{fig:wc-by-persona}
 \end{figure*}
 
-\textbf{Distribution of Dominance.}
-我々は次に、引用件数ではなく引用に帰属する回答本文のテキスト量に着目し、barrier別のdomination scoreの分布を分析する。
-Dominance指標は引用に帰属する回答本文の語数・文字数をcontent-injection barrierごとに配分し、ユーザーが読むテキストのうち各barrier層が占める分量を定量化する。
-我々はモデル別・与野党別のword count構成比をFigure~\ref{fig:wc-by-group}に示す。各棒は引用に帰属する回答本文の語数（JPは文字数）のbarrier別配分であり、Citation Distribution（Figure~\ref{fig:citation-by-group}）が件数ベースであるのに対しテキスト量ベースの依存度を表す。
-Citation Distributionと同様にモデル差が最大の決定因子であり（US: $\chi^2(8) = 34{,}119.65,\, p < .001,\, V = 0.356$; JP: $\chi^2(8) = 54{,}891.93,\, p < .001,\, V = 0.229$）、与野党差も再現される（US: $\chi^2(4) = 59{,}662.10,\, p < .001,\, V = 0.386$）。
-なお、word count分析はNが大きいため（US: $N = 134{,}550$--$399{,}404$; JP: $N = 524{,}969$--$1{,}533{,}532$）、統計的有意性は検出力により保証される。以下では効果量（Cram\'{e}r's $V$）に基づき解釈する。
+\textbf{Distribution of Dominance Score (\textit{R-2}).}
+我々は次にbarrier別のdominance scoreの分布を分析する（\textit{R-2}）。
+我々はモデル別・与野党別のdominance scoreの分布をFigure~\ref{fig:wc-by-group}に示す。
+citation distributionと同様に、dominance scoreでもモデル選択と与野党の構造的位置が攻撃面を決定する。
+モデル間の差はUS $V = 0.356$、JP $V = 0.229$（US: $\chi^2(8) = 34{,}119.65,\, p < .001$; JP: $\chi^2(8) = 54{,}891.93,\, p < .001$）であり、与野党差はUS $V = 0.386$（$\chi^2(4) = 59{,}662.10,\, p < .001$）である。
 
-Primary sourceへの偏重は本文量で測定するとさらに拡大する。
-GPT-5のPrimary比率は件数ベースではUS 67.2\% / JP 83.1\%であるのに対し、本文量ベースではUS 71.1\% / JP 90.1\%に達する。
-Gemini・Claudeでも同様の傾向が認められ（JP: 件数49--54\%に対し本文量62\%）、Mid-barrier sourceの本文量シェアは件数比率を下回る。
-すなわちGSEはPrimary sourceを多く引用するだけでなく、1件あたりの引用に依存する本文区間をより長く割り当てている。
-この二重の増幅により、一次情報源が侵害された場合の影響範囲は件数から予測される範囲を上回る。
-最も顕著な例はUS野党質問でのGPT-5であり、本文の91.2\%が党公式ドメイン由来の情報に支えられている。
-Low-barrier sourceの本文寄与はGeminiに集中しており（JP 9.8\%、他モデルは0--4\%）、発信コストの低い情報源が回答本文を支える割合が相対的に高い。
+Primary sourceのdominance scoreは、citation distributionの比率を上回る。
+GPT-5ではcitation distributionのPrimary比率がUS 67.2\% / JP 83.1\%であるのに対し、dominance scoreではUS 71.1\% / JP 90.1\%である。
+Geminiでも同様にJPでcitation 49.1\%に対しdominance 62.2\%、ClaudeはJPでcitation 53.7\%に対しdominance 62.2\%である。
+これは、GSEがPrimary sourceの引用1件あたりに依存する回答テキスト区間が、他のbarrierの引用より長いことを意味する。
+US野党質問でのGPT-5ではdominance scoreの91.2\%がPrimary source（党公式ドメイン）に帰属する。
+Low-barrier sourceのdominance scoreはGeminiがJP 9.8\%で最も高く（GPT-5: 0.1\%, Claude: 4.3\%）、発信コストの低い情報源が回答テキストを支える割合がモデルにより異なる (?)
 
-ペルソナについては、大きなNにより$\chi^2$検定は有意となるが（US: $\chi^2(8) = 301.07,\, p < .001$）、効果量は無視できる水準であり（$V = 0.019$）、Primary比率の差は1--2ポイントにとどまる（例: JP GPT-5 Primary 90.1\% / 89.8\% / 88.7\%）。
-Figure~\ref{fig:wc-by-persona}に示すように3ペルソナ条件間の本文量構成比は同一に近く、Citationでの結果（$V = 0.020$）と合わせ、ペルソナが攻撃面に影響を与えないという知見は件数・本文量の両尺度で頑健である。
+ユーザープロファイル間の差は無視できる（US: $\chi^2(8) = 301.07,\, p < .001,\, V = 0.019$; プロファイル間Primary比率差1--2pt、例: JP GPT-5 90.1\% / 89.8\% / 88.7\%）。citation distribution（$V = 0.020$）と合わせ、ユーザープロファイルが攻撃面に影響しないことが両指標で確認された（Figure~\ref{fig:wc-by-persona}）。
 
 
 \begin{figure}[t]
   \centering
   \includegraphics[width=0.85\columnwidth]{figs/phase8_outputs/figures/grounding_distribution_by_group.pdf}
-  \caption{与野党別のgrounding distribution。各セルはMarimekko chartであり、x軸方向の幅がgrounding bin（Low/Mid/High）の質量比、y軸方向がbin内のbarrier構成比を表す。面積が大きいほど当該barrier・bin組み合わせのcitation件数が多い。}
+  \caption{与野党別のgrounding distribution。各セルはMarimekko chartであり、x軸方向の幅がgrounding bin（Low/Mid/High）の質量比、y軸方向がbin内のbarrier分布を表す。}
   \label{fig:grounding-by-group}
 \end{figure}
 
 \begin{figure*}[t]
   \centering
   \includegraphics[width=0.85\textwidth]{figs/phase8_outputs/figures/grounding_distribution_by_persona.pdf}
-  \caption{ペルソナ別のgrounding distribution。3ペルソナ条件間でgrounding binの質量配分とbin内barrier構成比がほぼ同一であり、ペルソナがgroundingにも影響しないことを示す。}
+  \caption{ユーザープロファイル別のgrounding distribution。各セルはユーザープロファイル条件ごとのgrounding binのbarrier分布を示す。}
   \label{fig:grounding-by-persona}
 \end{figure*}
 
-\textbf{Distribution of Citation Grounding.}
-我々は次に、引用と回答の意味的対応の強さに着目し、grounding binごとのbarrier構成の分布を分析する。
-回答の意味的中核を支える引用ほどPrimary sourceに偏っており、content-injection barrierとcitation groundingは独立した防御層として機能しない。
-我々はgrounding binごとのbarrier構成をFigure~\ref{fig:grounding-by-group}に示す。各セルはMarimekko chartであり、x軸方向の幅がgrounding bin（Low/Mid/High）の質量比、y軸方向がbin内のbarrier構成比を表す。
-低groundingのbinは質量が小さく（US 7.3--7.5\%, JP 4.1--12.7\%）、回答の大部分はmid/highのgrounding binに属する。
-全モデル・両国でgrounding binがlowからmid、highに上がるほどPrimary source比率が単調増加する。
-JPのGPT-5ではlow bin 42.1\%、mid 75.6\%、high 89.2\%と顕著であり、USでもGPT-5のhigh binは70.0\%に達する。
+\textbf{Distribution of Citation Grounding (\textit{R-2}).}
+我々は次に、citation grounding scoreに着目し、grounding binごとのbarrier分布を分析する（\textit{R-2}）。
+我々はgrounding binごとのbarrier分布をFigure~\ref{fig:grounding-by-group}に示す。
+各セルはMarimekko chartであり、x軸方向の幅がgrounding bin（Low/Mid/High）の件数比、y軸方向がbin内のbarrier分布を表す。
+全モデル・両国でgrounding binがlowからmid、highに上がるほどPrimary sourceの比率が単調に増加する。
+JPのGPT-5ではPrimary比率がlow bin 42.1\%、mid bin 75.6\%、high bin 89.2\%である。
+USのGPT-5でもhigh binのPrimary比率は70.0\%である。
+Geminiではlow bin 3.3\%、mid 14.7\%、high 20.4\%（US）、low 13.4\%、mid 49.0\%、high 60.1\%（JP）であり、ClaudeではUS low 27.5\%、mid 12.9\%、high 18.2\%、JP low 30.4\%、mid 47.0\%、high 60.3\%である。
 一方、Low-barrier sourceの比率はhigh binで減少する。
-この構造は、回答の論旨を直接形成する高grounding引用ほど一次情報源に依存し、根拠の弱い低grounding引用は操作の容易なLow-barrier sourceに偏ることを示す。
-攻撃者が一次情報源を模倣するコンテンツを作成した場合、content-injection barrierの突破だけでなくgrounding scoreでも高い評価を得る可能性があり、両指標は攻撃に対して増幅的に作用する。
+すなわち、grounding scoreの高い引用はPrimary sourceに集中し、grounding scoreの低い引用はLow-barrier sourceに集中する。
+すなわち全モデルに共通して、高barrierの一次情報源は意味的に忠実に反映される一方で、barrierが下がるほど引用内容は回答テキストへの寄与が薄く、原文から乖離した形で取り込まれる傾向がある。。
 
-与党質問への回答はgroundingの観点からも脆弱である。
-US与党質問ではhigh grounding binの比率が27.3--32.9\%にとどまるのに対し、野党質問では37.8--39.4\%に達する（$\chi^2(2) = 1091.04,\, p < .001,\, V = 0.094$）。
-Citation Distributionにおいて与党質問がMid-barrier sourceに依存する傾向と合わせると、与党質問への回答はbarrierが低くかつ意味的根拠も弱い引用に支えられており、攻撃面が二重に広い。
-イデオロギー軸では、革新政党への回答のhigh grounding比率が保守政党より高い傾向がJPで認められる（$\chi^2(2) = 952.02,\, p < .001,\, V = 0.061$）。ただし効果量は小さく、この非対称性はcitation distribution（$V = 0.145$）やword count distribution（$V = 0.129$）においても同方向で確認されるものの、モデル差や与野党差に比べ限定的な効果である。
+ただし、grounding scoreの高い引用がPrimary sourceに集中する傾向は与野党で一様ではなく、与党質問への回答ではhigh grounding binの比率自体が低い。
+US与党質問ではhigh grounding binの比率がGPT-5 27.3\%、Gemini 30.0\%、Claude 32.9\%であるのに対し、野党質問ではGPT-5 37.8\%、Gemini 38.6\%、Claude 39.4\%である（$\chi^2(2) = 1091.04,\, p < .001,\, V = 0.094$）。
+citation distributionで与党質問のPrimary sourcehが低いことを鑑みると、与党質問への回答はmid, lowを中心とした回答生成に依存していると考えられる。
+イデオロギー軸では、JPで革新政党への回答のhigh grounding比率が保守政党より高い（$\chi^2(2) = 952.02,\, p < .001,\, V = 0.061$）が、モデル差や与野党差より小さい。
 
-ペルソナについてはgrounding分布でも影響は認められない（US: $V = 0.012$; JP: $V = 0.009$）。
-GPT-5とClaudeではHolm補正後に日米とも非有意であり（GPT-5 US: $p_H = 1.000$; Claude US: $p_H = .454$; Claude JP: $p_H = 1.000$）、有意となるケースもlow binの変動に集中しmid/high binの構成は安定している（Figure~\ref{fig:grounding-by-persona}）。
-Citation Distribution（$V = 0.020$）、Dominance（$V = 0.019$）、Citation Grounding（$V = 0.012$）の3指標全てでペルソナの効果量は無視できる水準であり、GSEの脆弱性はユーザー属性ではなくモデルのアーキテクチャと対象政党の構造的位置に起因する。
+ユーザープロファイルについてはgrounding分布でも影響は認められない（US: $V = 0.012$; JP: $V = 0.009$）。
+GPT-5ではHolm補正後にUS $p_H = 1.000$、ClaudeではUS $p_H = .454$、JP $p_H = 1.000$であり非有意である。
+すなわち、GSEの攻撃面はユーザーが誰であるかに依存せず、モデルの引用選択戦略と対象政党の構造的位置によって決まる。
