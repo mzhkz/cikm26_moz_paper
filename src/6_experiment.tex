@@ -78,6 +78,46 @@ Each cell contains two stacked horizontal bars: the upper bar shows the barrier 
 Across all models, both countries, and all conditions, GSE citations have a higher Primary source ratio and a lower Mid-barrier source ratio than web search results.
 That is, GSEs do not cite search results as they are, but preferentially select primary information sources.
 
+\begin{table}[t]
+\centering
+\footnotesize
+\setlength{\tabcolsep}{3pt}
+\caption{Web query word counts by model and condition.}
+\label{tab:web-query-lengths}
+\begin{tabular}{llllllr}
+\toprule
+\textbf{Country} & \textbf{Axis} & \textbf{Condition} & \textbf{GPT-5} & \textbf{Gemini} & \textbf{Claude} & \textbf{$r$} \\
+\midrule
+US & Grp. & rul. & 11.0 $\pm$ 3.4 & 6.0 $\pm$ 1.5 & 7.0 $\pm$ 1.0 & .13 \\
+ &  & opp. & 8.0 $\pm$ 3.0 & 6.0 $\pm$ 1.3 & 7.0 $\pm$ 1.0 & .37 \\
+\cmidrule(lr){2-7}
+ & Ideol. & unkn. & 9.0 $\pm$ 3.0 & 6.0 $\pm$ 1.4 & 7.0 $\pm$ 1.0 & .19 \\
+ &  & cons. & 9.0 $\pm$ 3.4 & 6.0 $\pm$ 1.3 & 7.0 $\pm$ 1.1 & .22 \\
+ &  & prog. & 9.0 $\pm$ 3.5 & 6.0 $\pm$ 1.4 & 7.0 $\pm$ 1.1 & .20 \\
+\cmidrule(lr){2-7}
+ & Align. & N/A & 9.0 $\pm$ 3.0 & 6.0 $\pm$ 1.4 & 7.0 $\pm$ 1.0 & .19 \\
+ &  & al. & 9.0 $\pm$ 3.3 & 6.0 $\pm$ 1.4 & 7.0 $\pm$ 1.1 & .22 \\
+ &  & op. & 9.0 $\pm$ 3.6 & 6.0 $\pm$ 1.3 & 7.0 $\pm$ 1.1 & .20 \\
+\cmidrule(lr){1-7}
+JP & Grp. & rul. & 6.0 $\pm$ 2.3 & 3.0 $\pm$ 0.8 & 5.0 $\pm$ 0.9 & .09 \\
+ &  & opp. & 4.0 $\pm$ 1.7 & 3.0 $\pm$ 0.9 & 4.0 $\pm$ 0.9 & .23 \\
+\cmidrule(lr){2-7}
+ & Ideol. & unkn. & 4.0 $\pm$ 1.9 & 3.0 $\pm$ 0.9 & 4.0 $\pm$ 0.9 & .20 \\
+ &  & cons. & 4.0 $\pm$ 1.9 & 3.0 $\pm$ 0.8 & 4.0 $\pm$ 0.9 & .22 \\
+ &  & prog. & 4.0 $\pm$ 2.1 & 3.0 $\pm$ 0.8 & 4.0 $\pm$ 0.9 & .14 \\
+\cmidrule(lr){2-7}
+ & Align. & N/A & 4.0 $\pm$ 1.9 & 3.0 $\pm$ 0.9 & 4.0 $\pm$ 0.9 & .20 \\
+ &  & al. & 4.0 $\pm$ 2.0 & 3.0 $\pm$ 0.8 & 4.0 $\pm$ 0.8 & .22 \\
+ &  & op. & 4.0 $\pm$ 2.1 & 3.0 $\pm$ 0.8 & 4.0 $\pm$ 0.9 & .15 \\
+\bottomrule
+\end{tabular}
+\begin{minipage}{\columnwidth}
+\footnotesize \textit{Notes.} Model cells report median $\pm$ sample SD of whitespace-separated word counts across WebQuery strings emitted by the matching question-answer responses. The $r$ column reports row-level Pearson correlation between response-level median WebQuery word count and Primary citation share, pooling the three models.
+\end{minipage}
+\end{table}
+
+
+
 This tendency differs across models, and the choice of model determines the structure of the attack surface (US: $\chi^2(8) = 568.94,\, p < .001,\, V = 0.328$; JP: $\chi^2(8) = 574.80,\, p < .001,\, V = 0.250$).
 GPT-5 has the highest Primary source ratio (US 67.2\%, JP 83.1\%) and does not cite Low-barrier sources (US/JP both $\leq$ 0.1\%).
 The attack surface of GPT-5 is concentrated on Primary sources (official party domains); low-cost content injection does not reach the answer unless the official domain is compromised.

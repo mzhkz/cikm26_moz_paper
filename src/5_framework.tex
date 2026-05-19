@@ -106,11 +106,11 @@ Taking the maximum identifies the most relevant part of the citation text to the
 Concretely, we define $\textsc{MaxSim}(L, c_i) = \max_{j \in \{1,\ldots,k\},\, m \in \{1,\ldots,n_i\}} \mathrm{sim}(l_j, l_{i,m})$, where $l_j \in L$ and $l_{i,m} \in L_{c_i}$.
 In computing this maximum, we evaluate $\mathrm{sim}(\cdot, \cdot)$ for every answer-citation sentence pair $(l_j, l_{i,m})$ within citation $c_i$ and adopt the highest similarity value across all combinations.
 
-\textbf{Band Assignment.}
-Finally, we categorize the aggregated grounding score $\textsc{MaxSim}(L, c_i)$ into three \emph{grounding bands} $\mathcal{B}$ to expose the grounding strength of a citation in the answer.
-We introduce a band-assignment operator $\textsc{Band}\!: [-1, 1] \to \mathcal{B}$ that maps the maximum similarity score to a band, and define $\textsc{CGS}(c_i, r) = \textsc{Band}(\textsc{MaxSim}(L, c_i))$.
-$\textsc{Band}(x)$ returns $\textsc{High}$ when $x \in [0.9, 1.0]$, $\textsc{Mid}$ when $x \in [0.8, 0.9)$, and $\textsc{Low}$ when $x \in [-1.0, 0.8)$.
-$\textsc{High}$ grounding (scores in $[0.9, 1.0]$) indicates strong semantic alignment between answer and citation sentences, suggesting direct grounding of the answer in the citation source.
-\textsc{Mid} grounding (scores in $[0.8, 0.9)$) represents moderate semantic overlap, indicating partial citation contribution.
-\textsc{Low} grounding (scores in $[-1.0, 0.8)$) reflects weak semantic connection, suggesting minimal grounding of the answer in the citation source.
-We employ these thresholds because $0.8$ has been used as a threshold for detecting paraphrased sentences~\cite{kabir2024banglaembed} and $0.9$ for classifying similar sentences~\cite{tumre2025improved} in prior studies.
+% \textbf{Band Assignment.}
+% Finally, we categorize the aggregated grounding score $\textsc{MaxSim}(L, c_i)$ into three \emph{grounding bands} $\mathcal{B}$ to expose the grounding strength of a citation in the answer.
+% We introduce a band-assignment operator $\textsc{Band}\!: [-1, 1] \to \mathcal{B}$ that maps the maximum similarity score to a band, and define $\textsc{CGS}(c_i, r) = \textsc{Band}(\textsc{MaxSim}(L, c_i))$.
+% $\textsc{Band}(x)$ returns $\textsc{High}$ when $x \in [0.9, 1.0]$, $\textsc{Mid}$ when $x \in [0.8, 0.9)$, and $\textsc{Low}$ when $x \in [-1.0, 0.8)$.
+% $\textsc{High}$ grounding (scores in $[0.9, 1.0]$) indicates strong semantic alignment between answer and citation sentences, suggesting direct grounding of the answer in the citation source.
+% \textsc{Mid} grounding (scores in $[0.8, 0.9)$) represents moderate semantic overlap, indicating partial citation contribution.
+% \textsc{Low} grounding (scores in $[-1.0, 0.8)$) reflects weak semantic connection, suggesting minimal grounding of the answer in the citation source.
+% We employ these thresholds because $0.8$ has been used as a threshold for detecting paraphrased sentences~\cite{kabir2024banglaembed} and $0.9$ for classifying similar sentences~\cite{tumre2025improved} in prior studies.

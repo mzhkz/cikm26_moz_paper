@@ -10,25 +10,25 @@ When social doubts arise about the reliability of primary information, secondary
 For instance, regarding product reviews, not only official product websites but also secondary information such as reviews by others should be included in citations and reflected in answers.
 Therefore, some domains and tasks require secondary information alongside primary information, and it is not always optimal to maximize citation proportions of primary information sources.
 
-We argue for creating a manifest that defines target citation proportions based on publisher attributes for each domain and task and for evaluating answers against that manifest.
-Furthermore, mechanisms allowing users to control the balance between primary and secondary information are required.
-This enables us to control GSE behavior in citing primary and secondary information sources according to user questions and to mitigate the threat of poisoning attacks.
-Developing these mechanisms requires establishing methods that identify primary information sources from web sources of citations in answers.
-We consider that such determination mechanisms might be constructed by leveraging digital certificate technologies~\cite{w3c-vc-data-model-2025,originator-profile-2025,c2pa-org}.
+% We argue for creating a manifest that defines target citation proportions based on publisher attributes for each domain and task and for evaluating answers against that manifest.
+% Furthermore, mechanisms allowing users to control the balance between primary and secondary information are required.
+% This enables us to control GSE behavior in citing primary and secondary information sources according to user questions and to mitigate the threat of poisoning attacks.
+% Developing these mechanisms requires establishing methods that identify primary information sources from web sources of citations in answers.
+% We consider that such determination mechanisms might be constructed by leveraging digital certificate technologies~\cite{w3c-vc-data-model-2025,originator-profile-2025,c2pa-org}.
 
-\textbf{Approaches to Increase Primary Source Citations:}
-We discuss strategies to increase the exposure of primary information as citations where primary coverage is crucial, from two perspectives: content structure and presentation strategy.
-First, on content structure, Aggarwal et al.\ show that formatting differences alter GSE citation patterns, known as GEO~\cite{geo-apmr+24}.
-Chen et al.\ propose a method that infers, for a black-box GSE, the query intents under which given content is cited and optimizes the content accordingly~\cite{chen2026roleaugmentedintentdrivengenerativesearch}.
-Amin et al.\ show that the presence of author information increases citation exposure~\cite{abolghasemi-etal-2025-evaluation}, and other studies show that GSEs prefer English content~\cite{ki2025linguistic,cao2025out,stabler2025impact}.
+% \textbf{Approaches to Increase Primary Source Citations:}
+% We discuss strategies to increase the exposure of primary information as citations where primary coverage is crucial, from two perspectives: content structure and presentation strategy.
+% First, on content structure, Aggarwal et al.\ show that formatting differences alter GSE citation patterns, known as GEO~\cite{geo-apmr+24}.
+% Chen et al.\ propose a method that infers, for a black-box GSE, the query intents under which given content is cited and optimizes the content accordingly~\cite{chen2026roleaugmentedintentdrivengenerativesearch}.
+% Amin et al.\ show that the presence of author information increases citation exposure~\cite{abolghasemi-etal-2025-evaluation}, and other studies show that GSEs prefer English content~\cite{ki2025linguistic,cao2025out,stabler2025impact}.
 
-Second, on presentation strategy, primary information providers need topic coverage matching the breadth of GSE-expanded queries $Q^{\prime} = \{q_1, \ldots, q_n\}$ from a user question $q_u$; e.g., inflation also triggers queries on consumption taxes, fuel subsidies, and wage policies.
-If providers optimize via SEO and GEO only for $q_u$, GSEs cite secondary sources for the uncovered subtopics.
-Hence, providers must publish content covering all related topics.
+% Second, on presentation strategy, primary information providers need topic coverage matching the breadth of GSE-expanded queries $Q^{\prime} = \{q_1, \ldots, q_n\}$ from a user question $q_u$; e.g., inflation also triggers queries on consumption taxes, fuel subsidies, and wage policies.
+% If providers optimize via SEO and GEO only for $q_u$, GSEs cite secondary sources for the uncovered subtopics.
+% Hence, providers must publish content covering all related topics.
 
-For U.S. questions, a large share of citations concentrates on the \texttt{www.presidency.ucsb.edu} domain (mid injection barrier): 29.0\% for OpenAI, 23.2\% for Gemini, and 47.8\% for Claude.
-This site, maintained by UC Santa Barbara, archives official U.S. presidential documents, speeches, and records, providing structured content well-suited for LLM interpretation and reasoning.
-This suggests that publishing LLM-friendly content with broad topical coverage is key to increasing primary source citations.
+% For U.S. questions, a large share of citations concentrates on the \texttt{www.presidency.ucsb.edu} domain (mid injection barrier): 29.0\% for OpenAI, 23.2\% for Gemini, and 47.8\% for Claude.
+% This site, maintained by UC Santa Barbara, archives official U.S. presidential documents, speeches, and records, providing structured content well-suited for LLM interpretation and reasoning.
+% This suggests that publishing LLM-friendly content with broad topical coverage is key to increasing primary source citations.
 
 \textbf{Limitations and Future Work:}
 First, due to budget and compute constraints, we target closed-ended questions in the political domain in the U.S. and Japan rather than conducting a large-scale cross-domain study.
