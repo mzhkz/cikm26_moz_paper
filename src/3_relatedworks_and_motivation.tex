@@ -37,8 +37,7 @@ These studies highlight that in ideal \emph{retrieval-and-generation systems}, a
 To analyze them, a key evaluation metric is \emph{Faithfulness} and \emph{Dominance}.
 
 \emph{Faithfulness} is which measures how accurately the generated answer reflects the content of its citations~\cite{citeeval-acl25, ragas-eacl24, ares-naacl24, evaluating-verifiability-in-generative-search-engines-emnlp23, enabling-llms-to-generate-text-with-citations-emnlp23, ranking-generated-summaries-by-correctness-acl2019, evaluating-the-factual-consistency-of-abstractive-text-summarization-emnlp20, alignscore-acl23, feqa-acl20}.
-
-Faithfulness evaluation metrics are typically classified into three methods: entailment-based~\cite{ranking-generated-summaries-by-correctness-acl2019, true-reevaluating-factual-consistency-arxiv22, evaluating-the-factual-consistency-of-abstractive-text-summarization-emnlp20, alignscore-acl23}, similarity-based~\cite{bertscore-arxiv20, bartscore-neurips21}, and QA-based~\cite{feqa-acl20}.
+Faithfulness is typically computed by three methods: entailment-based~\cite{ranking-generated-summaries-by-correctness-acl2019, true-reevaluating-factual-consistency-arxiv22, evaluating-the-factual-consistency-of-abstractive-text-summarization-emnlp20, alignscore-acl23}, similarity-based~\cite{bertscore-arxiv20, bartscore-neurips21}, and QA-based~\cite{feqa-acl20}.
 Similarity-based methods are most appropriate for calculating reflection accuracy.
 Similarity-based methods quantitatively measure semantic similarity between two texts and rely on neural encoder models.
 Zhang et al.\ show that similarity-based methods achieve higher precision than entailment-based and QA-based methods in tasks evaluating consistency between long documents and their summaries~\cite{finegrainedcitationevaluationgenerated-arxiv24}.
