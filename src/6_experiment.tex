@@ -1,10 +1,10 @@
 \section{Experiment}
 \label{sec:experiment}
-We apply our framework to questions about U.S. and Japanese political parties on major GSE models, revealing their citation patterns and attack surfaces based on \emph{conjection injection barriers}.
+We apply our framework to questions about U.S. and Japanese political parties on major GSE models, revealing their citation patterns and attack surfaces based on \emph{content-injection barriers}.
 
 \subsection{Experimental Setup}
 
-\textbf{Tatget GSE Models.}
+\textbf{Target GSE Models.}
 We employ three GSE models for answer generation: OpenAI GPT-5~\cite{chatgpt}, Claude Sonnet $4$ (claude-4-sonnet-20250514)~\cite{claude}, and Gemini Flash $2.5$ (gemini-2.5-flash)~\cite{gemini}, the most advanced publicly available models with web search mode enabled.
 We clarify why we focus on closed GSE models in this study.
 According to surveys~\cite{menlo-ventures2025stategenaienterprise, a16z2025stateconsumerai}, closed models dominate the LLM market in both enterprise and consumer segments, with Claude, OpenAI, and Gemini together accounting for 88\% of spending share, while open-source models account for only 11\%.
@@ -28,7 +28,7 @@ The \emph{Unknown-Neutral} profile represents a user with no political knowledge
 \textbf{Questions.}
 We design political questions on topics common to both countries to elicit policy positions in a politically neutral manner, focusing on whether GSEs cite contents articulating positions on the target topics rather than favoring any particular party.
 
-All questions are closed-ended and include a party name according to PoisonedRAGs study (e.g, ``Regarding government debt, does {PARTY} currently prioritize debt restraint or growth-oriented investment?'').
+All questions are closed-ended and include a party name according to PoisonedRAGs study (e.g., ``Regarding government debt, does {PARTY} currently prioritize debt restraint or growth-oriented investment?'').
 
 To avoid bias, we build the question set on MARPOR (Manifesto Project), an established political-science framework for classifying party manifestos.
 From the four voter-facing MARPOR domains most relevant to everyday political judgment (External Relations, Economy, Welfare and Quality of Life, Fabric of Society), we select 11 topics on which all target parties take an explicit stance; the full list is given in Appendix~\ref{app:appendix_topics}.
@@ -138,7 +138,7 @@ When the total volume of web content about a party is large, the relative share 
 However, the US Green Party has $2.19 \times 10^{9}$ hits, far exceeding the two major parties, yet its Primary source ratio in GSE citations remains high. This counterexample suggests that publisher-side strategies can suppress this relationship.
 
 In contrast, user profiles do not affect the content-injection barrier distribution of citations.
-We show the citation distribution for three user profile conditions (unknown [unkn.\ in figures], high-conservative [cons.], high-progressive [prog.]) in Figure~\ref{fig:citation-by-persona}.
+We show the citation distribution for three user profile conditions (unknown [unkn.\ in figures], unknown-progressive [cons.], high-progressive [prog.]) in Figure~\ref{fig:citation-by-persona}.
 Each bar shows the barrier distribution of GSE citations for each user profile condition. The distributions across the three conditions are nearly identical. $\chi^2$ tests are not significant for any model in either country (US overall: $\chi^2(8) = 6.62,\, p = .579,\, V = 0.020$; JP overall: $\chi^2(8) = 10.07,\, p = .260,\, V = 0.019$; all 8 model-level tests also not significant), with $V < 0.02$.
 We also analyze the effect of alignment between the user profile ideology and the target party ideology (aligned [al-cons., al-prog.\ in figures] / opposed [op-cons., op-prog.]).
 GPT-5 shows no significant difference between aligned and opposed conditions (US: $\chi^2(12) = 14.25,\, p = .285$), selecting the same citations regardless of whether the user ideology matches the party.
@@ -160,7 +160,7 @@ Gemini (US: $\chi^2(12) = 62.12,\, p < .001$) and Claude (US: $\chi^2(12) = 58.5
   \label{fig:wc-by-persona}
 \end{figure*}
 
-\textbf{Distribution of Dominance Score.}
+\textbf{Distribution of Domination Score.}
 We next analyze the domination score distribution across barriers.
 We show the domination score distribution by model and party group in Figure~\ref{fig:wc-by-group}.
 As with citation distribution, model choice and the ruling/opposition position determine the attack surface. The model difference is US $V = 0.356$, JP $V = 0.229$ (US: $\chi^2(8) = 34{,}119.65,\, p < .001$; JP: $\chi^2(8) = 54{,}891.93,\, p < .001$), and the ruling/opposition difference is US $V = 0.386$ ($\chi^2(4) = 59{,}662.10,\, p < .001$).
@@ -208,7 +208,7 @@ On the other hand, Japanese SBERT may give lower cosine similarity than English 
 
 High means the answer is strongly grounded in the source, Mid means the core content is partly shared, and Low means only a weak semantic link.
 For Japanese questions, $86\%$ of citation sources are in Japanese and $14\%$ in English, while for English questions $100\%$ are in English.
-Since a single language is dominant within each country in questions and , language-specific calibration is reasonable for consistent comparison.
+Since a single language is dominant within each country in questions and citations, language-specific calibration is reasonable for consistent comparison.
 
 We show the barrier distribution for each grounding bin in Figure~\ref{fig:grounding-by-group}.
 Each cell is a Marimekko chart: the width along the x-axis shows the count share of each grounding bin (Low/Mid/High), and the y-axis shows the barrier distribution within each bin.

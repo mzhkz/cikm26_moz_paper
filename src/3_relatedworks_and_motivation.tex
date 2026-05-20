@@ -3,7 +3,7 @@ This section reviews poisoning attacks on \emph{RAG systems} and GSEs, summarize
 
 \label{sec:related}
 \subsection{Vulnerabilities of GSEs}
-We introduce a poisoning attack in GSEs.
+We introduce poisoning attacks on GSEs.
 Zou et al.~\cite{poisonedrag-arxiv24} reveal and formalize an attack method called \emph{PoisonedRAG} that exploits \emph{RAG systems} to generate attacker-intended answers by placing malicious content into external databases.
 Even if attackers can inject a small volume of malicious text into external databases, \emph{RAG systems} can produce attacker-intended answers for specific questions.
 This malicious content includes text that attackers want displayed as answers to specific questions, especially false information such as ``\textit{OpenAI's CEO is Tim Cook.}''
@@ -18,7 +18,7 @@ To succeed in a poisoning attack, the malicious content must satisfy two conditi
 Retrieval Condition means that malicious content (such as text or HTML placed by attackers) is selected as top-$ k $ relevant content through retrieval tasks for target questions.
 In GSEs, Retrieval Condition means that content on the web is retrieved as web pages ranked highly in search engine results by SE.
 Generation Condition means that the content is used as reasoning knowledge in the LLM and reflected in the generated answers.
-Aggarwal et al.~\cite{geo-apmr+24} propose \emph{generative engine optimization} (GEO), a method that optimizes website text structure and content from the perspective of Generation Condition to increase the exposure of web page content as citations in answers when the website passes the Retrieval Conditions.
+Aggarwal et al.~\cite{geo-apmr+24} propose \emph{generative engine optimization} (GEO), a method that optimizes website text structure and content from the perspective of Generation Condition to increase the exposure of web page content as citations in answers when the website passes the Retrieval Condition.
 GEO theoretically supports that GSEs are vulnerable to poisoning attacks.
 
 PoisonedRAG attacks are closely tied to actual influence operations.
@@ -33,7 +33,7 @@ Therefore, the act of attackers placing malicious content on the web to influenc
 \subsection{Citation Evaluation}
 \label{subsec:citation_evaluation}
 We first introduce seminal studies that aim to evaluate \emph{RAG systems}.
-These studies highlight that in ideal \emph{RAG systems}, all claimed sentences in an answer output from the \emph{RAG system} are supported by external sources from databases as \emph{citations} (citation coverage) and the sentences with citations accurately and faithfully reflect the claims (reflection accuracy).
+These studies highlight that in ideal \emph{RAG systems}, all claimed sentences in an answer produced by the \emph{RAG system} are supported by external sources from databases as \emph{citations} (citation coverage) and the sentences with citations accurately and faithfully reflect the claims (reflection accuracy).
 To analyze them, numerous studies evaluate \emph{faithfulness}, which measures how accurately the generated answer reflects the content of its citations, specifically focusing on \emph{RAG systems}~\cite{citeeval-acl25, ragas-eacl24, ares-naacl24, evaluating-verifiability-in-generative-search-engines-emnlp23, enabling-llms-to-generate-text-with-citations-emnlp23, ranking-generated-summaries-by-correctness-acl2019, evaluating-the-factual-consistency-of-abstractive-text-summarization-emnlp20, alignscore-acl23, feqa-acl20}.
 
 Faithfulness evaluation metrics are typically classified into three methods: entailment-based~\cite{ranking-generated-summaries-by-correctness-acl2019, true-reevaluating-factual-consistency-arxiv22, evaluating-the-factual-consistency-of-abstractive-text-summarization-emnlp20, alignscore-acl23}, similarity-based~\cite{bertscore-arxiv20, bartscore-neurips21}, and QA-based~\cite{feqa-acl20}.
@@ -45,7 +45,7 @@ Citation evaluation applies these faithfulness evaluation methods to each senten
 
 However, they do not examine which publishers of the content are selected as citations and assess the authority and trustworthiness of those sources.
 Thus, a gap remains between the seminal studies on \emph{RAG systems} and their applicability to GSEs.
-In \emph{RAG systems}, poisoning attack studies focus on how much malicious content attackers need to inject into external databases to succeed in the poisoning attack.
+In \emph{RAG systems}, poisoning attack studies focus on how much malicious content attackers need to inject into external databases to succeed in a poisoning attack.
 In contrast, since GSEs retrieve information from the open web, where attackers can inject malicious content more easily than in \emph{RAG systems}, the main concern for GSEs is whether they retrieve and incorporate even a small amount of malicious content injected by attackers during web searches, since this can enable a successful poisoning attack as previously described.
 Thus, existing evaluation methods alone are insufficient to assess how vulnerable GSEs are to poisoning attacks or to fully characterize their attack surface.
 

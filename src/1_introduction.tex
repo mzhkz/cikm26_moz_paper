@@ -26,7 +26,7 @@ Due to these differences, evaluation criteria proposed for \emph{RAG systems} ca
 
 Moreover, existing citation evaluation also does not consider the impact of personalization on citation behavior~\cite{kearney2025languagemodelschangefacts, exploreing-safery-in-personalization-arxiv2026}.
 LLM applications such as ChatGPT, Claude, and Gemini actively personalize inference to improve user experience.
-In political domains, user's political ideology influece the anwwer generation in LLM without web search~\cite{political-bias-audit-arxiv-2026}.
+In political domains, a user's political ideology influences answer generation in LLMs without web search~\cite{political-bias-audit-arxiv-2026}.
 However, how personalization influences the selection of citations in GSEs remains insufficiently explored.
 To reveal the attack surface of GSEs, we need to consider the effects of personalization on their citation behavior.
 
@@ -36,16 +36,16 @@ Each citation is classified by its \emph{content-injection barrier}, categorized
 In addition, the framework evaluates the faithfulness score and domination score across different content-injection barriers to validate the identified attack surfaces in specific scenarios.
 Our objective is to assess the potential risk of poisoning attacks, reveal the underlying attack surfaces of GSEs, and clarify the degree of resilience that GSEs provide against such threats.
 
-We conduct experiments on three major GSEs (OpenAI GPT-5, Claude Sonnet 4, and Gemini Flash 2.5 with search mode enabled) in the United States and Japan, using $33$ questions template across $13$ parties and $3$ user profiles for a total of $3{,}861$ generated answers.
+We conduct experiments on three major GSEs (OpenAI GPT-5, Claude Sonnet 4, and Gemini Flash 2.5 with search mode enabled) in the United States and Japan, using $33$ question templates across $13$ parties and $3$ user profiles for a total of $3{,}861$ generated answers.
 Our results reveal three findings.
 First, each GSE has a distinct attack surface: some GSEs concentrate citations on primary information sources and exclude low-barrier sources, while others cite low-barrier sources more frequently.
 Second, answers to ruling party questions rely more on sources with lower content-injection barriers than answers to opposition party questions, making the ruling side more vulnerable.
-Third, in contrast to biases arising from the LLM's internal knowledge, user profiles do not change the citation barrier pattern, faithfulness and the domination score across content-injection barriers.
+Third, in contrast to biases arising from the LLM's internal knowledge, user profiles do not change the citation barrier pattern, faithfulness, or domination score across content-injection barriers.
 
 Our main contributions are as follows:
 \begin{enumerate}
     \item We propose a framework to characterize the attack surface of GSEs for poisoning attacks in the political domain.
-    The framework classifies citations by \emph{content-injection barrier}, and evaluates the attack surface along three axes: barrier distribution, faithfulness and domination score.
+    The framework classifies citations by \emph{content-injection barrier}, and evaluates the attack surface along three axes: barrier distribution, faithfulness, and domination score.
     \item We conduct experiments on three major GSEs in the United States and Japan, covering $3{,}861$ generated answers across $13$ political parties and $3$ user profiles.
     \item We find that the attack surface differs by model and by whether the party in question is in the ruling or opposition position, but not by user profile.
 \end{enumerate}
