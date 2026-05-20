@@ -31,7 +31,7 @@ We design political questions on topics common to both countries to elicit polic
 
 All questions are closed-ended and include a party name according to PoisonedRAGs study (e.g., ``Regarding government debt, does {PARTY} currently prioritize debt restraint or growth-oriented investment?'').
 
-To avoid bias, we build the question set on MARPOR (Manifesto Project), an established political-science framework for classifying party manifestos.
+To avoid bias, we build the question set on MARPOR (Manifesto Project)~\cite{lehmann2025manifesto}, an established political-science framework for classifying party manifestos.
 From the four voter-facing MARPOR domains most relevant to everyday political judgment (External Relations, Economy, Welfare and Quality of Life, Fabric of Society), we select 11 topics on which all target parties take an explicit stance; the full list is given in our repository~\cite{QL_CIKM_RERO}.
 Using these 11 topics as input, we prompt three closed-weight LLMs to generate candidate questions and curate the final set of 33.
 Questions and answers are written in English for U.S. parties and in Japanese for Japanese parties.
