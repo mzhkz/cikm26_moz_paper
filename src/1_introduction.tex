@@ -28,15 +28,15 @@ To reveal the potential attack surface, we need to consider the perspective of w
 
 Moreover, existing citation evaluation also does not consider the impact of personalization on citation behavior~\cite{kearney2025languagemodelschangefacts, exploreing-safery-in-personalization-arxiv2026}.
 LLM applications such as ChatGPT, Claude, and Gemini actively personalize inference to improve user experience~\cite{openai2024memory, anthropic2025memory, google2026personal}.
-In political domains, a user's political ideology influences answer generation in LLMs without web search~\cite{political-bias-audit-arxiv-2026}.
+In political domains, a user's political ideology influences answer generation in LLMs without web search mode~\cite{political-bias-audit-arxiv-2026}.
 However, how personalization influences the selection of citations in GSEs remains insufficiently explored.
 To reveal the attack surface of GSEs, we need to consider the effects of personalization on their citation behavior.
 
 To address this gap, we introduce a novel framework to characterize the potential attack surface of GSEs for PoisonedRAG attacks in the political domain.
 Our framework poses political questions under user profiles that vary the user's level of political knowledge and ideology, enabling systematic analysis of how personalization influences citation behavior.
-Our framework classifies citations of answers by GSEs into \emph{content-injection barrier}, categorized as low, medium, or high, based on the practical difficulty of publishing content on that source, as determined through LLM-as-a-Judge~\cite{survey-llm-as-a-judge-arxiv24, judging-llm-as-a-judge-with-mt-bench-and-chatbot-arena-arxiv23} using WHOIS data.
-In addition, the framework evaluates the faithfulness score and domination score across different content-injection barriers to validate the identified attack surfaces in specific scenarios.
-By combining these evaluation criteria, our framework estimates the potential attack surface susceptible to poisoning attacks from the citation behavior of GSEs.
+Our framework classifies each citation of answers by GSEs into \emph{content-injection barrier}, categorized as low, medium, or high, based on the practical difficulty of publishing content on the web with a given level of publisher authority, as determined through LLM-as-a-Judge~\cite{survey-llm-as-a-judge-arxiv24, judging-llm-as-a-judge-with-mt-bench-and-chatbot-arena-arxiv23} using WHOIS data.
+In addition, the framework evaluates the faithfulness score and domination score across different content-injection barriers to validate the identified potential attack surfaces in specific scenarios.
+% By combining these evaluation criteria, our framework estimates the potential attack surface susceptible to poisoning attacks from the citation behavior of GSEs.
 
 We conduct experiments on three major GSEs (OpenAI GPT-5, Claude Sonnet 4, and Gemini Flash 2.5 with search mode enabled) in the United States and Japan, using $33$ question templates across $13$ parties and $3$ user profiles for a total of $3{,}861$ generated answers.
 Our results reveal three findings.
