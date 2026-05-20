@@ -33,8 +33,10 @@ Therefore, the act of attackers placing malicious content on the web to influenc
 \subsection{Citation Evaluation}
 \label{subsec:citation_evaluation}
 We first introduce seminal studies that aim to evaluate \emph{RAG systems}.
-These studies highlight that in ideal \emph{RAG systems}, all claimed sentences in an answer produced by the \emph{RAG system} are supported by external sources from databases as \emph{citations} (citation coverage) and the sentences with citations accurately and faithfully reflect the claims (reflection accuracy).
-To analyze them, numerous studies evaluate \emph{faithfulness}, which measures how accurately the generated answer reflects the content of its citations, specifically focusing on \emph{RAG systems}~\cite{citeeval-acl25, ragas-eacl24, ares-naacl24, evaluating-verifiability-in-generative-search-engines-emnlp23, enabling-llms-to-generate-text-with-citations-emnlp23, ranking-generated-summaries-by-correctness-acl2019, evaluating-the-factual-consistency-of-abstractive-text-summarization-emnlp20, alignscore-acl23, feqa-acl20}.
+These studies highlight that in ideal \emph{retrieval-and-generation systems}, all claimed sentences in an answer are supported by external sources from databases as \emph{citations} and the sentences with citations accurately and faithfully reflect the claims.
+To analyze them, a key evaluation metric is \emph{Faithfulness} and \emph{Dominance}.
+
+\emph{Faithfulness} is which measures how accurately the generated answer reflects the content of its citations~\cite{citeeval-acl25, ragas-eacl24, ares-naacl24, evaluating-verifiability-in-generative-search-engines-emnlp23, enabling-llms-to-generate-text-with-citations-emnlp23, ranking-generated-summaries-by-correctness-acl2019, evaluating-the-factual-consistency-of-abstractive-text-summarization-emnlp20, alignscore-acl23, feqa-acl20}.
 
 Faithfulness evaluation metrics are typically classified into three methods: entailment-based~\cite{ranking-generated-summaries-by-correctness-acl2019, true-reevaluating-factual-consistency-arxiv22, evaluating-the-factual-consistency-of-abstractive-text-summarization-emnlp20, alignscore-acl23}, similarity-based~\cite{bertscore-arxiv20, bartscore-neurips21}, and QA-based~\cite{feqa-acl20}.
 Similarity-based methods are most appropriate for calculating reflection accuracy.
@@ -43,15 +45,17 @@ Zhang et al.\ show that similarity-based methods achieve higher precision than e
 This approach aligns with GSE behavior of summarizing web page content retrieved from search results and generating answers with citations.
 Citation evaluation applies these faithfulness evaluation methods to each sentence $ l_i $ of generated answer $ r $ with citations $ C_i $, and evaluates reflection accuracy for the entire answer $ r $.
 
+\emph{Dominance} measures the proportion of cited text relative to the total text volume of the generated answer~\cite{geo-apmr+24, wu2025generativesearchengineslikeai}.
+For each citation $ C_i $, they count the number of words in the sentences to which $ C_i $ is attached and report this count as a proportion of the total number of words in the generated answer $ r $.
+This evaluation is the major for evaluating the influence of citations in GSEs~\cite{geo-apmr+24, wu2025generativesearchengineslikeai}.
+Aggarwal et al.~\cite{geo-apmr+24} also propose a dominance evaluation method that measures the influence of citations on generated answers in GSEs context.
+
 However, they do not examine which publishers of the content are selected as citations and assess the authority and trustworthiness of those sources.
-Thus, a gap remains between the seminal studies on \emph{RAG systems} and their applicability to GSEs.
+Thus, a gap remains between the seminal studies on \emph{RAG systems} and their applicability to GSEs to reveal the potential attack surface of poisoning attacks.
 In \emph{RAG systems}, poisoning attack studies focus on how much malicious content attackers need to inject into external databases to succeed in a poisoning attack.
 In contrast, since GSEs retrieve information from the open web, where attackers can inject malicious content more easily than in \emph{RAG systems}, the main concern for GSEs is whether they retrieve and incorporate even a small amount of malicious content injected by attackers during web searches, since this can enable a successful poisoning attack as previously described.
 Thus, existing evaluation methods alone are insufficient to assess how vulnerable GSEs are to poisoning attacks or to fully characterize their attack surface.
 
-In GSEs, Aggarwal et al.~\cite{geo-apmr+24} propose a dominance evaluation method that measures the influence of citations on generated answers.
-For each citation $ C_i $, they count the number of words in the sentences to which $ C_i $ is attached and report this count as a proportion of the total number of words in the generated answer $ r $.
-While this evaluation is the major for evaluating the influence of citations in GSEs, it is still not designed to assess the attack surface to poisoning attacks.
 
 \subsection{Authority and Trustworthiness}
 Several studies propose methods to improve the inclusion of authoritative sources in citations generated by \emph{RAG systems} and GSEs~\cite{zhou2025trustragenhancingrobustnesstrustworthiness, lee2026relevanceauthorityauthorityawaregenerative}.
