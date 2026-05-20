@@ -9,19 +9,19 @@
 
 In this section, we present our proposed framework for revealing the attack surface of GSEs.
 Figure~\ref{fig:overview} illustrates the overall pipeline: a user profile is injected into the GSE, which generates an answer with citations from web search results; the cited sources are then evaluated along three axes.
-Our framework consists of four components: (1) user profile embedding and answer retrieval (\textit{R-3}), (2) content-injection barrier classification (\textit{R-1}), (3) domination score (\textit{R-2}), and (4) citation grounding score computation (\textit{R-2}).
+Our framework consists of four components: (1) user profile embedding and answer retrieval, (2) content-injection barrier classification, (3) domination score, and (4) citation grounding score computation extension of faithfulness score.
 
 
 \subsection{Embedding User Profiles and Retrieving Answers}
 As one form of personalization, we adopt a user profile that bundles a user's attributes and inject it into the GSE.
 We pick up a user attribute set $\mathcal{A}$ that influences GSE answers and build a set of user profiles from their combinations $\mathcal{U} = \textsc{Combinations}(\mathcal{A})$.
-In our experiment (Section~\ref{sec:experiment}), we use two attributes: \textbf{political knowledge} with levels \textsc{Unknown} and \textsc{High}, and \textbf{political ideology} with levels \textsc{Conservative}, \textsc{Progressive}, and \textsc{Neutral}.
-From these, we construct three user profiles: \textsc{Unknown-Neutral}, \textsc{Unknown-Progressive}, and \textsc{High-Progressive}.
+In our experiment at Section~\ref{sec:experiment}, we use two attributes: \textbf{political knowledge} with levels \textsc{Unknown} and \textsc{High}, and \textbf{political ideology} with levels \textsc{Conservative}, \textsc{Progressive}, and \textsc{Neutral}.
+From these, we construct three user profiles: \emph{Unknown-Neutral}, \emph{Unknown-Progressive}, and \emph{High-Progressive}.
 Our framework is extensible to other attributes such as age, gender, and education level.
 
 To inject a user profile $u \in \mathcal{U}$ into the GSE formulation $f_{GSE}^{model}: (q_u, P_U) \rightarrow r$ from Section~\ref{sec:generative_search_engine}, we define a storytelling function $\textsc{MakeProfileInfo}(u)$ that converts $u$ into a narrative description and instantiates the personalization information $P_U$ embedded in the GSE's system prompt.
-Following Lutz et al.~\cite{lutz2025promptmakespersonasystematic} and prior work~\cite{argyle2023outofone, santurkar2023whose}, we combine \emph{interview format} and \emph{name-based priming} to make user profile injection systematic and effective.
-We release the actual system prompts in our anonymous repository.
+Following Lutz et al.~\cite{lutz2025promptmakespersonasystematic} and relative prior studies~\cite{argyle2023outofone, santurkar2023whose}, we combine \emph{interview format} and \emph{name-based priming} to make user profile injection systematic and effective.
+We release the actual system prompts in our anonymous repository~\cite{QL_CIKM_RERO}.
 
 
 \subsection{Injection Barrier}
@@ -73,13 +73,7 @@ The political influence operations described in Section~\ref{sec:related}, inclu
 Our framework computes the \emph{Domination Score} ($\textsc{DS}$) for each generated answer, which quantifies the proportion of cited text relative to the total text volume of the generated answer.
 This metric has been one of the primary evaluation criteria in the context of GEO, originally defined as a word-count-based measure~\cite{geo-apmr+24}.
 However, decomposing text into words is language-dependent and biased toward English; thus, we redesign it on a character-count basis and refer to it as the \emph{Domination Score}.
-The Domination Score is computed by the following equation:
-
-$$
-    \textsc{DS}(r) = \frac{\sum_{c \in C} \textsc{CharCount}(c)}{\textsc{CharCount}(r)}
-$$
-
-\noindent where $\textsc{CharCount}(\cdot)$ returns the number of characters in the given text.
+The Domination Score is computed as $\textsc{DS}(r) = \sum_{c \in C} \textsc{CharCount}(c) / \textsc{CharCount}(r)$, where $\textsc{CharCount}(\cdot)$ returns the number of characters in the given text.
 By aggregating the Domination Score for each content-injection barrier, we reveal the attack surface of GSEs.
 
 \subsection{Citation Grounding Score}
