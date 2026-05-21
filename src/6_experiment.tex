@@ -1,8 +1,10 @@
 \section{Experiment}
 \label{sec:experiment}
-We apply our framework to questions about U.S. and Japanese political parties on major GSE models, revealing their citation patterns and potential attack surfaces based on \emph{content-injection barriers}.
+We apply our framework to questions about U.S. and Japanese political parties on major GSE models.
+Our experiment reveals their citation patterns and potential attack surfaces in political domains based on \emph{content-injection barriers}.
 
 \subsection{Experimental Setup}
+We provide details of our experimental setup, including the target GSE models, user profiles, questions, and political parties.
 
 \textbf{Target GSE Models.}
 We employ three GSE models for answer generation: OpenAI GPT-5~\cite{chatgpt}, Claude Sonnet $4$ (claude-4-sonnet-20250514)~\cite{claude}, and Gemini Flash $2.5$ (gemini-2.5-flash)~\cite{gemini}, the most advanced publicly available models with web search mode enabled.
@@ -27,22 +29,22 @@ Using these attributes, we construct three user profile combinations: \emph{Unkn
 The \emph{Unknown-Neutral} profile represents a user with no political knowledge and a neutral ideology; the \emph{High-Progressive} profile represents a user with high political knowledge and a progressive ideology; and the \emph{High-Conservative} profile represents a user with high political knowledge and a conservative ideology.
 
 \textbf{Questions.}
-We design political questions on topics common to both countries to elicit policy positions in a politically neutral manner.
+We design political questions on topics common to each country to elicit policy positions in a politically neutral manner.
 Our question design focuses on whether GSEs cite content articulating positions on the target topics, rather than on questions tailored to a specific party.
-
 All questions are closed-ended and include a party name according to PoisonedRAGs study (e.g., ``Regarding government debt, does {PARTY} currently prioritize debt restraint or growth-oriented investment?'').
 
 To avoid bias, we build the question set on MARPOR (Manifesto Project)~\cite{lehmann2025manifesto}, an established political-science framework for classifying party manifestos.
-We pick up four voter-facing MARPOR domains most relevant to everyday political judgment (External Relations, Economy, Welfare and Quality of Life, Fabric of Society).
-we then select 11 topics on which all target parties take an explicit stance.
-Using these 11 topics as input, we generate questions using three closed-weight LLMs and finally obtain 33 question templates for asking the position of each party.
+MARPOR has a hierarchical structure consisting of seven \emph{policy domains}, each of which is composed of multiple \emph{topics}.
+We pick up four voter-facing MARPOR domains most relevant to everyday political judgment: \emph{External Relations}, \emph{Economy}, \emph{Welfare and Quality of Life}, and \emph{Fabric of Society}.
+We then select 11 topics on which all target parties take an explicit stance.
+Using these 11 topics as input, we generate questions using three closed-weight LLMs and finally obtain 33 question templates for asking the position of each party in each country.
 Questions and answers are written in English for U.S. parties and in Japanese for Japanese parties.
 Each question is instantiated per party, yielding $33 \times 5 = 165$ queries for the U.S. and $33 \times 8 = 264$ for Japan.
-Combined with 3 user profiles and 3 GSE models, this produces $165 \times 3 \times 3 = 1{,}485$ U.S. queries and $264 \times 3 \times 3 = 2{,}376$ Japanese queries, for a total of $3{,}861$ generated answers.
+Combined with three user profiles and three GSE models, this produces $165 \times 3 \times 3 = 1{,}485$ U.S. queries and $264 \times 3 \times 3 = 2{,}376$ Japanese queries, for a total of $3{,}861$ generated answers.
 The full list of topics and generated questions is available in our repository~\cite{QL_CIKM_RERO}.
 
 Following the DETAIL framework~\cite{kim2025mattersmeasuringimpactprompt}, we fix question specificity at the least specific domain-level (asking about a stance on an entire policy domain without proper nouns or concrete figures).
-This prevents questions and citations from being skewed toward topics that specific publishers actively promote, and reflects the abstraction level typical of voters' everyday political judgments.
+It prevents questions and citations from being skewed toward topics that specific publishers actively promote, and reflects the abstraction level typical of voters' everyday political judgments.
 
 
 \textbf{Target Political Parties.}
@@ -70,14 +72,15 @@ In the U.S., we target five parties. The ruling party is ``Republican Party'', a
 \end{figure*}
 
 We analyze the citation behavior of GSEs along three axes: (1) the content-injection barrier distribution of citations, (2) the domination score distribution across barriers, and (3) the citation grounding score distribution across barriers.
-In all analyses, we report Cram\'{e}r's $V$ alongside $\chi^2$ tests. When $N$ is large, even small differences yield $p < .001$; therefore, we use $V$ to assess the magnitude of differences.
+In all analyses, we report Cram\'{e}r's $V$ alongside $\chi^2$ tests. 
+When $N$ is large, even small differences yield $p < .001$; therefore, we use $V$ to assess the magnitude of differences.
 
 \textbf{Distribution of Content-injection Barriers.}
 We first analyze the content-injection barrier distribution of citations.
 To reveal the citation selection bias of GSEs, we compare the barrier distribution of top-$10$ web search results with that of GSE citations.
 We use Brave Search API~\cite{brave_search_api_en} to obtain web search results. 
 Since the search engines used by the target GSEs are not disclosed, we cannot replicate their exact search results.
-However, Brave Search API returns results similar to those of major search engines such as Google and Bing, and we consider it a reasonable approximation.
+However, Brave Search API returns results comparable to those of major search engines such as Google and Bing on standard retrieval metrics, and we therefore consider it a reasonable approximation.
 
 We show this comparison in Figure~\ref{fig:citation-by-group}.
 Each cell contains two stacked horizontal bars: the upper bar shows the barrier distribution of web search results, and the lower bar shows that of GSE citations.
@@ -162,7 +165,8 @@ We discretize grounding scores with thresholds $(\tau_L, \tau_H)$ into Low ($<\t
 Because the distribution of SBERT cosine similarity can differ by model and language~\cite{primer2023multilingual,shibayama2021japanesesbert}, we calibrate the thresholds separately for English (US) and Japanese (JP).
 For calibration, we use the semantic textual similarity (STS) benchmarks STS-B~\cite{cer2017stsb} for English and JSTS~\cite{kurihara2022jglue} for Japanese.
 In these datasets, each sentence pair is assigned a human similarity score from 0 (unrelated) to 5 (identical in meaning).
-SBERT maps sentences into a vector space and compares their meaning using cosine similarity, and its sentence embeddings are commonly evaluated by their correlation with human scores on STS benchmarks~\cite{reimers2019sbert}.
+SBERT maps sentences into a vector space and compares their meaning using cosine similarity.
+Its sentence embeddings are commonly evaluated by their correlation with human scores on STS benchmarks~\cite{reimers2019sbert}.
 Thus, the empirical relationship between human scores and cosine similarity on STS data allows us to set language-specific thresholds for semantic similarity.
 
 We define $\tau_H$ as the median cosine similarity of pairs with human score $\geq 4$, and $\tau_L$ as the median cosine similarity of pairs with human score $\geq 3$.
