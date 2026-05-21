@@ -1,5 +1,5 @@
 \section{Related Works and Motivation}
-This section reviews poisoning attacks on \emph{RAG systems} and GSEs, summarizes key evaluation criteria, and highlights challenges unique to GSEs.
+This section introduces poisoning attacks on \emph{RAG systems} and summarizes key evaluation criteria, and highlights our challenges to GSEs.
 
 \label{sec:related}
 \subsection{Vulnerabilities of GSEs}
@@ -33,8 +33,8 @@ Therefore, the act of attackers placing malicious content on the web to influenc
 \subsection{Citation Evaluation}
 \label{subsec:citation_evaluation}
 We first introduce seminal studies that aim to evaluate \emph{RAG systems}.
-These studies highlight that in ideal \emph{retrieval-and-generation systems}, all claimed sentences in an answer are supported by external sources from databases as \emph{citations} and the sentences with citations accurately and faithfully reflect the claims.
-To analyze them, a key evaluation metric is \emph{Faithfulness} and \emph{Dominance}.
+These studies highlight that in ideal retrieval-and-generation systems, all claimed sentences in an answer are supported by external sources from databases as \emph{citations} and the sentences with citations accurately and faithfully reflect the claims.
+To evaluate these systems, a key evaluation metric is \emph{Faithfulness} and \emph{Dominance}.
 
 \emph{Faithfulness} is which measures how accurately the generated answer reflects the content of its citations~\cite{citeeval-acl25, ragas-eacl24, ares-naacl24, evaluating-verifiability-in-generative-search-engines-emnlp23, enabling-llms-to-generate-text-with-citations-emnlp23, ranking-generated-summaries-by-correctness-acl2019, evaluating-the-factual-consistency-of-abstractive-text-summarization-emnlp20, alignscore-acl23, feqa-acl20}.
 Faithfulness is typically computed by three methods: entailment-based~\cite{ranking-generated-summaries-by-correctness-acl2019, true-reevaluating-factual-consistency-arxiv22, evaluating-the-factual-consistency-of-abstractive-text-summarization-emnlp20, alignscore-acl23}, similarity-based~\cite{bertscore-arxiv20, bartscore-neurips21}, and QA-based~\cite{feqa-acl20}.
@@ -44,29 +44,30 @@ Zhang et al.\ show that similarity-based methods achieve higher precision than e
 This approach aligns with GSE behavior of summarizing web page content retrieved from search results and generating answers with citations.
 Citation evaluation applies these faithfulness evaluation methods to each sentence $ l_i $ of generated answer $ r $ with citations $ C_i $, and evaluates reflection accuracy for the entire answer $ r $.
 
-\emph{Dominance} measures the proportion of cited text relative to the total text volume of the generated answer~\cite{geo-apmr+24, wu2025generativesearchengineslikeai}.
+\emph{Dominance} is which measures the proportion of cited text relative to the total text volume of the generated answer~\cite{geo-apmr+24, wu2025generativesearchengineslikeai}.
 For each citation $ C_i $, they count the number of words in the sentences to which $ C_i $ is attached and report this count as a proportion of the total number of words in the generated answer $ r $.
 This evaluation is the major for evaluating the influence of citations in GSEs~\cite{geo-apmr+24, wu2025generativesearchengineslikeai}.
 Aggarwal et al.~\cite{geo-apmr+24} also propose a dominance evaluation method that measures the influence of citations on generated answers in GSEs context.
 
 However, they do not assess the authority and trustworthiness of cited content, as they disregard the publisher of those sources.
-Content-driven evaluation leaves a gap between the seminal studies on \emph{RAG systems} and their applicability to GSEs to reveal the potential attack surface of poisoning attacks.
+Such content-driven evaluations leave a gap between the seminal studies on \emph{RAG systems} and their applicability to GSEs to reveal the potential attack surface of poisoning attacks.
 In \emph{RAG systems}, poisoning attack studies focus on how much malicious content attackers need to inject into external databases to succeed in a poisoning attack.
-In contrast, since GSEs retrieve information from the open web, where attackers can inject malicious content more easily than in \emph{RAG systems}, the main concern for GSEs is whether they retrieve and incorporate even a small amount of malicious content injected by attackers during web searches, since this can enable a successful poisoning attack as previously described.
-Thus, existing evaluation methods alone are insufficient to assess how vulnerable GSEs are to poisoning attacks or to fully characterize their attack surface.
+In contrast, since GSEs retrieve information from the open web, where attackers can inject malicious content more easily than in \emph{RAG systems}, since it can enable a successful poisoning attack as previously described.
+The main concern shifts from preventing malicious content from existing in external databases to preventing from incorporating even a small amount of malicious content injected by attackers during web searches.
+Unlike \emph{RAG systems}, GSEs operate under the assumption that malicious content is always present in their external sources (i.e., the open web), and therefore existing evaluation methods alone are insufficient to assess safety and quality of GSEs.
 
 
 \subsection{Authority and Trustworthiness}
 Several studies propose methods to improve the inclusion of authoritative sources in citations generated by \emph{RAG systems} and GSEs~\cite{zhou2025trustragenhancingrobustnesstrustworthiness, lee2026relevanceauthorityauthorityawaregenerative}.
-TrustRAG~\cite{zhou2025trustragenhancingrobustnesstrustworthiness} identifies and removes malicious documents during retrieval by clustering candidate documents and matching them with the internal knowledge of the LLM.
+TrustRAG~\cite{zhou2025trustragenhancingrobustnesstrustworthiness} identifies and removes malicious documents during content retrieval by clustering candidate documents and matching them with the internal knowledge of the LLM.
 AuthGR~\cite{lee2026relevanceauthorityauthorityawaregenerative} computes an authority score for web pages using a vision-language model that evaluates both the textual content of the page and visual features extracted from page screenshots, such as layout quality, design, and advertisement density. 
-The system preferentially cites web pages with high authority scores.
+The system prefer to cite web pages with high authority scores.
 
-However, evaluating only the content of citations is insufficient for assessing citation safety under poisoning attacks.
+However, evaluating only the content itself of citations is insufficient for assessing the safety of GSEs under poisoning attacks.
 As described in Section~\ref{subsec:citation_evaluation}, because anyone can publish content on the web, attackers can deliberately optimize the scores of content-based evaluation metrics while still injecting malicious information into the web.
-In fact, the \emph{Doppelganger} operation reported by EU DisinfoLab~\cite{eudisinfolab2022doppelganger,foreignaffairs2024doppelganger} shows that more than 700 fake news websites were created by imitating the domain names and designs of legitimate media, and their content was distributed while disguised as legitimate media.
+In fact, the \emph{Doppelganger} operation reported by EU DisinfoLab~\cite{eudisinfolab2022doppelganger,foreignaffairs2024doppelganger} shows that more than $700$ fake news websites were created by imitating the domain names and designs of legitimate media, and their content was distributed while disguised as legitimate media.
 Such \emph{legitimate-looking} malicious content undermines approaches that evaluate only the content itself, causing both false negatives and false positives.
-Therefore, for GSEs, we need to evaluate not only the content of citations, but also the authority and trustworthiness of their publishers.
+Therefore, for GSEs, we need to evaluate not only the content itself of citations, but also the authority and trustworthiness of content publishers.
 
 Furthermore, they typically assume the presence of poisoning attacks on \emph{RAG systems} and primarily focus on developing defenses or system improvements. 
 However, they do not provide a systematic understanding or measurement of the actual extent of citation selection bias and vulnerability found in production GSEs.
@@ -74,9 +75,9 @@ However, they do not provide a systematic understanding or measurement of the ac
 
 \subsection{Personalization of LLMs}
 \label{sec:related_works_personalization}
-Personalization is a key factor in improving the user experience of chat-based applications ~\cite{openai2024memory, anthropic2025memory, google2026personal} and is a recognized direction on language models~\cite{salemi2024lamp, mysore2024pearl}.
+Personalization is a key factor in improving the user experience of chat-based applications~\cite{openai2024memory, anthropic2025memory, google2026personal} and is a recognized direction on language models~\cite{salemi2024lamp, mysore2024pearl}.
 In personalization, the general approach is to embed the user's attribute information together with the user's question.
-This approach enables the applications to generate responses that more accurately reflect the user's preferences, background, and needs.
+This approach enables the applications to generate answers that more accurately reflect the user's preferences, background, and needs.
 
 Several studies investigate how personalization affects answers generated from the internal knowledge of LLMs.
 Tornberg et al.~\cite{political-bias-audit-arxiv-2026} analyze political ideology bias in representative and widely used LLMs.
@@ -87,13 +88,13 @@ Kearney et al.~\cite{kearney2025languagemodelschangefacts} show that across seve
 The influence of user attributes also extends to tasks that have objectively correct answers.
 Vijjini et al.~\cite{exploreing-safery-in-personalization-arxiv2026} show that LLM response performance varies systematically even in tasks such as mathematical reasoning, general knowledge, and programming.
 
-However, these prior studies focus on biases that arise from the internal knowledge of LLMs and do not examine GSEs, where answers are generated using web search as a broad external context. 
-To the best of our knowledge, no prior work has examined how personalization affects the citation behavior of GSEs, including aspects such as source authority and reflection accuracy.
+However, these prior studies focus on biases that arise from the internal knowledge of LLMs and do not examine biases in GSEs. 
+To the best of our knowledge, no prior study has examined how personalization affects the citation behavior of GSEs, including aspects such as source authority and trustworthiness, domination and faithfulness of citations.
 
 \subsection{Research Motivation}
-To better understand the attack surface of GSEs, our goal is to provide a novel evaluation framework. 
+To understand the potential attack surface of GSEs, our goal is to build a novel evaluation framework. 
 Our framework introduces new evaluation criteria centered on the publisher attributes of citations in generated answers, enabling a systematic assessment of the underlying attack surfaces and the resilience of GSEs against poisoning attacks.
-Our focus is on establishing evaluation criteria for the attack surface of GSEs to poisoning attacks. 
+We focus on establishing evaluation criteria for the attack surface of GSEs to poisoning attacks. 
 We do not aim to demonstrate practical attacks or identify actual malicious content.
 
 Specifically, our framework addresses the following research questions:
