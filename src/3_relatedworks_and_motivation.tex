@@ -74,7 +74,7 @@ However, they do not provide a systematic understanding or measurement of the ac
 
 \subsection{Personalization of LLMs}
 \label{sec:related_works_personalization}
-Personalization is a key factor in improving the user experience of chat-based applications such as ChatGPT~\cite{openai2024memory}, Claude~\cite{anthropic2025memory}, and Gemini~\cite{google2026personal}, and is a recognized direction on language models~\cite{salemi2024lamp, mysore2024pearl}.
+Personalization is a key factor in improving the user experience of chat-based applications ~\cite{openai2024memory, anthropic2025memory, google2026personal} and is a recognized direction on language models~\cite{salemi2024lamp, mysore2024pearl}.
 In personalization, the general approach is to embed the user's attribute information together with the user's question.
 This approach enables the applications to generate responses that more accurately reflect the user's preferences, background, and needs.
 
@@ -93,11 +93,12 @@ To the best of our knowledge, no prior work has examined how personalization aff
 \subsection{Research Motivation}
 To better understand the attack surface of GSEs, our goal is to provide a novel evaluation framework. 
 Our framework introduces new evaluation criteria centered on the publisher attributes of citations in generated answers, enabling a systematic assessment of the underlying attack surfaces and the resilience of GSEs against poisoning attacks.
-Our focus is on establishing evaluation criteria for the attack surface of GSEs to poisoning attacks, not on demonstrating practical attacks or identifying actual malicious content.
+Our focus is on establishing evaluation criteria for the attack surface of GSEs to poisoning attacks. 
+We do not aim to demonstrate practical attacks or identify actual malicious content.
 
 Specifically, our framework addresses the following research questions:
 \begin{description}
-  \item[\textbf{\textit{R-1}}] Which publishers' content do GSEs preferentially cite, and does this reveal any bias in citation selection from the perspective of publishers?
+  \item[\textbf{\textit{R-1}}] Which publishers' content do GSEs prefer to cite, and does this reveal any bias in citation selection from the perspective of publishers?
   \item[\textbf{\textit{R-2}}] Which publishers' content has the power to influence the domination and faithfulness of citations?
   \item[\textbf{\textit{R-3}}] How does personalization affect the citation behavior of GSEs?
 \end{description}
