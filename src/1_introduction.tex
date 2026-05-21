@@ -16,6 +16,7 @@ Web content can be published and modified by any user with any intent~\cite{pois
 Prior studies formalize poisoning attacks that place disinformation and misinformation on the web to generate attacker-intended answers in systems that retrieve from external databases and generate answers, including GSEs, because these systems can cite such content and generate text that reflects it~\cite{poisoning-web-scale-training-datasets-is-practical-sp24, poisonedrag-arxiv24, yu2025safetydevolutionaiagents}.
 Specific to GSEs, prior studies show patterns in styles of web content that GSEs prefer to cite in answers and propose a method to optimize own contents for increasing citation exposure~\cite{geo-apmr+24, wu2025generativesearchengineslikeai}.
 Although they are beneficial for primary information providers that seek to increase the exposure of their web content as citations, they can also facilitate poisoning attacks.
+This indicates that systematically citation evaluating the safety of GSEs against poisoning attacks is indispensable.
 
 Existing evaluation criteria aim to assess two aspects: (1) how faithfully the cited content is reflected in the answers, and (2) how much the cited content dominates the answers.
 Several studies evaluate \emph{faithfulness} by measuring the semantic consistency between the cited web content and the generated answers~\cite{citeeval-acl25, ragas-eacl24, ares-naacl24, evaluating-verifiability-in-generative-search-engines-emnlp23, enabling-llms-to-generate-text-with-citations-emnlp23, ranking-generated-summaries-by-correctness-acl2019, evaluating-the-factual-consistency-of-abstractive-text-summarization-emnlp20, alignscore-acl23, feqa-acl20}.
@@ -37,7 +38,7 @@ In political domains, a user's political ideology influences answer generation i
 However, how personalization influences the selection of citations in GSEs remains insufficiently explored.
 To reveal the attack surface of GSEs, we need to consider the effects of personalization on their citation behavior.
 
-To address this gap, we introduce a novel framework to characterize the potential attack surface of GSEs for PoisonedRAG attacks.
+To address these gaps, we introduce a novel framework to characterize the potential attack surface of GSEs for PoisonedRAG attacks.
 Our framework classifies each citation of answers by GSEs into \emph{content-injection barrier}, categorized as low, medium, or high, based on the practical difficulty of publishing content on the web with a given level of publisher authority.
 In addition, the framework evaluates the faithfulness score and domination score across different content-injection barriers to validate the identified potential attack surfaces in specific scenarios.
 % By combining these evaluation criteria, our framework estimates the potential attack surface susceptible to poisoning attacks from the citation behavior of GSEs.
