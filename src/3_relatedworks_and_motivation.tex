@@ -49,8 +49,8 @@ For each citation $ C_i $, they count the number of words in the sentences to wh
 This evaluation is the major for evaluating the influence of citations in GSEs~\cite{geo-apmr+24, wu2025generativesearchengineslikeai}.
 Aggarwal et al.~\cite{geo-apmr+24} also propose a dominance evaluation method that measures the influence of citations on generated answers in GSEs context.
 
-However, they do not examine which publishers of the content are selected as citations and assess the authority and trustworthiness of those sources.
-Thus, a gap remains between the seminal studies on \emph{RAG systems} and their applicability to GSEs to reveal the potential attack surface of poisoning attacks.
+However, they do not assess the authority and trustworthiness of cited content, as they disregard the publisher of those sources.
+Content-driven evaluation leaves a gap between the seminal studies on \emph{RAG systems} and their applicability to GSEs to reveal the potential attack surface of poisoning attacks.
 In \emph{RAG systems}, poisoning attack studies focus on how much malicious content attackers need to inject into external databases to succeed in a poisoning attack.
 In contrast, since GSEs retrieve information from the open web, where attackers can inject malicious content more easily than in \emph{RAG systems}, the main concern for GSEs is whether they retrieve and incorporate even a small amount of malicious content injected by attackers during web searches, since this can enable a successful poisoning attack as previously described.
 Thus, existing evaluation methods alone are insufficient to assess how vulnerable GSEs are to poisoning attacks or to fully characterize their attack surface.
