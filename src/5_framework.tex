@@ -20,7 +20,7 @@ Therefore, the degree of content-injection barriers serves as an indicator inver
 
 \subsection{Set User Profiles and Retrieving Answers}
 As one form of personalization, we set a user profile that assembles a user's attributes, to GSEs.
-We pick up a user attribute set $\mathcal{A}$ that influences retrival and generation tasks of GSE.
+We pick up a user attribute set $\mathcal{A}$ that influences retrieval and generation tasks of GSE.
 We then build a set of user profiles from their combinations $\mathcal{U} = \textsc{Combinations}(\mathcal{A})$.
 In our experiment at Section~\ref{sec:experiment}, we use two attributes: political knowledge with levels \emph{Unknown} and \emph{High}, and political ideology with levels \emph{Conservative}, \emph{Progressive}, and \emph{Neutral}.
 From these, we construct three user profiles: \emph{Unknown-Neutral}, \emph{Unknown-Progressive}, and \emph{High-Progressive}.
@@ -28,7 +28,7 @@ Our framework is extensible to other attributes such as age, gender, and educati
 
 To provide a user profile $u \in \mathcal{U}$ to GSEs, we introduce a storytelling function $\textsc{MakeProfileInfo}(u)$ that converts $u$ into personalization information $P_U$ to be set in the GSE.
 Note that $P_U$ is used in the part of system prompt, $f_{GSE}^{model}: (q_u, P_U) \rightarrow r$ from Section~\ref{sec:generative_search_engine} models the personalized information retrieval and answer generation.
-Following Lutz et al.~\cite{lutz2025promptmakespersonasystematic} and relative prior studies~\cite{argyle2023outofone, santurkar2023whose}, we combine \emph{interview format} and \emph{name-based priming} to accurately set user profiles in GSEs.
+Following Lutz et al.~\cite{lutz2025promptmakespersonasystematic} and related prior studies~\cite{argyle2023outofone, santurkar2023whose}, we combine \emph{interview format} and \emph{name-based priming} to accurately set user profiles in GSEs.
 The system prompt we use in our experiments is available in our anonymous repository~\cite{QL_CIKM_RERO}.
 
 
@@ -86,7 +86,7 @@ By aggregating the Domination Score for each content-injection barrier, we analy
 
 \subsection{Citation Grounding Score}
 \label{subsec:citation_grounding}
-Our framework computes the \emph{Citation Grounding Score} ($\textsc{CGS}$) for each citation
+Our framework computes the \emph{Citation Grounding Score} ($\textsc{CGS}$) for each citation.
 It quantifies how strongly the answer sentences are reflected in the cited content related to faithfulness evaluation.
 We introduce a scoring function $\textsc{CGS}(c, r)$ that measures the Citation Grounding Score for each citation $c$ and answer $r$.
 By aggregating the Grounding Score for each content-injection barrier, we analyze the effectiveness of each barrier's content.
