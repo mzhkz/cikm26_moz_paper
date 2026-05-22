@@ -59,15 +59,14 @@ In the U.S., we target five parties. The ruling party is ``Republican Party'', a
 \begin{figure}[t]
   \centering
   \includegraphics[width=\columnwidth]{figs/phase8_outputs/figures/citation_distribution_by_group_vertical.pdf}
-  \caption{Citation distribution by party group. Each cell has two stacked bars: the upper shows the barrier distribution of web search results, and the lower shows that of GSE citations.
-  Symbols show $\chi^2$ test significance between the two layers.}
+  \caption{Barrier distribution by party group. Each cell has two stacked bars: the upper shows the barrier distribution of web search results, and the lower shows that of GSE citations.}
   \label{fig:citation-by-group}
 \end{figure}
 
 \begin{figure*}[t]
   \centering
   \includegraphics[width=\textwidth]{figs/phase8_outputs/figures/citation_distribution_by_persona.pdf}
-  \caption{Citation distribution by user profile. Each bar shows the barrier distribution of GSE citations for each user profile.}
+  \caption{Barrier distribution by user profile. Each bar shows the barrier distribution of GSE citations for each user profile.}
   \label{fig:citation-by-persona}
 \end{figure*}
 
@@ -82,24 +81,29 @@ We use Brave Search API~\cite{brave_search_api_en} to obtain web search results.
 Since the search engines used by the target GSEs are not disclosed, we cannot replicate their exact search results.
 However, Brave Search API returns results comparable to those of major search engines such as Google and Bing on standard retrieval metrics, and we therefore consider it a reasonable approximation.
 
-We show this comparison in Figure~\ref{fig:citation-by-group}.
+We first show the barrier distribution of citations across GSE models and parties into ruling (ruling) and opposition (opp.) in Figure~\ref{fig:citation-by-group}.
 Each cell contains two stacked horizontal bars: the upper bar shows the barrier distribution of web search results, and the lower bar shows that of GSE citations.
-In citation distribution, this tendency differs across models (US: $\chi^2(8) = 568.94,\, p < .001,\, V = 0.328$; JP: $\chi^2(8) = 574.80,\, p < .001,\, V = 0.250$).
+In barrier distribution of GSE citations, this tendency differs across models (US: $\chi^2(8) = 568.94,\, p < .001,\, V = 0.328$; JP: $\chi^2(8) = 574.80,\, p < .001,\, V = 0.250$).
 GPT-5 has the highest Primary source ratio (US 67.2\%, JP 83.1\%) and does not cite Low-barrier sources (US/JP both $\leq$ 0.1\%).
 The attack surface of GPT-5 is concentrated on Primary sources (official party domains); low-cost content injection does not reach the answer unless the official domain is compromised.
 Gemini has the highest ratios of Opponent sources (US 12.4\%, JP 6.1\%) and Low-barrier sources (US 12.9\%, JP 17.2\%) among the three models.
 The attack surface of Gemini is broad, with many pathways through which content injection via low-cost sources can reach the answer.
 Claude has the highest Mid-barrier source ratio (US 59.3\%, JP 37.1\%) among the three models, with Primary source ratios of US 16.5\% and JP 53.7\%.
 
-The ruling/opposition distinction (ruling [rul.\ in figures] / opposition [opp.]) also affects citation composition (US: $\chi^2(4) = 1044.06,\, p < .001,\, V = 0.361$; JP: $\chi^2(4) = 357.92,\, p < .001,\, V = 0.161$).
+The ruling/opposition distinction (ruling [rul.\ in figures] / opposition [opp.]) also affects citation composition (US: $\chi^2(4) = 1044.06,\, p < .001,\, V = 0.361$; JP: $\chi^2(4) = 357.92,\, p < .001,\, V = 0.161$) of GSE citations.
 In the US, citations for ruling party questions are dominated by Mid-barrier sources (Claude 78.9\%, Gemini 58.5\%, GPT-5 21.8\%), with Primary source ratios at Claude 0.9\%, Gemini 0.9\%, and GPT-5 10.3\%.
 In contrast, opposition party questions have higher Primary source ratios: GPT-5 86.8\%, Gemini 19.8\%, Claude 21.3\%.
 It means that answers to ruling party questions rely more on sources with lower content-injection barriers, and the attack surface for the ruling party is broader.
 In particular, for models other than GPT-5, we see that the Primary source ratio is low at the stage of Brave search results.
 It suggests that these models may generate search queries that are unable to retrieve Primary sources.
 
-% Conservative and progressive parties also show differences in citation composition, with questions about progressive parties citing more Opponent sources than those about conservative parties (US: $\chi^2(4) = 148.44,\, p < .001,\, V = 0.136$; JP: $\chi^2(4) = 288.67,\, p < .001,\, V = 0.145$). However, $V < 0.15$, and the effect on the attack surface is smaller than the ruling/opposition difference (US $V = 0.361$) or the model difference (US $V = 0.328$).
-
+This barrier distribution of GSE citations is correlated with the barrier distribution of web search results.
+For each condition, we compute the Pearson correlation coefficient between the ratios of the five barrier categories in web search results and those in GSE citations.
+Here, $n_\text{B}$ and $n_\text{C}$ denote the number of web search result domains and GSE citation domains used for aggregation, respectively.
+Overall, the correlation is very high (US $r = 0.996$ ($n_\text{B}{=}6{,}919$, $n_\text{C}{=}7{,}998$); JP $r = 0.867$ ($n_\text{B}{=}11{,}689$, $n_\text{C}{=}13{,}724$)), and strong positive correlations are consistently maintained across every partition: by model (US: GPT-5 $r = 0.843$ ($2{,}255$, $1{,}032$), Gemini $r = 0.991$ ($3{,}130$, $4{,}204$), Claude $r = 0.984$ ($1{,}534$, $2{,}762$); JP: GPT-5 $r = 0.755$ ($3{,}631$, $2{,}845$), Gemini $r = 0.854$ ($5{,}705$, $7{,}084$), Claude $r = 0.935$ ($2{,}353$, $3{,}795$)), by ruling/opposition (US $r \geq 0.984$ ($n_\text{B} \geq 1{,}444$, $n_\text{C} \geq 1{,}893$); JP $r \geq 0.753$ ($n_\text{B} \geq 4{,}165$, $n_\text{C} \geq 3{,}598$)), and by user profile (US $r \geq 0.993$ ($n_\text{B} \geq 2{,}222$, $n_\text{C} \geq 2{,}640$); JP $r \geq 0.847$ ($n_\text{B} \geq 3{,}804$, $n_\text{C} \geq 4{,}492$)).
+GSEs cite sources while largely preserving the barrier composition of web search results, suggesting that the upstream factor of the citation barrier distribution lies in the barrier composition at the web search stage.
+At the same time, across all three GSEs, we observe an average increase in the Primary source ratio from web search results to GSE citations, regardless of model, user profile, or party group (US: $+10.8 \pm 13.0$ points, $n = 45$ cells; JP: $+20.2 \pm 15.8$ points, $n = 63$ cells).
+This suggests that GSEs selectively cite Primary sources from web search results.
 
 The lower Primary source ratio for ruling party questions may be caused by the larger volume of web content about ruling parties.
 Google search hit counts for party names show that Japan's long-ruling LDP has $4.71 \times 10^{7}$ hits, far exceeding the other-party average of $8.57 \times 10^{6}$. In the US, the Republican Party and the Democratic Party have $1.65 \times 10^{8}$ and $3.99 \times 10^{8}$ hits, respectively.
@@ -107,7 +111,7 @@ When the total volume of web content about a party is large, the relative share 
 However, the US Green Party has $2.19 \times 10^{9}$ hits, far exceeding the two major parties, yet its Primary source ratio in GSE citations remains high. This counterexample suggests that publisher-side strategies can suppress this relationship.
 
 In contrast, user profiles do not affect the content-injection barrier distribution of citations.
-We show the citation distribution for three user profile conditions (unknown [unkn.], unknown-progressive [cons.], high-progressive [prog.]) in Figure~\ref{fig:citation-by-persona}.
+We show the barrier distribution for three user profile conditions (unknown [unkn.], unknown-progressive [cons.], high-progressive [prog.]) in Figure~\ref{fig:citation-by-persona}.
 Each bar shows the barrier distribution of GSE citations for each user profile condition. The distributions across the three conditions are nearly identical. $\chi^2$ tests are not significant for any model in either country (US overall: $\chi^2(8) = 6.62,\, p = .579,\, V = 0.020$; JP overall: $\chi^2(8) = 10.07,\, p = .260,\, V = 0.019$; all 8 model-level tests also not significant), with $V < 0.02$.
 We also analyze the effect of alignment between the user profile ideology and the target party ideology (aligned [al-cons., al-prog.] / opposed [op-cons., op-prog.]).
 GPT-5 shows no significant difference between aligned and opposed conditions (US: $\chi^2(12) = 14.25,\, p = .285$), selecting the same citations regardless of whether the user ideology matches the party.
@@ -132,16 +136,16 @@ Gemini (US: $\chi^2(12) = 62.12,\, p < .001$) and Claude (US: $\chi^2(12) = 58.5
 \textbf{Distribution of Domination Score.}
 We next analyze the domination score distribution across barriers.
 We show the domination score distribution by model and party group in Figure~\ref{fig:wc-by-group}.
-As with citation distribution, model choice and the ruling/opposition position determine the attack surface. The model difference is US $V = 0.356$, JP $V = 0.229$ (US: $\chi^2(8) = 34{,}119.65,\, p < .001$; JP: $\chi^2(8) = 54{,}891.93,\, p < .001$), and the ruling/opposition difference is US $V = 0.386$ ($\chi^2(4) = 59{,}662.10,\, p < .001$).
+As with barrier distribution, model choice and the ruling/opposition position determine the attack surface. The model difference is US $V = 0.356$, JP $V = 0.229$ (US: $\chi^2(8) = 34{,}119.65,\, p < .001$; JP: $\chi^2(8) = 54{,}891.93,\, p < .001$), and the ruling/opposition difference is US $V = 0.386$ ($\chi^2(4) = 59{,}662.10,\, p < .001$).
 
-The Primary source domination score exceeds the citation distribution ratio.
-For GPT-5, the Primary ratio in citation distribution is US 67.2\% / JP 83.1\%, while in domination score it is US 71.1\% / JP 90.1\%.
+The Primary source domination score exceeds the barrier distribution ratio.
+For GPT-5, the Primary ratio in barrier distribution is US 67.2\% / JP 83.1\%, while in domination score it is US 71.1\% / JP 90.1\%.
 Gemini shows the same pattern: JP citation 49.1\% vs.\ domination 62.2\%. Claude also shows JP citation 53.7\% vs.\ domination 62.2\%.
 This means that the text span of the answer attributed to each Primary source citation is longer than that of citations from other barriers.
 For US opposition questions, GPT-5 attributes 91.2\% of the domination score to Primary sources (official party domains).
 The Low-barrier source domination score is highest for Gemini at JP 9.8\% (GPT-5: 0.1\%, Claude: 4.3\%), showing that the share of answer text supported by low-cost sources differs across models.
 
-User profile differences are negligible (US: $\chi^2(8) = 301.07,\, p < .001,\, V = 0.019$; Primary ratio difference across profiles is 1--2 points, e.g., JP GPT-5: 90.1\% / 89.8\% / 88.7\%). Together with citation distribution ($V = 0.020$), this confirms that user profiles do not affect the attack surface in either metric (Figure~\ref{fig:wc-by-persona}).
+User profile differences are negligible (US: $\chi^2(8) = 301.07,\, p < .001,\, V = 0.019$; Primary ratio difference across profiles is 1--2 points, e.g., JP GPT-5: 90.1\% / 89.8\% / 88.7\%). Together with barrier distribution ($V = 0.020$), this confirms that user profiles do not affect the attack surface in either metric (Figure~\ref{fig:wc-by-persona}).
 
 
 \begin{figure}[t]
@@ -189,7 +193,7 @@ Across all models, primary information sources with high barriers are semantical
 
 This tendency is not uniform across ruling and opposition parties. Answers to ruling party questions have lower high-grounding bin ratios.
 In the US, the high grounding bin ratio for ruling party questions is GPT-5 27.3\%, Gemini 30.0\%, Claude 32.9\%, while for opposition party questions it is GPT-5 37.8\%, Gemini 38.6\%, Claude 39.4\% ($\chi^2(2) = 1091.04,\, p < .001,\, V = 0.094$).
-Given that ruling party questions also have lower Primary source ratios in citation distribution, answers to ruling party questions rely more on citations in mid and low grounding bins.
+Given that ruling party questions also have lower Primary source ratios in barrier distribution, answers to ruling party questions rely more on citations in mid and low grounding bins.
 On the ideology axis, JP progressive party answers have a higher high-grounding ratio than conservative party answers ($\chi^2(2) = 952.02,\, p < .001,\, V = 0.061$), but this effect is smaller than the model or ruling/opposition differences.
 
 User profiles do not affect the grounding distribution either (US: $V = 0.012$; JP: $V = 0.009$).
