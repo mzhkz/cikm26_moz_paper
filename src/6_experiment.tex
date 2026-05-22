@@ -84,6 +84,7 @@ However, Brave Search API returns results comparable to those of major search en
 
 We first show the barrier distribution of citations in Figure~\ref{fig:citation-by-group}, with parties grouped into ruling (rul.) and opposition (opp.).
 Each cell contains two stacked horizontal bars: the upper bar shows the barrier distribution of web search results, and the lower bar shows that of GSE citations.
+We also report the mean and standard deviation of the proportion of GSE citation URLs that appear in the corresponding web search results.
 In the barrier distribution of GSE citations, this tendency differs across models (U.S.: $\chi^2(8) = 568.94,\, p < .001,\, V = 0.328$; Japan: $\chi^2(8) = 574.80,\, p < .001,\, V = 0.250$).
 GPT has the highest primary source ratio (U.S. $67.2\%$, Japan $83.1\%$) and does not cite low-barrier sources (U.S./Japan both $\leq$ $0.1\%$).
 Gemini has the highest ratios of opponent sources (U.S. $12.4\%$, Japan $6.1\%$) and low-barrier sources (U.S. $12.9\%$, Japan $17.2\%$) among the three models.
@@ -109,17 +110,30 @@ In contrast to GPT, Claude and Gemini conversely increase the low-barrier source
 \setlength{\tabcolsep}{1.8pt}
 \caption{Correlation between primary source ratios in web search results and those in GSE citations by party group.}
 \label{tab:brave-citation-barrier-correlation-party-group}
+% \begin{tabular}{llccc}
+% \toprule
+% \textbf{Country} & \textbf{Party group} & \textbf{GPT} & \textbf{Gemini} & \textbf{Claude} \\
+% \midrule
+% U.S. & rul. & 0.314, 22.4$\pm$28.4 & 0.120, 3.5$\pm$6.7 & 0.800, 0.3$\pm$1.5 \\
+%  & opp. & 0.211, 38.6$\pm$33.4 & 0.459, 14.8$\pm$12.8 & 0.637, 15.8$\pm$19.0 \\
+% \cmidrule(lr){1-5}
+% JP & rul. & 0.447, 49.6$\pm$21.8 & 0.218, 29.1$\pm$17.7 & 0.598, 27.1$\pm$17.5 \\
+%  & opp. & 0.309, 45.0$\pm$21.9 & 0.508, 19.9$\pm$15.3 & 0.504, 27.0$\pm$20.6 \\
+% \bottomrule
+% \end{tabular}
+
 \begin{tabular}{llccc}
 \toprule
-\textbf{Country} & \textbf{Party group} & \textbf{GPT} & \textbf{Gemini} & \textbf{Claude} \\
+\textbf{Country} & \textbf{Party group} & \textbf{GPT [$r_P$/MAE]} & \textbf{Gemini [$r_P$/MAE]} & \textbf{Claude [$r_P$/MAE]} \\
 \midrule
-U.S. & rul. & $0.380$, $25.6 \pm 11.2$ & $-0.056$, $9.1 \pm 5.0$ & --, $5.9 \pm 3.3$ \\
- & opp. & $0.152$, $17.7 \pm 14.8$ & $0.465$, $12.0 \pm 6.3$ & $0.627$, $13.6 \pm 7.6$ \\
+US & rul. & \textcolor{red!50!black}{$0.314$} / 22.4$\pm$28.4 & \textcolor{red!30!black}{$0.120$} / 3.5$\pm$6.7 & \textcolor{red!90!black}{$0.800$} / 0.3$\pm$1.5 \\
+ & opp. & \textcolor{red!30!black}{$0.211$} / 38.6$\pm$33.4 & \textcolor{red!50!black}{$0.459$} / 14.8$\pm$12.8 & \textcolor{red!70!black}{$0.637$} / 15.8$\pm$19.0 \\
 \cmidrule(lr){1-5}
-Japan & rul. & $0.421$, $22.8 \pm 7.8$ & $0.102$, $15.4 \pm 6.6$ & $0.511$, $14.7 \pm 7.2$ \\
- & opp. & $0.287$, $18.3 \pm 9.8$ & $0.554$, $12.0 \pm 6.5$ & $0.410$, $13.2 \pm 8.0$ \\
+JP & rul. & \textcolor{red!50!black}{$0.447$} / 49.6$\pm$21.8 & \textcolor{red!30!black}{$0.218$} / 29.1$\pm$17.7 & \textcolor{red!70!black}{$0.598$} / 27.1$\pm$17.5 \\
+ & opp. & \textcolor{red!50!black}{$0.309$} / 45.0$\pm$21.9 & \textcolor{red!70!black}{$0.508$} / 19.9$\pm$15.3 & \textcolor{red!70!black}{$0.504$} / 27.0$\pm$20.6 \\
 \bottomrule
 \end{tabular}
+
 \end{table}
 
 
@@ -145,17 +159,30 @@ Gemini (U.S.: $\chi^2(12) = 62.12,\, p < .001$) and Claude (U.S.: $\chi^2(12) = 
 \setlength{\tabcolsep}{1.8pt}
 \caption{Correlation between primary source ratio in web search results and in GSE citations by user profile.}
 \label{tab:brave-citation-barrier-correlation-persona}
+% \begin{tabular}{llccc}
+% \toprule
+% \textbf{Country} & \textbf{User profile} & \textbf{GPT} & \textbf{Gemini} & \textbf{Claude} \\
+% \midrule
+% US & ign. & 0.312, 40.1$\pm$34.8 & 0.582, 11.5$\pm$11.6 & 0.693, 13.3$\pm$18.7 \\
+%  & cons. & 0.371, 36.4$\pm$33.1 & 0.566, 13.3$\pm$12.7 & 0.693, 12.3$\pm$18.3 \\
+%  & prog. & 0.545, 29.5$\pm$30.6 & 0.588, 12.9$\pm$13.7 & 0.724, 12.5$\pm$17.6 \\
+% \cmidrule(lr){1-5}
+% JP & ign. & 0.259, 46.7$\pm$22.8 & 0.454, 22.0$\pm$16.2 & 0.526, 27.0$\pm$20.2 \\
+%  & cons. & 0.377, 45.1$\pm$22.1 & 0.406, 22.9$\pm$16.7 & 0.522, 27.5$\pm$19.8 \\
+%  & prog. & 0.411, 46.5$\pm$20.9 & 0.432, 21.6$\pm$16.4 & 0.526, 26.5$\pm$19.7 \\
+% \bottomrule
+% \end{tabular}
 \begin{tabular}{llccc}
 \toprule
-\textbf{Country} & \textbf{User profile} & \textbf{GPT} & \textbf{Gemini} & \textbf{Claude} \\
+\textbf{Country} & \textbf{User profile} & \textbf{GPT [$r_P$/MAE]} & \textbf{Gemini [$r_P$/MAE]} & \textbf{Claude [$r_P$/MAE]} \\
 \midrule
-U.S. & ign. & $0.151$, $22.4 \pm 14.8$ & $0.677$, $11.0 \pm 6.1$ & $0.711$, $12.3 \pm 8.1$ \\
- & cons. & $0.543$, $15.6 \pm 14.1$ & $0.506$, $12.6 \pm 6.8$ & $0.648$, $11.5 \pm 7.7$ \\
- & prog. & $0.535$, $18.9 \pm 14.0$ & $0.614$, $10.8 \pm 5.4$ & $0.733$, $11.7 \pm 7.0$ \\
+U.S. & ign. & \textcolor{red!50!black}{$0.312$} / 40.1$\pm$34.8 & \textcolor{red!70!black}{$0.582$} / 11.5$\pm$11.6 & \textcolor{red!70!black}{$0.693$} / 13.3$\pm$18.7 \\
+ & cons. & \textcolor{red!50!black}{$0.371$} / 36.4$\pm$33.1 & \textcolor{red!70!black}{$0.566$} / 13.3$\pm$12.7 & \textcolor{red!70!black}{$0.693$} / 12.3$\pm$18.3 \\
+ & prog. & \textcolor{red!70!black}{$0.545$} / 29.5$\pm$30.6 & \textcolor{red!70!black}{$0.588$} / 12.9$\pm$13.7 & \textcolor{red!90!black}{$0.724$} / 12.5$\pm$17.6 \\
 \cmidrule(lr){1-5}
-Japan & ign. & $0.155$, $19.3 \pm 9.4$ & $0.501$, $12.9 \pm 7.2$ & $0.439$, $13.6 \pm 7.9$ \\
- & cons. & $0.517$, $19.1 \pm 9.2$ & $0.404$, $13.2 \pm 6.7$ & $0.456$, $13.9 \pm 7.6$ \\
- & prog. & $0.300$, $20.3 \pm 9.9$ & $0.354$, $13.4 \pm 6.2$ & $0.460$, $13.8 \pm 7.8$ \\
+JP & ign. & \textcolor{red!30!black}{$0.259$} / 46.7$\pm$22.8 & \textcolor{red!50!black}{$0.454$} / 22.0$\pm$16.2 & \textcolor{red!70!black}{$0.526$} / 27.0$\pm$20.2 \\
+ & cons. & \textcolor{red!50!black}{$0.377$} / 45.1$\pm$22.1 & \textcolor{red!50!black}{$0.406$} / 22.9$\pm$16.7 & \textcolor{red!70!black}{$0.522$} / 27.5$\pm$19.8 \\
+ & prog. & \textcolor{red!50!black}{$0.411$} / 46.5$\pm$20.9 & \textcolor{red!50!black}{$0.432$} / 21.6$\pm$16.4 & \textcolor{red!70!black}{$0.526$} / 26.5$\pm$19.7 \\
 \bottomrule
 \end{tabular}
 \end{table}
