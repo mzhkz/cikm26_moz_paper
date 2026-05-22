@@ -81,15 +81,15 @@ Our framework computes the \emph{Domination Score} ($\textsc{DS}$) for each gene
 It quantifies the proportion of cited text relative to the total text volume of the generated answer.
 This metric has been one of the primary evaluation criteria in the context of GEO, originally defined as a word-count-based measure~\cite{geo-apmr+24}.
 However, decomposing text into words is language-dependent and biased toward English; thus, we redesign it on a character-count basis and refer to it as the \emph{Domination Score}.
-The Domination Score is computed as $\textsc{DS}(r) = \sum_{c \in C} \textsc{CharCount}(c) / \textsc{CharCount}(r)$, where $\textsc{CharCount}(\cdot)$ returns the number of characters in the given text.
-By aggregating the Domination Score for each content-injection barrier, we analyze the impact of each barrier's content on the generated answers.
+The domination score is computed as $\textsc{DS}(r) = \sum_{c \in C} \textsc{CharCount}(c) / \textsc{CharCount}(r)$, where $\textsc{CharCount}(\cdot)$ returns the number of characters in the given text.
+By aggregating the domination score for each content-injection barrier, we analyze the impact of each barrier's content on the generated answers.
 
 \subsection{Citation Grounding Score}
 \label{subsec:citation_grounding}
 Our framework computes the \emph{Citation Grounding Score} ($\textsc{CGS}$) for each citation.
 It quantifies how strongly the answer sentences are reflected in the cited content, which relates to faithfulness evaluation.
-We introduce a scoring function $\textsc{CGS}(c, r)$ that measures the Citation Grounding Score for each citation $c$ and answer $r$.
-By aggregating the Citation Grounding Score for each content-injection barrier, we analyze the effectiveness of each barrier's content.
+We introduce a scoring function $\textsc{CGS}(c, r)$ that measures the citation grounding score for each citation $c$ and answer $r$.
+By aggregating the citation grounding score for each content-injection barrier, we analyze the effectiveness of each barrier's content.
 
 We decompose the computation into three steps:
 
