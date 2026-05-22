@@ -99,16 +99,41 @@ It suggests that these models may generate search queries that are unable to ret
 
 This barrier distribution of GSE citations is correlated with the barrier distribution of web search results.
 For each condition, we compute the Pearson correlation coefficient between the ratios of the five barrier categories in web search results and those in GSE citations.
-Here, $n_\text{B}$ and $n_\text{C}$ denote the number of web search result domains and GSE citation domains used for aggregation, respectively.
+Here, we denote by $n_\text{B}$ and $n_\text{C}$ the number of web search result domains and GSE citation domains used for aggregation, respectively.
 Overall, the correlation is very high (US $r = 0.996$ ($n_\text{B}{=}6{,}919$, $n_\text{C}{=}7{,}998$); JP $r = 0.867$ ($n_\text{B}{=}11{,}689$, $n_\text{C}{=}13{,}724$)), and strong positive correlations are consistently maintained across every partition: by model (US: GPT-5 $r = 0.843$ ($2{,}255$, $1{,}032$), Gemini $r = 0.991$ ($3{,}130$, $4{,}204$), Claude $r = 0.984$ ($1{,}534$, $2{,}762$); JP: GPT-5 $r = 0.755$ ($3{,}631$, $2{,}845$), Gemini $r = 0.854$ ($5{,}705$, $7{,}084$), Claude $r = 0.935$ ($2{,}353$, $3{,}795$)), by ruling/opposition (US $r \geq 0.984$ ($n_\text{B} \geq 1{,}444$, $n_\text{C} \geq 1{,}893$); JP $r \geq 0.753$ ($n_\text{B} \geq 4{,}165$, $n_\text{C} \geq 3{,}598$)), and by user profile (US $r \geq 0.993$ ($n_\text{B} \geq 2{,}222$, $n_\text{C} \geq 2{,}640$); JP $r \geq 0.847$ ($n_\text{B} \geq 3{,}804$, $n_\text{C} \geq 4{,}492$)).
 GSEs cite sources while largely preserving the barrier composition of web search results, suggesting that the upstream factor of the citation barrier distribution lies in the barrier composition at the web search stage.
 At the same time, across all three GSEs, we observe an average increase in the Primary source ratio from web search results to GSE citations, regardless of model, user profile, or party group (US: $+10.8 \pm 13.0$ points, $n = 45$ cells; JP: $+20.2 \pm 15.8$ points, $n = 63$ cells).
 This suggests that GSEs selectively cite Primary sources from web search results.
 
+\begin{table}[t]
+\centering
+\footnotesize
+\setlength{\tabcolsep}{1.8pt}
+\caption{Response-level Brave--citation barrier-share relationship by party group.}
+\label{tab:brave-citation-barrier-correlation-party-group}
+\begin{tabular}{llccc}
+\toprule
+\textbf{Country} & \textbf{Party group} & \textbf{GPT-5} & \textbf{Gemini} & \textbf{Claude} \\
+\midrule
+US & rul. & 0.380/0.171, 25.6$\pm$11.2 (21) & -0.056/0.873, 9.1$\pm$5.0 (27) & --/0.967, 5.9$\pm$3.3 (30) \\
+ & opp. & 0.152/0.534, 17.7$\pm$14.8 (96) & 0.465/0.638, 12.0$\pm$6.3 (112) & 0.627/0.668, 13.6$\pm$7.6 (103) \\
+\cmidrule(lr){1-5}
+JP & rul. & 0.421/0.394, 22.8$\pm$7.8 (52) & 0.102/0.587, 15.4$\pm$6.6 (85) & 0.511/0.634, 14.7$\pm$7.2 (71) \\
+ & opp. & 0.287/0.600, 18.3$\pm$9.8 (126) & 0.554/0.716, 12.0$\pm$6.5 (174) & 0.410/0.690, 13.2$\pm$8.0 (119) \\
+\bottomrule
+\end{tabular}
+\begin{minipage}{\columnwidth}
+\footnotesize \textit{Notes.} Cells report $r_P/r_\mathbf{v}$, MAE $\pm$ SD ($N$). The response is the unit of analysis ($question\_id \times model \times trial$), and $N$ is the number of responses with both Brave and citation rows. When one response emits multiple web-search queries, all Brave result rows from those queries are pooled before computing the Brave barrier shares. $r_P$ is the across-response Pearson correlation between Brave and citation Primary shares. $r_\mathbf{v}$ is the mean response-level Pearson correlation between the five-dimensional Brave and citation barrier-share vectors. MAE is the mean absolute barrier-share difference in percentage points.
+\end{minipage}
+\end{table}
+
+
+
 The lower Primary source ratio for ruling party questions may be caused by the larger volume of web content about ruling parties.
 Google search hit counts for party names show that Japan's long-ruling LDP has $4.71 \times 10^{7}$ hits, far exceeding the other-party average of $8.57 \times 10^{6}$. In the US, the Republican Party and the Democratic Party have $1.65 \times 10^{8}$ and $3.99 \times 10^{8}$ hits, respectively.
 When the total volume of web content about a party is large, the relative share of primary information sources decreases, which may lower the Primary source ratio in citations.
-However, the US Green Party has $2.19 \times 10^{9}$ hits, far exceeding the two major parties, yet its Primary source ratio in GSE citations remains high. This counterexample suggests that publisher-side strategies can suppress this relationship.
+However, the US Green Party has $2.19 \times 10^{9}$ hits, far exceeding the two major parties, yet its Primary source ratio in GSE citations remains high. 
+This counterexample suggests that publishers can suppress this relationship.
 
 In contrast, user profiles do not affect the content-injection barrier distribution of citations.
 We show the barrier distribution for three user profile conditions (unknown [unkn.], unknown-progressive [cons.], high-progressive [prog.]) in Figure~\ref{fig:citation-by-persona}.
@@ -117,6 +142,34 @@ We also analyze the effect of alignment between the user profile ideology and th
 GPT-5 shows no significant difference between aligned and opposed conditions (US: $\chi^2(12) = 14.25,\, p = .285$), selecting the same citations regardless of whether the user ideology matches the party.
 This result shows that the attack surface of GSEs depends on the model, not on user attributes.
 Gemini (US: $\chi^2(12) = 62.12,\, p < .001$) and Claude (US: $\chi^2(12) = 58.50,\, p < .001$) show significant differences between alignment conditions, with opposed conditions yielding higher Primary source ratios.
+
+
+\begin{table}[t]
+\centering
+\footnotesize
+\setlength{\tabcolsep}{1.8pt}
+\caption{Response-level Brave--citation barrier-share relationship by persona.}
+\label{tab:brave-citation-barrier-correlation-persona}
+\begin{tabular}{llccc}
+\toprule
+\textbf{Country} & \textbf{Persona} & \textbf{GPT-5} & \textbf{Gemini} & \textbf{Claude} \\
+\midrule
+US & unkn. & 0.151/0.320, 22.4$\pm$14.8 (42) & 0.677/0.691, 11.0$\pm$6.1 (47) & 0.711/0.704, 12.3$\pm$8.1 (45) \\
+ & cons. & 0.543/0.612, 15.6$\pm$14.1 (36) & 0.506/0.649, 12.6$\pm$6.8 (45) & 0.648/0.739, 11.5$\pm$7.7 (44) \\
+ & prog. & 0.535/0.497, 18.9$\pm$14.0 (39) & 0.614/0.710, 10.8$\pm$5.4 (47) & 0.733/0.763, 11.7$\pm$7.0 (44) \\
+\cmidrule(lr){1-5}
+JP & unkn. & 0.155/0.568, 19.3$\pm$9.4 (62) & 0.501/0.678, 12.9$\pm$7.2 (89) & 0.439/0.680, 13.6$\pm$7.9 (65) \\
+ & cons. & 0.517/0.564, 19.1$\pm$9.2 (54) & 0.404/0.680, 13.2$\pm$6.7 (83) & 0.456/0.671, 13.9$\pm$7.6 (67) \\
+ & prog. & 0.300/0.490, 20.3$\pm$9.9 (62) & 0.354/0.663, 13.4$\pm$6.2 (87) & 0.460/0.656, 13.8$\pm$7.8 (58) \\
+\bottomrule
+\end{tabular}
+\begin{minipage}{\columnwidth}
+\footnotesize \textit{Notes.} Cells report $r_P/r_\mathbf{v}$, MAE $\pm$ SD ($N$). The response is the unit of analysis ($question\_id \times model \times trial$), and $N$ is the number of responses with both Brave and citation rows. When one response emits multiple web-search queries, all Brave result rows from those queries are pooled before computing the Brave barrier shares. $r_P$ is the across-response Pearson correlation between Brave and citation Primary shares. $r_\mathbf{v}$ is the mean response-level Pearson correlation between the five-dimensional Brave and citation barrier-share vectors. MAE is the mean absolute barrier-share difference in percentage points.
+\end{minipage}
+\end{table}
+
+
+ここにも相関をペルソナ軸で書く。。
 
 
 \begin{figure}[t]
