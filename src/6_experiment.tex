@@ -10,10 +10,10 @@ We provide details of our experimental setup, including the target GSE models, u
 We employ three GSE models for answer generation: OpenAI GPT-5~\cite{chatgpt}, Claude Sonnet $4$ (claude-4-sonnet-20250514)~\cite{claude}, and Gemini Flash $2.5$ (gemini-2.5-flash)~\cite{gemini} with web search mode enabled.
 We clarify why we focus on closed GSE models in this study.
 According to surveys~\cite{menlo-ventures2025stategenaienterprise, a16z2025stateconsumerai}, closed models dominate the LLM market in both enterprise and consumer segments, with Claude, OpenAI, and Gemini together accounting for 88\% of spending share, while open-source models account for only 11\%.
-These models are developed in the U.S., but they dominate usage in Japan as well.
-According to GMO Research \& AI~\cite{gmo-research2025japanai}, Japanese users predominantly rely on closed models such as GPT, Gemini, and Copilot, all of which are U.S.-developed products.
-While Japan has developed numerous LLM models, to our knowledge, no Japanese GSE models are publicly available.
-Furthermore, widely deployed GSEs such as Google AI Overview, which integrates Google Search by default, rely on the closed model Gemini~\cite{stein2025expandingaioverviewsaimode, reid2025aisearchbeyondinformation}; consequently, users routinely encounter generated answers from closed GSE models when conducting web searches, underscoring the central role these models play in contemporary information retrieval.
+These models are developed in the U.S., but they dominate usage in Japan as well according to GMO Research \& AI~\cite{gmo-research2025japanai}.
+% According to GMO Research \& AI~\cite{gmo-research2025japanai}, Japanese users predominantly rely on closed models such as GPT, Gemini, and Copilot, all of which are U.S.-developed products.
+% While Japan has developed numerous LLM models, to our knowledge, no Japanese GSE models are publicly available.
+% Furthermore, widely deployed GSEs such as Google AI Overview, which integrates Google Search by default, rely on the closed model Gemini~\cite{stein2025expandingaioverviewsaimode, reid2025aisearchbeyondinformation}; consequently, users routinely encounter generated answers from closed GSE models when conducting web searches, underscoring the central role these models play in contemporary information retrieval.
 Note that our evaluation is not restricted to closed models, as it relies only on the inputs and outputs (questions and answers) of GSEs, not their internal states.
 For reproducibility of our study, the question-answer datasets are available in our repository~\cite{QL_CIKM_RERO}.
 
@@ -49,7 +49,7 @@ It prevents questions and citations from being skewed toward topics that specifi
 
 
 \textbf{Target Political Parties.}
-We target political parties satisfying each country's requirements for national political parties as primary information sources.
+We target political parties satisfying each country's requirements for national political parties as primary sources.
 Specifically, in Japan we target eight parties. 
 The ruling parties are ``Liberal Democratic Party'' and ``Japan Innovation Party'', and the opposition parties are ``Centrist Reform Coalition'', ``Democratic Party for the People'', ``Japanese Communist Party'', ``Reiwa Shinsengumi'', ``Sanseito'', and ``Conservative Party of Japan''. 
 In the U.S., we target five parties. The ruling party is ``Republican Party'', and the opposition parties are ``Democratic Party'', ``Green Party'', ``Libertarian Party'', and ``Constitution Party''.
@@ -127,7 +127,7 @@ JP & rul. & 0.421, 22.8$\pm$7.8 & 0.102, 15.4$\pm$6.6 & 0.511, 14.7$\pm$7.2 \\
 
 The lower Primary source ratio for ruling party questions may be caused by the larger volume of web content about ruling parties.
 Google search hit counts for party names show that Japan's long-ruling LDP has $4.71 \times 10^{7}$ hits, far exceeding the other-party average of $8.57 \times 10^{6}$. In the US, the Republican Party and the Democratic Party have $1.65 \times 10^{8}$ and $3.99 \times 10^{8}$ hits, respectively.
-When the total volume of web content about a party is large, the relative share of primary information sources decreases, which may lower the Primary source ratio in citations.
+When the total volume of web content about a party is large, the relative share of primary sources decreases, which may lower the Primary source ratio in citations.
 However, the US Green Party has $2.19 \times 10^{9}$ hits, far exceeding the two major parties, yet its Primary source ratio in GSE citations remains high. 
 This counterexample suggests that publishers can suppress this relationship.
 
@@ -238,7 +238,7 @@ Across all models and both countries, the Primary source ratio increases monoton
 For example, JP GPT-5 shows Primary ratios of 42.1\% (low bin), 75.6\% (mid), and 89.2\% (high).
 However, the magnitude of this increase differs by model: GPT-5 and JP Gemini/Claude show steep increases, while US Gemini/Claude have low Primary ratios overall and show smaller increases across bins.
 It means that citations with high grounding scores are concentrated in Primary sources, and citations with low grounding scores are concentrated in Low-barrier sources.
-Across all models, primary information sources with high barriers are semantically faithfully reflected in answers, while sources with lower barriers contribute less to the answer text and are incorporated in a form that diverges more from the original content.
+Across all models, primary sources with high barriers are semantically faithfully reflected in answers, while sources with lower barriers contribute less to the answer text and are incorporated in a form that diverges more from the original content.
 
 This tendency is not uniform across ruling and opposition parties. Answers to ruling party questions have lower high-grounding bin ratios.
 In the US, the high grounding bin ratio for ruling party questions is GPT-5 27.3\%, Gemini 30.0\%, Claude 32.9\%, while for opposition party questions it is GPT-5 37.8\%, Gemini 38.6\%, Claude 39.4\% ($\chi^2(2) = 1091.04,\, p < .001,\, V = 0.094$).
