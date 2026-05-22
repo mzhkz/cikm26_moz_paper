@@ -1,7 +1,7 @@
 \section{Related Works and Motivation}
-This section introduces poisoning attacks on \emph{RAG systems} and summarizes key evaluation criteria, and highlights our challenges to GSEs.
-
 \label{sec:related}
+This section introduces poisoning attacks on \emph{RAG systems}, summarizes key evaluation criteria, and highlights the challenges we identify for GSEs.
+
 \subsection{Vulnerabilities of GSEs}
 We introduce poisoning attacks on GSEs.
 Zou et al.~\cite{poisonedrag-arxiv24} reveal and formalize an attack method called \emph{PoisonedRAG} that exploits \emph{RAG systems} to generate attacker-intended answers by placing malicious content into external databases.
@@ -16,10 +16,10 @@ These studies support the effectiveness of PoisonedRAG attacks and demonstrate t
 
 To succeed in a poisoning attack, the malicious content must satisfy two conditions: \emph{Retrieval Condition} and \emph{Generation Condition}.
 Retrieval Condition means that malicious content (such as text or HTML placed by attackers) is selected as top-$ k $ relevant content through retrieval tasks for target questions.
-In GSEs, Retrieval Condition means that content on the web is retrieved as web pages ranked highly in search engine results by SE.
+In GSEs, Retrieval Condition means that content on the web is retrieved as web pages ranked highly in search engine results by the search engine.
 Generation Condition means that the content is used as reasoning knowledge in the LLM and reflected in the generated answers.
 Aggarwal et al.~\cite{geo-apmr+24} propose \emph{generative engine optimization} (GEO), a method that optimizes website text structure and content from the perspective of Generation Condition to increase the exposure of web page content as citations in answers when the website passes the Retrieval Condition.
-GEO theoretically supports that GSEs are vulnerable to poisoning attacks.
+GEO provides theoretical evidence that GSEs are vulnerable to poisoning attacks.
 
 % PoisonedRAG attacks are closely tied to actual influence operations.
 % Many case studies on democratic countries show that false or misleading information intentionally placed on the web has influenced elections and political discussions.
@@ -50,11 +50,12 @@ This is a major metric for evaluating the influence of citations in GSEs~\cite{g
 Aggarwal et al.~\cite{geo-apmr+24} also propose a domination evaluation method that measures the influence of citations on generated answers in the GSE context.
 
 However, they do not assess the authority and trustworthiness of cited content, as they disregard the publisher of those sources.
-Such content-driven evaluations leave a gap between the seminal studies on \emph{RAG systems} and their applicability to GSEs to reveal the potential attack surface of poisoning attacks.
+Such content-driven evaluations leave a gap between the seminal studies on \emph{RAG systems} and their applicability to GSEs for revealing the potential attack surface of poisoning attacks.
 In \emph{RAG systems}, poisoning attack studies focus on how much malicious content attackers need to inject into external databases to succeed in a poisoning attack.
-In contrast, GSEs retrieve information from the open web, where attackers can inject malicious content more easily than in \emph{RAG systems}, which can enable a successful poisoning attack as previously described.
+In contrast, GSEs retrieve information from the open web, where attackers can inject malicious content more easily than in \emph{RAG systems}.
+This ease of injection can enable a successful poisoning attack as previously described.
 The main concern shifts from preventing malicious content from existing in external databases to preventing the system from incorporating even a small amount of malicious content injected by attackers during web searches.
-Unlike \emph{RAG systems}, GSEs operate under the assumption that malicious content is always present in their external sources (i.e., the open web), and therefore existing evaluation methods alone are insufficient to assess safety and quality of GSEs.
+Unlike \emph{RAG systems}, GSEs operate under the assumption that malicious content is always present in their external sources (i.e., the open web), and therefore existing evaluation methods alone are insufficient to assess the safety and quality of GSEs.
 
 
 \subsection{Authority and Trustworthiness}
