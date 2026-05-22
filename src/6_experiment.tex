@@ -107,7 +107,7 @@ In contrast to GPT, Claude and Gemini conversely increase the low-barrier source
 \centering
 \footnotesize
 \setlength{\tabcolsep}{1.8pt}
-\caption{Correlation between primary source shares in web search results and those in GSE citations, grouped by party group.}
+\caption{Correlation between primary source ratios in web search results and those in GSE citations by party group.}
 \label{tab:brave-citation-barrier-correlation-party-group}
 \begin{tabular}{llccc}
 \toprule
@@ -144,7 +144,7 @@ This suggests that the attack surface of GSEs depends on the model, not on user 
 \centering
 \footnotesize
 \setlength{\tabcolsep}{1.8pt}
-\caption{Correlation between primary source shares in web search results and those in GSE citations, grouped by user profile.}
+\caption{Correlation between primary source ratio in web search results and in GSE citations by user profile.}
 \label{tab:brave-citation-barrier-correlation-persona}
 \begin{tabular}{llccc}
 \toprule
@@ -241,7 +241,7 @@ Across all models and both countries, the primary source ratio increases as the 
 For example, in Japan, GPT shows primary ratios of $42.1\%$ (low bin), $75.6\%$ (mid), and $89.2\%$ (high).
 However, the magnitude of this increase differs by model.
 GPT shows steep increases in both countries, and Gemini and Claude also show steep increases in Japan; in the U.S., however, Gemini and Claude have low primary ratios overall and show smaller increases across bins.
-It means that citations with high grounding scores are concentrated in primary sources, and citations with low grounding scores are concentrated in low-barrier sources.
+It suggests that citations with high grounding scores are concentrated in primary sources, and citations with low grounding scores are concentrated in low-barrier sources.
 Across all models, primary sources with high barriers are faithfully reflected in answers, while sources with lower barriers contribute less to the answer text and are incorporated in a form that diverges more from the original content.
 
 This tendency is not uniform across ruling and opposition parties.
@@ -250,5 +250,5 @@ In the U.S., the high grounding bin ratio for ruling party questions is GPT $27.
 Given that ruling party questions also have lower primary source ratios in the barrier distribution, their answers rely more on citations in the mid and low grounding bins.
 
 User profiles do not affect the grounding distribution either (U.S.: $V = 0.012$; Japan: $V = 0.009$).
-For GPT, the Holm-adjusted $p_H = 1.000$ (U.S.); for Claude, $p_H = .454$ (U.S.) and $p_H = 1.000$ (Japan), all not significant.
-It means that the potential attack surface of GSEs does not depend on who the user is, but on which GSE model is used and which party the question is about.
+For GPT, the Holm-adjusted $p_H = 1.000$ in U.S.; for Claude, $p_H = .454$ in U.S. and $p_H = 1.000$ in Japan, all not significant.
+It suggests that the potential attack surface of GSEs does not depend on who the user is, but on which GSE model is used and which party the question is about.
