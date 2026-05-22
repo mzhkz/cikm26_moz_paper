@@ -12,32 +12,11 @@ When social doubts arise about the reliability of primary, secondary is appropri
 For instance, regarding product reviews, not only official product websites but also secondary such as reviews by others should be included in citations and reflected in answers.
 Therefore, some domains and tasks require secondary alongside primary sources, and it is not always optimal to maximize citation proportions of primary sources.
 
-% We argue for creating a manifest that defines target citation proportions based on publisher attributes for each domain and task and for evaluating answers against that manifest.
-% Furthermore, mechanisms allowing users to control the balance between primary and secondary information are required.
-% This enables us to control GSE behavior in citing primary and secondary information sources according to user questions and to mitigate the threat of poisoning attacks.
-% Developing these mechanisms requires establishing methods that identify primary information sources from web sources of citations in answers.
-% We consider that such determination mechanisms might be constructed by leveraging digital certificate technologies~\cite{w3c-vc-data-model-2025,originator-profile-2025,c2pa-org}.
-
-% \textbf{Approaches to Increase Primary Source Citations:}
-% We discuss strategies to increase the exposure of primary information as citations where primary coverage is crucial, from two perspectives: content structure and presentation strategy.
-% First, on content structure, Aggarwal et al.\ show that formatting differences alter GSE citation patterns, known as GEO~\cite{geo-apmr+24}.
-% Chen et al.\ propose a method that infers, for a black-box GSE, the query intents under which given content is cited and optimizes the content accordingly~\cite{chen2026roleaugmentedintentdrivengenerativesearch}.
-% Amin et al.\ show that the presence of author information increases citation exposure~\cite{abolghasemi-etal-2025-evaluation}, and other studies show that GSEs prefer English content~\cite{ki2025linguistic,cao2025out,stabler2025impact}.
-
-% Second, on presentation strategy, primary information providers need topic coverage matching the breadth of GSE-expanded queries $Q^{\prime} = \{q_1, \ldots, q_n\}$ from a user question $q_u$; e.g., inflation also triggers queries on consumption taxes, fuel subsidies, and wage policies.
-% If providers optimize via SEO and GEO only for $q_u$, GSEs cite secondary sources for the uncovered subtopics.
-% Hence, providers must publish content covering all related topics.
-
-% For U.S. questions, a large share of citations concentrates on the \texttt{www.presidency.ucsb.edu} domain (mid injection barrier): 29.0\% for OpenAI, 23.2\% for Gemini, and 47.8\% for Claude.
-% This site, maintained by UC Santa Barbara, archives official U.S. presidential documents, speeches, and records, providing structured content well-suited for LLM interpretation and reasoning.
-% This suggests that publishing LLM-friendly content with broad topical coverage is key to increasing primary source citations.
-
 \textbf{Limitations and Future Work:}
 We discuss two limitations in our study.
-First, due to budget and compute constraints, we target closed-ended questions in the political domain in the U.S. and Japan rather than conducting a large-scale cross-domain study.
+First, we target closed-ended questions in the political domain in the U.S. and Japan rather than conducting a large-scale cross-domain study.
 We also limit profile dimensions to political knowledge and ideology, excluding attributes such as age, gender, and education to contain experimental cost.
-Still, our results show that GSE citation tendencies do not significantly vary across user profiles even within the political domain.
-Moreover, our framework is domain-agnostic, and to the best of our knowledge, ours is the first to analyze citation behavior of GSEs from the perspectives of content-injection barriers and user profiles.
+Nevertheless, our results show that GSE citation tendencies do not significantly vary across user profiles even within the political domain.
 We also target GSE models without reasoning mode, since current APIs do not support reasoning with web search enabled~\cite{openai-api-reference}.
 Future work will extend to more models, questions, user attributes, and domains such as health and finance.
 
@@ -46,8 +25,3 @@ Our analysis of content-injection barriers depends on our publisher attribute cl
 However, our method does not account for cost differences, such as publisher selection processes or peer review processes on individual pages.
 Content-injection barriers vary between peer-reviewed journal papers and preprint papers, and between different newspaper publishers.
 By considering these differences within the attribute groups, we capture content-injection-barrier realities at higher resolution.
-
-% ここは書き直す。
-% Finally, our deplication analysis between search engine and citations is based on brave search api, but our targets model excludes claude uses another search engine, and we do not analyze the overlap between search engine results and citations for claude accurately.
-% Chen et al.~\cite{chen2025geo} use google search result to show that the overlap between citations from GSEs and Google search results is generally low, ranging from approximately 15\% to 50\% depending on the vertical in domain of url analysis.
-

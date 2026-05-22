@@ -38,7 +38,7 @@ In political domains, a user's political ideology influences answer generation i
 However, how personalization influences the selection of citations in GSEs remains insufficiently explored.
 To reveal the attack surface of GSEs, we need to consider the effects of personalization on their citation behavior.
 
-To address these gaps, we introduce a novel framework to characterize the potential attack surface of GSEs for PoisonedRAG attacks.
+To address these gaps, we introduce a novel framework to characterize the potential attack surface of GSEs for poisoning attacks.
 Our framework classifies each citation of answers by GSEs into \emph{content-injection barrier}, categorized as low, medium, or high, based on the practical difficulty of publishing content on the web with a given level of publisher authority.
 In addition, the framework evaluates the faithfulness score and domination score across different content-injection barriers to validate the identified potential attack surfaces in specific scenarios.
 % By combining these evaluation criteria, our framework estimates the potential attack surface susceptible to poisoning attacks from the citation behavior of GSEs.
@@ -48,12 +48,12 @@ Our experiments use $33$ question templates across $13$ parties and $3$ user pro
 To retrieve GSE answers, we set a user profile that varies the user's level of political knowledge and ideology, and pose political questions to GSEs.
 It enables a systematic analysis of how personalization influences citation behavior.
 
-Our experiments reveal three findings.
+Our experiments reveal four findings.
 First, each GSE has a distinct attack surface: some GSEs concentrate citations on primary information sources and exclude low-barrier sources, while others cite low-barrier sources more frequently.
-Additionally, when citations contain few primary sources, web search results tend to include fewer primary sources and more low-barrier sources.
+Second, when citations contain few primary sources, web search results tend to include fewer primary sources and more low-barrier sources.
 It suggests that the web search functionality of GSEs (e.g., query generation by LLMs) shapes the potential attack surface, rather than the LLM's preference for which sources from web search results to cite.
-Second, answers to ruling party questions rely more on sources with lower content-injection barriers than answers to opposition party questions, making the ruling side more vulnerable.
-Third, in contrast to biases arising from the LLM's internal knowledge, user profiles have little influence on the citation barrier pattern, faithfulness, or domination score across content-injection barriers.
+Third, answers to ruling party questions rely more on sources with lower content-injection barriers than answers to opposition party questions, making the ruling side more vulnerable.
+Lastly, in contrast to biases arising from the LLM's internal knowledge, user profiles have little influence on the citation barrier pattern, faithfulness, or domination score across content-injection barriers.
 
 Our main contributions are as follows:
 \begin{itemize}

@@ -7,7 +7,7 @@ Our experiment reveals their citation patterns and potential attack surfaces in 
 We provide details of our experimental setup, including the target GSE models, user profiles, questions, and political parties.
 
 \textbf{Target GSE Models.}
-We employ three GSE models for answer generation: OpenAI GPT-5~\cite{chatgpt}, Claude Sonnet $4$ (claude-4-sonnet-20250514)~\cite{claude}, and Gemini Flash $2.5$ (gemini-2.5-flash)~\cite{gemini}, the most advanced publicly available models with web search mode enabled.
+We employ three GSE models for answer generation: OpenAI GPT-5~\cite{chatgpt}, Claude Sonnet $4$ (claude-4-sonnet-20250514)~\cite{claude}, and Gemini Flash $2.5$ (gemini-2.5-flash)~\cite{gemini} with web search mode enabled.
 We clarify why we focus on closed GSE models in this study.
 According to surveys~\cite{menlo-ventures2025stategenaienterprise, a16z2025stateconsumerai}, closed models dominate the LLM market in both enterprise and consumer segments, with Claude, OpenAI, and Gemini together accounting for 88\% of spending share, while open-source models account for only 11\%.
 These models are developed in the U.S., but they dominate usage in Japan as well.
@@ -23,10 +23,11 @@ The answers are obtained on May $2026$.
 
 
 \textbf{User Profiles.}
-We design three user profiles based on two user attributes: \textbf{political knowledge}, which represents the user's familiarity with political issues and takes the levels \emph{Unknown} and \emph{High}; and \textbf{political ideology}, which represents the user's political leanings and takes the levels \emph{Progressive}, \emph{Conservative}, and \emph{Neutral}.
+We design three user profiles based on two user attributes: \textbf{political knowledge}, which represents the user's familiarity with political issues and takes the levels \emph{Ignorant} and \emph{High}; and \textbf{political ideology}, which represents the user's political leanings and takes the levels \emph{Progressive}, \emph{Conservative}, and \emph{Neutral}.
 
-Using these attributes, we construct three user profile combinations: \emph{Unknown-Neutral}, \emph{High-Progressive}, and \emph{High-Conservative}.
-The \emph{Unknown-Neutral} profile represents a user with no political knowledge and a neutral ideology; the \emph{High-Progressive} profile represents a user with high political knowledge and a progressive ideology; and the \emph{High-Conservative} profile represents a user with high political knowledge and a conservative ideology.
+Using these attributes, we construct three user profile combinations: \emph{Ignorant-Neutral}, \emph{High-Progressive}, and \emph{High-Conservative}.
+The \emph{Ignorant-Neutral} profile represents a user with no political knowledge and a neutral ideology; the \emph{High-Progressive} profile represents a user with high political knowledge and a progressive ideology; and the \emph{High-Conservative} profile represents a user with high political knowledge and a conservative ideology.
+The user profiles \emph{Ignorant-Progressive} and \emph{Ignorant-Conservative} are not introduced, because the political ideology attribute is not applicable to users without political knowledge.
 
 \textbf{Questions.}
 We design political questions on topics common to each country to elicit policy positions in a politically neutral manner.
@@ -94,37 +95,32 @@ The ruling/opposition distinction (ruling [rul.\ in figures] / opposition [opp.]
 In the US, citations for ruling party questions are dominated by Mid-barrier sources (Claude 78.9\%, Gemini 58.5\%, GPT-5 21.8\%), with Primary source ratios at Claude 0.9\%, Gemini 0.9\%, and GPT-5 10.3\%.
 In contrast, opposition party questions have higher Primary source ratios: GPT-5 86.8\%, Gemini 19.8\%, Claude 21.3\%.
 It means that answers to ruling party questions rely more on sources with lower content-injection barriers, and the attack surface for the ruling party is broader.
-In particular, for models other than GPT-5, we see that the Primary source ratio is low at the stage of Brave search results.
+In particular, for models other than GPT-5, we see that the Primary source ratio is low at the stage of web search results.
 It suggests that these models may generate search queries that are unable to retrieve Primary sources.
 
-This barrier distribution of GSE citations is correlated with the barrier distribution of web search results.
-For each condition, we compute the Pearson correlation coefficient between the ratios of the five barrier categories in web search results and those in GSE citations.
-Here, we denote by $n_\text{B}$ and $n_\text{C}$ the number of web search result domains and GSE citation domains used for aggregation, respectively.
-Overall, the correlation is very high (US $r = 0.996$ ($n_\text{B}{=}6{,}919$, $n_\text{C}{=}7{,}998$); JP $r = 0.867$ ($n_\text{B}{=}11{,}689$, $n_\text{C}{=}13{,}724$)), and strong positive correlations are consistently maintained across every partition: by model (US: GPT-5 $r = 0.843$ ($2{,}255$, $1{,}032$), Gemini $r = 0.991$ ($3{,}130$, $4{,}204$), Claude $r = 0.984$ ($1{,}534$, $2{,}762$); JP: GPT-5 $r = 0.755$ ($3{,}631$, $2{,}845$), Gemini $r = 0.854$ ($5{,}705$, $7{,}084$), Claude $r = 0.935$ ($2{,}353$, $3{,}795$)), by ruling/opposition (US $r \geq 0.984$ ($n_\text{B} \geq 1{,}444$, $n_\text{C} \geq 1{,}893$); JP $r \geq 0.753$ ($n_\text{B} \geq 4{,}165$, $n_\text{C} \geq 3{,}598$)), and by user profile (US $r \geq 0.993$ ($n_\text{B} \geq 2{,}222$, $n_\text{C} \geq 2{,}640$); JP $r \geq 0.847$ ($n_\text{B} \geq 3{,}804$, $n_\text{C} \geq 4{,}492$)).
-GSEs cite sources while largely preserving the barrier composition of web search results, suggesting that the upstream factor of the citation barrier distribution lies in the barrier composition at the web search stage.
-At the same time, across all three GSEs, we observe an average increase in the Primary source ratio from web search results to GSE citations, regardless of model, user profile, or party group (US: $+10.8 \pm 13.0$ points, $n = 45$ cells; JP: $+20.2 \pm 15.8$ points, $n = 63$ cells).
-This suggests that GSEs selectively cite Primary sources from web search results.
+We find that the Primary source share in GSE citations is correlated with that in web search results.
+We report in Table~\ref{tab:brave-citation-barrier-correlation-party-group}, for each model and party group, two values: the across-answer Pearson correlation between the Primary source share in web search results and the Primary source share in GSE citations ($r_P$), and the mean absolute difference between these two Primary source shares (MAE) in percentage points.
+We observe that the MAE is larger for ruling parties than for opposition parties within every model in both countries, and that $r_P$ is also weaker (and sometimes near zero or negative) for ruling parties.
+We read this as a sign that GSEs change the web search results' barrier composition more strongly for ruling-party questions.
+We also note that, in contrast to GPT-5 which suppresses Low-barrier sources almost entirely, Claude and Gemini conversely increase the Low-barrier source share from web search results to citations (e.g., JP Gemini: 7.1\% in web search results vs.\ 17.2\% in citations).
 
 \begin{table}[t]
 \centering
 \footnotesize
 \setlength{\tabcolsep}{1.8pt}
-\caption{Response-level Brave--citation barrier-share relationship by party group.}
+\caption{Correlation between Primary source shares in web search results and those in GSE citations, grouped by party group.}
 \label{tab:brave-citation-barrier-correlation-party-group}
 \begin{tabular}{llccc}
 \toprule
-\textbf{Country} & \textbf{Party group} & \textbf{GPT-5} & \textbf{Gemini} & \textbf{Claude} \\
+\textbf{Country} & \textbf{Party group} & \textbf{GPT} & \textbf{Gemini} & \textbf{Claude} \\
 \midrule
-US & rul. & 0.380/0.171, 25.6$\pm$11.2 (21) & -0.056/0.873, 9.1$\pm$5.0 (27) & --/0.967, 5.9$\pm$3.3 (30) \\
- & opp. & 0.152/0.534, 17.7$\pm$14.8 (96) & 0.465/0.638, 12.0$\pm$6.3 (112) & 0.627/0.668, 13.6$\pm$7.6 (103) \\
+US & rul. & 0.380, 25.6$\pm$11.2 & $-0.056$, 9.1$\pm$5.0 & --, 5.9$\pm$3.3 \\
+ & opp. & 0.152, 17.7$\pm$14.8 & 0.465, 12.0$\pm$6.3 & 0.627, 13.6$\pm$7.6 \\
 \cmidrule(lr){1-5}
-JP & rul. & 0.421/0.394, 22.8$\pm$7.8 (52) & 0.102/0.587, 15.4$\pm$6.6 (85) & 0.511/0.634, 14.7$\pm$7.2 (71) \\
- & opp. & 0.287/0.600, 18.3$\pm$9.8 (126) & 0.554/0.716, 12.0$\pm$6.5 (174) & 0.410/0.690, 13.2$\pm$8.0 (119) \\
+JP & rul. & 0.421, 22.8$\pm$7.8 & 0.102, 15.4$\pm$6.6 & 0.511, 14.7$\pm$7.2 \\
+ & opp. & 0.287, 18.3$\pm$9.8 & 0.554, 12.0$\pm$6.5 & 0.410, 13.2$\pm$8.0 \\
 \bottomrule
 \end{tabular}
-\begin{minipage}{\columnwidth}
-\footnotesize \textit{Notes.} Cells report $r_P/r_\mathbf{v}$, MAE $\pm$ SD ($N$). The response is the unit of analysis ($question\_id \times model \times trial$), and $N$ is the number of responses with both Brave and citation rows. When one response emits multiple web-search queries, all Brave result rows from those queries are pooled before computing the Brave barrier shares. $r_P$ is the across-response Pearson correlation between Brave and citation Primary shares. $r_\mathbf{v}$ is the mean response-level Pearson correlation between the five-dimensional Brave and citation barrier-share vectors. MAE is the mean absolute barrier-share difference in percentage points.
-\end{minipage}
 \end{table}
 
 
@@ -136,7 +132,7 @@ However, the US Green Party has $2.19 \times 10^{9}$ hits, far exceeding the two
 This counterexample suggests that publishers can suppress this relationship.
 
 In contrast, user profiles do not affect the content-injection barrier distribution of citations.
-We show the barrier distribution for three user profile conditions (unknown [unkn.], unknown-progressive [cons.], high-progressive [prog.]) in Figure~\ref{fig:citation-by-persona}.
+We show the barrier distribution for three user profile conditions (ignorant-neutral [ign.], high-conservative [cons.], high-progressive [prog.]) in Figure~\ref{fig:citation-by-persona}.
 Each bar shows the barrier distribution of GSE citations for each user profile condition. The distributions across the three conditions are nearly identical. $\chi^2$ tests are not significant for any model in either country (US overall: $\chi^2(8) = 6.62,\, p = .579,\, V = 0.020$; JP overall: $\chi^2(8) = 10.07,\, p = .260,\, V = 0.019$; all 8 model-level tests also not significant), with $V < 0.02$.
 We also analyze the effect of alignment between the user profile ideology and the target party ideology (aligned [al-cons., al-prog.] / opposed [op-cons., op-prog.]).
 GPT-5 shows no significant difference between aligned and opposed conditions (US: $\chi^2(12) = 14.25,\, p = .285$), selecting the same citations regardless of whether the user ideology matches the party.
@@ -148,28 +144,28 @@ Gemini (US: $\chi^2(12) = 62.12,\, p < .001$) and Claude (US: $\chi^2(12) = 58.5
 \centering
 \footnotesize
 \setlength{\tabcolsep}{1.8pt}
-\caption{Response-level Brave--citation barrier-share relationship by persona.}
+\caption{Correlation between Primary source shares in web search results and those in GSE citations, grouped by user profile.}
 \label{tab:brave-citation-barrier-correlation-persona}
 \begin{tabular}{llccc}
 \toprule
-\textbf{Country} & \textbf{Persona} & \textbf{GPT-5} & \textbf{Gemini} & \textbf{Claude} \\
+\textbf{Country} & \textbf{User profile} & \textbf{GPT} & \textbf{Gemini} & \textbf{Claude} \\
 \midrule
-US & unkn. & 0.151/0.320, 22.4$\pm$14.8 (42) & 0.677/0.691, 11.0$\pm$6.1 (47) & 0.711/0.704, 12.3$\pm$8.1 (45) \\
- & cons. & 0.543/0.612, 15.6$\pm$14.1 (36) & 0.506/0.649, 12.6$\pm$6.8 (45) & 0.648/0.739, 11.5$\pm$7.7 (44) \\
- & prog. & 0.535/0.497, 18.9$\pm$14.0 (39) & 0.614/0.710, 10.8$\pm$5.4 (47) & 0.733/0.763, 11.7$\pm$7.0 (44) \\
+US & ign. & 0.151, 22.4$\pm$14.8 & 0.677, 11.0$\pm$6.1 & 0.711, 12.3$\pm$8.1 \\
+ & cons. & 0.543, 15.6$\pm$14.1 & 0.506, 12.6$\pm$6.8 & 0.648, 11.5$\pm$7.7 \\
+ & prog. & 0.535, 18.9$\pm$14.0 & 0.614, 10.8$\pm$5.4 & 0.733, 11.7$\pm$7.0 \\
 \cmidrule(lr){1-5}
-JP & unkn. & 0.155/0.568, 19.3$\pm$9.4 (62) & 0.501/0.678, 12.9$\pm$7.2 (89) & 0.439/0.680, 13.6$\pm$7.9 (65) \\
- & cons. & 0.517/0.564, 19.1$\pm$9.2 (54) & 0.404/0.680, 13.2$\pm$6.7 (83) & 0.456/0.671, 13.9$\pm$7.6 (67) \\
- & prog. & 0.300/0.490, 20.3$\pm$9.9 (62) & 0.354/0.663, 13.4$\pm$6.2 (87) & 0.460/0.656, 13.8$\pm$7.8 (58) \\
+JP & ign. & 0.155, 19.3$\pm$9.4 & 0.501, 12.9$\pm$7.2 & 0.439, 13.6$\pm$7.9 \\
+ & cons. & 0.517, 19.1$\pm$9.2 & 0.404, 13.2$\pm$6.7 & 0.456, 13.9$\pm$7.6 \\
+ & prog. & 0.300, 20.3$\pm$9.9 & 0.354, 13.4$\pm$6.2 & 0.460, 13.8$\pm$7.8 \\
 \bottomrule
 \end{tabular}
-\begin{minipage}{\columnwidth}
-\footnotesize \textit{Notes.} Cells report $r_P/r_\mathbf{v}$, MAE $\pm$ SD ($N$). The response is the unit of analysis ($question\_id \times model \times trial$), and $N$ is the number of responses with both Brave and citation rows. When one response emits multiple web-search queries, all Brave result rows from those queries are pooled before computing the Brave barrier shares. $r_P$ is the across-response Pearson correlation between Brave and citation Primary shares. $r_\mathbf{v}$ is the mean response-level Pearson correlation between the five-dimensional Brave and citation barrier-share vectors. MAE is the mean absolute barrier-share difference in percentage points.
-\end{minipage}
 \end{table}
 
 
-ここにも相関をペルソナ軸で書く。。
+We report the same correlation between the Primary source shares in web search results and GSE citations broken down by user profile in Table~\ref{tab:brave-citation-barrier-correlation-persona}.
+We find that within every (country, model) cell, $r_P$ and MAE are almost the same across the three user profiles.
+We also note that the per-model patterns observed above (GPT-5 suppressing Low-barrier sources, and Claude and Gemini conversely increasing them) hold across all three user profiles as well.
+We thus confirm that user profiles affect neither the citation barrier distribution itself nor the size of its difference from the web search results.
 
 
 \begin{figure}[t]

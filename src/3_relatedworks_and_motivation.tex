@@ -65,8 +65,8 @@ The system prefers to cite web pages with high authority scores.
 
 However, evaluating only the content itself of citations is insufficient for assessing the safety of GSEs under poisoning attacks.
 As described in Section~\ref{subsec:citation_evaluation}, because anyone can publish content on the web, attackers can deliberately optimize the scores of content-based evaluation metrics while still injecting malicious information into the web.
-In fact, the \emph{Doppelganger} operation reported by EU DisinfoLab~\cite{eudisinfolab2022doppelganger,foreignaffairs2024doppelganger} shows that more than $700$ fake news websites were created by imitating the domain names and designs of legitimate media, and their content was distributed while disguised as legitimate media.
-Such \emph{legitimate-looking} malicious content undermines approaches that evaluate only the content itself, causing both false negatives and false positives.
+In fact, the ``Doppelganger'' operation reported by EU DisinfoLab~\cite{eudisinfolab2022doppelganger,foreignaffairs2024doppelganger} shows that more than $700$ fake news websites were created by imitating the domain names and designs of legitimate media, and their content was distributed while disguised as legitimate media.
+Such legitimate-looking malicious content undermines approaches that evaluate only the content itself, causing both false negatives and false positives.
 Therefore, for GSEs, we need to evaluate not only the content itself of citations, but also the authority and trustworthiness of content publishers.
 
 Furthermore, they typically assume the presence of poisoning attacks on \emph{RAG systems} and primarily focus on developing defenses or system improvements. 
@@ -80,15 +80,15 @@ In personalization, the general approach is to embed the user's attribute inform
 This approach enables the applications to generate answers that more accurately reflect the user's preferences, background, and needs.
 
 Several studies investigate how personalization affects answers generated from the internal knowledge of LLMs.
+Kearney et al.~\cite{kearney2025languagemodelschangefacts} show that across several domains, answers change systematically depending on user attributes such as race, gender, and age.
+The influence of user attributes also extends to tasks that have objectively correct answers.
+Vijjini et al.~\cite{exploreing-safery-in-personalization-arxiv2026} show that LLM response performance varies systematically even in tasks such as mathematical reasoning, general knowledge, and programming.
+
+This effect also extends to the user's political ideology.
 Tornberg et al.~\cite{political-bias-audit-arxiv-2026} analyze political ideology bias in representative and widely used LLMs.
 The study shows that LLMs produce opposition-leaning answers by default and LLMs shift strongly toward the ruling party for conservative users but only slightly toward the opposition party for progressive users, showing an asymmetric response to personalization.
 Miyazaki et al.~\cite{miyazaki_hall_2026_japan_ai_voting_advice} show that a similar pattern holds in the Japanese language and Japanese political context.
 They show that when users do not indicate their policy positions, LLM answers lean toward the ruling party, whereas when users explicitly indicate their political stance, the answers shift substantially in that direction.
-
-This effect is not limited to political topics.
-Kearney et al.~\cite{kearney2025languagemodelschangefacts} show that across several domains, answers change systematically depending on user attributes such as race, gender, and age.
-The influence of user attributes also extends to tasks that have objectively correct answers.
-Vijjini et al.~\cite{exploreing-safery-in-personalization-arxiv2026} show that LLM response performance varies systematically even in tasks such as mathematical reasoning, general knowledge, and programming.
 
 However, these prior studies focus on biases that arise from the internal knowledge of LLMs and do not examine biases in GSEs. 
 To the best of our knowledge, no prior study has examined how personalization affects the citation behavior of GSEs, including aspects such as source authority and trustworthiness, domination and faithfulness of citations.
