@@ -14,15 +14,15 @@ The nature of GSEs, which cite web content published by a wide range of actors, 
 When GSEs generate answers lacking factuality, the cause is not only LLM hallucinations~\cite{sirens-song-in-the-ai-ocean-coli25, survey-of-hallucination-in-natural-language-generation-acmcsurv23} but also the lack of factuality in the web content obtained through web searches~\cite{retrieval-helps-or-hurts-deeper-arxiv24, poisonedrag-arxiv24, a-comprehensive-survey-on-trustworthy-recommender-systems-arxiv22}.
 Web content can be published and modified by any user with any intent~\cite{poisoning-web-scale-training-datasets-is-practical-sp24, poisonedrag-arxiv24}.
 Prior studies formalize poisoning attacks that place disinformation and misinformation on the web to generate attacker-intended answers in systems that retrieve from external databases and generate answers, including GSEs, because these systems can cite such content and generate text that reflects it~\cite{poisoning-web-scale-training-datasets-is-practical-sp24, poisonedrag-arxiv24, yu2025safetydevolutionaiagents}.
-Specific to GSEs, prior studies show patterns in styles of web content that GSEs prefer to cite in answers and propose a method to optimize own contents for increasing citation exposure~\cite{geo-apmr+24, wu2025generativesearchengineslikeai}.
+Specific to GSEs, prior studies show patterns in styles of web content that GSEs prefer to cite in answers and propose a method to optimize their own content for increasing citation exposure~\cite{geo-apmr+24, wu2025generativesearchengineslikeai}.
 Although they are beneficial for primary information providers that seek to increase the exposure of their web content as citations, they can also facilitate poisoning attacks.
 This indicates that systematically citation evaluating the safety of GSEs against poisoning attacks is indispensable.
 
 Existing evaluation criteria aim to assess two aspects: (1) how faithfully the cited content is reflected in the answers, and (2) how much the cited content dominates the answers.
 Several studies evaluate \emph{faithfulness} by measuring the semantic consistency between the cited web content and the generated answers~\cite{citeeval-acl25, ragas-eacl24, ares-naacl24, evaluating-verifiability-in-generative-search-engines-emnlp23, enabling-llms-to-generate-text-with-citations-emnlp23, ranking-generated-summaries-by-correctness-acl2019, evaluating-the-factual-consistency-of-abstractive-text-summarization-emnlp20, alignscore-acl23, feqa-acl20}.
 Prior studies also evaluate the \emph{domination} score, which represents the proportion of cited text relative to the total text volume of the generated answer~\cite{geo-apmr+24, wu2025generativesearchengineslikeai}.
-By combining these metrics, we can measure how much a cited source has a power to influence the answer to a given question.
-However, these studies alone cannot capture the attack surface of GSEs for PoisonedRAG attacks.
+By combining these metrics, we can measure how much a cited source has the power to influence the answer to a given question.
+However, these studies alone cannot capture the attack surface of GSEs for poisoning attacks.
 This is because these studies target systems called \emph{RAG systems}, which retrieve from curated, fixed, and closed external authoritative databases to generate answers.
 In contrast, GSEs treat the web as an external database that is open to anyone and dynamically updated, allowing attackers to easily inject malicious content that GSEs can cite.
 Due to these differences, evaluation criteria proposed for \emph{RAG systems} cannot adequately assess the reliability and safety of GSEs. 

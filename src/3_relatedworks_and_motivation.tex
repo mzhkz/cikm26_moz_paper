@@ -34,7 +34,7 @@ GEO theoretically supports that GSEs are vulnerable to poisoning attacks.
 \label{subsec:citation_evaluation}
 We first introduce seminal studies that aim to evaluate \emph{RAG systems}.
 These studies highlight that in ideal retrieval-and-generation systems, all claimed sentences in an answer are supported by external sources from databases as \emph{citations} and the sentences with citations accurately and faithfully reflect the claims.
-To evaluate these systems, the key evaluation metrics are \emph{Faithfulness} and \emph{Dominance}.
+To evaluate these systems, the key evaluation metrics are \emph{faithfulness} and \emph{domination}.
 
 \emph{Faithfulness} measures how accurately the generated answer reflects the content of its citations~\cite{citeeval-acl25, ragas-eacl24, ares-naacl24, evaluating-verifiability-in-generative-search-engines-emnlp23, enabling-llms-to-generate-text-with-citations-emnlp23, ranking-generated-summaries-by-correctness-acl2019, evaluating-the-factual-consistency-of-abstractive-text-summarization-emnlp20, alignscore-acl23, feqa-acl20}.
 Faithfulness is typically computed by three methods: entailment-based~\cite{ranking-generated-summaries-by-correctness-acl2019, true-reevaluating-factual-consistency-arxiv22, evaluating-the-factual-consistency-of-abstractive-text-summarization-emnlp20, alignscore-acl23}, similarity-based~\cite{bertscore-arxiv20, bartscore-neurips21}, and QA-based~\cite{feqa-acl20}.
@@ -44,10 +44,10 @@ Zhang et al.\ show that similarity-based methods achieve higher precision than e
 This approach aligns with GSE behavior of summarizing web page content retrieved from search results and generating answers with citations.
 Citation evaluation applies these faithfulness evaluation methods to each sentence $ l_i $ of generated answer $ r $ with citations $ C_i $, and evaluates reflection accuracy for the entire answer $ r $.
 
-\emph{Dominance} measures the proportion of cited text relative to the total text volume of the generated answer~\cite{geo-apmr+24, wu2025generativesearchengineslikeai}.
+\emph{Domination} measures the proportion of cited text relative to the total text volume of the generated answer~\cite{geo-apmr+24, wu2025generativesearchengineslikeai}.
 For each citation $ C_i $, they count the number of words in the sentences to which $ C_i $ is attached and report this count as a proportion of the total number of words in the generated answer $ r $.
 This is a major metric for evaluating the influence of citations in GSEs~\cite{geo-apmr+24, wu2025generativesearchengineslikeai}.
-Aggarwal et al.~\cite{geo-apmr+24} also propose a dominance evaluation method that measures the influence of citations on generated answers in GSEs context.
+Aggarwal et al.~\cite{geo-apmr+24} also propose a domination evaluation method that measures the influence of citations on generated answers in the GSE context.
 
 However, they do not assess the authority and trustworthiness of cited content, as they disregard the publisher of those sources.
 Such content-driven evaluations leave a gap between the seminal studies on \emph{RAG systems} and their applicability to GSEs to reveal the potential attack surface of poisoning attacks.
@@ -75,7 +75,7 @@ However, they do not provide a systematic understanding or measurement of the ac
 
 \subsection{Personalization of LLMs}
 \label{sec:related_works_personalization}
-Personalization is a key factor in improving the user experience of chat-based applications~\cite{openai2024memory, anthropic2025memory, google2026personal} and is a recognized direction on language models~\cite{salemi2024lamp, mysore2024pearl}.
+Personalization is a key factor in improving the user experience of chat-based applications~\cite{openai2024memory, anthropic2025memory, google2026personal} and is a recognized research direction for language models~\cite{salemi2024lamp, mysore2024pearl}.
 In personalization, the general approach is to embed the user's attribute information together with the user's question.
 This approach enables the applications to generate answers that more accurately reflect the user's preferences, background, and needs.
 
@@ -91,7 +91,7 @@ Miyazaki et al.~\cite{miyazaki_hall_2026_japan_ai_voting_advice} show that a sim
 They show that when users do not indicate their policy positions, LLM answers lean toward the ruling party, whereas when users explicitly indicate their political stance, the answers shift substantially in that direction.
 
 However, these prior studies focus on biases that arise from the internal knowledge of LLMs and do not examine biases in GSEs. 
-To the best of our knowledge, no prior study has examined how personalization affects the citation behavior of GSEs, including aspects such as source authority and trustworthiness, domination and faithfulness of citations.
+To the best of our knowledge, no prior study has examined how personalization affects the citation behavior of GSEs, including aspects such as source authority and trustworthiness, and domination and faithfulness of citations.
 
 \subsection{Research Motivation}
 To understand the potential attack surface of GSEs, our goal is to build a novel evaluation framework. 

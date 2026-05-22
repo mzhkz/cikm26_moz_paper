@@ -22,11 +22,11 @@ LLMs then generate the final answer \( r \) from the summary set \( Sum \) while
 The answer \( r \) consists of \( k \) sentences \( \{l_1, l_2, \cdots, l_k\} \), and each sentence \( l_i \) is associated with a citation set \( C_i \subseteq S, C_i = \{c_1, c_2, \cdots, c_l\} \).
 Although GSEs ideally have one or more citations for each sentence, there are cases where \( C_i = \emptyset \), meaning there are no citations for the corresponding sentence.
 
-A core technology of GSEs is Retrieval-Augmented Generation (RAG), which retrieves relevant content to user query from outside of LLMs and incorporates it into LLM inference~\cite{internet-augmented-language-models-fewshot-arxiv22, internet-augmented-dialogue-generation-arxiv21, rag-kdd24}.
+A core technology of GSEs is Retrieval-Augmented Generation (RAG), which retrieves content relevant to the user query from outside of LLMs and incorporates it into LLM inference~\cite{internet-augmented-language-models-fewshot-arxiv22, internet-augmented-dialogue-generation-arxiv21, rag-kdd24}.
 Information retrieval systems that use RAG are called \emph{RAG systems}~\cite{mirage-acl24, lála2023paperqa, almanac-nejmai-2024}.
 
 However, several studies of \emph{RAG systems} implicitly focus on systems that retrieve from fixed, curated, and closed external databases defined by developers~\cite{mirage-acl24, lála2023paperqa, almanac-nejmai-2024}.
 While GSEs similarly use the web as an external database, the nature of this database differs from that of these RAG systems.
 The web targeted by GSEs is open, allowing anyone to freely publish information, and is dynamic, with information being updated as needed.
 Therefore, unlike these RAG systems, GSEs use search engines (SE) for retrieval from the external database (web).
-Our study distinguishes GSEs and Rag system based on the diferences in external database characteristics.
+Our study distinguishes GSEs and RAG systems based on the differences in external database characteristics.
