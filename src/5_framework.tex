@@ -95,7 +95,7 @@ We decompose the computation into three steps:
 
 \textbf{Decomposing Answers and Citations into Sets of Sentences.}
 First, we decompose answer $r$ into a sentence set $L = \{l_1, l_2, \ldots, l_k\}$ and each citation $c_i \in C$ into a sentence set $L_{c_i} = \{l_{i,1}, l_{i,2}, \ldots, l_{i,n_i}\}$.
-Because some sentences of answer $r$ have citation labels attached and the semantics of each answer sentence is independent, we need to decompose answer $r$ into sentences to evaluate grounding accurately.
+Because some sentences of answer $r$ have citation labels attached and the semantics of each answer sentence is independent, we decompose answer $r$ into sentences to evaluate grounding.
 
 \textbf{Sentence-level Similarity.}
 We measure semantic similarity between each answer sentence in $L = \{l_1, l_2, \ldots, l_k\}$ and each citation sentence in $L_{c_i} = \{l_{i,1}, l_{i,2}, \ldots, l_{i,n_i}\}$ for each citation $c_i \in C$.
@@ -103,7 +103,7 @@ To measure similarity between two sentences, we introduce the similarity functio
 The function $\mathrm{sim}(x, y)$ returns a similarity score between the two sentences $x$ and $y$ as a value in the range of $-1$ to $1$.
 Here, a similarity value closer to $-1$ indicates lower semantic similarity, whereas a value closer to $1$ indicates higher semantic similarity.
 To calculate the similarity, we employ Sentence-BERT~\cite{sentence-bert-arxiv19}, which converts each sentence into dense embedding vectors and computes their semantic similarity through cosine similarity.
-In our experiments in Section~\ref{sec:experiment}, we utilize the pre-trained Sentence-BERT model ``stsb-xlm-r-multilingual''~\cite{sentence-bert-arxiv19}, which has been trained on multilingual semantic textual similarity tasks.
+In our experiments in Section~\ref{sec:experiment}, we use the pre-trained Sentence-BERT model ``stsb-xlm-r-multilingual''~\cite{sentence-bert-arxiv19}, which has been trained on multilingual semantic textual similarity tasks.
 
 \textbf{Maximum-grounding Aggregation.}
 GSEs often use only a few sentences within long citation texts to generate a particular answer sentence; thus, we aggregate the sentence-level similarities by taking the maximum between the answer sentence set $L$ and citation $c_i$ to reveal how strongly a citation grounds the answer.
