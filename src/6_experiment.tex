@@ -59,14 +59,14 @@ In the U.S., we target five parties. The ruling party is ``Republican Party'', a
 
 \begin{figure}[t]
   \centering
-  \includegraphics[width=\columnwidth]{figs/phase8_outputs/figures/citation_distribution_by_group_vertical.pdf}
+  \includegraphics[width=0.94\columnwidth]{figs/phase8_outputs/figures/citation_distribution_by_group_vertical.pdf}
   \caption{Barrier distribution by party group. Each cell has two stacked bars: the upper shows the barrier distribution of web search results, and the lower shows that of GSE citations.}
   \label{fig:citation-by-group}
 \end{figure}
 
 \begin{figure*}[t]
   \centering
-  \includegraphics[width=\textwidth]{figs/phase8_outputs/figures/citation_distribution_by_persona.pdf}
+  \includegraphics[width=0.87\textwidth]{figs/phase8_outputs/figures/citation_distribution_by_persona.pdf}
   \caption{Barrier distribution by user profile. Each bar shows the barrier distribution of GSE citations for each user profile.}
   \label{fig:citation-by-persona}
 \end{figure*}
@@ -137,8 +137,7 @@ $\chi^2$ tests are not significant for any model in either country (U.S. overall
 We also analyze the effect of alignment between the user profile ideology and the target party ideology: aligned (al-cons., al-prog.) and opposed (op-cons., op-prog.).
 GPT shows no significant difference between aligned and opposed conditions (U.S.: $\chi^2(12) = 14.25,\, p = .285$), selecting the same citations regardless of whether the user ideology matches the party.
 Gemini (U.S.: $\chi^2(12) = 62.12,\, p < .001$) and Claude (U.S.: $\chi^2(12) = 58.50,\, p < .001$) show significant differences between alignment conditions, with opposed conditions yielding higher primary source ratios.
-This suggests that the attack surface of GSEs depends on the model, not on user attributes.
-
+% This suggests that the attack surface of GSEs depends on the model, not on user attributes.
 
 \begin{table}[t]
 \centering
@@ -164,20 +163,20 @@ Japan & ign. & $0.155$, $19.3 \pm 9.4$ & $0.501$, $12.9 \pm 7.2$ & $0.439$, $13.
 
 We report the same correlation between the primary source ratios in web search results and GSE citations broken down by user profile in Table~\ref{tab:brave-citation-barrier-correlation-persona}.
 Within every (country, model) cell, $r_P$ and MAE are almost the same across the three user profiles.
-We also note that the per-model correlations hold across all three user profiles as well.
+The per-model correlations hold across all three user profiles as well.
 This suggests that user profiles affect neither the citation barrier distribution itself nor the size of its difference from the web search results.
 
 
 \begin{figure}[t]
   \centering
-  \includegraphics[width=\columnwidth]{figs/phase8_outputs/figures/word_count_distribution_by_group_vertical.pdf}
-  \caption{Domination score distribution by party group. Each bar shows the barrier-wise domination score of answer text attributed to citations.}
+  \includegraphics[width=0.9\columnwidth]{figs/phase8_outputs/figures/word_count_distribution_by_group_vertical.pdf}
+  \caption{Domination score distribution by party group. Each bar shows the barrier-wise domination score.}
   \label{fig:wc-by-group}
 \end{figure}
 
 \begin{figure*}[t]
   \centering
-  \includegraphics[width=\textwidth]{figs/phase8_outputs/figures/word_count_distribution_by_persona_vertical.pdf}
+  \includegraphics[width=0.9\textwidth]{figs/phase8_outputs/figures/word_count_distribution_by_persona_vertical.pdf}
   \caption{Domination score distribution by user profile. Each bar shows the barrier-wise domination score for each user profile.}
   \label{fig:wc-by-persona}
 \end{figure*}
@@ -193,37 +192,37 @@ For GPT, the primary ratio in barrier distribution is U.S. $67.2\%$ / Japan $83.
 Gemini shows the same pattern: Japan citation $49.1\%$ vs.\ domination $62.2\%$.
 Claude also shows Japan citation $53.7\%$ vs.\ domination $62.2\%$.
 This means that the text span of the answer attributed to each primary source citation is longer than that of citations from other barriers.
-For U.S. opposition questions, GPT attributes $91.2\%$ of the domination score to primary sources (official party domains).
+For U.S. opposition questions, GPT attributes $91.2\%$ of the domination score to primary sources.
 In Japan, the low-barrier source domination score is highest for Gemini at $9.8\%$ (GPT: $0.1\%$, Claude: $4.3\%$), showing that the share of answer text supported by low-cost sources differs across models.
 
+We show the domination score distribution by user profile in Figure~\ref{fig:wc-by-persona}.
 User profile differences are negligible (U.S.: $\chi^2(8) = 301.07,\, p < .001,\, V = 0.019$; primary ratio difference across profiles is $1$--$2$ points, e.g., for GPT in Japan: $90.1\%$ / $89.8\%$ / $88.7\%$).
-Together with barrier distribution ($V = 0.020$), this confirms that user profiles do not affect the attack surface in either metric (Figure~\ref{fig:wc-by-persona}).
+Together with barrier distribution ($V = 0.020$), user profiles do not affect the attack surface in either metric.
 
 
 \begin{figure}[t]
   \centering
-  \includegraphics[width=\columnwidth]{figs/phase8_outputs/figures/grounding_distribution_by_group.pdf}
+  \includegraphics[width=0.9\columnwidth]{figs/phase8_outputs/figures/grounding_distribution_by_group.pdf}
   \caption{Grounding distribution by party group. Each cell is a Marimekko chart: the width shows the count share of each grounding bin, and the height shows the barrier distribution within each bin.}
   \label{fig:grounding-by-group}
 \end{figure}
 
 \begin{figure*}[t]
   \centering
-  \includegraphics[width=1.0\textwidth]{figs/phase8_outputs/figures/grounding_distribution_by_persona.pdf}
+  \includegraphics[width=0.95\textwidth]{figs/phase8_outputs/figures/grounding_distribution_by_persona.pdf}
   \caption{Grounding distribution by user profile. Each cell shows the grounding bin barrier distribution for each user profile.}
   \label{fig:grounding-by-persona}
 \end{figure*}
 
 \textbf{Distribution of Citation Grounding.}
 We next analyze the citation grounding score distribution across barriers.
-
 We discretize grounding scores with thresholds $(\tau_L, \tau_H)$ into Low ($<\tau_L$), Mid ($[\tau_L, \tau_H)$), and High ($\geq \tau_H$).
 Because the distribution of SBERT cosine similarity can differ by model and language~\cite{primer2023multilingual,shibayama2021japanesesbert}, we calibrate the thresholds separately for English (U.S.) and Japanese (Japan).
 For calibration, we use the semantic textual similarity (STS) benchmarks STS-B~\cite{cer2017stsb} for English and JSTS~\cite{kurihara2022jglue} for Japan.
 In these datasets, each sentence pair is assigned a human similarity score from $0$ (unrelated) to $5$ (identical in meaning).
 SBERT maps sentences into a vector space and compares their meaning using cosine similarity.
 Its sentence embeddings are commonly evaluated by their correlation with human scores on STS benchmarks~\cite{reimers2019sbert}.
-Thus, the empirical relationship between human scores and cosine similarity on STS data allows us to set language-specific thresholds for semantic similarity.
+The empirical relationship between human scores and cosine similarity on STS data allows us to set language-specific thresholds.
 
 We define $\tau_H$ as the median cosine similarity of pairs with human score $\geq 4$, and $\tau_L$ as the median cosine similarity of pairs with human score $\geq 3$.
 Under this calibration, $\tau_H$ serves as a conservative threshold for near-paraphrase similarity, whereas $\tau_L$ serves as a threshold for substantial shared content.
@@ -252,3 +251,10 @@ Given that ruling party questions also have lower primary source ratios in the b
 User profiles do not affect the grounding distribution either (U.S.: $V = 0.012$; Japan: $V = 0.009$).
 For GPT, the Holm-adjusted $p_H = 1.000$ in U.S.; for Claude, $p_H = .454$ in U.S. and $p_H = 1.000$ in Japan, all not significant.
 This suggests that the potential attack surface of GSEs does not depend on who the user is, but on which GSE model is used and which party the question is about.
+
+\subsection{Summary}
+Prior studies has suggested that GSE answers can vary with the user's political ideology~\cite{political-bias-audit-arxiv-2026, miyazaki_hall_2026_japan_ai_voting_advice}.
+However, our experiments observe no consistent effect of user ideology on GSE citation behavior across the three models and both countries.
+What shapes the differences in citation behavior is not \emph{who is asking the question} but \emph{which party the question is about}.
+Between ruling party questions and opposition party questions, the primary source ratio and the grounding distribution differ significantly in all three models.
+Our results suggest that the attack surface of GSEs is characterized primarily by the model and the political target of the question, rather than by the user's ideological profile.
