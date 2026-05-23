@@ -12,7 +12,7 @@ We employ three GSE models for answer generation: OpenAI GPT-5~\cite{chatgpt}, C
 We clarify why we focus on closed GSE models in this study.
 According to surveys~\cite{menlo-ventures2025stategenaienterprise, a16z2025stateconsumerai}, closed models dominate the LLM market in both enterprise and consumer segments, with Claude, OpenAI, and Gemini together accounting for $88\%$ of spending share, while open-source models account for only $11\%$.
 These models are developed in the U.S., but they dominate usage in Japan as well according to GMO Research \& AI~\cite{gmo-research2025japanai}.
-Furthermore, Google AI Overview, which integrates Google Search by default, rely on the closed model Gemini~\cite{stein2025expandingaioverviewsaimode, reid2025aisearchbeyondinformation}.
+Furthermore, Google AI Overview, which integrates Google Search by default, relies on the closed model Gemini~\cite{stein2025expandingaioverviewsaimode, reid2025aisearchbeyondinformation}.
 Note that our evaluation is not restricted to closed models, as it relies only on the inputs and outputs (questions and answers) of GSEs, not their internal states.
 In our experiments, we set the temperature of each GSE model to $1.0$, and the answers were obtained in May $2026$.
 For reproducibility of our study, the question-answer datasets are available in our repository~\cite{QL_CIKM_RERO}.
@@ -28,11 +28,11 @@ The user profiles \emph{Ignorant-Progressive} and \emph{Ignorant-Conservative} a
 \textbf{Questions.}
 We design political questions on topics common to each country to elicit policy positions in a politically neutral manner.
 Our question design focuses on whether GSEs cite content articulating positions on the target topics, rather than on questions tailored to a specific party.
-All questions are closed-ended and include a party name following the PoisonedRAG (e.g., ``\emph{Regarding government debt, does {PARTY} currently prioritize debt restraint or growth-oriented investment?}'').
+All questions are closed-ended and include a party name following PoisonedRAG (e.g., ``\emph{Regarding government debt, does {PARTY} currently prioritize debt restraint or growth-oriented investment?}'').
 
 To avoid bias, we build the question set on MARPOR (Manifesto Project)~\cite{lehmann2025manifesto}, an established political-science framework for classifying party manifestos.
 MARPOR has a hierarchical structure consisting of seven \emph{policy domains}, each of which is composed of multiple \emph{topics}.
-We pick up four voter-facing MARPOR domains most relevant to everyday political judgment: \emph{External Relations}, \emph{Economy}, \emph{Welfare and Quality of Life}, and \emph{Fabric of Society}.
+We select four voter-facing MARPOR domains most relevant to everyday political judgment: \emph{External Relations}, \emph{Economy}, \emph{Welfare and Quality of Life}, and \emph{Fabric of Society}.
 We then select $11$ topics on which all target parties take an explicit stance.
 Using these $11$ topics as input, we generate questions using three closed-weight LLMs and finally obtain $33$ question templates for asking the position of each party in each country.
 Questions and answers are written in English for U.S. parties and in Japanese for Japanese parties.
@@ -82,7 +82,7 @@ We first show the barrier distribution of citations in Figure~\ref{fig:citation-
 Each cell contains two stacked horizontal bars side by side: the left bar shows the barrier distribution of web search results, and the right bar shows that of GSE citations.
 We also report the mean and standard deviation of the proportion of GSE citation URLs that appear in the corresponding web search results.
 
-A tendency differs across models (U.S.: $\chi^2(8) = 568.94,\, p < .001,\, V = 0.328$; Japan: $\chi^2(8) = 574.80,\, p < .001,\, V = 0.250$).
+The citation tendency differs across models (U.S.: $\chi^2(8) = 568.94,\, p < .001,\, V = 0.328$; Japan: $\chi^2(8) = 574.80,\, p < .001,\, V = 0.250$).
 GPT has the highest primary source ratio (U.S. $67.2\%$, Japan $83.1\%$) and does not cite low-barrier sources (U.S./Japan both $\leq$ $0.1\%$).
 Gemini has the highest ratios of opponent sources (U.S. $12.4\%$, Japan $6.1\%$) and low-barrier sources (U.S. $12.9\%$, Japan $17.2\%$) among the three models.
 The attack surface of Gemini is broad, with many pathways through which content injection via low-cost sources can reach the answer.
@@ -92,7 +92,7 @@ The ruling and opposition distinction also affects citation composition (U.S.: $
 In the U.S., citations for ruling party questions are dominated by mid-barrier sources (Claude $78.9\%$, Gemini $58.5\%$, GPT $21.8\%$), with primary source ratios at Claude $0.9\%$, Gemini $0.9\%$, and GPT $10.3\%$.
 In contrast, opposition party questions have higher primary source ratios: GPT $86.8\%$, Gemini $19.8\%$, Claude $21.3\%$.
 This means that answers to ruling party questions rely more on sources with lower content-injection barriers, and the attack surface for the ruling party is broader.
-In particular, for models other than GPT, we see that the primary source ratio is low at the stage of web search results.
+In particular, for models other than GPT, we see that the primary source ratio is already low at the web search result stage.
 This suggests that these models may generate search queries that are unable to retrieve primary sources.
 
 We find that the primary source ratio in GSE citations is correlated with that in web search results.
@@ -127,7 +127,7 @@ However, the U.S. Green Party has $2.19 \times 10^{9}$ hits, far exceeding the t
 This counterexample suggests that publishers can suppress this relationship.
 
 In contrast, user profiles do not affect the content-injection barrier distribution of citations.
-We show the barrier distribution in Figure~\ref{fig:citation-by-persona} for three user profiles: ignorant-neutral (ign.), high-conservative (cons.), and high-progressive (prog.).
+We show the barrier distribution in Figure~\ref{fig:citation-by-persona} for three user profiles: Ignorant-Neutral (ign.), High-Conservative (cons.), and High-Progressive (prog.).
 Each bar shows the barrier distribution of GSE citations for each user profile.
 The distributions across the three profiles are nearly identical.
 $\chi^2$ tests are not significant for any model in either country (U.S. overall: $\chi^2(8) = 6.62,\, p = .579,\, V = 0.020$; Japan overall: $\chi^2(8) = 10.07,\, p = .260,\, V = 0.019$; all 8 model-level tests also not significant), with $V < 0.02$.
@@ -237,9 +237,9 @@ Except for this case, citations with high grounding scores are concentrated in p
 That is, primary sources with high barriers are faithfully reflected in answers, while sources with lower barriers contribute less to the answer text and are incorporated in a form that diverges more from the original content.
 
 This tendency is not uniform across ruling and opposition parties.
-Answers to ruling party questions have lower high-grounding bin ratios.
-In the U.S., the high grounding bin ratio for ruling party questions is GPT $27.3\%$, Gemini $30.0\%$, Claude $32.9\%$, while for opposition party questions it is GPT $37.8\%$, Gemini $38.6\%$, Claude $39.4\%$ ($\chi^2(2) = 1091.04,\, p < .001,\, V = 0.094$).
-Given that ruling party questions also have lower primary source ratios in the barrier distribution, their answers rely more on citations in the mid and low grounding bins.
+Answers to ruling party questions have lower High-bin ratios.
+In the U.S., the High-bin ratio for ruling party questions is GPT $27.3\%$, Gemini $30.0\%$, Claude $32.9\%$, while for opposition party questions it is GPT $37.8\%$, Gemini $38.6\%$, Claude $39.4\%$ ($\chi^2(2) = 1091.04,\, p < .001,\, V = 0.094$).
+Given that ruling party questions also have lower primary source ratios in the barrier distribution, their answers rely more on citations in the Mid and Low grounding bins.
 
 The effect size of user profile on the grounding distribution is also negligible (U.S. $V = 0.012$, Japan $V = 0.009$).
 GPT (U.S.) and Claude (U.S. and Japan) are not significant after Holm correction, while the other combinations show statistically significant differences ($p_H < .001$); however, all have $V < 0.02$, meaning the effect is negligible.
