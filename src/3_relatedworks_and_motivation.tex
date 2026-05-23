@@ -32,7 +32,7 @@ GEO provides theoretical evidence that GSEs are vulnerable to poisoning attacks.
 
 \subsection{Citation Evaluation}
 \label{subsec:citation_evaluation}
-We first introduce seminal studies that aim to evaluate \emph{RAG systems}.
+We first introduce seminal studies that aim to evaluate retrieval-and-generation systems.
 % These studies highlight that in ideal retrieval-and-generation systems, all claimed sentences in an answer are supported by external sources from databases as \emph{citations} and the sentences with citations accurately and faithfully reflect the claims.
 These studies evaluate a citation's influence on the generated answer mainly from two aspects: how much it shapes the answer and how faithfully it is reflected in the answer's sentences.
 To evaluate these systems, the key evaluation metrics are \emph{faithfulness} and \emph{domination}.
@@ -45,13 +45,13 @@ Zhang et al.\ show that similarity-based methods achieve higher precision than e
 This approach aligns with GSE behavior of summarizing web page content retrieved from search results and generating answers with citations.
 Citation evaluation applies these faithfulness evaluation methods to each sentence $ l_i $ of generated answer $ r $ with citations $ C_i $, and evaluates reflection accuracy for the entire answer $ r $.
 
-\emph{Domination} measures the proportion of cited text relative to the total text volume of the generated answer.
+\emph{Domination} measures the proportion of cited text relative to the total text volume of the generated answer~\cite{geo-apmr+24, wu2025generativesearchengineslikeai}.
 For each citation $ C_i $, they count the number of words in the sentences to which $ C_i $ is attached and report this count as a proportion of the total number of words in the generated answer $ r $.
-This is a major metric for evaluating the influence of citations in GSEs~\cite{geo-apmr+24, wu2025generativesearchengineslikeai}.
+This is a major metric for evaluating the influence of citations in GSEs.
 Aggarwal et al.~\cite{geo-apmr+24} also propose a domination evaluation method that measures the influence of citations on generated answers in the GSE context.
 
 However, they do not assess the authority and trustworthiness of cited content, as they disregard the publisher of those sources.
-Such content-driven evaluations leave a gap between the seminal studies on \emph{RAG systems} and their applicability to GSEs for revealing the potential attack surface of poisoning attacks.
+Such content-driven evaluations limit their applicability to GSEs for revealing the potential attack surface of poisoning attacks.
 In \emph{RAG systems}, poisoning attack studies focus on how much malicious content attackers need to inject into external databases to succeed in a poisoning attack.
 In contrast, GSEs retrieve information from the open web, where attackers can inject malicious content more easily than in \emph{RAG systems}.
 This ease of injection can enable a successful poisoning attack as previously described.
