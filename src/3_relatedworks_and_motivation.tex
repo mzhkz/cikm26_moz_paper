@@ -17,7 +17,7 @@ These studies support the effectiveness of PoisonedRAG attacks and demonstrate t
 To succeed in a poisoning attack, the malicious content must satisfy two conditions: \emph{Retrieval Condition} and \emph{Generation Condition}.
 Retrieval Condition means that malicious content (such as text or HTML placed by attackers) is selected as top-$ k $ relevant content through retrieval tasks for target questions.
 In GSEs, Retrieval Condition means that content on the web is retrieved as web pages ranked highly in search engine results by the search engine.
-Generation Condition means that the content is used as reasoning knowledge in the LLM and reflected in the generated answers.
+Generation Condition means that the content is used as inferences in LLMs and reflected in the generated answers.
 Aggarwal et al.~\cite{geo-apmr+24} propose \emph{generative engine optimization} (GEO), a method that optimizes website text structure and content from the perspective of Generation Condition to increase the exposure of web page content as citations in answers when the website passes the Retrieval Condition.
 GEO provides theoretical evidence that GSEs are vulnerable to poisoning attacks.
 
@@ -44,7 +44,7 @@ Zhang et al.\ show that similarity-based methods achieve higher precision than e
 This approach aligns with GSE behavior of summarizing web page content retrieved from search results and generating answers with citations.
 Citation evaluation applies these faithfulness evaluation methods to each sentence $ l_i $ of generated answer $ r $ with citations $ C_i $, and evaluates reflection accuracy for the entire answer $ r $.
 
-\emph{Domination} measures the proportion of cited text relative to the total text volume of the generated answer~\cite{geo-apmr+24, wu2025generativesearchengineslikeai}.
+\emph{Domination} measures the proportion of cited text relative to the total text volume of the generated answer.
 For each citation $ C_i $, they count the number of words in the sentences to which $ C_i $ is attached and report this count as a proportion of the total number of words in the generated answer $ r $.
 This is a major metric for evaluating the influence of citations in GSEs~\cite{geo-apmr+24, wu2025generativesearchengineslikeai}.
 Aggarwal et al.~\cite{geo-apmr+24} also propose a domination evaluation method that measures the influence of citations on generated answers in the GSE context.
@@ -55,7 +55,7 @@ In \emph{RAG systems}, poisoning attack studies focus on how much malicious cont
 In contrast, GSEs retrieve information from the open web, where attackers can inject malicious content more easily than in \emph{RAG systems}.
 This ease of injection can enable a successful poisoning attack as previously described.
 The main concern shifts from preventing malicious content from existing in external databases to preventing the system from incorporating even a small amount of malicious content injected by attackers during web searches.
-Unlike \emph{RAG systems}, GSEs operate under the assumption that malicious content is always present in their external sources (i.e., the open web), and therefore existing evaluation methods alone are insufficient to assess the safety and quality of GSEs.
+Unlike \emph{RAG systems}, GSEs operate under the assumption that malicious content is always present in their external databases (the web), and therefore existing evaluation methods alone are insufficient to assess the safety and reliability of GSEs.
 
 
 \subsection{Authority and Trustworthiness}
@@ -66,11 +66,11 @@ The system prefers to cite web pages with high authority scores.
 
 However, evaluating only the content itself of citations is insufficient for assessing the safety of GSEs under poisoning attacks.
 As described in Section~\ref{subsec:citation_evaluation}, because anyone can publish content on the web, attackers can deliberately optimize the scores of content-based evaluation metrics while still injecting malicious information into the web.
-In fact, the ``Doppelganger'' operation reported by EU DisinfoLab~\cite{eudisinfolab2022doppelganger,foreignaffairs2024doppelganger} shows that more than $700$ fake news websites were created by imitating the domain names and designs of legitimate media, and their content was distributed while disguised as legitimate media.
+In fact, the ``Doppelganger'' operation reported by EU DisinfoLab~\cite{eudisinfolab2022doppelganger,foreignaffairs2024doppelganger} shows that more than $700$ fake news websites were created by imitating designs of legitimate media, and their content was distributed while disguised as legitimate media.
 Such legitimate-looking malicious content undermines approaches that evaluate only the content itself, causing both false negatives and false positives.
 Therefore, for GSEs, we need to evaluate not only the content itself of citations, but also the authority and trustworthiness of content publishers.
 
-Furthermore, they typically assume the presence of poisoning attacks on \emph{RAG systems} and primarily focus on developing defenses or system improvements. 
+Furthermore, they typically assume the presence of poisoning attacks and primarily focus on developing defenses or system improvements. 
 However, they do not provide a systematic understanding or measurement of the actual extent of citation selection bias and vulnerability found in production GSEs.
 
 
@@ -80,7 +80,7 @@ Personalization is a key factor in improving the user experience of chat-based a
 In personalization, the general approach is to embed the user's attribute information together with the user's question.
 This approach enables the applications to generate answers that more accurately reflect the user's preferences, background, and needs.
 
-Several studies investigate how personalization affects answers generated from the internal knowledge of LLMs.
+Several studies investigate how personalization affects inferences based on the internal knowledge of LLMs.
 Kearney et al.~\cite{kearney2025languagemodelschangefacts} show that across several domains, answers change systematically depending on user attributes such as race, gender, and age.
 The influence of user attributes also extends to tasks that have objectively correct answers.
 Vijjini et al.~\cite{exploreing-safery-in-personalization-arxiv2026} show that LLM response performance varies systematically even in tasks such as mathematical reasoning, general knowledge, and programming.
@@ -97,8 +97,7 @@ To the best of our knowledge, no prior study has examined how personalization af
 \subsection{Research Motivation}
 To understand the potential attack surface of GSEs, our goal is to build a novel evaluation framework. 
 Our framework introduces new evaluation criteria centered on the publisher attributes of citations in generated answers, enabling a systematic assessment of the underlying attack surfaces and the resilience of GSEs against poisoning attacks.
-We focus on establishing evaluation criteria for the attack surface of GSEs to poisoning attacks. 
-We do not aim to demonstrate practical attacks or identify actual malicious content.
+Note that our framework does not aim to identify actual malicious content, nor to demonstrate practical attacks that could exploit such surfaces; its sole purpose is to evaluate potential attack surfaces.
 
 Our framework addresses the following research questions:
 \begin{description}
@@ -109,6 +108,6 @@ Our framework addresses the following research questions:
 
 We apply our framework to the political domain, where GSEs increasingly mediate access to information essential to democratic processes.
 Because the flow of information from political parties to citizens is a cornerstone of democratic electoral processes~\cite{the-trust-gap-young-peoples-tactics-for-assessing-the-reliability-of-political-news-ijpp22, kovach2007elements}, GSEs can substantially influence citizens' decision-making in elections~\cite{fisher2026biasedaiinfluencepolitical}.
-Especially, focusing on the task of voters gathering information about specific political parties, we characterize the attack surface across political parties, ideologies, countries, and voter profiles (e.g., prior political knowledge and ideology).
+Especially, focusing on the task of voters gathering information about specific political parties, we characterize the potential attack surface across political parties, ideologies, countries, and voter profiles (e.g., prior political knowledge and ideology).
 Based on this analysis, we discuss where attackers could distort political information delivered through GSEs.
 
