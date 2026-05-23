@@ -103,8 +103,8 @@ We measure semantic similarity between each answer sentence in $L = \{l_1, l_2, 
 To measure similarity between two sentences, we introduce the similarity function $\mathrm{sim}(x, y)$ between two sentences $x$ and $y$.
 The function $\mathrm{sim}(x, y)$ returns a similarity score between the two sentences $x$ and $y$ as a value in the range of $-1$ to $1$.
 Here, a similarity value closer to $-1$ indicates lower semantic similarity, whereas a value closer to $1$ indicates higher semantic similarity.
-To calculate the similarity, we employ Sentence-BERT~\cite{sentence-bert-arxiv19}, which converts each sentence into dense embedding vectors and computes their semantic similarity through cosine similarity.
-In our experiments in Section~\ref{sec:experiment}, we use the pre-trained Sentence-BERT model ``stsb-xlm-r-multilingual''~\cite{sentence-bert-arxiv19}, which has been trained on multilingual semantic textual similarity tasks.
+To calculate the similarity, we employ Sentence-BERT~\cite{reimers2019sbert}, which converts each sentence into dense embedding vectors and computes their semantic similarity through cosine similarity.
+In our experiments in Section~\ref{sec:experiment}, we use the pre-trained Sentence-BERT model ``stsb-xlm-r-multilingual''~\cite{reimers2019sbert}, which has been trained on multilingual semantic textual similarity tasks.
 
 \textbf{Maximum-grounding Aggregation.}
 GSEs often use only a few sentences within long citation texts to generate a particular answer sentence; thus, we aggregate the sentence-level similarities by taking the maximum between the answer sentence set $L$ and citation $c_i$ to reveal how strongly a citation grounds the answer.
