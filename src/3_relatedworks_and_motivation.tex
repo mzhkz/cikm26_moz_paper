@@ -33,7 +33,8 @@ GEO provides theoretical evidence that GSEs are vulnerable to poisoning attacks.
 \subsection{Citation Evaluation}
 \label{subsec:citation_evaluation}
 We first introduce seminal studies that aim to evaluate \emph{RAG systems}.
-These studies highlight that in ideal retrieval-and-generation systems, all claimed sentences in an answer are supported by external sources from databases as \emph{citations} and the sentences with citations accurately and faithfully reflect the claims.
+% These studies highlight that in ideal retrieval-and-generation systems, all claimed sentences in an answer are supported by external sources from databases as \emph{citations} and the sentences with citations accurately and faithfully reflect the claims.
+These studies evaluate a citation's influence on the generated answer mainly from two aspects: how much it shapes the answer and how faithfully it is reflected in the answer's sentences.
 To evaluate these systems, the key evaluation metrics are \emph{faithfulness} and \emph{domination}.
 
 \emph{Faithfulness} measures how accurately the generated answer reflects the content of its citations~\cite{citeeval-acl25, ragas-eacl24, ares-naacl24, evaluating-verifiability-in-generative-search-engines-emnlp23, enabling-llms-to-generate-text-with-citations-emnlp23, ranking-generated-summaries-by-correctness-acl2019, evaluating-the-factual-consistency-of-abstractive-text-summarization-emnlp20, alignscore-acl23, feqa-acl20}.
