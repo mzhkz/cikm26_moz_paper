@@ -2,7 +2,7 @@
 \label{sec:experiment}
 We apply our framework to questions about U.S. and Japanese political parties on major GSE models.
 Our experiment reveals their citation patterns and potential attack surfaces in political domains based on \emph{content-injection barriers}.
-Our analysis characterizes the potential attack surface of citation patterns in GSEs but does not show actual attack cases to avoid facilitating attacks.
+% Our analysis characterizes the potential attack surface of citation patterns in GSEs but does not show actual attack cases to avoid facilitating attacks.
 
 \subsection{Experimental Setup}
 We provide details of our experimental setup, including the target GSE models, user profiles, questions, and political parties.
@@ -14,24 +14,21 @@ According to surveys~\cite{menlo-ventures2025stategenaienterprise, a16z2025state
 These models are developed in the U.S., but they dominate usage in Japan as well according to GMO Research \& AI~\cite{gmo-research2025japanai}.
 Furthermore, Google AI Overview, which integrates Google Search by default, rely on the closed model Gemini~\cite{stein2025expandingaioverviewsaimode, reid2025aisearchbeyondinformation}.
 Note that our evaluation is not restricted to closed models, as it relies only on the inputs and outputs (questions and answers) of GSEs, not their internal states.
+In our experiments, we set the temperature of each GSE model to $1.0$, and the answers were obtained in May $2026$.
 For reproducibility of our study, the question-answer datasets are available in our repository~\cite{QL_CIKM_RERO}.
-
-In our experiments, the temperature of each GSE model cannot be set because APIs do not allow setting temperature for LLMs with search mode enabled.
-The default temperatures of all GSE models are $1.0$.
-The answers are obtained on May $2026$.
 
 
 \textbf{User Profiles.}
-We design three user profiles based on two user attributes: \textbf{political knowledge}, which represents the user's familiarity with political issues and takes the levels \emph{Ignorant} and \emph{High}; and \textbf{political ideology}, which represents the user's political leanings and takes the levels \emph{Progressive}, \emph{Conservative}, and \emph{Neutral}.
+We design three user profiles based on two user attributes: political knowledge, which represents the user's familiarity with political issues and takes the levels \emph{Ignorant} and \emph{High}; and political ideology, which represents the user's political leanings and takes the levels \emph{Progressive}, \emph{Conservative}, and \emph{Neutral}.
 
 Using these attributes, we construct three user profile combinations: \emph{Ignorant-Neutral}, \emph{High-Progressive}, and \emph{High-Conservative}.
 The \emph{Ignorant-Neutral} profile represents a user with no political knowledge and a neutral ideology; the \emph{High-Progressive} profile represents a user with high political knowledge and a progressive ideology; and the \emph{High-Conservative} profile represents a user with high political knowledge and a conservative ideology.
-The user profiles \emph{Ignorant-Progressive} and \emph{Ignorant-Conservative} are not introduced, because the political ideology attribute is not applicable to users without political knowledge.
+The user profiles \emph{Ignorant-Progressive} and \emph{Ignorant-Conservative} are not introduced, because the political ideology attribute is not applicable to users without political knowledge; for the same reason, \emph{High-Neutral} is not introduced.
 
 \textbf{Questions.}
 We design political questions on topics common to each country to elicit policy positions in a politically neutral manner.
 Our question design focuses on whether GSEs cite content articulating positions on the target topics, rather than on questions tailored to a specific party.
-All questions are closed-ended and include a party name following the PoisonedRAG study (e.g., ``Regarding government debt, does {PARTY} currently prioritize debt restraint or growth-oriented investment?'').
+All questions are closed-ended and include a party name following the PoisonedRAG (e.g., ``\emph{Regarding government debt, does {PARTY} currently prioritize debt restraint or growth-oriented investment?}'').
 
 To avoid bias, we build the question set on MARPOR (Manifesto Project)~\cite{lehmann2025manifesto}, an established political-science framework for classifying party manifestos.
 MARPOR has a hierarchical structure consisting of seven \emph{policy domains}, each of which is composed of multiple \emph{topics}.
@@ -82,9 +79,10 @@ Since the search engines used by the target GSEs are not disclosed, we cannot re
 However, Brave Search API returns results comparable to those of major search engines such as Google and Bing on standard retrieval metrics, and we therefore consider it a reasonable approximation.
 
 We first show the barrier distribution of citations in Figure~\ref{fig:citation-by-group}, with parties grouped into ruling (rul.) and opposition (opp.).
-Each cell contains two stacked horizontal bars: the upper bar shows the barrier distribution of web search results, and the lower bar shows that of GSE citations.
+Each cell contains two stacked horizontal bars side by side: the left bar shows the barrier distribution of web search results, and the right bar shows that of GSE citations.
 We also report the mean and standard deviation of the proportion of GSE citation URLs that appear in the corresponding web search results.
-In the barrier distribution of GSE citations, this tendency differs across models (U.S.: $\chi^2(8) = 568.94,\, p < .001,\, V = 0.328$; Japan: $\chi^2(8) = 574.80,\, p < .001,\, V = 0.250$).
+
+A tendency differs across models (U.S.: $\chi^2(8) = 568.94,\, p < .001,\, V = 0.328$; Japan: $\chi^2(8) = 574.80,\, p < .001,\, V = 0.250$).
 GPT has the highest primary source ratio (U.S. $67.2\%$, Japan $83.1\%$) and does not cite low-barrier sources (U.S./Japan both $\leq$ $0.1\%$).
 Gemini has the highest ratios of opponent sources (U.S. $12.4\%$, Japan $6.1\%$) and low-barrier sources (U.S. $12.9\%$, Japan $17.2\%$) among the three models.
 The attack surface of Gemini is broad, with many pathways through which content injection via low-cost sources can reach the answer.
@@ -98,10 +96,9 @@ In particular, for models other than GPT, we see that the primary source ratio i
 This suggests that these models may generate search queries that are unable to retrieve primary sources.
 
 We find that the primary source ratio in GSE citations is correlated with that in web search results.
-We report in Table~\ref{tab:brave-citation-barrier-correlation-party-group}, for each model and party group, two values: the across-answer Pearson correlation between the primary source share in web search results and the primary source share in GSE citations ($r_P$), and the mean absolute difference between these two primary source shares (MAE) in percentage points.
-We observe that $r_P$ is lower for ruling parties than for opposition parties within every model in both countries.
-This suggests that GSEs change the web search results' barrier composition more strongly for ruling-party questions.
-In contrast to GPT, Claude and Gemini conversely increase the low-barrier source share from web search results to citations.
+We report in Table~\ref{tab:brave-citation-barrier-correlation-party-group}, for each model and party group, two values: Pearson correlation between the primary source share in web search results and in GSE citations ($r_P$), and the mean absolute difference between these two primary source shares (MAE) in percentage points.
+We observe that the direction of the gap between party groups depends on the model: for Gemini, $r_P$ is lower for ruling parties than for opposition parties, whereas for GPT and Claude, $r_P$ is higher for ruling parties than for opposition parties.
+In addition, GPT shows large MAE values, indicating that its citation composition diverges from the web search results regardless of party group, whereas Claude and Gemini exhibit much smaller MAE for U.S. ruling-party questions, meaning their citations track the web search results in that condition.
 
 \begin{table}[t]
 \centering
@@ -109,18 +106,6 @@ In contrast to GPT, Claude and Gemini conversely increase the low-barrier source
 \setlength{\tabcolsep}{1.8pt}
 \caption{Correlation between primary source ratios in web search results and those in GSE citations by party group.}
 \label{tab:brave-citation-barrier-correlation-party-group}
-% \begin{tabular}{llccc}
-% \toprule
-% \textbf{Country} & \textbf{Party group} & \textbf{GPT} & \textbf{Gemini} & \textbf{Claude} \\
-% \midrule
-% U.S. & rul. & 0.314, 22.4$\pm$28.4 & 0.120, 3.5$\pm$6.7 & 0.800, 0.3$\pm$1.5 \\
-%  & opp. & 0.211, 38.6$\pm$33.4 & 0.459, 14.8$\pm$12.8 & 0.637, 15.8$\pm$19.0 \\
-% \cmidrule(lr){1-5}
-% JP & rul. & 0.447, 49.6$\pm$21.8 & 0.218, 29.1$\pm$17.7 & 0.598, 27.1$\pm$17.5 \\
-%  & opp. & 0.309, 45.0$\pm$21.9 & 0.508, 19.9$\pm$15.3 & 0.504, 27.0$\pm$20.6 \\
-% \bottomrule
-% \end{tabular}
-
 \begin{tabular}{llccc}
 \toprule
 \textbf{Country} & \textbf{Party group} & \textbf{GPT [$r_P$/MAE]} & \textbf{Gemini [$r_P$/MAE]} & \textbf{Claude [$r_P$/MAE]} \\
@@ -132,7 +117,6 @@ JP & rul. & \textcolor{red!50!black}{$0.447$} / 49.6$\pm$21.8 & \textcolor{red!3
  & opp. & \textcolor{red!50!black}{$0.309$} / 45.0$\pm$21.9 & \textcolor{red!70!black}{$0.508$} / 19.9$\pm$15.3 & \textcolor{red!70!black}{$0.504$} / 27.0$\pm$20.6 \\
 \bottomrule
 \end{tabular}
-
 \end{table}
 
 
@@ -150,7 +134,6 @@ $\chi^2$ tests are not significant for any model in either country (U.S. overall
 We also analyze the effect of alignment between the user profile ideology and the target party ideology: aligned (al-cons., al-prog.) and opposed (op-cons., op-prog.).
 GPT shows no significant difference between aligned and opposed conditions (U.S.: $\chi^2(12) = 14.25,\, p = .285$), selecting the same citations regardless of whether the user ideology matches the party.
 Gemini (U.S.: $\chi^2(12) = 62.12,\, p < .001$) and Claude (U.S.: $\chi^2(12) = 58.50,\, p < .001$) show significant differences between alignment conditions, with opposed conditions yielding higher primary source ratios.
-% This suggests that the attack surface of GSEs depends on the model, not on user attributes.
 
 \begin{table}[t]
 \centering
@@ -158,19 +141,6 @@ Gemini (U.S.: $\chi^2(12) = 62.12,\, p < .001$) and Claude (U.S.: $\chi^2(12) = 
 \setlength{\tabcolsep}{1.8pt}
 \caption{Correlation between primary source ratio in web search results and in GSE citations by user profile.}
 \label{tab:brave-citation-barrier-correlation-persona}
-% \begin{tabular}{llccc}
-% \toprule
-% \textbf{Country} & \textbf{User profile} & \textbf{GPT} & \textbf{Gemini} & \textbf{Claude} \\
-% \midrule
-% US & ign. & 0.312, 40.1$\pm$34.8 & 0.582, 11.5$\pm$11.6 & 0.693, 13.3$\pm$18.7 \\
-%  & cons. & 0.371, 36.4$\pm$33.1 & 0.566, 13.3$\pm$12.7 & 0.693, 12.3$\pm$18.3 \\
-%  & prog. & 0.545, 29.5$\pm$30.6 & 0.588, 12.9$\pm$13.7 & 0.724, 12.5$\pm$17.6 \\
-% \cmidrule(lr){1-5}
-% JP & ign. & 0.259, 46.7$\pm$22.8 & 0.454, 22.0$\pm$16.2 & 0.526, 27.0$\pm$20.2 \\
-%  & cons. & 0.377, 45.1$\pm$22.1 & 0.406, 22.9$\pm$16.7 & 0.522, 27.5$\pm$19.8 \\
-%  & prog. & 0.411, 46.5$\pm$20.9 & 0.432, 21.6$\pm$16.4 & 0.526, 26.5$\pm$19.7 \\
-% \bottomrule
-% \end{tabular}
 \begin{tabular}{llccc}
 \toprule
 \textbf{Country} & \textbf{User profile} & \textbf{GPT [$r_P$/MAE]} & \textbf{Gemini [$r_P$/MAE]} & \textbf{Claude [$r_P$/MAE]} \\
@@ -211,14 +181,14 @@ This suggests that user profiles affect neither the citation barrier distributio
 We next analyze the domination score distribution across barriers.
 We show the domination score distribution by model and party group in Figure~\ref{fig:wc-by-group}.
 As with barrier distribution, model choice and the ruling/opposition position determine the attack surface.
-The model difference is U.S. $V = 0.356$, Japan $V = 0.229$ (U.S.: $\chi^2(8) = 34{,}119.65,\, p < .001$; Japan: $\chi^2(8) = 54{,}891.93,\, p < .001$), and the ruling/opposition difference is U.S. $V = 0.386$ ($\chi^2(4) = 59{,}662.10,\, p < .001$).
+% The model difference is U.S. $V = 0.356$, Japan $V = 0.229$ (U.S.: $\chi^2(8) = 34{,}119.65,\, p < .001$; Japan: $\chi^2(8) = 54{,}891.93,\, p < .001$), and the ruling/opposition difference is U.S. $V = 0.386$ ($\chi^2(4) = 59{,}662.10,\, p < .001$).
 
 The primary source domination score exceeds the barrier distribution ratio.
-For GPT, the primary ratio in barrier distribution is U.S. $67.2\%$ / Japan $83.1\%$, while in domination score it is U.S. $71.1\%$ / Japan $90.1\%$.
-Gemini shows the same pattern: Japan citation $49.1\%$ vs.\ domination $62.2\%$.
-Claude also shows Japan citation $53.7\%$ vs.\ domination $62.2\%$.
+For GPT, the primary ratio (averaged over ruling/opposition) in barrier distribution is U.S. $67.2\%$ / Japan $83.1\%$, while in domination score it is U.S. $71.1\%$ / Japan $90.1\%$.
+Gemini shows the same pattern: citation $49.1\%$ vs.\ domination $62.2\%$ in Japan.
+Claude also shows citation $53.7\%$ vs.\ domination $62.2\%$ in Japan.
 This means that the text span of the answer attributed to each primary source citation is longer than that of citations from other barriers.
-For U.S. opposition questions, GPT attributes $91.2\%$ of the domination score to primary sources.
+For U.S. opposition questions, GPT attributes $91.2\%$ of the domination score to primary sources, while ruling questions have a lower primary domination score of $50.9\%$.
 In Japan, the low-barrier source domination score is highest for Gemini at $9.8\%$ (GPT: $0.1\%$, Claude: $4.3\%$), showing that the share of answer text supported by low-cost sources differs across models.
 
 We show the domination score distribution by user profile in Figure~\ref{fig:wc-by-persona}.
@@ -279,8 +249,8 @@ For GPT, the Holm-adjusted $p_H = 1.000$ in U.S.; for Claude, $p_H = .454$ in U.
 This suggests that the potential attack surface of GSEs does not depend on who the user is, but on which GSE model is used and which party the question is about.
 
 \subsection{Summary}
-Prior studies has suggested that GSE answers can vary with the user's political ideology~\cite{political-bias-audit-arxiv-2026, miyazaki_hall_2026_japan_ai_voting_advice}.
+LLM's inferences can vary with the user's political ideology~\cite{political-bias-audit-arxiv-2026, miyazaki_hall_2026_japan_ai_voting_advice}.
 However, our experiments observe no consistent effect of user ideology on GSE citation behavior across the three models and both countries.
 What shapes the differences in citation behavior is not \emph{who is asking the question} but \emph{which party the question is about}.
-Between ruling party questions and opposition party questions, the primary source ratio and the grounding distribution differ significantly in all three models.
+Between ruling party questions and opposition party questions, the primary source ratio in both countries and the domination and grounding distribution in U.S. differ.
 Our results suggest that the attack surface of GSEs is characterized primarily by the model and the political target of the question, rather than by the user's ideological profile.

@@ -12,16 +12,16 @@ US & Model & 124{,}539 & 4 & 39.95 & $<$.001 & $<$.001 & $^{***}$ \\
  & Model (ruling) & 30{,}598 & 4 & 90.67 & $<$.001 & $<$.001 & $^{***}$ \\
  & Model (opposition) & 93{,}941 & 4 & 21.15 & $<$.001 & .003 & $^{**}$ \\
  & Party group & 124{,}539 & 2 & 1091.04 & $<$.001 & $<$.001 & $^{***}$ \\
- & Party group (GPT-5) & 9{,}680 & 2 & 95.33 & $<$.001 & $<$.001 & $^{***}$ \\
+ & Party group (GPT) & 9{,}680 & 2 & 95.33 & $<$.001 & $<$.001 & $^{***}$ \\
  & Party group (Gemini) & 69{,}079 & 2 & 672.16 & $<$.001 & $<$.001 & $^{***}$ \\
  & Party group (Claude) & 45{,}780 & 2 & 381.51 & $<$.001 & $<$.001 & $^{***}$ \\
  & Persona & 124{,}539 & 4 & 35.73 & $<$.001 & $<$.001 & $^{***}$ \\
- & Persona (GPT-5) & 9{,}680 & 4 & 8.74 & .068 & 1.000 & n.s. \\
+ & Persona (GPT) & 9{,}680 & 4 & 8.74 & .068 & 1.000 & n.s. \\
  & Persona (Gemini) & 69{,}079 & 4 & 32.26 & $<$.001 & $<$.001 & $^{***}$ \\
  & Persona (Claude) & 45{,}780 & 4 & 11.25 & .024 & .454 & n.s. \\
  & Party ideology & 124{,}539 & 2 & 30.23 & $<$.001 & $<$.001 & $^{***}$ \\
  & Alignment & 82{,}334 & 6 & 80.32 & $<$.001 & $<$.001 & $^{***}$ \\
- & Alignment (GPT-5) & 6{,}931 & 6 & 45.88 & $<$.001 & $<$.001 & $^{***}$ \\
+ & Alignment (GPT) & 6{,}931 & 6 & 45.88 & $<$.001 & $<$.001 & $^{***}$ \\
  & Alignment (Gemini) & 45{,}409 & 6 & 26.92 & $<$.001 & .003 & $^{**}$ \\
  & Alignment (Claude) & 29{,}994 & 6 & 87.50 & $<$.001 & $<$.001 & $^{***}$ \\
 \cmidrule(lr){1-8}
@@ -29,21 +29,21 @@ JP & Model & 254{,}146 & 4 & 4460.62 & $<$.001 & $<$.001 & $^{***}$ \\
  & Model (ruling) & 69{,}765 & 4 & 1268.84 & $<$.001 & $<$.001 & $^{***}$ \\
  & Model (opposition) & 184{,}381 & 4 & 3219.23 & $<$.001 & $<$.001 & $^{***}$ \\
  & Party group & 254{,}146 & 2 & 318.85 & $<$.001 & $<$.001 & $^{***}$ \\
- & Party group (GPT-5) & 47{,}597 & 2 & 58.80 & $<$.001 & $<$.001 & $^{***}$ \\
+ & Party group (GPT) & 47{,}597 & 2 & 58.80 & $<$.001 & $<$.001 & $^{***}$ \\
  & Party group (Gemini) & 139{,}108 & 2 & 164.47 & $<$.001 & $<$.001 & $^{***}$ \\
  & Party group (Claude) & 67{,}441 & 2 & 112.85 & $<$.001 & $<$.001 & $^{***}$ \\
  & Persona & 254{,}146 & 4 & 37.34 & $<$.001 & $<$.001 & $^{***}$ \\
- & Persona (GPT-5) & 47{,}597 & 4 & 45.53 & $<$.001 & $<$.001 & $^{***}$ \\
+ & Persona (GPT) & 47{,}597 & 4 & 45.53 & $<$.001 & $<$.001 & $^{***}$ \\
  & Persona (Gemini) & 139{,}108 & 4 & 52.55 & $<$.001 & $<$.001 & $^{***}$ \\
  & Persona (Claude) & 67{,}441 & 4 & 3.19 & .526 & 1.000 & n.s. \\
  & Party ideology & 254{,}146 & 2 & 952.02 & $<$.001 & $<$.001 & $^{***}$ \\
  & Alignment & 166{,}507 & 6 & 597.59 & $<$.001 & $<$.001 & $^{***}$ \\
- & Alignment (GPT-5) & 32{,}079 & 6 & 366.46 & $<$.001 & $<$.001 & $^{***}$ \\
+ & Alignment (GPT) & 32{,}079 & 6 & 366.46 & $<$.001 & $<$.001 & $^{***}$ \\
  & Alignment (Gemini) & 91{,}596 & 6 & 331.47 & $<$.001 & $<$.001 & $^{***}$ \\
  & Alignment (Claude) & 42{,}832 & 6 & 71.87 & $<$.001 & $<$.001 & $^{***}$ \\
 \bottomrule
 \end{tabular}
 \begin{minipage}{\columnwidth}
-\footnotesize \textit{Notes.} Comparison column: ``Model'' compares OpenAI vs Gemini vs Claude; ``Party group'' compares ruling vs opposition; ``Persona'' compares unknown vs high-conservative vs high-progressive; ``Party ideology'' compares conservative vs progressive; ``Alignment'' compares aligned vs opposed. Parenthesized model names indicate the comparison is restricted to that model. $^\dagger$ indicates low expected cell counts ($<5$); interpret with caution. Raw p-values and Holm-adjusted p-values ($p_H$) are both reported; significance stars are based on $p_H$. Observations are sentence-citation pairs and may not be fully independent within a response.
+\footnotesize \textit{Notes.} Comparison column: ``Model'' compares GPT vs Gemini vs Claude; ``Party group'' compares ruling vs opposition; ``Persona'' compares ign. vs high-conservative vs high-progressive; ``Party ideology'' compares conservative vs progressive; ``Alignment'' compares aligned vs opposed. Parenthesized model names indicate the comparison is restricted to that model. $^\dagger$ indicates low expected cell counts ($<5$); interpret with caution. Raw p-values and Holm-adjusted p-values ($p_H$) are both reported; significance stars are based on $p_H$. Observations are sentence-citation pairs and may not be fully independent within a response.
 \end{minipage}
 \end{table}
