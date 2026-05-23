@@ -121,7 +121,7 @@ JP & rul. & \textcolor{red!50!black}{$0.447$} / 49.6$\pm$21.8 & \textcolor{red!3
 
 
 The lower primary source ratio for ruling party questions may be caused by the larger volume of web content about ruling parties.
-Google search hit counts for party names show that Japan's long-ruling LDP has $4.71 \times 10^{7}$ hits, far exceeding the other-party average of $8.57 \times 10^{6}$. In the U.S., the Republican Party and the Democratic Party have $1.65 \times 10^{8}$ and $3.99 \times 10^{8}$ hits, respectively.
+We additionally investigate Google search hit counts for party names: Japan's long-ruling LDP has $4.71 \times 10^{7}$ hits, far exceeding the other-party average of $8.57 \times 10^{6}$. In the U.S., the Republican Party and the Democratic Party have $1.65 \times 10^{8}$ and $3.99 \times 10^{8}$ hits, respectively.
 When the total volume of web content about a party is large, the relative share of primary sources decreases, which may lower the primary source ratio in citations.
 However, the U.S. Green Party has $2.19 \times 10^{9}$ hits, far exceeding the two major parties, yet its primary source ratio in GSE citations remains high. 
 This counterexample suggests that publishers can suppress this relationship.
@@ -133,7 +133,7 @@ The distributions across the three profiles are nearly identical.
 $\chi^2$ tests are not significant for any model in either country (U.S. overall: $\chi^2(8) = 6.62,\, p = .579,\, V = 0.020$; Japan overall: $\chi^2(8) = 10.07,\, p = .260,\, V = 0.019$; all 8 model-level tests also not significant), with $V < 0.02$.
 We also analyze the effect of alignment between the user profile ideology and the target party ideology: aligned (al-cons., al-prog.) and opposed (op-cons., op-prog.).
 GPT shows no significant difference between aligned and opposed conditions (U.S.: $\chi^2(12) = 14.25,\, p = .285$), selecting the same citations regardless of whether the user ideology matches the party.
-Gemini (U.S.: $\chi^2(12) = 62.12,\, p < .001$) and Claude (U.S.: $\chi^2(12) = 58.50,\, p < .001$) show significant differences between alignment conditions, with opposed conditions yielding higher primary source ratios.
+Gemini (U.S.: $\chi^2(12) = 62.12,\, p < .001$) and Claude (U.S.: $\chi^2(12) = 58.50,\, p < .001$) show significant differences between alignment conditions.
 
 \begin{table}[t]
 \centering
@@ -180,20 +180,18 @@ This suggests that user profiles affect neither the citation barrier distributio
 \textbf{Distribution of Domination Score.}
 We next analyze the domination score distribution across barriers.
 We show the domination score distribution by model and party group in Figure~\ref{fig:wc-by-group}.
-As with barrier distribution, model choice and the ruling/opposition position determine the attack surface.
-% The model difference is U.S. $V = 0.356$, Japan $V = 0.229$ (U.S.: $\chi^2(8) = 34{,}119.65,\, p < .001$; Japan: $\chi^2(8) = 54{,}891.93,\, p < .001$), and the ruling/opposition difference is U.S. $V = 0.386$ ($\chi^2(4) = 59{,}662.10,\, p < .001$).
+As with barrier distribution, model choice and the ruling/opposition position again govern the distribution (model: U.S. $V = 0.356$, Japan $V = 0.229$; party group: U.S. $V = 0.386$, Japan $V = 0.144$; all $p < .001$).
 
-The primary source domination score exceeds the barrier distribution ratio.
-For GPT, the primary ratio (averaged over ruling/opposition) in barrier distribution is U.S. $67.2\%$ / Japan $83.1\%$, while in domination score it is U.S. $71.1\%$ / Japan $90.1\%$.
-Gemini shows the same pattern: citation $49.1\%$ vs.\ domination $62.2\%$ in Japan.
-Claude also shows citation $53.7\%$ vs.\ domination $62.2\%$ in Japan.
+Across all models and both countries (ruling/opposition combined), the primary source domination ratio exceeds the citation ratio.
+GPT shows ${+}3.9$pt in the U.S. and ${+}7.0$pt in Japan; in Japan, Gemini shows ${+}13.1$pt and Claude ${+}8.5$pt.
 This means that the text span of the answer attributed to each primary source citation is longer than that of citations from other barriers.
-For U.S. opposition questions, GPT attributes $91.2\%$ of the domination score to primary sources, while ruling questions have a lower primary domination score of $50.9\%$.
-In Japan, the low-barrier source domination score is highest for Gemini at $9.8\%$ (GPT: $0.1\%$, Claude: $4.3\%$), showing that the share of answer text supported by low-cost sources differs across models.
+However, the ruling/opposition gap depends strongly on model and country.
+In the U.S., the primary domination is higher for opposition questions (GPT ${+}76.6$pt, Claude ${+}25.0$pt, Gemini ${+}20.5$pt), and the U.S. ruling-party primary domination for GPT drops to $14.6\%$; in Japan, the gap stays within $6$pt for all models.
+For low-barrier sources, Gemini's domination in Japan substantially exceeds the other models (Gemini $9.8\%$ vs.\ Claude $4.3\%$, GPT $0.1\%$).
 
 We show the domination score distribution by user profile in Figure~\ref{fig:wc-by-persona}.
-User profile differences are negligible (U.S.: $\chi^2(8) = 301.07,\, p < .001,\, V = 0.019$; primary ratio difference across profiles is $1$--$2$ points, e.g., for GPT in Japan: $90.1\%$ / $89.8\%$ / $88.7\%$).
-Together with barrier distribution ($V = 0.020$), user profiles do not affect the attack surface in either metric.
+User profile differences are negligible (U.S. $V = 0.019$, Japan $V = 0.011$; all $p < .001$).
+Together with barrier distribution ($V \leq 0.020$), user profiles do not affect the attack surface in either metric.
 
 
 \begin{figure}[t]
@@ -232,25 +230,23 @@ Since a single language is dominant within each country in questions and citatio
 
 We show the barrier distribution for each grounding bin in Figure~\ref{fig:grounding-by-group}.
 Each cell is a Marimekko chart: the width along the x-axis shows the count share of each grounding bin (Low/Mid/High), and the y-axis shows the barrier distribution within each bin.
-Across all models and both countries, the primary source ratio increases as the grounding bin goes from low to mid to high.
-For example, in Japan, GPT shows primary ratios of $42.1\%$ (low bin), $75.6\%$ (mid), and $89.2\%$ (high).
-However, the magnitude of this increase differs by model.
-GPT shows steep increases in both countries, and Gemini and Claude also show steep increases in Japan; in the U.S., however, Gemini and Claude have low primary ratios overall and show smaller increases across bins.
-This suggests that citations with high grounding scores are concentrated in primary sources, and citations with low grounding scores are concentrated in low-barrier sources.
-Across all models, primary sources with high barriers are faithfully reflected in answers, while sources with lower barriers contribute less to the answer text and are incorporated in a form that diverges more from the original content.
+Except for U.S. Claude, the primary source ratio increases as the grounding bin goes from Low to Mid to High.
+For example, in Japan, GPT shows primary ratios of $42.1\%$ (Low bin), $75.6\%$ (Mid), and $89.2\%$ (High).
+The magnitude of this increase differs by country and model: all three models in Japan show steep increases (L$\to$H by ${+}30$ to ${+}47$pt), while in the U.S. GPT and Gemini show only moderate increases (${+}15$ to ${+}17$pt), and Claude is non-monotonic with L$=27.5\%$, M$=12.9\%$, H$=18.2\%$.
+Except for this case, citations with high grounding scores are concentrated in primary sources, and citations with low grounding scores are concentrated in low-barrier sources.
+That is, primary sources with high barriers are faithfully reflected in answers, while sources with lower barriers contribute less to the answer text and are incorporated in a form that diverges more from the original content.
 
 This tendency is not uniform across ruling and opposition parties.
 Answers to ruling party questions have lower high-grounding bin ratios.
 In the U.S., the high grounding bin ratio for ruling party questions is GPT $27.3\%$, Gemini $30.0\%$, Claude $32.9\%$, while for opposition party questions it is GPT $37.8\%$, Gemini $38.6\%$, Claude $39.4\%$ ($\chi^2(2) = 1091.04,\, p < .001,\, V = 0.094$).
 Given that ruling party questions also have lower primary source ratios in the barrier distribution, their answers rely more on citations in the mid and low grounding bins.
 
-User profiles do not affect the grounding distribution either (U.S.: $V = 0.012$; Japan: $V = 0.009$).
-For GPT, the Holm-adjusted $p_H = 1.000$ in U.S.; for Claude, $p_H = .454$ in U.S. and $p_H = 1.000$ in Japan, all not significant.
+The effect size of user profile on the grounding distribution is also negligible (U.S. $V = 0.012$, Japan $V = 0.009$).
+GPT (U.S.) and Claude (U.S. and Japan) are not significant after Holm correction, while the other combinations show statistically significant differences ($p_H < .001$); however, all have $V < 0.02$, meaning the effect is negligible.
 This suggests that the potential attack surface of GSEs does not depend on who the user is, but on which GSE model is used and which party the question is about.
 
 \subsection{Summary}
-LLM's inferences can vary with the user's political ideology~\cite{political-bias-audit-arxiv-2026, miyazaki_hall_2026_japan_ai_voting_advice}.
-However, our experiments observe no consistent effect of user ideology on GSE citation behavior across the three models and both countries.
-What shapes the differences in citation behavior is not \emph{who is asking the question} but \emph{which party the question is about}.
-Between ruling party questions and opposition party questions, the primary source ratio in both countries and the domination and grounding distribution in U.S. differ.
-Our results suggest that the attack surface of GSEs is characterized primarily by the model and the political target of the question, rather than by the user's ideological profile.
+While LLM inferences can vary with the user's political ideology~\cite{political-bias-audit-arxiv-2026, miyazaki_hall_2026_japan_ai_voting_advice}, we observe no consistent effect on GSE citation behavior across the three models and both countries ($V < 0.02$).
+What shapes the differences in citation behavior is not \emph{who is asking the question} but \emph{which model answers about which party}.
+Model choice produces large differences in the barrier distribution, ruling-party questions have lower primary source ratios than opposition-party questions, and in the U.S. the domination and grounding distributions skew in the same direction.
+That is, the attack surface of GSEs is characterized by the model and the target party, not by the user's ideological profile.
