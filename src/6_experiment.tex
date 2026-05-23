@@ -55,7 +55,7 @@ In the U.S., we target five parties. The ruling party is ``Republican Party'', a
 
 \begin{figure}[t]
   \centering
-  \includegraphics[width=0.94\columnwidth]{figs/phase8_outputs/figures/citation_distribution_by_group_vertical.pdf}
+  \includegraphics[width=0.96\columnwidth]{figs/phase8_outputs/figures/citation_distribution_by_group_vertical.pdf}
   \caption{Barrier distribution by party group. Each cell has two stacked bars: the upper shows the barrier distribution of web search results, and the lower shows that of GSE citations.}
   \label{fig:citation-by-group}
 \end{figure}
@@ -172,7 +172,7 @@ This suggests that user profiles affect neither the citation barrier distributio
 
 \begin{figure*}[t]
   \centering
-  \includegraphics[width=0.9\textwidth]{figs/phase8_outputs/figures/word_count_distribution_by_persona_vertical.pdf}
+  \includegraphics[width=0.94\textwidth]{figs/phase8_outputs/figures/word_count_distribution_by_persona_vertical.pdf}
   \caption{Domination score distribution by user profile. Each bar shows the barrier-wise domination score for each user profile.}
   \label{fig:wc-by-persona}
 \end{figure*}
@@ -203,7 +203,7 @@ Together with barrier distribution ($V \leq 0.020$), user profiles do not affect
 
 \begin{figure*}[t]
   \centering
-  \includegraphics[width=0.95\textwidth]{figs/phase8_outputs/figures/grounding_distribution_by_persona.pdf}
+  \includegraphics[width=1\textwidth]{figs/phase8_outputs/figures/grounding_distribution_by_persona.pdf}
   \caption{Grounding distribution by user profile. Each cell shows the grounding bin barrier distribution for each user profile.}
   \label{fig:grounding-by-persona}
 \end{figure*}
@@ -246,7 +246,7 @@ GPT (U.S.) and Claude (U.S. and Japan) are not significant after Holm correction
 This suggests that the potential attack surface of GSEs does not depend on who the user is, but on which GSE model is used and which party the question is about.
 
 \subsection{Summary}
-While LLM inferences can vary with the user's political ideology~\cite{political-bias-audit-arxiv-2026, miyazaki_hall_2026_japan_ai_voting_advice}, we observe no consistent effect on GSE citation behavior across the three models and both countries ($V < 0.02$).
+While LLM inferences can vary with the user's political ideology, we observe no consistent effect on GSE citation behavior across the three models and both countries.
 What shapes the differences in citation behavior is not \emph{who is asking the question} but \emph{which model answers about which party}.
 Model choice produces large differences in the barrier distribution, ruling-party questions have lower primary source ratios than opposition-party questions, and in the U.S. the domination and grounding distributions skew in the same direction.
-That is, the attack surface of GSEs is characterized by the model and the target party, not by the user's ideological profile.
+That is, the attack surface of GSEs is characterized by the model and the target party, not by the user's ideology.
