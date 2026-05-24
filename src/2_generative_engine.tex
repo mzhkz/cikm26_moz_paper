@@ -1,14 +1,14 @@
 \section{Generative Search Engine}
 \label{sec:generative_search_engine}
 This section introduces GSE (Generative Search Engine) and its system model.
-GSEs are retrieval-and-generation systems that retrieve information from the web and generate synthesized answers with user intent and background using large language models (LLMs)~\cite{geo-apmr+24}.
+GSEs are retrieval-and-generation systems that retrieve information from the web and generate synthesized answers with user intent and backgrounds using large language models (LLMs)~\cite{geo-apmr+24}.
 % the core of 
 % integrate web search results from queries transformed from user questions and generate synthesized answers while citing web content using large language models (LLMs)~\cite{geo-apmr+24}.
 % GSEs receive a question from users, perform web searches, and generate answers with user intent and background using the web search results.
 
 Aggarwal et al.\ formalize GSEs and provide a system model~\cite{geo-apmr+24}.
 A GSE is formalized as a function \( f_{GSE}^{model} \) that takes a user question \( q_u \) and personalization information \( P_U \) as inputs and generates a textual answer \( r \):
-$ f_{GSE}^{model} := (q_u, P_U) \rightarrow r $.
+$f_{GSE}^{model} := (q_u, P_U) \rightarrow r$.
 
 GSEs consist of two components: content retrieval and answer generation.
 Content retrieval collects the information necessary to generate answers from the web.

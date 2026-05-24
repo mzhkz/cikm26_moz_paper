@@ -1,4 +1,4 @@
-\section{Related Works and Motivation}
+\section{Related Work and Motivation}
 \label{sec:related}
 This section introduces poisoning attacks on \emph{RAG systems}, summarizes key evaluation criteria, and highlights the challenges we identify for GSEs.
 
@@ -16,8 +16,8 @@ These studies support the effectiveness of PoisonedRAG attacks and demonstrate t
 
 To succeed in a poisoning attack, the malicious content must satisfy two conditions: \emph{Retrieval Condition} and \emph{Generation Condition}.
 Retrieval Condition means that malicious content (such as text or HTML placed by attackers) is selected as top-$ k $ relevant content through retrieval tasks for target questions.
-In GSEs, Retrieval Condition means that content on the web is retrieved as web pages ranked highly in search engine results by the search engine.
-Generation Condition means that the content is used as inferences in LLMs and reflected in the generated answers.
+In GSEs, Retrieval Condition means that content on the web is retrieved as web pages ranked highly in search engine results.
+Generation Condition means that the content is used in LLM inference and reflected in the generated answers.
 Aggarwal et al.~\cite{geo-apmr+24} propose \emph{generative engine optimization} (GEO), a method that optimizes website text structure and content from the perspective of Generation Condition to increase the exposure of web page content as citations in answers when the website passes the Retrieval Condition.
 GEO provides theoretical evidence that GSEs are vulnerable to poisoning attacks.
 
@@ -65,13 +65,13 @@ TrustRAG~\cite{zhou2025trustragenhancingrobustnesstrustworthiness} identifies an
 AuthGR~\cite{lee2026relevanceauthorityauthorityawaregenerative} computes an authority score for web pages using a vision-language model that evaluates both the textual content of the page and visual features extracted from page screenshots, such as layout quality, design, and advertisement density. 
 The system prefers to cite web pages with high authority scores.
 
-However, evaluating only the content itself of citations is insufficient for assessing the safety of GSEs under poisoning attacks.
+However, evaluating only the citation content itself is insufficient for assessing the safety of GSEs under poisoning attacks.
 As described in Section~\ref{subsec:citation_evaluation}, because anyone can publish content on the web, attackers can deliberately optimize the scores of content-based evaluation metrics while still injecting malicious information into the web.
 In fact, the ``Doppelganger'' operation reported by EU DisinfoLab~\cite{eudisinfolab2022doppelganger,foreignaffairs2024doppelganger} shows that more than $700$ fake news websites were created by imitating designs of legitimate media, and their content was distributed while disguised as legitimate media.
 Such legitimate-looking malicious content undermines approaches that evaluate only the content itself, causing both false negatives and false positives.
-Therefore, for GSEs, we need to evaluate not only the content itself of citations, but also the authority and trustworthiness of content publishers.
+Therefore, for GSEs, we need to evaluate not only the citation content itself, but also the authority and trustworthiness of content publishers.
 
-Furthermore, they typically assume the presence of poisoning attacks and primarily focus on developing defenses or system improvements. 
+Furthermore, these methods typically assume the presence of poisoning attacks and primarily focus on developing defenses or system improvements. 
 However, they do not provide a systematic understanding or measurement of the actual extent of citation selection bias and vulnerability found in production GSEs.
 
 

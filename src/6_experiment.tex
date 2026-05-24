@@ -10,7 +10,7 @@ We provide details of our experimental setup, including the target GSE models, u
 \textbf{Target GSE Models.}
 We employ three GSE models for answer generation: OpenAI GPT-5~\cite{chatgpt}, Claude Sonnet $4$ (claude-4-sonnet-20250514)~\cite{claude}, and Gemini Flash $2.5$ (gemini-2.5-flash)~\cite{gemini} with web search mode enabled.
 We clarify why we focus on closed GSE models in this study.
-According to surveys~\cite{menlo-ventures2025stategenaienterprise, a16z2025stateconsumerai}, closed models dominate the LLM market in both enterprise and consumer segments, with Claude, OpenAI, and Gemini together accounting for $88\%$ of spending share, while open-source models account for only $11\%$.
+According to surveys~\cite{menlo-ventures2025stategenaienterprise, a16z2025stateconsumerai}, closed models dominate the LLM market in both enterprise and consumer segments, with ChatGPT, Claude, and Gemini together accounting for $88\%$ of spending share, while open-source models account for only $11\%$.
 These models are developed in the U.S., but they dominate usage in Japan as well according to GMO Research \& AI~\cite{gmo-research2025japanai}.
 Furthermore, Google AI Overview, which integrates Google Search by default, relies on the closed model Gemini~\cite{stein2025expandingaioverviewsaimode, reid2025aisearchbeyondinformation}.
 Note that our evaluation is not restricted to closed models, as it relies only on the inputs and outputs (questions and answers) of GSEs, not their internal states.
@@ -83,12 +83,12 @@ Each cell contains two stacked horizontal bars side by side: the left bar shows 
 We also report the mean and standard deviation of the proportion of GSE citation URLs that appear in the corresponding web search results.
 
 The citation tendency differs across models (U.S.: $\chi^2(8) = 568.94,\, p < .001,\, V = 0.328$; Japan: $\chi^2(8) = 574.80,\, p < .001,\, V = 0.250$).
-GPT has the highest primary source ratio (U.S. $67.2\%$, Japan $83.1\%$) and does not cite low-barrier sources (U.S./Japan both $\leq$ $0.1\%$).
+GPT has the highest primary source ratio (U.S. $67.2\%$, Japan $83.1\%$) and does not cite low-barrier sources (U.S./Japan both $\leq 0.1\%$).
 Gemini has the highest ratios of opponent sources (U.S. $12.4\%$, Japan $6.1\%$) and low-barrier sources (U.S. $12.9\%$, Japan $17.2\%$) among the three models.
 The attack surface of Gemini is broad, with many pathways through which content injection via low-cost sources can reach the answer.
 Claude has the highest mid-barrier source ratio (U.S. $59.3\%$, Japan $37.1\%$) among the three models, with primary source ratios of U.S. $16.5\%$ and Japan $53.7\%$.
 
-The ruling and opposition distinction also affects citation composition (U.S.: $\chi^2(4) = 1044.06,\, p < .001,\, V = 0.361$; Japan: $\chi^2(4) = 357.92,\, p < .001,\, V = 0.161$) of GSE citations.
+The ruling and opposition distinction also affects the composition of GSE citations (U.S.: $\chi^2(4) = 1044.06,\, p < .001,\, V = 0.361$; Japan: $\chi^2(4) = 357.92,\, p < .001,\, V = 0.161$).
 In the U.S., citations for ruling party questions are dominated by mid-barrier sources (Claude $78.9\%$, Gemini $58.5\%$, GPT $21.8\%$), with primary source ratios at Claude $0.9\%$, Gemini $0.9\%$, and GPT $10.3\%$.
 In contrast, opposition party questions have higher primary source ratios: GPT $86.8\%$, Gemini $19.8\%$, Claude $21.3\%$.
 This means that answers to ruling party questions rely more on sources with lower content-injection barriers, and the attack surface for the ruling party is broader.

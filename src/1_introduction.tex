@@ -1,7 +1,7 @@
 \section{Introduction}\label{sec:introduction}
 Large language model (LLM) applications such as ChatGPT~\cite{chatgpt}, Gemini~\cite{gemini}, and Claude~\cite{claude} increasingly incorporate web search functions, providing internet users with new ways of accessing information~\cite{webgpt-arxiv21, geo-apmr+24, zhai2024llm-and-future-of-information-retrieval}. 
 Information retrieval has become a primary use case for LLMs, with a survey showing that about $30\%$ of all prompts involve information seeking~\cite{how-people-use-chatgpt-nber25}. 
-Such systems that perform web searches and generate textual answers with user needs and background are known as \emph{generative search engines} (GSEs)~\cite{geo-apmr+24}. 
+Such systems that perform web searches and generate textual answers based on users' needs and backgrounds are known as \emph{generative search engines} (GSEs)~\cite{geo-apmr+24}. 
 Web search services are rapidly transitioning from traditional search engines to GSE-based systems~\cite{openai-chatgpt-search24, google-gemini-search24, perplexity-comet25, dia-browser25, microsoft-bing-chat23, anthropic-multiagent25}, changing the way users access and interpret web content.
 
 % GSEs not only alter the delivery of information but also reshape its nature. 
@@ -10,11 +10,11 @@ Web search services are rapidly transitioning from traditional search engines to
 % This transformation enhances accessibility but centralizes the selection and interpretation of web content in GSEs; moreover, major GSEs are black-box systems, introducing vulnerabilities such as answer inaccuracies.
 
 
-The nature of GSEs, which cite web content published by a wide range of actors, makes them vulnerable to poisoning attacks that inject malicious content into the web and induce attacker-intended answers~\cite{poisonedrag-arxiv24, poisoning-web-scale-training-datasets-is-practical-sp24}. 
+The nature of GSEs, which cite web content published by a wide range of actors, makes them vulnerable to poisoning attacks that inject malicious content onto the web and induce attacker-intended answers~\cite{poisonedrag-arxiv24, poisoning-web-scale-training-datasets-is-practical-sp24}. 
 When GSEs generate answers lacking factuality, the cause is not only LLM hallucinations~\cite{sirens-song-in-the-ai-ocean-coli25, survey-of-hallucination-in-natural-language-generation-acmcsurv23} but also the lack of factuality in the web content obtained through web searches~\cite{retrieval-helps-or-hurts-deeper-arxiv24, poisonedrag-arxiv24, a-comprehensive-survey-on-trustworthy-recommender-systems-arxiv22}.
 Web content can be published and modified by any user with any intent~\cite{poisoning-web-scale-training-datasets-is-practical-sp24, poisonedrag-arxiv24}.
 Prior studies formalize poisoning attacks that place disinformation and misinformation on the web to generate attacker-intended answers in systems that retrieve from external databases and generate answers, including GSEs, because these systems can cite such content and generate text that reflects it~\cite{poisoning-web-scale-training-datasets-is-practical-sp24, poisonedrag-arxiv24, yu2025safetydevolutionaiagents}.
-Specific to GSEs, prior studies show patterns in styles of web content that GSEs prefer to cite in answers and propose a method to optimize their own content for increasing citation exposure~\cite{geo-apmr+24, wu2025generativesearchengineslikeai}.
+Specific to GSEs, prior studies show patterns in styles of web content that GSEs prefer to cite in answers and propose a method to optimize their own content to increase citation exposure~\cite{geo-apmr+24, wu2025generativesearchengineslikeai}.
 Although they are beneficial for primary information providers that seek to increase the exposure of their web content as citations, they can also facilitate poisoning attacks.
 This indicates that systematically evaluating the citation safety of GSEs against poisoning attacks is indispensable.
 
@@ -46,12 +46,12 @@ In addition, the framework evaluates the faithfulness score and domination score
 We conduct experiments on three major GSEs (OpenAI GPT-5, Claude Sonnet 4, and Gemini Flash 2.5 with search mode enabled) in the United States and Japan.
 Our experiments use $33$ question templates across $13$ parties and $3$ user profiles for a total of $3{,}861$ generated answers.
 To retrieve GSE answers, we set a user profile that varies the user's level of political knowledge and ideology, and pose political questions to GSEs.
-It enables a systematic analysis of how personalization influences citation behavior.
+This setup enables a systematic analysis of how personalization influences citation behavior.
 
 Our experiments reveal four findings.
 First, each GSE has a distinct attack surface: some GSEs concentrate citations on primary information sources and exclude low-barrier sources, while others cite low-barrier sources more frequently.
 Second, when citations contain few primary sources, web search results tend to include fewer primary sources and more low-barrier sources.
-It suggests that the web search functionality of GSEs (e.g., query generation by LLMs) shapes the potential attack surface, rather than the LLM's preference for which sources from web search results to cite.
+This suggests that the web search functionality of GSEs (e.g., query generation by LLMs) shapes the potential attack surface, rather than the LLM's preference for which sources from web search results to cite.
 Third, answers to ruling party questions rely more on sources with lower content-injection barriers than answers to opposition party questions, making the ruling side more vulnerable.
 Lastly, in contrast to biases arising from the LLM's internal knowledge, user profiles have little influence on the citation barrier pattern, faithfulness, or domination score across content-injection barriers.
 
