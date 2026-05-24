@@ -130,7 +130,7 @@ In contrast, user profiles do not affect the content-injection barrier distribut
 We show the barrier distribution in Figure~\ref{fig:citation-by-persona} for three user profiles: Ignorant-Neutral (ign.), High-Conservative (cons.), and High-Progressive (prog.).
 Each bar shows the barrier distribution of GSE citations for each user profile.
 The distributions across the three profiles are nearly identical.
-$\chi^2$ tests are not significant for any model in either country (U.S. overall: $\chi^2(8) = 6.62,\, p = .579,\, V = 0.020$; Japan overall: $\chi^2(8) = 10.07,\, p = .260,\, V = 0.019$; all 6 model-level tests also not significant), with $V < 0.02$.
+$\chi^2$ tests are not significant for any model in either country (U.S. overall: $\chi^2(8) = 6.62,\, p = .579,\, V = 0.020$; Japan overall: $\chi^2(8) = 10.07,\, p = .260,\, V = 0.019$; all 6 model-level tests also not significant), with all $V \leq 0.06$.
 We also analyze the effect of alignment between the user profile ideology and the target party ideology: aligned (al-cons., al-prog.) and opposed (op-cons., op-prog.).
 GPT shows no significant difference between aligned and opposed conditions (U.S.: $\chi^2(12) = 14.25,\, p = .285,\, V = 0.081$), selecting the same citations regardless of whether the user ideology matches the party.
 Gemini (U.S.: $\chi^2(12) = 62.12,\, p < .001,\, V = 0.086$) and Claude (U.S.: $\chi^2(12) = 58.50,\, p < .001,\, V = 0.103$) show statistically significant differences, but the effect sizes are small.
@@ -191,7 +191,7 @@ For low-barrier sources, Gemini's domination in Japan substantially exceeds the 
 
 We show the domination score distribution by user profile in Figure~\ref{fig:wc-by-persona}.
 User profile differences are negligible (U.S. $\chi^2(8) = 301,\, V = 0.019$, Japan $\chi^2(8) = 377,\, V = 0.011$; all $p < .001$).
-Together with barrier distribution ($V \leq 0.020$), user profiles do not affect the attack surface in either metric.
+Together with barrier distribution (all $V \leq 0.06$), user profiles do not affect the attack surface in either metric.
 
 
 \begin{figure}[t]
@@ -242,7 +242,7 @@ In the U.S., the High-bin ratio for ruling party questions is GPT $27.3\%$, Gemi
 Given that ruling party questions also have lower primary source ratios in the barrier distribution, their answers rely more on citations in the Mid and Low grounding bins.
 
 The effect size of user profile on the grounding distribution is also negligible (U.S. $V = 0.012$, Japan $V = 0.009$).
-GPT (U.S.) and Claude (U.S. and Japan) are not significant after Holm correction, while the other combinations show statistically significant differences ($p_H < .001$); however, all have $V < 0.02$, meaning the effect is negligible.
+GPT (U.S.) and Claude (U.S. and Japan) are not significant after Holm correction, while the other combinations show statistically significant differences ($p_H < .001$); however, all have $V \leq 0.022$, meaning the effect is negligible.
 This suggests that the potential attack surface of GSEs does not depend on who the user is, but on which GSE model is used and which party the question is about.
 
 \subsection{Summary}
