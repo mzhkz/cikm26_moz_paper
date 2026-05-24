@@ -68,7 +68,7 @@ In the U.S., we target five parties. The ruling party is ``Republican Party'', a
 \end{figure*}
 
 We analyze the citation behavior of GSEs along three axes: (1) the content-injection barrier distribution of citations, (2) the domination score distribution across barriers, and (3) the citation grounding score distribution across barriers.
-In all analyses, we report Cram\'{e}r's $V$ alongside $\chi^2$ tests. 
+In all analyses, we report Cram\'{e}r's $V$ alongside $\chi^2$ tests.
 When $N$ is large, even small differences yield $p < .001$; therefore, we use $V$ to assess the magnitude of differences.
 
 \textbf{Distribution of Content-injection Barriers.}
@@ -82,7 +82,7 @@ We first show the barrier distribution of citations in Figure~\ref{fig:citation-
 Each cell contains two stacked horizontal bars side by side: the left bar shows the barrier distribution of web search results, and the right bar shows that of GSE citations.
 We also report the mean and standard deviation of the proportion of GSE citation URLs that appear in the corresponding web search results.
 
-The citation tendency differs across models (U.S.: $\chi^2(8) = 568.94,\, p < .001,\, V = 0.328$; Japan: $\chi^2(8) = 574.80,\, p < .001,\, V = 0.250$).
+The citation tendency differs across models (U.S.: $\chi^2(8) = 568.94,\, $ $p < .001,\, V = 0.328$; Japan: $\chi^2(8) = 574.80,\, p < .001,\, V = 0.250$).
 GPT has the highest primary source ratio (U.S. $67.2\%$, Japan $83.1\%$) and does not cite low-barrier sources (U.S./Japan both $\leq 0.1\%$).
 Gemini has the highest ratios of opponent sources (U.S. $12.4\%$, Japan $6.1\%$) and low-barrier sources (U.S. $12.9\%$, Japan $17.2\%$) among the three models.
 The attack surface of Gemini is broad, with many pathways through which content injection via low-cost sources can reach the answer.
@@ -132,8 +132,8 @@ Each bar shows the barrier distribution of GSE citations for each user profile.
 The distributions across the three profiles are nearly identical.
 $\chi^2$ tests are not significant for any model in either country (U.S. overall: $\chi^2(8) = 6.62,\, p = .579,\, V = 0.020$; Japan overall: $\chi^2(8) = 10.07,\, p = .260,\, V = 0.019$; all 8 model-level tests also not significant), with $V < 0.02$.
 We also analyze the effect of alignment between the user profile ideology and the target party ideology: aligned (al-cons., al-prog.) and opposed (op-cons., op-prog.).
-GPT shows no significant difference between aligned and opposed conditions (U.S.: $\chi^2(12) = 14.25,\, p = .285$), selecting the same citations regardless of whether the user ideology matches the party.
-Gemini (U.S.: $\chi^2(12) = 62.12,\, p < .001$) and Claude (U.S.: $\chi^2(12) = 58.50,\, p < .001$) show significant differences between alignment conditions.
+GPT shows no significant difference between aligned and opposed conditions (U.S.: $\chi^2(12) = 14.25,\, p = .285,\, V = 0.081$), selecting the same citations regardless of whether the user ideology matches the party.
+Gemini (U.S.: $\chi^2(12) = 62.12,\, p < .001,\, V = 0.086$) and Claude (U.S.: $\chi^2(12) = 58.50,\, p < .001,\, V = 0.103$) show statistically significant differences, but the effect sizes are small.
 
 \begin{table}[t]
 \centering
@@ -179,8 +179,8 @@ This suggests that user profiles affect neither the citation barrier distributio
 
 \textbf{Distribution of Domination Score.}
 We next analyze the domination score distribution across barriers.
-We show the domination score distribution by model and party group in Figure~\ref{fig:wc-by-group}.
-As with barrier distribution, model choice and the ruling/opposition position again govern the distribution (model: U.S. $V = 0.356$, Japan $V = 0.229$; party group: U.S. $V = 0.386$, Japan $V = 0.144$; all $p < .001$).
+We show the distribution by model and party group in Figure~\ref{fig:wc-by-group}.
+As with barrier distribution, model choice and the ruling/opposition position again govern the distribution (model: U.S. $\chi^2(8) = 34120,\, V = 0.356$, Japan $\chi^2(8) = 54892,\, V = 0.229$; party group: U.S. $\chi^2(4) = 59662,\, V = 0.386$, Japan $\chi^2(4) = 31743,\, V = 0.144$; all $p < .001$).
 
 Across all models and both countries (ruling/opposition combined), the primary source domination ratio exceeds the citation ratio.
 GPT shows ${+}3.9$pt in the U.S. and ${+}7.0$pt in Japan; in Japan, Gemini shows ${+}13.1$pt and Claude ${+}8.5$pt.
@@ -190,7 +190,7 @@ In the U.S., the primary domination is higher for opposition questions (GPT ${+}
 For low-barrier sources, Gemini's domination in Japan substantially exceeds the other models (Gemini $9.8\%$ vs.\ Claude $4.3\%$, GPT $0.1\%$).
 
 We show the domination score distribution by user profile in Figure~\ref{fig:wc-by-persona}.
-User profile differences are negligible (U.S. $V = 0.019$, Japan $V = 0.011$; all $p < .001$).
+User profile differences are negligible (U.S. $\chi^2(8) = 301,\, V = 0.019$, Japan $\chi^2(8) = 377,\, V = 0.011$; all $p < .001$).
 Together with barrier distribution ($V \leq 0.020$), user profiles do not affect the attack surface in either metric.
 
 
@@ -203,7 +203,7 @@ Together with barrier distribution ($V \leq 0.020$), user profiles do not affect
 
 \begin{figure*}[t]
   \centering
-  \includegraphics[width=1\textwidth]{figs/phase8_outputs/figures/grounding_distribution_by_persona.pdf}
+  \includegraphics[width=0.98\textwidth]{figs/phase8_outputs/figures/grounding_distribution_by_persona.pdf}
   \caption{Grounding distribution by user profile. Each cell shows the grounding bin barrier distribution for each user profile.}
   \label{fig:grounding-by-persona}
 \end{figure*}
