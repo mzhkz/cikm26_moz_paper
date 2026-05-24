@@ -50,7 +50,7 @@ Here, $\textsc{IsPrimary}_{\mathcal{P}}(c)$ outputs $1$ if $d_c$ is included in 
 We categorize secondary information into fine-grained publisher categories, which serve as intermediate categories for calculating content-injection barriers.
 We prepare a publisher category set \\$\Pi = \{\pi_1, \pi_2, \cdots, \pi_p\}$.
 Here, $\textsc{Cat}(c)$ maps citation $c$ to a category $\pi_i \in \Pi$ ($i \in \{1, 2, \cdots, p\}$).
-In our experiments in Section~\ref{sec:experiment}, we use labels such as ``Party'', ``Media'', ``Platform'', ``Owned'', ``Academia'', and ``Non-media-industry''.
+In our experiments in Section~\ref{sec:experiment}, we use labels such as ``Party'', ``Media'', ``Platform'', ``Owned'', ``Academia'', ``Non-media-industry'', and ``Government''.
 
 To build the function $\textsc{Cat}(c)$, we adopt a hybrid strategy combining automatic category classification using LLM-as-a-Judge~\cite{survey-llm-as-a-judge-arxiv24,judging-llm-as-a-judge-with-mt-bench-and-chatbot-arena-arxiv23} and manual category classification.
 We prepare two GSE models (ideally two models from different providers such as GPT and Gemini with web search mode enabled) and use them to identify publishers from domains and WHOIS information.

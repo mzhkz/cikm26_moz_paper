@@ -8,7 +8,7 @@ Our experiment reveals their citation patterns and potential attack surfaces in 
 We provide details of our experimental setup, including the target GSE models, user profiles, questions, and political parties.
 
 \textbf{Target GSE Models.}
-We employ three GSE models for answer generation: OpenAI GPT-5~\cite{chatgpt}, Claude Sonnet $4$ (claude-4-sonnet-20250514)~\cite{claude}, and Gemini Flash $2.5$ (gemini-2.5-flash)~\cite{gemini} with web search mode enabled.
+We employ three GSE models for answer generation: OpenAI GPT-5~\cite{chatgpt}, Claude Sonnet $4$ (claude-sonnet-4-20250514)~\cite{claude}, and Gemini Flash $2.5$ (gemini-2.5-flash)~\cite{gemini} with web search mode enabled.
 We clarify why we focus on closed GSE models in this study.
 According to surveys~\cite{menlo-ventures2025stategenaienterprise, a16z2025stateconsumerai}, closed models dominate the LLM market in both enterprise and consumer segments, with ChatGPT, Claude, and Gemini together accounting for $88\%$ of spending share, while open-source models account for only $11\%$.
 These models are developed in the U.S., but they dominate usage in Japan as well according to GMO Research \& AI~\cite{gmo-research2025japanai}.
@@ -46,8 +46,8 @@ It prevents questions and citations from being skewed toward topics that specifi
 
 \textbf{Target Political Parties.}
 We target political parties satisfying each country's requirements for national political parties as primary sources.
-Specifically, in Japan we target eight parties. 
-The ruling parties are ``Liberal Democratic Party'' and ``Japan Innovation Party'', and the opposition parties are ``Centrist Reform Coalition'', ``Democratic Party for the People'', ``Japanese Communist Party'', ``Reiwa Shinsengumi'', ``Sanseito'', and ``Conservative Party of Japan''. 
+Specifically, in Japan we target eight parties.
+The ruling parties are ``Liberal Democratic Party'' and ``Japan Innovation Party'', and the opposition parties are ``Centrist Reform Coalition'', ``Democratic Party for the People'', ``Japanese Communist Party'', ``Reiwa Shinsengumi'', ``Sanseito'', and ``Conservative Party of Japan''.
 In the U.S., we target five parties. The ruling party is ``Republican Party'', and the opposition parties are ``Democratic Party'', ``Green Party'', ``Libertarian Party'', and ``Constitution Party''.
 
 
@@ -79,7 +79,7 @@ Since the search engines used by the target GSEs are not disclosed, we cannot re
 However, Brave Search API returns results comparable to those of major search engines such as Google and Bing on standard retrieval metrics, and we therefore consider it a reasonable approximation.
 
 We first show the barrier distribution of citations in Figure~\ref{fig:citation-by-group}, with parties grouped into ruling (rul.) and opposition (opp.).
-Each cell contains two stacked horizontal bars side by side: the left bar shows the barrier distribution of web search results, and the right bar shows that of GSE citations.
+Each cell contains two stacked horizontal bars one above the other: the upper bar shows the barrier distribution of web search results, and the lower bar shows that of GSE citations.
 We also report the mean and standard deviation of the proportion of GSE citation URLs that appear in the corresponding web search results.
 
 The citation tendency differs across models (U.S.: $\chi^2(8) = 568.94,\, $ $p < .001,\, V = 0.328$; Japan: $\chi^2(8) = 574.80,\, p < .001,\, V = 0.250$).
@@ -130,7 +130,7 @@ In contrast, user profiles do not affect the content-injection barrier distribut
 We show the barrier distribution in Figure~\ref{fig:citation-by-persona} for three user profiles: Ignorant-Neutral (ign.), High-Conservative (cons.), and High-Progressive (prog.).
 Each bar shows the barrier distribution of GSE citations for each user profile.
 The distributions across the three profiles are nearly identical.
-$\chi^2$ tests are not significant for any model in either country (U.S. overall: $\chi^2(8) = 6.62,\, p = .579,\, V = 0.020$; Japan overall: $\chi^2(8) = 10.07,\, p = .260,\, V = 0.019$; all 8 model-level tests also not significant), with $V < 0.02$.
+$\chi^2$ tests are not significant for any model in either country (U.S. overall: $\chi^2(8) = 6.62,\, p = .579,\, V = 0.020$; Japan overall: $\chi^2(8) = 10.07,\, p = .260,\, V = 0.019$; all 6 model-level tests also not significant), with $V < 0.02$.
 We also analyze the effect of alignment between the user profile ideology and the target party ideology: aligned (al-cons., al-prog.) and opposed (op-cons., op-prog.).
 GPT shows no significant difference between aligned and opposed conditions (U.S.: $\chi^2(12) = 14.25,\, p = .285,\, V = 0.081$), selecting the same citations regardless of whether the user ideology matches the party.
 Gemini (U.S.: $\chi^2(12) = 62.12,\, p < .001,\, V = 0.086$) and Claude (U.S.: $\chi^2(12) = 58.50,\, p < .001,\, V = 0.103$) show statistically significant differences, but the effect sizes are small.
