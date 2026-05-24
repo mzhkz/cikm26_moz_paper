@@ -23,10 +23,11 @@ Several studies evaluate \emph{faithfulness} by measuring the semantic consisten
 Prior studies also evaluate the \emph{domination} score, which represents the proportion of cited text relative to the total text volume of the generated answer~\cite{geo-apmr+24, wu2025generativesearchengineslikeai}.
 By combining these metrics, we can measure how much a cited source has the power to influence the answer to a given question.
 However, these studies alone cannot capture the attack surface of GSEs against poisoning attacks.
-This is because these studies target systems called \emph{RAG systems}, which retrieve from curated, fixed, and closed external authoritative databases to generate answers.
+\emph{Faithfulness} studies target systems called \emph{RAG systems}, which retrieve from curated, fixed, and closed external authoritative databases to generate answers.
 In contrast, GSEs treat the web as an external database that is open to anyone and dynamically updated, allowing attackers to easily inject malicious content that GSEs can cite.
-Due to these differences, evaluation criteria proposed for \emph{RAG systems} cannot adequately assess the reliability and safety of GSEs. 
-To reveal the potential attack surface, we need to consider the perspective of which publishers GSEs cite in generated answers.
+Although the \emph{domination} score is designed for the GSE context, it only measures the degree of influence between cited content and the generated answer.
+Because of these differences, existing evaluation criteria alone are insufficient to assess the attack surface.
+To reveal the potential attack surface, we need to consider the perspective of which publishers GSEs cite in generated answers, not only the relation between cited content and answers.
 
 % Prior studies of GSEs assess which cited content dominates the generated answers.
 % In GSEs, a major evaluation criterion is the domination score, which represents the proportion of cited text relative to the total text volume of the generated answer~\cite{geo-apmr+24, wu2025generativesearchengineslikeai}.
